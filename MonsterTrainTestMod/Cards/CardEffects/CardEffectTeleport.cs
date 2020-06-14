@@ -5,7 +5,7 @@ using System.Text;
 using ShinyShoe;
 using UnityEngine;
 
-namespace MonsterTrainTestMod.Cards.CardEffects
+namespace ShinyShoe
 {
     public class CardEffectTeleport : CardEffectBase, ICardEffectStatuslessTooltip
     {

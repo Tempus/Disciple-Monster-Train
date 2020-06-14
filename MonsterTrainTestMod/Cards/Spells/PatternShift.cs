@@ -7,6 +7,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
+using ShinyShoe;
 
 namespace MonsterTrainTestMod.Cards.Spells
 {
@@ -36,13 +37,13 @@ namespace MonsterTrainTestMod.Cards.Spells
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
-                    //new CardEffectDataBuilder
-                    //{
-                    //    EffectStateName = "CardEffectTeleport",
-                    //    ParamInt = random.Next(-2, 3),
-                    //    TargetMode = TargetMode.DropTargetCharacter,
-                    //    TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
-                    //}
+                    new CardEffectDataBuilder
+                    {
+                        EffectStateName = typeof(CardEffectTeleport).AssemblyQualifiedName,
+                        ParamInt = random.Next(-2, 3),
+                        TargetMode = TargetMode.DropTargetCharacter,
+                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                    }
                 },
             };
 
