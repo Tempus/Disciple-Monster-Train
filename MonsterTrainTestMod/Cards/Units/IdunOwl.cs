@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
+using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
 // TODO - Chronolocked doesn't exist yet... we could fake it with Stealth, Daze, Rooted though
 
@@ -12,9 +13,9 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class IdunOwl
     {
+        private static string IDName = "Idun Owl";
         public static void Make()
         {
-            private static string IDName = "Idun Owl";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -23,6 +24,8 @@ namespace MonsterTrainTestMod.Cards.Units
                 Name = IDName,
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "Strike: Apply (Consolidate?)Chronolock.",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
@@ -43,11 +46,6 @@ namespace MonsterTrainTestMod.Cards.Units
                 ParamCharacterData = BuildUnit()
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
-
-
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -73,16 +71,16 @@ namespace MonsterTrainTestMod.Cards.Units
             );
 
             // Drop down a floor on hit
-            var strikeTrigger = new CharacterTriggerBuilder {
-                Trigger = Trigger.OnAttacking};
+            var strikeTrigger = new CharacterTriggerDataBuilder {
+                Trigger = CharacterTriggerData.Trigger.OnAttacking};
             var effectBuilder = new CardEffectDataBuilder
             {
                 EffectStateName = "CardEffectAddStatusEffect",
                 TargetMode = TargetMode.LastAttackedCharacter
             };
-            effectBuilder.CardEffectAddStatusEffect(MTStatusEffect.Stealth, 1);
-            effectBuilder.CardEffectAddStatusEffect(MTStatusEffect.Rooted, 1);
-            effectBuilder.CardEffectAddStatusEffect(MTStatusEffect.Dazed, 1);
+            effectBuilder.AddStatusEffect(typeof(MTStatusEffect_Stealth), 1);
+            effectBuilder.AddStatusEffect(typeof(MTStatusEffect_Rooted), 1);
+            effectBuilder.AddStatusEffect(typeof(MTStatusEffect_Dazed), 1);
 
             strikeTrigger.Effects.Add(effectBuilder.Build());
 

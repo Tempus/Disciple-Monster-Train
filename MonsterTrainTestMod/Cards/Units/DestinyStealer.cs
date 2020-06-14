@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - how do I tell whether a unit has attacked or not? I can intuit it in an effect based on whether me and them are quick or slow of course, but that needs a custom effect!
 
@@ -12,9 +12,9 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class DestinyStealer
     {
+        private static string IDName = "Destiny Stealer";
         public static void Make()
         {
-            private static string IDName = "Destiny Stealer";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -23,6 +23,8 @@ namespace MonsterTrainTestMod.Cards.Units
                 Name = IDName,
                 Cost = 2,
                 Rarity = CollectableRarity.Uncommon,
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "(TODO)Strike: Deal x2?! damage if the target hasn't attacked yet.",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
@@ -43,11 +45,6 @@ namespace MonsterTrainTestMod.Cards.Units
                 ParamCharacterData = BuildUnit()
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
-
-
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -73,8 +70,8 @@ namespace MonsterTrainTestMod.Cards.Units
             );
 
             // Drop down a floor on hit
-            var strikeTrigger = new CharacterTriggerBuilder {
-                Trigger = Trigger.OnAttacking};
+            var strikeTrigger = new CharacterTriggerDataBuilder {
+                Trigger = CharacterTriggerData.Trigger.OnAttacking};
 
             characterDataBuilder.Triggers.Add(strikeTrigger.Build());
 

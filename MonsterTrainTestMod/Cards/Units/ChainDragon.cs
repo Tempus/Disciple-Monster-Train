@@ -2,17 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
+using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
 namespace MonsterTrainTestMod.Cards.Units
 {
     class ChainDragon
     {
+        private static string IDName = "Chain Dragon";
         public static void Make()
         {
-            private static string IDName = "Chain Dragon";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -21,6 +22,8 @@ namespace MonsterTrainTestMod.Cards.Units
                 Name = IDName,
                 Cost = 3,
                 Rarity = CollectableRarity.Rare,
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "Relocate: Enhance with Multistrike 1.",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
@@ -41,11 +44,6 @@ namespace MonsterTrainTestMod.Cards.Units
                 ParamCharacterData = BuildUnit()
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
-
-
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -71,17 +69,17 @@ namespace MonsterTrainTestMod.Cards.Units
             );
 
             // This is relocate, basically! But I think it will only work for this character
-            var ascendTrigger = new CharacterTriggerBuilder {
-                Trigger = Trigger.PostAscension};
-            var descendTrigger = new CharacterTriggerBuilder {
-                Trigger = Trigger.PostDescension};
+            var ascendTrigger = new CharacterTriggerDataBuilder {
+                Trigger = CharacterTriggerData.Trigger.PostAscension};
+            var descendTrigger = new CharacterTriggerDataBuilder {
+                Trigger = CharacterTriggerData.Trigger.PostDescension};
 
             var effectBuilder = new CardEffectDataBuilder
             {
                 EffectStateName = "CardEffectAddStatusEffect",
                 TargetMode = TargetMode.Self
             };
-            effectBuilder.CardEffectAddStatusEffect(MTStatusEffect.Multistrike, 1);
+            effectBuilder.AddStatusEffect(typeof(MTStatusEffect_Multistrike), 1);
 
             ascendTrigger.Effects.Add(effectBuilder.Build());
             descendTrigger.Effects.Add(effectBuilder.Build());

@@ -2,19 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
 
-// TODO - look into CardTraitRetain and CardTraitFreeze, no builder for CardTriggerEffectData
+// TODO - There's no card effect that applies upgrades onto itself. See CardEffectFreezeCard for a template for a new effect
 
 namespace MonsterTrainTestMod.Cards.Units
 {
     class FriggaOwl
     {
+        private static string IDName = "Frigga Owl";
         public static void Make()
         {
-            private static string IDName = "Frigga Owl";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -23,10 +23,43 @@ namespace MonsterTrainTestMod.Cards.Units
                 Name = IDName,
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "Permafrost. Reserve: (TODO)Enhance with +5 damage, +5 health.",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
-                Targetless = false
+                Targetless = false,
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitRetain"
+                    }
+                },
+
+                TriggerBuilders = new List<CardTriggerEffectDataBuilder>
+                {
+                    new CardTriggerEffectDataBuilder
+                    {
+                        trigger = CardTriggerType.OnUnplayed,
+                        //EffectBuilders = new List<CardEffectDataBuilder>
+                        //{
+                        //    new CardEffectDataBuilder
+                        //    {
+                        //        EffectStateName = "CardEffectBuffDamage",
+                        //        ParamInt = 5,
+                        //        TargetMode = TargetMode.Self
+                        //    },
+                        //    new CardEffectDataBuilder
+                        //    {
+                        //        EffectStateName = "CardEffectBuffMaxHealth",
+                        //        ParamInt = 5,
+                        //        TargetMode = TargetMode.Self
+                        //    }
+                        //}
+                    }
+                }
             };
 
             // Art Prefab, we can probably instantiate this ourselves later
@@ -43,20 +76,6 @@ namespace MonsterTrainTestMod.Cards.Units
                 ParamCharacterData = BuildUnit()
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
-
-            // Permafrost/Retain
-            var permafrost = new CardTraitDataBuilder
-            {
-                EffectStateName = "CardTraitPermafrost"
-            };
-            railyard.Traits.Add(permafrost.Build());
-
-            //CardTriggerEffectData needs to add a trigger for OnUnplayed here, that activates the enhance effects
-            
-
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
 
             // Do this to complete
             railyard.BuildAndRegister();

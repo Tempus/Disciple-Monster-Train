@@ -2,19 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - Icarian, Pyre attacks whole tower (we can fake it though), and Pyrebound (couldn't find it)
 
-namespace MonsterTrainTestMod.Cards.Spells
+namespace MonsterTrainTestMod.Cards.Units
 {
     class Waxwing
     {
+        private static string IDName = "Waxwing";
         public static void Make()
         {
-            private static string IDName = "Waxwing";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -23,7 +23,8 @@ namespace MonsterTrainTestMod.Cards.Spells
                 Name = IDName,
                 Cost = 1,
                 Rarity = CollectableRarity.Rare,
-
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "(TODO)Icarian: (TODO)Pyre attacks every floor.",
                 CardType = CardType.Monster,
                 TargetsRoom = true,
                 Targetless = false
@@ -43,11 +44,6 @@ namespace MonsterTrainTestMod.Cards.Spells
                 ParamCharacterData = BuildUnit()
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
-
-
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -73,6 +69,11 @@ namespace MonsterTrainTestMod.Cards.Spells
             );
 
             // Resolve
+            var resolveTrigger = new CharacterTriggerDataBuilder
+            {
+                Trigger = CharacterTriggerData.Trigger.PostCombat
+            };
+            
             var icarianBuilder = new CardEffectDataBuilder
             {
                 EffectStateName = "CardEffectBump",

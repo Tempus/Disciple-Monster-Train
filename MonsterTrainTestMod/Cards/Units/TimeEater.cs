@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - unclear if this triggers in time, also Empowered isn't a thing yet (no way to check current energy here)
 // Also, Slow is not implemented.
@@ -13,9 +13,9 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class TimeEater
     {
+        private static string IDName = "Time Eater";
         public static void Make()
         {
-            private static string IDName = "Time Eater";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -24,6 +24,8 @@ namespace MonsterTrainTestMod.Cards.Units
                 Name = IDName,
                 Cost = 3,
                 Rarity = CollectableRarity.Rare,
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "(TODO)Slow. Multistrike (TODO)Empowered.",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
@@ -44,11 +46,6 @@ namespace MonsterTrainTestMod.Cards.Units
                 ParamCharacterData = BuildUnit()
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
-
-
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -72,19 +69,6 @@ namespace MonsterTrainTestMod.Cards.Units
                 "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
                 "8a96184904fce5745ab5139b620b4d31"
             );
-
-            // Drop down a floor on hit
-            var strikeTrigger = new CharacterTriggerBuilder {
-                Trigger = Trigger.EndTurnPreHandDiscard};
-            // var resolveBuilder = new CardEffectDataBuilder
-            // {
-            //     EffectStateName = "CardEffectBump",
-            //     ParamInt = -1,
-            //     TargetMode = TargetMode.LastAttackedCharacter
-            // };
-            // strikeTrigger.Effects.Add(resolveBuilder.Build());
-
-            characterDataBuilder.Triggers.Add(strikeTrigger.Build());
 
             return characterDataBuilder.BuildAndRegister();
         }

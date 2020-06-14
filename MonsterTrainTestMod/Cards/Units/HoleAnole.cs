@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 namespace MonsterTrainTestMod.Cards.Units
 {
     class HoleAnole
     {
+        private static string IDName = "Hole Anole";
         public static void Make()
         {
-            private static string IDName = "Hole Anole";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -21,6 +21,8 @@ namespace MonsterTrainTestMod.Cards.Units
                 Name = IDName,
                 Cost = 2,
                 Rarity = CollectableRarity.Uncommon,
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "Strike: Descend Target.",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
@@ -43,9 +45,9 @@ namespace MonsterTrainTestMod.Cards.Units
             railyard.Effects.Add(spawnEffectBuilder.Build());
 
 
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
+            
+            
+            
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -71,8 +73,8 @@ namespace MonsterTrainTestMod.Cards.Units
             );
 
             // Drop down a floor on hit
-            var strikeTrigger = new CharacterTriggerBuilder {
-                Trigger = Trigger.OnAttacking};
+            var strikeTrigger = new CharacterTriggerDataBuilder {
+                Trigger = CharacterTriggerData.Trigger.OnAttacking};
             var resolveBuilder = new CardEffectDataBuilder
             {
                 EffectStateName = "CardEffectBump",

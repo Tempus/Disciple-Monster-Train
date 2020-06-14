@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - Innate, Can't target floor above/below easily? Look into target filters, also 'how to tell which floor I'm on'. Otherwise, COMPRESS EVERYTHING chronoTicked
 
@@ -12,9 +12,9 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class Constrictor
     {
+        private static string IDName = "Constrictor";
         public static void Make()
         {
-            private static string IDName = "Constrictor";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -23,6 +23,8 @@ namespace MonsterTrainTestMod.Cards.Units
                 Name = IDName,
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "(TODO)Innate. (Broken)Summon: Ascends enemies on the floor below. Descends enemies on the floor above.",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
@@ -43,11 +45,6 @@ namespace MonsterTrainTestMod.Cards.Units
                 ParamCharacterData = BuildUnit()
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
-
-
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -73,8 +70,8 @@ namespace MonsterTrainTestMod.Cards.Units
             );
 
             // Pulls everything that it can to this floor on summon
-            var strikeTrigger = new CharacterTriggerBuilder {
-                Trigger = Trigger.OnSpawn};
+            var strikeTrigger = new CharacterTriggerDataBuilder {
+                Trigger = CharacterTriggerData.Trigger.OnSpawn};
             var downBuilder = new CardEffectDataBuilder
             {
                 EffectStateName = "CardEffectBump",

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - Innate
 
@@ -12,9 +12,9 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class LakshimiOwl
     {
+        private static string IDName = "Lakshimi Owl";
         public static void Make()
         {
-            private static string IDName = "Lakshimi Owl";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -23,10 +23,19 @@ namespace MonsterTrainTestMod.Cards.Units
                 Name = IDName,
                 Cost = 0,
                 Rarity = CollectableRarity.Uncommon,
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "Innate.",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
-                Targetless = false
+                Targetless = false,
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitIntrinsicState"
+                    }
+                },
             };
 
             // Art Prefab, we can probably instantiate this ourselves later
@@ -43,11 +52,6 @@ namespace MonsterTrainTestMod.Cards.Units
                 ParamCharacterData = BuildUnit()
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
-
-
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
 
             // Do this to complete
             railyard.BuildAndRegister();

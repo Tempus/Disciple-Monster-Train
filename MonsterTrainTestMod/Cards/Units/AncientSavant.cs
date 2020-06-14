@@ -2,20 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
+using MonsterTrainModdingAPI.Enums.MTClans;
+using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
-
-// TODO Shifter
 
 namespace MonsterTrainTestMod.Cards.Units
 {
     class AncientSavant
     {
+        private static string IDName = "Ancient Savant";
+
         public static void Make()
         {
-            private static string IDName = "Ancient Savant";
-
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
@@ -23,6 +23,7 @@ namespace MonsterTrainTestMod.Cards.Units
                 Name = IDName,
                 Cost = 2,
                 Rarity = CollectableRarity.Uncommon,
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
@@ -45,9 +46,9 @@ namespace MonsterTrainTestMod.Cards.Units
             railyard.Effects.Add(spawnEffectBuilder.Build());
 
 
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
+            
+            
+            
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -71,7 +72,7 @@ namespace MonsterTrainTestMod.Cards.Units
                 "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
                 "8a96184904fce5745ab5139b620b4d31"
             );
-            characterDataBuilder.AddStartingStatusEffect(MTStatusEffect.Immobile, 1);
+            characterDataBuilder.AddStartingStatusEffect(typeof(MTStatusEffect_Immobile), 1);
 
             return characterDataBuilder.BuildAndRegister();
         }

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - look into CardTraitRetain and CardTraitFreeze, no builder for CardTriggerEffectData, couldn't find Pyrebound, Chronolock unimplemented (but can be faked)
 
@@ -12,9 +12,9 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class DivineroftheInfinite
     {
+        private static string IDName = "Diviner of the Infinite";
         public static void Make()
         {
-            private static string IDName = "Diviner of the Infinite";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -23,17 +23,42 @@ namespace MonsterTrainTestMod.Cards.Units
                 Name = IDName,
                 Cost = 5,
                 Rarity = CollectableRarity.Uncommon,
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "Permafrost. Pyrebound. Reserve: Apply 1 (TODO)Chronolock, (TODO)Cost -1.",
+                AssetPath = "netstandard2.0/chrono/zyzzy.png",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
-                Targetless = false
-            };
+                Targetless = false,
 
-            // Art Prefab, we can probably instantiate this ourselves later
-            railyard.CreateAndSetCardArtPrefabVariantRef(
-                "Assets/GameData/CardArt/Portrait_Prefabs/CardArt_TrainSteward.prefab",
-                "a21c55c24d2e5d645a01230d874e26a9"
-            );
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitRetain"
+                    },
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitLimitedRange"
+                    }
+                },
+
+                TriggerBuilders = new List<CardTriggerEffectDataBuilder>
+                {
+                    new CardTriggerEffectDataBuilder
+                    {
+                        trigger = CardTriggerType.OnUnplayed,
+                        //EffectBuilders = new List<CardEffectDataBuilder>
+                        //{
+                        //    new CardEffectDataBuilder
+                        //    {
+                        //        EffectStateName = "CardEffectAdjustEnergy",
+                        //        ParamInt = -1,
+                        //    }
+                        //}
+                    }
+                }
+            };
 
             // Add special effects, triggers, and other things to cards
             var spawnEffectBuilder = new CardEffectDataBuilder
@@ -44,19 +69,8 @@ namespace MonsterTrainTestMod.Cards.Units
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
 
-            // Permafrost/Retain
-            var permafrost = new CardTraitDataBuilder
-            {
-                EffectStateName = "CardTraitPermafrost"
-            };
-            railyard.Traits.Add(permafrost.Build());
+            // CardTriggerEffectData needs to add a trigger for OnUnplayed here, that activates the cost and stasis effects
 
-            //CardTriggerEffectData needs to add a trigger for OnUnplayed here, that activates the cost and stasis effects
-            
-
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
 
             // Do this to complete
             railyard.BuildAndRegister();

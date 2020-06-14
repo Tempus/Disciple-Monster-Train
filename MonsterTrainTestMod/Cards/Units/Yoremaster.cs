@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - Slow is not implemented. Unclear if my slow will target everyone or only the other team (it should target everyone)
 
@@ -12,9 +12,9 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class Yoremaster
     {
+        private static string IDName = "Yoremaster";
         public static void Make()
         {
-            private static string IDName = "Yoremaster";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -23,6 +23,8 @@ namespace MonsterTrainTestMod.Cards.Units
                 Name = IDName,
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "(TODO) Slow. (TODO)Units on this floor gain (TODO)slow.",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
@@ -43,11 +45,6 @@ namespace MonsterTrainTestMod.Cards.Units
                 ParamCharacterData = BuildUnit()
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
-
-
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -75,14 +72,14 @@ namespace MonsterTrainTestMod.Cards.Units
             // characterDataBuilder.AddStartingStatusEffect(MTStatusEffect.Slow, 1);
 
             // Drop down a floor on hit
-            var strikeTrigger = new CharacterTriggerBuilder {
-                Trigger = Trigger.OnTurnBegin};
+            var strikeTrigger = new CharacterTriggerDataBuilder {
+                Trigger = CharacterTriggerData.Trigger.OnTurnBegin};
             var effectBuilder = new CardEffectDataBuilder
             {
                 EffectStateName = "CardEffectAddStatusEffect",
                 TargetMode = TargetMode.Room
             };
-            // effectBuilder.CardEffectAddStatusEffect(MTStatusEffect.Slow, 1);
+            // effectBuilder.AddStatusEffect(typeof(MTStatusEffect.Slow, 1);
             strikeTrigger.Effects.Add(effectBuilder.Build());
 
             characterDataBuilder.Triggers.Add(strikeTrigger.Build());

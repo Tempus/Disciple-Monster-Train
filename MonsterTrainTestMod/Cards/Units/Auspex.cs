@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO Unclear about rearrangement indices here
 
@@ -12,9 +12,9 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class Auspex
     {
+            private static string IDName = "Auspex";
         public static void Make()
         {
-            private static string IDName = "Auspex";
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
@@ -22,7 +22,9 @@ namespace MonsterTrainTestMod.Cards.Units
                 CardID = IDName,
                 Name = IDName,
                 Cost = 2,
-                Rarity = CollectableRarity.Uncommon,
+                Rarity = CollectableRarity.Uncommon, 
+                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
+                Description = "Resolve: Move to the Front. Revenge: Attack, and move to the back.",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
@@ -43,11 +45,6 @@ namespace MonsterTrainTestMod.Cards.Units
                 ParamCharacterData = BuildUnit()
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
-
-
-            // Putting it in card pools... I feel like there's a better place for this
-            railyard.SetCardClan(MTClan.Awoken);
-            railyard.AddToCardPool(MTCardPool.AwokenBannerPool);
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -73,31 +70,31 @@ namespace MonsterTrainTestMod.Cards.Units
             );
 
             // This is relocate, basically! But I think it will only work for this character
-            var ascendTrigger = new CharacterTriggerBuilder {
-                Trigger = Trigger.OnHit};
+            var ascendTrigger = new CharacterTriggerDataBuilder {
+                Trigger = CharacterTriggerData.Trigger.OnHit};
 
             var effectBuilder = new CardEffectDataBuilder
             {
                 EffectStateName = "CardEffectFloorRearrange",
-                ParamInt = 0,
+                ParamInt = -99,
                 TargetMode = TargetMode.Self
             };
             ascendTrigger.Effects.Add(effectBuilder.Build());
-            var effectBuilder = new CardEffectDataBuilder
+            var effectBuilderB = new CardEffectDataBuilder
             {
                 EffectStateName = "CardEffectDamage",
                 ParamInt = 5,
                 TargetMode = TargetMode.LastAttackerCharacter
             };
-            ascendTrigger.Effects.Add(effectBuilder.Build());
+            ascendTrigger.Effects.Add(effectBuilderB.Build());
 
             // Resolve
-            var resolveTrigger = new CharacterTriggerBuilder {
-                Trigger = Trigger.PostCombat};
+            var resolveTrigger = new CharacterTriggerDataBuilder {
+                Trigger = CharacterTriggerData.Trigger.PostCombat};
             var resolveBuilder = new CardEffectDataBuilder
             {
                 EffectStateName = "CardEffectFloorRearrange",
-                ParamInt = 99,
+                ParamInt = 1,
                 TargetMode = TargetMode.Self
             };
             resolveTrigger.Effects.Add(resolveBuilder.Build());
