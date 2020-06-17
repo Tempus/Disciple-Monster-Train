@@ -11,9 +11,9 @@ using ShinyShoe;
 
 namespace MonsterTrainTestMod.Cards.Spells
 {
-    class Ascend
+    class PastMistakes
     {
-        private static string IDName = "[S] Ascend";
+        private static string IDName = "Past Mistakes";
 
         public static void Make()
         {
@@ -22,8 +22,8 @@ namespace MonsterTrainTestMod.Cards.Spells
             {
                 CardID = IDName,
                 Name = IDName,
-                Description = "Ascend a friendly unit",
-                Cost = 1,
+                Description = "Descend an enemy to the bottom, and apply Dazed 2",
+                Cost = 0,
                 Rarity = CollectableRarity.Uncommon,
                 ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
                 CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
@@ -38,12 +38,28 @@ namespace MonsterTrainTestMod.Cards.Spells
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectBump",
-                        ParamInt = 1,
+                        ParamInt = -4,
                         TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Monsters,
+                        TargetTeamType = Team.Type.Heroes,
+                    },
+                    new CardEffectDataBuilder
+                    {
+                        EffectStateName = "CardEffectAddStatusEffect",
+                        TargetMode = TargetMode.DropTargetCharacter,
+                        TargetTeamType = Team.Type.Heroes,
                     }
                 },
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitExhaustState"
+                    }
+                }
             };
+
+            railyard.EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Dazed), 2);
 
             // Do this to complete
             railyard.BuildAndRegister();

@@ -11,9 +11,9 @@ using ShinyShoe;
 
 namespace MonsterTrainTestMod.Cards.Spells
 {
-    class Ascend
+    class Descend
     {
-        private static string IDName = "[S] Ascend";
+        private static string IDName = "[S] Descend";
 
         public static void Make()
         {
@@ -22,7 +22,7 @@ namespace MonsterTrainTestMod.Cards.Spells
             {
                 CardID = IDName,
                 Name = IDName,
-                Description = "Ascend a friendly unit",
+                Description = "Descend a friendly unit",
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
                 ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
@@ -38,7 +38,7 @@ namespace MonsterTrainTestMod.Cards.Spells
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectBump",
-                        ParamInt = 1,
+                        ParamInt = -1,
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Monsters,
                     }

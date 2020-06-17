@@ -11,9 +11,9 @@ using ShinyShoe;
 
 namespace MonsterTrainTestMod.Cards.Spells
 {
-    class Ascend
+    class Equilibrium
     {
-        private static string IDName = "[S] Ascend";
+        private static string IDName = "Equilibrium";
 
         public static void Make()
         {
@@ -22,14 +22,14 @@ namespace MonsterTrainTestMod.Cards.Spells
             {
                 CardID = IDName,
                 Name = IDName,
-                Description = "Ascend a friendly unit",
+                Description = "Ascend a random friendly unit and descend a random enemy unit",
                 Cost = 1,
-                Rarity = CollectableRarity.Uncommon,
+                Rarity = CollectableRarity.Common,
                 ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
                 CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
 
                 TargetsRoom = true,
-                Targetless = false,
+                Targetless = true,
 
                 AssetPath = "netstandard2.0/chrono/zyzzy.png",
 
@@ -38,8 +38,15 @@ namespace MonsterTrainTestMod.Cards.Spells
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectBump",
+                        ParamInt = -1,
+                        TargetMode = TargetMode.RandomInRoom,
+                        TargetTeamType = Team.Type.Heroes,
+                    },
+                    new CardEffectDataBuilder
+                    {
+                        EffectStateName = "CardEffectBump",
                         ParamInt = 1,
-                        TargetMode = TargetMode.DropTargetCharacter,
+                        TargetMode = TargetMode.RandomInRoom,
                         TargetTeamType = Team.Type.Monsters,
                     }
                 },

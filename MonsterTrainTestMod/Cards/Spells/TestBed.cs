@@ -11,9 +11,9 @@ using ShinyShoe;
 
 namespace MonsterTrainTestMod.Cards.Spells
 {
-    class Ascend
+    class TestBed
     {
-        private static string IDName = "[S] Ascend";
+        private static string IDName = "For Testing";
 
         public static void Make()
         {
@@ -22,9 +22,9 @@ namespace MonsterTrainTestMod.Cards.Spells
             {
                 CardID = IDName,
                 Name = IDName,
-                Description = "Ascend a friendly unit",
-                Cost = 1,
-                Rarity = CollectableRarity.Uncommon,
+                Cost = 0,
+                Description = "",
+                Rarity = CollectableRarity.Starter,
                 ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
                 CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
 
@@ -35,14 +35,26 @@ namespace MonsterTrainTestMod.Cards.Spells
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectBump",
-                        ParamInt = 1,
-                        TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Monsters,
-                    }
+                    //new CardEffectDataBuilder
+                    //{
+                    //    EffectStateName = "CardEffectBump",
+                    //    ParamInt = -4,
+                    //    TargetMode = TargetMode.DropTargetCharacter,
+                    //    TargetTeamType = Team.Type.Monsters,
+                    //}
                 },
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitSpellAffinity"
+                    },
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitTreasure"
+                    },
+                }
             };
 
             // Do this to complete

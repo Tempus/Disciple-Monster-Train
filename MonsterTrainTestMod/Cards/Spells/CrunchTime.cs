@@ -11,9 +11,9 @@ using ShinyShoe;
 
 namespace MonsterTrainTestMod.Cards.Spells
 {
-    class Ascend
+    class CrunchTime
     {
-        private static string IDName = "[S] Ascend";
+        private static string IDName = "Crunch Time";
 
         public static void Make()
         {
@@ -22,14 +22,14 @@ namespace MonsterTrainTestMod.Cards.Spells
             {
                 CardID = IDName,
                 Name = IDName,
-                Description = "Ascend a friendly unit",
-                Cost = 1,
+                Cost = 2,
+                Description = "All Enemies gain Dazed 1 and Quick",
                 Rarity = CollectableRarity.Uncommon,
                 ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
                 CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
 
                 TargetsRoom = true,
-                Targetless = false,
+                Targetless = true,
 
                 AssetPath = "netstandard2.0/chrono/zyzzy.png",
 
@@ -37,13 +37,16 @@ namespace MonsterTrainTestMod.Cards.Spells
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectBump",
-                        ParamInt = 1,
-                        TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Monsters,
+                        EffectStateName = "CardEffectAddStatusEffect",
+                        TargetMode = TargetMode.Room,
+                        TargetTeamType = Team.Type.Heroes,
                     }
                 },
             };
+
+            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Dazed), 1);
+            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Quick), 1);
+
 
             // Do this to complete
             railyard.BuildAndRegister();

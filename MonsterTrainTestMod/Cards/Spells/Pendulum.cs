@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
@@ -11,9 +13,9 @@ using ShinyShoe;
 
 namespace MonsterTrainTestMod.Cards.Spells
 {
-    class Ascend
+    class Pendulum
     {
-        private static string IDName = "[S] Ascend";
+        private static string IDName = "Pendulum";
 
         public static void Make()
         {
@@ -22,9 +24,9 @@ namespace MonsterTrainTestMod.Cards.Spells
             {
                 CardID = IDName,
                 Name = IDName,
-                Description = "Ascend a friendly unit",
-                Cost = 1,
-                Rarity = CollectableRarity.Uncommon,
+                Cost = 3,
+                Description = "Transfer all the status effects in the room onto the target",
+                Rarity = CollectableRarity.Rare,
                 ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
                 CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
 
@@ -37,14 +39,26 @@ namespace MonsterTrainTestMod.Cards.Spells
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectBump",
-                        ParamInt = 1,
+                        EffectStateName = "CardEffectTransferAllStatusEffects",
                         TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Monsters,
+                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     }
                 },
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitExhaustState"
+                    }
+                }
             };
 
+            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.GetInterface("IMTStatusEffect", true) != null);
+            foreach (Type status in types) {
+                railyard.EffectBuilders[0].AddStatusEffect(status, 1);
+            }
+            
             // Do this to complete
             railyard.BuildAndRegister();
         }

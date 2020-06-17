@@ -11,9 +11,9 @@ using ShinyShoe;
 
 namespace MonsterTrainTestMod.Cards.Spells
 {
-    class Ascend
+    class TimeLash
     {
-        private static string IDName = "[S] Ascend";
+        private static string IDName = "Time Lash";
 
         public static void Make()
         {
@@ -22,9 +22,9 @@ namespace MonsterTrainTestMod.Cards.Spells
             {
                 CardID = IDName,
                 Name = IDName,
-                Description = "Ascend a friendly unit",
-                Cost = 1,
-                Rarity = CollectableRarity.Uncommon,
+                Cost = 0,
+                Description = "Enemy gains Rooted and Haste",
+                Rarity = CollectableRarity.Rare,
                 ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
                 CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
 
@@ -37,13 +37,23 @@ namespace MonsterTrainTestMod.Cards.Spells
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectBump",
-                        ParamInt = 1,
+                        EffectStateName = "CardEffectAddStatusEffect",
                         TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Monsters,
+                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     }
                 },
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitMagnetic"
+                    }
+                }
             };
+
+            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Rooted), 1);
+            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Haste), 1);
 
             // Do this to complete
             railyard.BuildAndRegister();

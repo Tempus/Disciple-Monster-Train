@@ -11,9 +11,9 @@ using ShinyShoe;
 
 namespace MonsterTrainTestMod.Cards.Spells
 {
-    class Ascend
+    class WaxPinion
     {
-        private static string IDName = "[S] Ascend";
+        private static string IDName = "Wax Pinion";
 
         public static void Make()
         {
@@ -22,9 +22,9 @@ namespace MonsterTrainTestMod.Cards.Spells
             {
                 CardID = IDName,
                 Name = IDName,
-                Description = "Ascend a friendly unit",
-                Cost = 1,
-                Rarity = CollectableRarity.Uncommon,
+                Description = "Send an enemy to the Pyre",
+                Cost = 0,
+                Rarity = CollectableRarity.Common,
                 ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
                 CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
 
@@ -38,9 +38,9 @@ namespace MonsterTrainTestMod.Cards.Spells
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectBump",
-                        ParamInt = 1,
+                        ParamInt = 4,
                         TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Monsters,
+                        TargetTeamType = Team.Type.Heroes,
                     }
                 },
             };

@@ -54,6 +54,7 @@ namespace ShinyShoe
             SpawnPoint newSpawnPoint;
             for (i = 0; i < characters.Count; ++i)
             {
+                bumpAmount = random.Next(-2, 3);
                 target1 = characters[i];
                 Team.Type teamType = target1.GetTeamType();
                 oldSpawnPoint = target1.GetSpawnPoint(false);
