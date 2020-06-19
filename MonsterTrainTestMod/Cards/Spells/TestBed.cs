@@ -21,9 +21,9 @@ namespace MonsterTrainTestMod.Cards.Spells
             CardDataBuilder railyard = new CardDataBuilder
             {
                 CardID = IDName,
-                Name = IDName,
+                Name = IDName + "_Name",
+                OverrideDescriptionKey = IDName + "_Desc",
                 Cost = 0,
-                Description = "",
                 Rarity = CollectableRarity.Starter,
                 ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
                 CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
@@ -31,7 +31,7 @@ namespace MonsterTrainTestMod.Cards.Spells
                 TargetsRoom = true,
                 Targetless = false,
 
-                AssetPath = "netstandard2.0/chrono/zyzzy.png",
+                AssetPath = "netstandard2.0/chrono/Initiative_back.png",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -49,10 +49,6 @@ namespace MonsterTrainTestMod.Cards.Spells
                     new CardTraitDataBuilder
                     {
                         TraitStateName = "CardTraitSpellAffinity"
-                    },
-                    new CardTraitDataBuilder
-                    {
-                        TraitStateName = "CardTraitTreasure"
                     },
                 }
             };

@@ -26,17 +26,12 @@ namespace MonsterTrainTestMod.Cards.Units
                 Rarity = CollectableRarity.Uncommon,
                 CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
                 Description = "(TODO)Pyreboost.",
+                AssetPath = "netstandard2.0/chrono/15924082478465092503139501393540.jpg",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
                 Targetless = false
             };
-
-            // Art Prefab, we can probably instantiate this ourselves later
-            railyard.CreateAndSetCardArtPrefabVariantRef(
-                "Assets/GameData/CardArt/Portrait_Prefabs/CardArt_TrainSteward.prefab",
-                "a21c55c24d2e5d645a01230d874e26a9"
-            );
 
             // Add special effects, triggers, and other things to cards
             var spawnEffectBuilder = new CardEffectDataBuilder
@@ -62,13 +57,11 @@ namespace MonsterTrainTestMod.Cards.Units
 
                 Size = 1,
                 Health = 5,
-                AttackDamage = 0
+                AttackDamage = 0,
+
+                AssetPath = "netstandard2.0/chrono/15924082478465092503139501393540.jpg",
             };
             // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
             characterDataBuilder.AddStartingStatusEffect(typeof(MTStatusEffect_Sweep), 1);
 
             return characterDataBuilder.BuildAndRegister();

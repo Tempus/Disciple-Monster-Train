@@ -28,14 +28,10 @@ namespace MonsterTrainTestMod.Cards.Units
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
-                Targetless = false
-            };
+                Targetless = false,
+                AssetPath = "netstandard2.0/chrono/Tima.jpg",
 
-            // Art Prefab, we can probably instantiate this ourselves later
-            railyard.CreateAndSetCardArtPrefabVariantRef(
-                "Assets/GameData/CardArt/Portrait_Prefabs/CardArt_TrainSteward.prefab",
-                "a21c55c24d2e5d645a01230d874e26a9"
-            );
+            };
 
             // Add special effects, triggers, and other things to cards
             var spawnEffectBuilder = new CardEffectDataBuilder
@@ -61,13 +57,9 @@ namespace MonsterTrainTestMod.Cards.Units
 
                 Size = 3,
                 Health = 5,
-                AttackDamage = 15
+                AttackDamage = 15,
+                AssetPath = "netstandard2.0/chrono/Tima.jpg",
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
             // Resolve
             var resolveTrigger = new CharacterTriggerDataBuilder {

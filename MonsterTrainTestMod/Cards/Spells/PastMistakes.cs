@@ -31,7 +31,7 @@ namespace MonsterTrainTestMod.Cards.Spells
                 TargetsRoom = true,
                 Targetless = false,
 
-                AssetPath = "netstandard2.0/chrono/zyzzy.png",
+                AssetPath = "netstandard2.0/chrono/uhoh.png",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {

@@ -27,21 +27,16 @@ namespace MonsterTrainTestMod.Cards.Units
                 Description = "(TODO)Icarian: (TODO)Pyre attacks every floor.",
                 CardType = CardType.Monster,
                 TargetsRoom = true,
-                Targetless = false
+                Targetless = false,
+                AssetPath = "netstandard2.0/chrono/flyingRat.gif",
             };
-
-            // Art Prefab, we can probably instantiate this ourselves later
-            railyard.CreateAndSetCardArtPrefabVariantRef(
-                "Assets/GameData/CardArt/Portrait_Prefabs/CardArt_TrainSteward.prefab",
-                "a21c55c24d2e5d645a01230d874e26a9"
-            );
 
             // Add special effects, triggers, and other things to cards
             var spawnEffectBuilder = new CardEffectDataBuilder
             {
                 EffectStateName = "CardEffectSpawnMonster",
                 TargetMode = TargetMode.DropTargetCharacter,
-                ParamCharacterData = BuildUnit()
+                ParamCharacterData = BuildUnit(),
             };
             railyard.Effects.Add(spawnEffectBuilder.Build());
 
@@ -60,13 +55,9 @@ namespace MonsterTrainTestMod.Cards.Units
 
                 Size = 1,
                 Health = 5,
-                AttackDamage = 10
+                AttackDamage = 10,
+                AssetPath = "netstandard2.0/chrono/flyingRat.gif",
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
             // Resolve
             var resolveTrigger = new CharacterTriggerDataBuilder

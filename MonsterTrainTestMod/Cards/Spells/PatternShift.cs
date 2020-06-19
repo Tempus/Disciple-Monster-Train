@@ -21,8 +21,8 @@ namespace MonsterTrainTestMod.Cards.Spells
             CardDataBuilder railyard = new CardDataBuilder
             {
                 CardID = IDName,
-                Name = IDName,
-                Description = "Teleports to a random floor",
+                Name = IDName + "_Name",
+                OverrideDescriptionKey = IDName + "_Desc",
                 Cost = 1,
                 Rarity = CollectableRarity.Starter,
                 ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
@@ -31,7 +31,7 @@ namespace MonsterTrainTestMod.Cards.Spells
                 TargetsRoom = true,
                 Targetless = false,
 
-                AssetPath = "netstandard2.0/chrono/zyzzy.png",
+                AssetPath = "netstandard2.0/chrono/IMAG0286.jpg",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {

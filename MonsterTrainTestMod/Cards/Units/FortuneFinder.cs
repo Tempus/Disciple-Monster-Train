@@ -23,17 +23,12 @@ namespace MonsterTrainTestMod.Cards.Units
                 Rarity = CollectableRarity.Uncommon,
                 CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
                 Description = "Relocate: Gain 10 Gold.",
+                AssetPath = "netstandard2.0/chrono/D7SPZADW4AI6G19.png",
 
                 CardType = CardType.Monster,
                 TargetsRoom = true,
                 Targetless = false
             };
-
-            // Art Prefab, we can probably instantiate this ourselves later
-            railyard.CreateAndSetCardArtPrefabVariantRef(
-                "Assets/GameData/CardArt/Portrait_Prefabs/CardArt_TrainSteward.prefab",
-                "a21c55c24d2e5d645a01230d874e26a9"
-            );
 
             // Add special effects, triggers, and other things to cards
             var spawnEffectBuilder = new CardEffectDataBuilder
@@ -59,13 +54,9 @@ namespace MonsterTrainTestMod.Cards.Units
 
                 Size = 2,
                 Health = 10,
-                AttackDamage = 2
+                AttackDamage = 2,
+                AssetPath = "netstandard2.0/chrono/D7SPZADW4AI6G19.png",
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
             // This is relocate, basically! But I think it will only work for this character
             var ascendTrigger = new CharacterTriggerDataBuilder {

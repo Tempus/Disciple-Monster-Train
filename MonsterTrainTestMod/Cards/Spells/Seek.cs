@@ -7,13 +7,14 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
+using MonsterTrainTestMod.Cards.CardEffects;
 using ShinyShoe;
 
 namespace MonsterTrainTestMod.Cards.Spells
 {
-    class CrunchTime
+    class Seek
     {
-        private static string IDName = "Crunch Time";
+        private static string IDName = "Seek";
 
         public static void Make()
         {
@@ -22,31 +23,35 @@ namespace MonsterTrainTestMod.Cards.Spells
             {
                 CardID = IDName,
                 Name = IDName,
-                Cost = 2,
-                Description = "All Enemies gain Dazed 1 and Quick",
+                Description = "Choose a card from your deck",
+                Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
                 ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
                 CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
 
-                TargetsRoom = true,
+                TargetsRoom = false,
                 Targetless = true,
 
-                AssetPath = "netstandard2.0/chrono/body-building-fitness-sports-athlete-implementation-person-royalty-free-thumbnail.png",
+                AssetPath = "netstandard2.0/chrono/image0.jpg",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.Room,
-                        TargetTeamType = Team.Type.Heroes,
+                        EffectStateName = typeof(CardEffectChooseDraw).AssemblyQualifiedName,
+                        ParamInt = 1,
+                        TargetMode = TargetMode.Deck,
                     }
                 },
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitExhaustState"
+                    }
+                }
+
             };
-
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Dazed), 1);
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Quick), 1);
-
 
             // Do this to complete
             railyard.BuildAndRegister();

@@ -31,7 +31,7 @@ namespace MonsterTrainTestMod.Cards.Spells
                 TargetsRoom = true,
                 Targetless = false,
 
-                AssetPath = "netstandard2.0/chrono/zyzzy.png",
+                AssetPath = "netstandard2.0/chrono/hi.png",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -47,7 +47,7 @@ namespace MonsterTrainTestMod.Cards.Spells
                 {
                     new CardTraitDataBuilder
                     {
-                        TraitStateName = "CardTraitMagnetic"
+                        TraitStateName = "CardTraitMagneticState"
                     }
                 }
             };
