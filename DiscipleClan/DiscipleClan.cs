@@ -12,15 +12,15 @@ using MonsterTrainModdingAPI;
 namespace MonsterTrainModdingAPI
 {
     // Credit to Rawsome, Stable Infery for the base of this method.
-    [BepInPlugin("com.name.package.generic", "Test Plugin", "0.1")]
+    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.1")]
     [BepInProcess("MonsterTrain.exe")]
     [BepInProcess("MtLinkHandler.exe")]
     [BepInDependency("api.modding.train.monster")]
-    public class TestPlugin : BaseUnityPlugin
+    public class DiscipleClan : BaseUnityPlugin
     {
         void Awake()
         {
-            var harmony = new Harmony("com.name.package.generic");
+            var harmony = new Harmony("ca.chronometry.disciple");
             harmony.PatchAll();
         }
     }

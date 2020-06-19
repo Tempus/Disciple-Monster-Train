@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Monster Train\\Disciple-Monster-Train\\MonsterTrainTestMod\\MonsterTrainTestMod.csproj",
-      "projectName": "MonsterTrainTestMod",
-      "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Monster Train\\Disciple-Monster-Train\\MonsterTrainTestMod\\MonsterTrainTestMod.csproj",
+      "projectUniqueName": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Monster Train\\Disciple-Monster-Train\\DiscipleClan\\DiscipleClan.csproj",
+      "projectName": "DiscipleClan",
+      "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Monster Train\\Disciple-Monster-Train\\DiscipleClan\\DiscipleClan.csproj",
       "packagesPath": "C:\\Users\\tempu\\.nuget\\packages\\",
-      "outputPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Monster Train\\Disciple-Monster-Train\\MonsterTrainTestMod\\obj\\",
+      "outputPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Monster Train\\Disciple-Monster-Train\\DiscipleClan\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\tempu\\AppData\\Roaming\\NuGet\\NuGet.Config",
