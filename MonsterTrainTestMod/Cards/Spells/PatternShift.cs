@@ -8,30 +8,20 @@ using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
 using ShinyShoe;
+using MonsterTrainTestMod.Cards;
 
 namespace MonsterTrainTestMod.Cards.Spells
 {
     class PatternShift
     {
-        private static string IDName = "Pattern Shift";
+        public static string IDName = "Pattern Shift";
 
         public static void Make()
         {
-            // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName + "_Name",
-                OverrideDescriptionKey = IDName + "_Desc",
                 Cost = 1,
                 Rarity = CollectableRarity.Starter,
-                ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
-
-                TargetsRoom = true,
-                Targetless = false,
-
-                AssetPath = "netstandard2.0/chrono/IMAG0286.jpg",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -44,7 +34,9 @@ namespace MonsterTrainTestMod.Cards.Spells
                 },
             };
 
-            // Do this to complete
+            Utils.AddSpell(railyard, IDName);
+            Utils.AddImg(railyard, "IMAG0286.jpg");
+
             railyard.BuildAndRegister();
         }
     }

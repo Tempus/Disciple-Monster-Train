@@ -14,7 +14,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class Seek
     {
-        private static string IDName = "Seek";
+        public static string IDName = "Seek";
 
         public static void Make()
         {

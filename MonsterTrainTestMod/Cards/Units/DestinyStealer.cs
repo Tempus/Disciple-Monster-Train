@@ -12,7 +12,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class DestinyStealer
     {
-        private static string IDName = "Destiny Stealer";
+        public static string IDName = "Destiny Stealer";
         public static void Make()
         {
 

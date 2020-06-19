@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class Equilibrium
     {
-        private static string IDName = "Equilibrium";
+        public static string IDName = "Equilibrium";
 
         public static void Make()
         {

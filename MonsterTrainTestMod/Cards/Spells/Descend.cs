@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class Descend
     {
-        private static string IDName = "[S] Descend";
+        public static string IDName = "[S] Descend";
 
         public static void Make()
         {

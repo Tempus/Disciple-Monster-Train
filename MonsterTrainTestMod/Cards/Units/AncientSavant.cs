@@ -12,7 +12,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class AncientSavant
     {
-        private static string IDName = "Ancient Savant";
+        public static string IDName = "Ancient Savant";
 
         public static void Make()
         {

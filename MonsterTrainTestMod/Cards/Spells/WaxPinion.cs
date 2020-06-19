@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class WaxPinion
     {
-        private static string IDName = "Wax Pinion";
+        public static string IDName = "Wax Pinion";
 
         public static void Make()
         {

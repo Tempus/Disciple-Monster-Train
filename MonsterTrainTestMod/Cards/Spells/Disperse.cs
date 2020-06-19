@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class Disperse
     {
-        private static string IDName = "Disperse";
+        public static string IDName = "Disperse";
 
         public static void Make()
         {

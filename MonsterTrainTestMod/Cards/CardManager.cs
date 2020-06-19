@@ -57,7 +57,7 @@ namespace MonsterTrainTestMod.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Pattern Shift"));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
             __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Pattern Shift"));
             __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Pattern Shift"));
             __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Pattern Shift"));

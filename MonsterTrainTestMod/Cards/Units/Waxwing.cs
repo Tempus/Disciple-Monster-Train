@@ -12,7 +12,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class Waxwing
     {
-        private static string IDName = "Waxwing";
+        public static string IDName = "Waxwing";
         public static void Make()
         {
 

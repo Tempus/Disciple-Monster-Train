@@ -12,7 +12,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class DivineroftheInfinite
     {
-        private static string IDName = "Diviner of the Infinite";
+        public static string IDName = "Diviner of the Infinite";
         public static void Make()
         {
 

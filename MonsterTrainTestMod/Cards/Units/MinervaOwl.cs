@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class MinervaOwl
     {
-        private static string IDName = "Minerva Owl";
+        public static string IDName = "Minerva Owl";
         public static void Make()
         {
 

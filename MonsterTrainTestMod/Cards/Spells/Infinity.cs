@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class Infinity
     {
-        private static string IDName = "Infinity";
+        public static string IDName = "Infinity";
 
         public static void Make()
         {

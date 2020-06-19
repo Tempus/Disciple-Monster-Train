@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class InstantReplay
     {
-        private static string IDName = "Instant Replay";
+        public static string IDName = "Instant Replay";
 
         public static void Make()
         {

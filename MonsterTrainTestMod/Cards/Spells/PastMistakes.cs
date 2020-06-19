@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class PastMistakes
     {
-        private static string IDName = "Past Mistakes";
+        public static string IDName = "Past Mistakes";
 
         public static void Make()
         {

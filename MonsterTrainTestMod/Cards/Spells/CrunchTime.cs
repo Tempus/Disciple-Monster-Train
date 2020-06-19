@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class CrunchTime
     {
-        private static string IDName = "Crunch Time";
+        public static string IDName = "Crunch Time";
 
         public static void Make()
         {

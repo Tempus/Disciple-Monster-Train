@@ -10,7 +10,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class Sklink
     {
-        private static string IDName = "Sklink";
+        public static string IDName = "Sklink";
         public static void Make()
         {
 

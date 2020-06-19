@@ -11,7 +11,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class HermesOwl
     {
-        private static string IDName = "Hermes Owl";
+        public static string IDName = "Hermes Owl";
         public static void Make()
         {
 

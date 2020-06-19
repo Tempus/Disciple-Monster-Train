@@ -12,7 +12,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class Snecko
     {
-        private static string IDName = "Snecko";
+        public static string IDName = "Snecko";
         public static void Make()
         {
 

@@ -10,7 +10,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class HoleAnole
     {
-        private static string IDName = "Hole Anole";
+        public static string IDName = "Hole Anole";
         public static void Make()
         {
 

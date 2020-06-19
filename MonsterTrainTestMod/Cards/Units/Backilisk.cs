@@ -10,7 +10,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class Backilisk
     {
-        private static string IDName = "Backilisk";
+        public static string IDName = "Backilisk";
         public static void Make()
         {
 

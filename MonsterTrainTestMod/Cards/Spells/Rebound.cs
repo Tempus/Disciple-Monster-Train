@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class Rebound
     {
-        private static string IDName = "Rebound";
+        public static string IDName = "Rebound";
 
         public static void Make()
         {

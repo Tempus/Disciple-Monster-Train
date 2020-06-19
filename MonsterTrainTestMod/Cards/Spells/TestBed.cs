@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class TestBed
     {
-        private static string IDName = "For Testing";
+        public static string IDName = "For Testing";
 
         public static void Make()
         {

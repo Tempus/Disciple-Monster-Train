@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class TimeEater
     {
-        private static string IDName = "Time Eater";
+        public static string IDName = "Time Eater";
         public static void Make()
         {
 

@@ -10,7 +10,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class FortuneFinder
     {
-        private static string IDName = "Fortune Finder";
+        public static string IDName = "Fortune Finder";
         public static void Make()
         {
 

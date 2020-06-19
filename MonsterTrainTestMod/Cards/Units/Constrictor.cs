@@ -12,7 +12,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class Constrictor
     {
-        private static string IDName = "Constrictor";
+        public static string IDName = "Constrictor";
         public static void Make()
         {
 

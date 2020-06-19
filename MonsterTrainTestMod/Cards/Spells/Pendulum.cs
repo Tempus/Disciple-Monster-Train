@@ -15,7 +15,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class Pendulum
     {
-        private static string IDName = "Pendulum";
+        public static string IDName = "Pendulum";
 
         public static void Make()
         {

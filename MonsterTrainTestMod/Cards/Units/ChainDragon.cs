@@ -11,7 +11,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class ChainDragon
     {
-        private static string IDName = "Chain Dragon";
+        public static string IDName = "Chain Dragon";
         public static void Make()
         {
 

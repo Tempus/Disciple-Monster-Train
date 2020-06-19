@@ -11,7 +11,7 @@ namespace MonsterTrainTestMod.Cards.Units
 {
     class LashLizard
     {
-        private static string IDName = "Lash Lizard";
+        public static string IDName = "Lash Lizard";
         public static void Make()
         {
 

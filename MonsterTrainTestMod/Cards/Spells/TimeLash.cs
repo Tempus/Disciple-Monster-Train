@@ -13,7 +13,7 @@ namespace MonsterTrainTestMod.Cards.Spells
 {
     class TimeLash
     {
-        private static string IDName = "Time Lash";
+        public static string IDName = "Time Lash";
 
         public static void Make()
         {
