@@ -8,9 +8,9 @@ using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
 using ShinyShoe;
-using MonsterTrainTestMod.Cards;
+using DiscipleClan.Cards;
 
-namespace MonsterTrainTestMod.Cards.Spells
+namespace DiscipleClan.Cards.Spells
 {
     class PatternShift
     {

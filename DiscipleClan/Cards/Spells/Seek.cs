@@ -7,10 +7,10 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainTestMod.Cards.CardEffects;
+using DiscipleClan.Cards.CardEffects;
 using ShinyShoe;
 
-namespace MonsterTrainTestMod.Cards.Spells
+namespace DiscipleClan.Cards.Spells
 {
     class Seek
     {

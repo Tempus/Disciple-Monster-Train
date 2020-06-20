@@ -4,8 +4,8 @@ using System.Text;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainTestMod.Cards.Units;
-using MonsterTrainTestMod.Cards.Spells;
+using DiscipleClan.Cards.Units;
+using DiscipleClan.Cards.Spells;
 using ShinyShoe.Logging;
 using MonsterTrainModdingAPI;
 using BepInEx.Logging;
@@ -15,7 +15,7 @@ using UnityEngine.Assertions.Must;
 using System.IO;
 using I2.Loc;
 
-namespace MonsterTrainTestMod.Cards
+namespace DiscipleClan.Cards
 {
     [HarmonyPatch(typeof(LocalizationManager), "UpdateSources")]
     class RegisterLocalizationStrings
@@ -23,46 +23,21 @@ namespace MonsterTrainTestMod.Cards
         // Creates and registers card data for each card class
         static void Postfix()
         {
-            CustomLocalizationManager.ImportCSV("netstandard2.0/chrono/Disciple.csv");
+            CustomLocalizationManager.ImportCSV("Disciple/chrono/Disciple.csv");
         }
     }
 
-    [HarmonyPatch(typeof(SaveManager), "Initialize")]
-    class RegisterCards
-    {
-        // Creates and registers card data for each card class
-        static void Postfix(ref SaveManager __instance)
-        {
-            AllGameData allGameData = __instance.GetAllGameData();
-
-            // Units
-            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("MonsterTrainTestMod.Cards.Units"));
-            foreach (var card in types) { Make(card); }
-
-            // Spells
-            types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("MonsterTrainTestMod.Cards.Spells") && !t.Name.Contains("<>"));
-            foreach (var card in types) { Make(card); }
-        }
-
-        public static void Make(Type cardType)
-        {
-            MethodInfo make = cardType.GetMethod("Make");
-            make.Invoke(null, null);
-        }
-    }
-
-    [HarmonyPatch(typeof(SaveManager), "SetupRun")]
-    class AddToStartingDeck
-    {
-        // Adds cards to the starting deck
-        static void Postfix(ref SaveManager __instance)
-        {
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Pattern Shift"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Pattern Shift"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Pattern Shift"));
-
-            //__instance.RemoveMatchingCardsFromDeck("Torch");
+    //[HarmonyPatch(typeof(SaveManager), "SetupRun")]
+    //class AddToStartingDeck
+    //{
+    //    // Adds cards to the starting deck
+    //    static void Postfix(ref SaveManager __instance)
+    //    {
+    //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Disciple.IDName));
+    //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
+    //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
+    //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
+    //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
 
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("[S] Ascend"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("[S] Descend"));
@@ -70,9 +45,7 @@ namespace MonsterTrainTestMod.Cards
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Equilibrium"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Instant Replay"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Past Mistakes"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("For Testing"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("For Testing"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("For Testing"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("For Testing"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Wax Pinion"));
 
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Crunch Time"));
@@ -81,34 +54,34 @@ namespace MonsterTrainTestMod.Cards
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Rebound"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Time Lash"));
 
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
 
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Ancient Savant"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Ancient Savant"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Auspex"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Backilisk"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Chain Dragon"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Constrictor"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Constrictor"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Destiny Stealer"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Diviner of the Infinite"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Fortune Finder"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Frigga Owl"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Fortune Finder"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Frigga Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Hermes Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Hole Anole"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Idun Owl"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Jelly Scholar"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Jelly Scholar"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Lakshimi Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Lash Lizard"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Minerva Owl"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Minerva Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Ragana Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Sampati Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Sklink"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Snecko"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Time Eater"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Waxwing"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Waxwing"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Yoremaster"));
-        }
-    }
+        //}
+    //}
 }

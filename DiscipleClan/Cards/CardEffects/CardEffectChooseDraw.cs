@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace MonsterTrainTestMod.Cards.CardEffects
+namespace DiscipleClan.Cards.CardEffects
 {
     public sealed class CardEffectChooseDraw : CardEffectBase, ICardEffectStatuslessTooltip
     {

@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - Slow is not implemented. Unclear if my slow will target everyone or only the other team (it should target everyone)
 
-namespace MonsterTrainTestMod.Cards.Units
+namespace DiscipleClan.Cards.Units
 {
     class Yoremaster
     {

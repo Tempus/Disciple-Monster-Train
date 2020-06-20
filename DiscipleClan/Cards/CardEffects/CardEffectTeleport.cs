@@ -42,21 +42,25 @@ namespace ShinyShoe
             this.ascendingCharacters = this.ascendingCharacters ?? new Dictionary<CharacterState, CharacterState.SpawnPointAscensionData>();
             this.ascendingCharacters.Clear();
             List<CharacterState> characters = new List<CharacterState>((IEnumerable<CharacterState>)cardEffectParams.targets);
-
-            System.Random random = new System.Random();
-            int bumpAmount = random.Next(-2, 3);
             RoomManager roomManager = cardEffectParams.roomManager;
             HeroManager heroManager = cardEffectParams.heroManager;
             CombatManager combatManager = cardEffectParams.combatManager;
             int i;
+            int bumpAmount = 0;
             CharacterState target1;
             SpawnPoint oldSpawnPoint;
             SpawnPoint newSpawnPoint;
             for (i = 0; i < characters.Count; ++i)
             {
-                bumpAmount = random.Next(-2, 3);
                 target1 = characters[i];
                 Team.Type teamType = target1.GetTeamType();
+
+                // This should randomly teleport you to an available floor
+                while (bumpAmount == 0)
+                {
+                    bumpAmount = RandomManager.Range(0, target1.GetTeamType() == Team.Type.Monsters ? 3 : 4, RngId.Battle) - target1.GetCurrentRoomIndex();
+                }
+
                 oldSpawnPoint = target1.GetSpawnPoint(false);
                 CardEffectTeleport.BumpError bumpError = CardEffectTeleport.BumpError.None;
                 newSpawnPoint = (SpawnPoint)null;

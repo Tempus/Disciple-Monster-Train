@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - Icarian, Pyre attacks whole tower (we can fake it though), and Pyrebound (couldn't find it)
 
-namespace MonsterTrainTestMod.Cards.Units
+namespace DiscipleClan.Cards.Units
 {
     class Waxwing
     {

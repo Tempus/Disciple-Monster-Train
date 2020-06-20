@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - look into CardTraitRetain and CardTraitFreeze, no builder for CardTriggerEffectData, couldn't find Pyrebound, Chronolock unimplemented (but can be faked)
 
-namespace MonsterTrainTestMod.Cards.Units
+namespace DiscipleClan.Cards.Units
 {
     class DivineroftheInfinite
     {

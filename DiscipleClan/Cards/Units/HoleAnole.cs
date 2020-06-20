@@ -6,7 +6,7 @@ using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 
-namespace MonsterTrainTestMod.Cards.Units
+namespace DiscipleClan.Cards.Units
 {
     class HoleAnole
     {

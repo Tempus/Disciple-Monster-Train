@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - There's no way to increase size every turn, besides applying a temp upgrade. Do that?
 
-namespace MonsterTrainTestMod.Cards.Units
+namespace DiscipleClan.Cards.Units
 {
     class JellyScholar
     {

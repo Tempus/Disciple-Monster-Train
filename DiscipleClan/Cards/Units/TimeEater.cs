@@ -9,7 +9,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 // TODO - unclear if this triggers in time, also Empowered isn't a thing yet (no way to check current energy here)
 // Also, Slow is not implemented.
 
-namespace MonsterTrainTestMod.Cards.Units
+namespace DiscipleClan.Cards.Units
 {
     class TimeEater
     {

@@ -9,7 +9,7 @@ using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
 // TODO - Chronolocked doesn't exist yet... we could fake it with Stealth, Daze, Rooted though
 
-namespace MonsterTrainTestMod.Cards.Units
+namespace DiscipleClan.Cards.Units
 {
     class IdunOwl
     {

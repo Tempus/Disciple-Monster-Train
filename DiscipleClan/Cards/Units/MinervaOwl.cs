@@ -9,7 +9,7 @@ using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
 // TODO Pyreboost not implemented
 
-namespace MonsterTrainTestMod.Cards.Units
+namespace DiscipleClan.Cards.Units
 {
     class MinervaOwl
     {

@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - There's no card effect that applies upgrades onto itself. See CardEffectFreezeCard for a template for a new effect
 
-namespace MonsterTrainTestMod.Cards.Units
+namespace DiscipleClan.Cards.Units
 {
     class FriggaOwl
     {

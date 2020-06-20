@@ -11,7 +11,7 @@ using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
 using ShinyShoe;
 
-namespace MonsterTrainTestMod.Cards.Spells
+namespace DiscipleClan.Cards.Spells
 {
     class Pendulum
     {
