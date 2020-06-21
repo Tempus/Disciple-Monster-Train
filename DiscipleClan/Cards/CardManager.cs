@@ -27,17 +27,17 @@ namespace DiscipleClan.Cards
         }
     }
 
-    //[HarmonyPatch(typeof(SaveManager), "SetupRun")]
-    //class AddToStartingDeck
-    //{
-    //    // Adds cards to the starting deck
-    //    static void Postfix(ref SaveManager __instance)
-    //    {
-    //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Disciple.IDName));
-    //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
-    //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
-    //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
-    //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
+    [HarmonyPatch(typeof(SaveManager), "SetupRun")]
+    class AddToStartingDeck
+    {
+        // Adds cards to the starting deck
+        static void Postfix(ref SaveManager __instance)
+        {
+            //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Disciple.IDName));
+            //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
+            //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
+            //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
+            //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
 
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("[S] Ascend"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("[S] Descend"));
@@ -59,7 +59,7 @@ namespace DiscipleClan.Cards
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
 
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Ancient Savant"));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Ancient Savant"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Auspex"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Backilisk"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Chain Dragon"));
@@ -82,6 +82,8 @@ namespace DiscipleClan.Cards
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Time Eater"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Waxwing"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Yoremaster"));
-        //}
-    //}
+            //}
+        }
+    }
 }
+

@@ -20,18 +20,11 @@ namespace DiscipleClan.Cards.Spells
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
-                Description = "Teleports all units on the floor",
                 Cost = 2,
                 Rarity = CollectableRarity.Common,
-                ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
 
                 TargetsRoom = true,
                 Targetless = true,
-
-                AssetPath = "netstandard2.0/chrono/zoidberg.jpg",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -43,6 +36,9 @@ namespace DiscipleClan.Cards.Spells
                     },
                 },
             };
+            
+            Utils.AddSpell(railyard, IDName);
+            Utils.AddImg(railyard, "zoidberg.jpg");
 
             // Do this to complete
             railyard.BuildAndRegister();

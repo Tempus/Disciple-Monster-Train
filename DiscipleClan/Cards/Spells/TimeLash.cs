@@ -20,18 +20,9 @@ namespace DiscipleClan.Cards.Spells
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
                 Cost = 0,
-                Description = "Enemy gains Rooted and Haste",
                 Rarity = CollectableRarity.Rare,
-                ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
-
                 TargetsRoom = true,
-                Targetless = false,
-
-                AssetPath = "netstandard2.0/chrono/hi.png",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -54,6 +45,9 @@ namespace DiscipleClan.Cards.Spells
 
             railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Rooted), 1);
             railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Haste), 1);
+
+            Utils.AddSpell(railyard, IDName);
+            Utils.AddImg(railyard, "hi.jpg");
 
             // Do this to complete
             railyard.BuildAndRegister();

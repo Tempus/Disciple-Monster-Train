@@ -20,18 +20,10 @@ namespace DiscipleClan.Cards.Spells
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
                 Cost = 2,
-                Description = "All Enemies gain Dazed 1 and Quick",
                 Rarity = CollectableRarity.Uncommon,
-                ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
-
                 TargetsRoom = true,
                 Targetless = true,
-
-                AssetPath = "netstandard2.0/chrono/body-building-fitness-sports-athlete-implementation-person-royalty-free-thumbnail.png",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -47,6 +39,8 @@ namespace DiscipleClan.Cards.Spells
             railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Dazed), 1);
             railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Quick), 1);
 
+            Utils.AddSpell(railyard, IDName);
+            Utils.AddImg(railyard, "body-building-fitness-sports-athlete-implementation-person-royalty-free-thumbnail.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

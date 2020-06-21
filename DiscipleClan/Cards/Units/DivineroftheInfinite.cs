@@ -19,17 +19,9 @@ namespace DiscipleClan.Cards.Units
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
                 Cost = 5,
                 Rarity = CollectableRarity.Uncommon,
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
                 Description = "Permafrost. Pyrebound. Reserve: Apply 1 (TODO)Chronolock, (TODO)Cost -1.",
-                AssetPath = "netstandard2.0/chrono/zyzzy.png",
-
-                CardType = CardType.Monster,
-                TargetsRoom = true,
-                Targetless = false,
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
@@ -60,14 +52,8 @@ namespace DiscipleClan.Cards.Units
                 }
             };
 
-            // Add special effects, triggers, and other things to cards
-            var spawnEffectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectSpawnMonster",
-                TargetMode = TargetMode.DropTargetCharacter,
-                ParamCharacterData = BuildUnit()
-            };
-            railyard.Effects.Add(spawnEffectBuilder.Build());
+            Utils.AddUnit(railyard, IDName, BuildUnit());
+            Utils.AddImg(railyard, "zyzzy.png");
 
             // CardTriggerEffectData needs to add a trigger for OnUnplayed here, that activates the cost and stasis effects
 

@@ -19,28 +19,13 @@ namespace DiscipleClan.Cards.Units
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
                 Description = "(TODO)Innate. (Broken)Summon: Ascends enemies on the floor below. Descends enemies on the floor above.",
-
-                CardType = CardType.Monster,
-                TargetsRoom = true,
-                Targetless = false,
-                AssetPath = "netstandard2.0/chrono/people-lazy-fit-tough.png",
-                
             };
 
-            // Add special effects, triggers, and other things to cards
-            var spawnEffectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectSpawnMonster",
-                TargetMode = TargetMode.DropTargetCharacter,
-                ParamCharacterData = BuildUnit()
-            };
-            railyard.Effects.Add(spawnEffectBuilder.Build());
+            Utils.AddUnit(railyard, IDName, BuildUnit());
+            Utils.AddImg(railyard, "people-lazy-fit-tough.png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -58,7 +43,7 @@ namespace DiscipleClan.Cards.Units
                 Size = 2,
                 Health = 15,
                 AttackDamage = 12,
-                AssetPath = "netstandard2.0/chrono/people-lazy-fit-tough.png",
+                AssetPath = "Disciple/chrono/Unit Assets/people-lazy-fit-tough.png",
             };
 
             // Pulls everything that it can to this floor on summon

@@ -19,26 +19,12 @@ namespace DiscipleClan.Cards.Units
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
                 Cost = 2,
                 Rarity = CollectableRarity.Uncommon,
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
-                AssetPath = "netstandard2.0/chrono/IMG_20190731_020156.png",
-
-                CardType = CardType.Monster,
-                TargetsRoom = true,
-                Targetless = false
             };
 
-            // Add special effects, triggers, and other things to cards
-            var spawnEffectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectSpawnMonster",
-                TargetMode = TargetMode.DropTargetCharacter,
-                ParamCharacterData = BuildUnit()
-            };
-            railyard.Effects.Add(spawnEffectBuilder.Build());
+            Utils.AddUnit(railyard, IDName, BuildUnit());
+            Utils.AddImg(railyard, "IMG_20190731_020156.png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -56,7 +42,7 @@ namespace DiscipleClan.Cards.Units
                 Size = 3,
                 Health = 50,
                 AttackDamage = 0,
-                AssetPath = "netstandard2.0/chrono/IMG_20190731_020156.png",
+                AssetPath = "Disciple/chrono/Unit Assets/IMG_20190731_020156.png",
             };
 
             characterDataBuilder.AddStartingStatusEffect(typeof(MTStatusEffect_Immobile), 1);

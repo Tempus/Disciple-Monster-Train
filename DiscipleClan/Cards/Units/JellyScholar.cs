@@ -19,28 +19,13 @@ namespace DiscipleClan.Cards.Units
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
                 Cost = 3,
                 Rarity = CollectableRarity.Uncommon,
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
                 Description = "Resolve: Enhance with +10 dmg, +15 health, +1 capacity.",
-
-                CardType = CardType.Monster,
-                TargetsRoom = true,
-                Targetless = false,
-                AssetPath = "netstandard2.0/chrono/Tima.jpg",
-
             };
 
-            // Add special effects, triggers, and other things to cards
-            var spawnEffectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectSpawnMonster",
-                TargetMode = TargetMode.DropTargetCharacter,
-                ParamCharacterData = BuildUnit()
-            };
-            railyard.Effects.Add(spawnEffectBuilder.Build());
+            Utils.AddUnit(railyard, IDName, BuildUnit());
+            Utils.AddImg(railyard, "Tima.png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -58,7 +43,7 @@ namespace DiscipleClan.Cards.Units
                 Size = 3,
                 Health = 5,
                 AttackDamage = 15,
-                AssetPath = "netstandard2.0/chrono/Tima.jpg",
+                AssetPath = "Disciple/chrono/Unit Assets/Tima.jpg",
             };
 
             // Resolve

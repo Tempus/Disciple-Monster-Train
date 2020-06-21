@@ -17,32 +17,13 @@ namespace DiscipleClan.Cards.Units
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
                 Description = "Relocate: Attack Backmost enemy.",
-
-                CardType = CardType.Monster,
-                TargetsRoom = true,
-                Targetless = false
             };
 
-            // Art Prefab, we can probably instantiate this ourselves later
-            railyard.CreateAndSetCardArtPrefabVariantRef(
-                "Assets/GameData/CardArt/Portrait_Prefabs/CardArt_TrainSteward.prefab",
-                "a21c55c24d2e5d645a01230d874e26a9"
-            );
-
-            // Add special effects, triggers, and other things to cards
-            var spawnEffectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectSpawnMonster",
-                TargetMode = TargetMode.DropTargetCharacter,
-                ParamCharacterData = BuildUnit()
-            };
-            railyard.Effects.Add(spawnEffectBuilder.Build());
+            Utils.AddUnit(railyard, IDName, BuildUnit());
+            Utils.AddImg(railyard, "IMG_20190731_020156.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

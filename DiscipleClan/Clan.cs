@@ -12,7 +12,7 @@ using MonsterTrainModdingAPI;
 
 namespace DiscipleClan
 {
-    public class MTCardPool_ChronoPool : IMTCardPool { public string ID => "ChronoPool"; }
+    public class MTCardPool_ChronoPool : IMTCardPool { public string ID => "Chrono"; }
 
     class Clan
     {
@@ -55,7 +55,6 @@ namespace DiscipleClan
                 //        },
                 //    },
                 //},
-                StartingChampion = (ChampionData)UnityEngine.ScriptableObject.CreateInstance("ChampionData"),
 
                 ChampionIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/Icon_ClassSelect_Disciple.png"),
                 ClanSelectSfxCue = copyClan.GetClanSelectSfxCue(),
@@ -68,65 +67,16 @@ namespace DiscipleClan
                     CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_silhouette.png"), // Compendium Silhouette 56x56
                 },
 
-                CardStyle = ClassCardStyle.Umbra,
+                CardFrameUnit = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/unit-cardframe-disciple.png"),
+                CardFrameSpell = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/spell-cardframe-disciple.png"),
                 UiColor = new Color(0.43f, 0.15f, 0.81f, 1f),
                 UiColorDark = new Color(0.12f, 0.42f, 0.39f, 1f),
-
-                MainClassStartingCards = new List<ClassData.StartingCardOptions>
-                {
-                    new ClassData.StartingCardOptions
-                    {
-                        cards = new List<CardData>
-                        {
-                            CustomCardManager.GetCardDataByID(PatternShift.IDName),
-                        }
-                    },
-                    new ClassData.StartingCardOptions
-                    {
-                        cards = new List<CardData>
-                        {
-                            CustomCardManager.GetCardDataByID(PatternShift.IDName),
-                        }
-                    },
-                    new ClassData.StartingCardOptions
-                    {
-                        cards = new List<CardData>
-                        {
-                            CustomCardManager.GetCardDataByID(PatternShift.IDName),
-                        }
-                    },
-                },
-
-                SubclassStartingCards = new List<ClassData.StartingCardOptions>
-                {
-                    new ClassData.StartingCardOptions
-                    {
-                        cards = new List<CardData>
-                        {
-                            CustomCardManager.GetCardDataByID(PatternShift.IDName),
-                        }
-                    },
-                    new ClassData.StartingCardOptions
-                    {
-                        cards = new List<CardData>
-                        {
-                            CustomCardManager.GetCardDataByID(PatternShift.IDName),
-                        }
-                    },
-                    new ClassData.StartingCardOptions
-                    {
-                        cards = new List<CardData>
-                        {
-                            CustomCardManager.GetCardDataByID(PatternShift.IDName),
-                        }
-                    },
-                }
             };
 
-            clan.StartingChampion.cardData = CustomCardManager.GetCardDataByID(Disciple.IDName);
-            clan.StartingChampion.championCharacterArt = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/Icon_ClassSelect_Disciple.png");
-            clan.StartingChampion.storyCharacterData = copyClan.GetStartingChampionData().storyCharacterData;
+            //clan.StartingChampion.championCharacterArt = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/Icon_ClassSelect_Disciple.png");
+            //clan.StartingChampion.storyCharacterData = copyClan.GetStartingChampionData().storyCharacterData;
 
+            API.Log(BepInEx.Logging.LogLevel.All, "Build and Register was the issue");
             return clan.BuildAndRegister();
         }
     }
@@ -151,44 +101,4 @@ namespace DiscipleClan
             }
         }
     }
-
-    [HarmonyPatch(typeof(SaveManager), "LoadClassesById")]
-    class DebugPatchA
-    {
-        static void Prefix(ref SaveManager __instance, string mainClassId, string subClassId)
-        {
-            API.Log(BepInEx.Logging.LogLevel.All, "Class IDs: " + mainClassId + ", " + CustomClassManager.CustomClassData.ContainsKey(mainClassId) + " - " + subClassId);   
-        }
-    }
-
-    [HarmonyPatch(typeof(SaveManager), "LoadClassAndSubclass")]
-    class DebugPatchB
-    {
-        static void Prefix(ref SaveManager __instance, ClassData mainClass, ClassData subClass)
-        {
-            API.Log(BepInEx.Logging.LogLevel.All, "Class: " + mainClass.GetTitle());
-            API.Log(BepInEx.Logging.LogLevel.All, "Starter Deck: " + mainClass.CreateMainClassStartingDeck().Count);
-            API.Log(BepInEx.Logging.LogLevel.All, "Starter Card: " + mainClass.CreateMainClassStartingDeck()[0].GetName());
-            API.Log(BepInEx.Logging.LogLevel.All, "Champion: " + mainClass.GetStartingChampionCard().GetName());
-        }
-    }
-
-    [HarmonyPatch(typeof(SaveManager), "AddCardStateFromData")]
-    class DebugPatchC
-    {
-        static void Prefix(ref SaveManager __instance, CardData cardData)
-        {
-            API.Log(BepInEx.Logging.LogLevel.All, "CardState Add: " + cardData.GetName());
-        }
-    }
-
-    [HarmonyPatch(typeof(SaveManager), "AddCardToDeck")]
-    class DebugPatchd
-    {
-        static void Prefix(ref SaveManager __instance, CardData cardData)
-        {
-            API.Log(BepInEx.Logging.LogLevel.All, "CardtoDeck Add: " + cardData.GetName());
-        }
-    }
-
 }

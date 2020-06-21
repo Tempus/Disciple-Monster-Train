@@ -17,27 +17,13 @@ namespace DiscipleClan.Cards.Units
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
                 Cost = 2,
                 Rarity = CollectableRarity.Uncommon,
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
                 Description = "Relocate: Gain 10 Gold.",
-                AssetPath = "netstandard2.0/chrono/D7SPZADW4AI6G19.png",
-
-                CardType = CardType.Monster,
-                TargetsRoom = true,
-                Targetless = false
             };
 
-            // Add special effects, triggers, and other things to cards
-            var spawnEffectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectSpawnMonster",
-                TargetMode = TargetMode.DropTargetCharacter,
-                ParamCharacterData = BuildUnit()
-            };
-            railyard.Effects.Add(spawnEffectBuilder.Build());
+            Utils.AddUnit(railyard, IDName, BuildUnit());
+            Utils.AddImg(railyard, "D7SPZADW4AI6G19.png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -55,7 +41,7 @@ namespace DiscipleClan.Cards.Units
                 Size = 2,
                 Health = 10,
                 AttackDamage = 2,
-                AssetPath = "netstandard2.0/chrono/D7SPZADW4AI6G19.png",
+                AssetPath = "Disciple/chrono/Unit Assets/D7SPZADW4AI6G19.png",
             };
 
             // This is relocate, basically! But I think it will only work for this character

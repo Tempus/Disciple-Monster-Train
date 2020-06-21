@@ -20,18 +20,9 @@ namespace DiscipleClan.Cards.Spells
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
-                Description = "Descend an enemy to the bottom, and apply Dazed 2",
                 Cost = 0,
                 Rarity = CollectableRarity.Uncommon,
-                ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
-
                 TargetsRoom = true,
-                Targetless = false,
-
-                AssetPath = "netstandard2.0/chrono/uhoh.png",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -60,6 +51,9 @@ namespace DiscipleClan.Cards.Spells
             };
 
             railyard.EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Dazed), 2);
+
+            Utils.AddSpell(railyard, IDName);
+            Utils.AddImg(railyard, "uhoh.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

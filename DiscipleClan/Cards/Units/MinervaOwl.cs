@@ -20,27 +20,13 @@ namespace DiscipleClan.Cards.Units
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
                 Description = "(TODO)Pyreboost.",
-                AssetPath = "netstandard2.0/chrono/15924082478465092503139501393540.jpg",
-
-                CardType = CardType.Monster,
-                TargetsRoom = true,
-                Targetless = false
             };
 
-            // Add special effects, triggers, and other things to cards
-            var spawnEffectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectSpawnMonster",
-                TargetMode = TargetMode.DropTargetCharacter,
-                ParamCharacterData = BuildUnit()
-            };
-            railyard.Effects.Add(spawnEffectBuilder.Build());
+            Utils.AddUnit(railyard, IDName, BuildUnit());
+            Utils.AddImg(railyard, "15924082478465092503139501393540.jpg");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -59,7 +45,7 @@ namespace DiscipleClan.Cards.Units
                 Health = 5,
                 AttackDamage = 0,
 
-                AssetPath = "netstandard2.0/chrono/15924082478465092503139501393540.jpg",
+                AssetPath = "Disciple/chrono/Unit Assets/15924082478465092503139501393540.jpg",
             };
             // Unit art asset, complex stuff!
             characterDataBuilder.AddStartingStatusEffect(typeof(MTStatusEffect_Sweep), 1);

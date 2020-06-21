@@ -20,18 +20,9 @@ namespace DiscipleClan.Cards.Spells
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
-                Description = "Send an enemy to the Pyre",
                 Cost = 0,
                 Rarity = CollectableRarity.Common,
-                ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
-
                 TargetsRoom = true,
-                Targetless = false,
-
-                AssetPath = "netstandard2.0/chrono/Untitled.png",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -44,6 +35,9 @@ namespace DiscipleClan.Cards.Spells
                     }
                 },
             };
+
+            Utils.AddSpell(railyard, IDName);
+            Utils.AddImg(railyard, "Untitled.jpg");
 
             // Do this to complete
             railyard.BuildAndRegister();

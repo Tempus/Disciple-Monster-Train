@@ -1,4 +1,5 @@
-﻿using MonsterTrainModdingAPI.Builders;
+﻿using MonsterTrainModdingAPI;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTClans;
 using System;
@@ -17,9 +18,13 @@ namespace DiscipleClan.Cards
             r.CardID = IDName;
             r.Name = IDName + "_Name";
             r.OverrideDescriptionKey = IDName + "_Desc";
+            r.LinkedClass = DiscipleClan.getClan();
 
             r.ClanID = Clan.IDName;
-            r.CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_ChronoPool)) };
+            r.CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_ChronoPool)), MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) };
+
+            // API.Log(BepInEx.Logging.LogLevel.All, r.Name + ",Text,,,,," + r.Name + ",,,,,");
+            // API.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,," + r.Description + ",,,,,");
         }
 
         public static void AddUnit(CardDataBuilder r, string IDName, CharacterData character)
@@ -27,8 +32,9 @@ namespace DiscipleClan.Cards
             r.CardID = IDName;
             r.Name = IDName + "_Name";
             r.OverrideDescriptionKey = IDName + "_Desc";
+            r.LinkedClass = DiscipleClan.getClan();
 
-            r.CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) };
+            r.CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)), MTCardPoolIDs.GetIDForType(typeof(MTCardPool_ChronoPool)) };
             r.CardType = CardType.Monster;
             r.TargetsRoom = true;
 
@@ -39,6 +45,9 @@ namespace DiscipleClan.Cards
                     TargetMode = TargetMode.DropTargetCharacter,
                     ParamCharacterData = character,
                 });
+
+            // API.Log(BepInEx.Logging.LogLevel.All, r.Name + ",Text,,,,," + r.Name + ",,,,,");
+            // API.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,," + r.Description + ",,,,,");
         }
 
         public static void AddImg(CardDataBuilder r, string imgName)

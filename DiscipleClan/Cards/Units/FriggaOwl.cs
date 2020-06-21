@@ -19,17 +19,9 @@ namespace DiscipleClan.Cards.Units
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) },
                 Description = "Permafrost. Reserve: (TODO)Enhance with +5 damage, +5 health.",
-
-                CardType = CardType.Monster,
-                TargetsRoom = true,
-                Targetless = false,
-                AssetPath = "netstandard2.0/chrono/Puffling.png",
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
@@ -63,14 +55,8 @@ namespace DiscipleClan.Cards.Units
                 }
             };
 
-            // Add special effects, triggers, and other things to cards
-            var spawnEffectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectSpawnMonster",
-                TargetMode = TargetMode.DropTargetCharacter,
-                ParamCharacterData = BuildUnit()
-            };
-            railyard.Effects.Add(spawnEffectBuilder.Build());
+            Utils.AddUnit(railyard, IDName, BuildUnit());
+            Utils.AddImg(railyard, "Puffling.png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -88,7 +74,7 @@ namespace DiscipleClan.Cards.Units
                 Size = 1,
                 Health = 5,
                 AttackDamage = 5,
-                AssetPath = "netstandard2.0/chrono/Puffling.png",
+                AssetPath = "Disciple/chrono/Unit Assets/Puffling.png",
             };
 
             return characterDataBuilder.BuildAndRegister();

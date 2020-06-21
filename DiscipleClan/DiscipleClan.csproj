@@ -32,6 +32,7 @@
     </Reference>
     <Reference Include="MonsterTrainModdingAPI">
       <HintPath>..\..\BepInEx\plugins\netstandard2.0\MonsterTrainModdingAPI.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Unity.Addressables">
       <HintPath>..\..\MonsterTrain_Data\Managed\Unity.Addressables.dll</HintPath>

@@ -12,8 +12,10 @@ using MonsterTrainModdingAPI.Interfaces;
 using MonsterTrainModdingAPI.Managers;
 using DiscipleClan;
 using System.Linq;
+using DiscipleClan.Cards.Units;
+using DiscipleClan.Cards.Spells;
 
-namespace MonsterTrainModdingAPI
+namespace DiscipleClan
 {
     // Credit to Rawsome, Stable Infery for the base of this method.
     [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.1")]
@@ -22,7 +24,8 @@ namespace MonsterTrainModdingAPI
     [BepInDependency("api.modding.train.monster")]
     public class DiscipleClan : BaseUnityPlugin, IInitializable
     {
-        public static bool init = false;
+        public static ClassData clanRef;
+
         void Awake()
         {
             var harmony = new Harmony("ca.chronometry.disciple");
@@ -31,16 +34,16 @@ namespace MonsterTrainModdingAPI
 
         public void Initialize()
         {
-            LoadCards();
-            Clan.Make();
+            clanRef = Clan.Make();
+            MakeCards();
 
-            foreach (SubtypeData s in SubtypeManager.AllData)
-            {
-                API.Log(BepInEx.Logging.LogLevel.All, "Subtype: " + s.LocalizedName + " - Key: " + s.Key);
-            }
+            //foreach (SubtypeData s in SubtypeManager.AllData)
+            //{
+            //    API.Log(BepInEx.Logging.LogLevel.All, "Subtype: " + s.LocalizedName + " - Key: " + s.Key);
+            //}
         }
 
-        static void LoadCards()
+        static void MakeCards()
         {
             // Units
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Units"));
@@ -56,5 +59,7 @@ namespace MonsterTrainModdingAPI
             MethodInfo make = cardType.GetMethod("Make");
             make.Invoke(null, null);
         }
+
+        public static ClassData getClan() { return clanRef; }
     }
 }

@@ -22,18 +22,9 @@ namespace DiscipleClan.Cards.Spells
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
                 Cost = 3,
-                Description = "Transfer all the status effects in the room onto the target",
                 Rarity = CollectableRarity.Rare,
-                ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
-
                 TargetsRoom = true,
-                Targetless = false,
-
-                AssetPath = "netstandard2.0/chrono/Good_art.png",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -59,6 +50,9 @@ namespace DiscipleClan.Cards.Spells
                 railyard.EffectBuilders[0].AddStatusEffect(status, 1);
             }
             
+            Utils.AddSpell(railyard, IDName);
+            Utils.AddImg(railyard, "Good_art.jpg");
+
             // Do this to complete
             railyard.BuildAndRegister();
         }

@@ -21,18 +21,9 @@ namespace DiscipleClan.Cards.Spells
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                CardID = IDName,
-                Name = IDName,
-                Description = "Choose a card from your deck",
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                ClanID = MTClanIDs.GetIDForType(typeof(MTClan_Hellhorned)),
-                CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) },
-
-                TargetsRoom = false,
                 Targetless = true,
-
-                AssetPath = "netstandard2.0/chrono/image0.jpg",
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -52,6 +43,9 @@ namespace DiscipleClan.Cards.Spells
                 }
 
             };
+
+            Utils.AddSpell(railyard, IDName);
+            Utils.AddImg(railyard, "image0.jpg");
 
             // Do this to complete
             railyard.BuildAndRegister();
