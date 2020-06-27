@@ -42,7 +42,24 @@ namespace DiscipleClan.Cards.Units
 
                 Size = 3,
                 Health = 30,
-                AttackDamage = 15
+                AttackDamage = 15,
+
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = typeof(ShinyShoe.CardEffectTeleport).AssemblyQualifiedName,
+                                TargetMode = TargetMode.DropTargetCharacter,
+                                TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                            }
+                        }
+                    },
+                }
             };
             // Unit art asset, complex stuff!
             characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(

@@ -33,8 +33,9 @@ namespace DiscipleClan.Cards
             r.Name = IDName + "_Name";
             r.OverrideDescriptionKey = IDName + "_Desc";
             r.LinkedClass = DiscipleClan.getClan();
+            r.ClanID = Clan.IDName;
 
-            r.CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)), MTCardPoolIDs.GetIDForType(typeof(MTCardPool_ChronoPool)) };
+            r.CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_ChronoPool)), MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) };
             r.CardType = CardType.Monster;
             r.TargetsRoom = true;
 

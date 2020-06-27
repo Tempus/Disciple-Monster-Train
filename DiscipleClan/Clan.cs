@@ -9,6 +9,7 @@ using DiscipleClan.Cards.Spells;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using DiscipleClan.Cards.Units;
 using MonsterTrainModdingAPI;
+using DiscipleClan.Cards.Upgrades;
 
 namespace DiscipleClan
 {
@@ -29,32 +30,30 @@ namespace DiscipleClan
                 Description = IDName + "_Class",
                 SubclassDescription = IDName + "_SubClass",
 
-                UpgradeTree = copyClan.GetUpgradeTree(),
-                //UpgradeTreeBuilder = new CardUpgradeTreeDataBuilder
-                //{
-                //    champion = CustomCardManager.GetCharacterDataByID(Disciple.IDName),
-                //    upgradeTrees = new List<List<CardUpgradeDataBuilder>>
-                //    {
-                //        new List<CardUpgradeDataBuilder>
-                //        {
-                //            new CardUpgradeDataBuilder {},
-                //            new CardUpgradeDataBuilder {},
-                //            new CardUpgradeDataBuilder {},
-                //        },
-                //        new List<CardUpgradeDataBuilder>
-                //        {
-                //            new CardUpgradeDataBuilder {},
-                //            new CardUpgradeDataBuilder {},
-                //            new CardUpgradeDataBuilder {},
-                //        },
-                //        new List<CardUpgradeDataBuilder>
-                //        {
-                //            new CardUpgradeDataBuilder {},
-                //            new CardUpgradeDataBuilder {},
-                //            new CardUpgradeDataBuilder {},
-                //        },
-                //    },
-                //},
+                UpgradeTreeBuilder = new CardUpgradeTreeDataBuilder
+                {
+                    upgradeTrees = new List<List<CardUpgradeDataBuilder>>
+                    {
+                        new List<CardUpgradeDataBuilder>
+                        {
+                            DiscipleRetainBasic.Builder(),
+                            DiscipleRetainPremium.Builder(),
+                            DiscipleRetainPro.Builder(),
+                        },
+                        new List<CardUpgradeDataBuilder>
+                        {
+                            DiscipleRewindBasic.Builder(),
+                            DiscipleRewindPremium.Builder(),
+                            DiscipleRewindPro.Builder(),
+                        },
+                        new List<CardUpgradeDataBuilder>
+                        {
+                            DiscipleShifterBasic.Builder(),
+                            DiscipleShifterPremium.Builder(),
+                            DiscipleShifterPro.Builder(),
+                        },
+                    },
+                },
 
                 ChampionIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/Icon_ClassSelect_Disciple.png"),
                 ClanSelectSfxCue = copyClan.GetClanSelectSfxCue(),
@@ -73,10 +72,9 @@ namespace DiscipleClan
                 UiColorDark = new Color(0.12f, 0.42f, 0.39f, 1f),
             };
 
-            //clan.StartingChampion.championCharacterArt = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/Icon_ClassSelect_Disciple.png");
-            //clan.StartingChampion.storyCharacterData = copyClan.GetStartingChampionData().storyCharacterData;
+            clan.StartingChampion.championCharacterArt = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/Icon_ClassSelect_Disciple.png");
+            clan.StartingChampion.storyCharacterData = copyClan.GetStartingChampionData().storyCharacterData;
 
-            API.Log(BepInEx.Logging.LogLevel.All, "Build and Register was the issue");
             return clan.BuildAndRegister();
         }
     }

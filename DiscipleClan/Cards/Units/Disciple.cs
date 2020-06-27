@@ -15,7 +15,7 @@ namespace DiscipleClan.Cards.Units
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 1,
+                Cost = 0,
                 Rarity = CollectableRarity.Champion,
             };
 
@@ -37,7 +37,7 @@ namespace DiscipleClan.Cards.Units
 
                 Size = 2,
                 Health = 10,
-                AttackDamage = 10,
+                AttackDamage = 5,
                 AssetPath = "Disciple/chrono/Unit Assets/Disciple.png",
                 SubtypeKeys = new List<string> { "SubtypesData_Champion_83f21cbe-9d9b-4566-a2c3-ca559ab8ff34" },
             };
