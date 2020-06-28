@@ -11,49 +11,51 @@ using ShinyShoe;
 
 namespace DiscipleClan.Cards.Spells
 {
-    class TimeLash
+    class Feedback
     {
-        public static string IDName = "Time Lash";
+        public static string IDName = "Feedback";
 
         public static void Make()
         {
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 0,
-                Rarity = CollectableRarity.Rare,
-                TargetsRoom = true,
+                CostType = CardData.CostType.ConsumeRemainingEnergy,
+                Rarity = CollectableRarity.Uncommon,
+                Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                        EffectStateName = "CardEffectDamage",
+                        ParamInt = 0,
+                        TargetMode = TargetMode.Pyre,
                     },
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
-                    }
                 },
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
                     new CardTraitDataBuilder
                     {
-                        TraitStateName = "CardTraitMagneticState"
-                    }
+                         TraitStateName = "CardTraitScalingAddEnergy",
+                         ParamUseScalingParams = true,
+                         ParamInt = 3,
+
+                    },
+                    new CardTraitDataBuilder
+                    {
+                         TraitStateName = "CardTraitScalingAddDamage",
+                         ParamUseScalingParams = true,
+                         ParamInt = 2,
+                    },
                 }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Haste), 1);
-            railyard.EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Rooted), 1);
+            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Armor), 0);
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "hi.jpg");
+            Utils.AddImg(railyard, "image0.jpg");
 
             // Do this to complete
             railyard.BuildAndRegister();

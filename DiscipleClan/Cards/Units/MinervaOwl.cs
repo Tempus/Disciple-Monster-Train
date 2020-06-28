@@ -22,7 +22,6 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "(TODO)Pyreboost.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
@@ -45,10 +44,12 @@ namespace DiscipleClan.Cards.Units
                 Health = 5,
                 AttackDamage = 0,
 
-                AssetPath = "Disciple/chrono/Unit Assets/15924082478465092503139501393540.jpg",
+                AssetPath = "Disciple/chrono/Card Assets/15924082478465092503139501393540.jpg",
             };
             // Unit art asset, complex stuff!
             characterDataBuilder.AddStartingStatusEffect(typeof(MTStatusEffect_Sweep), 1);
+            characterDataBuilder.AddStartingStatusEffect("pyreboost", 1);
+
 
             return characterDataBuilder.BuildAndRegister();
         }

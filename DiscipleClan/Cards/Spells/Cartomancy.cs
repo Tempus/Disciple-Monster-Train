@@ -7,36 +7,32 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
+using DiscipleClan.Cards.CardEffects;
 using ShinyShoe;
 
 namespace DiscipleClan.Cards.Spells
 {
-    class TimeLash
+    class Cartomancy
     {
-        public static string IDName = "Time Lash";
+        public static string IDName = "Cartomancy";
 
         public static void Make()
         {
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 0,
+                Cost = 1,
                 Rarity = CollectableRarity.Rare,
-                TargetsRoom = true,
+                Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
-                    },
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                        EffectStateName = typeof(CardEffectScryDiscard).AssemblyQualifiedName,
+                        ParamInt = 99,
+                        AdditionalParamInt = 99,
+                        TargetMode = TargetMode.Deck,
                     }
                 },
 
@@ -44,16 +40,13 @@ namespace DiscipleClan.Cards.Spells
                 {
                     new CardTraitDataBuilder
                     {
-                        TraitStateName = "CardTraitMagneticState"
+                        TraitStateName = "CardTraitExhaustState"
                     }
                 }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Haste), 1);
-            railyard.EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Rooted), 1);
-
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "hi.jpg");
+            Utils.AddImg(railyard, "image0.jpg");
 
             // Do this to complete
             railyard.BuildAndRegister();

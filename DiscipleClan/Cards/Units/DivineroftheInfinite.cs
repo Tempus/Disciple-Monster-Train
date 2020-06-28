@@ -27,7 +27,7 @@ namespace DiscipleClan.Cards.Units
                 {
                     new CardTraitDataBuilder
                     {
-                        TraitStateName = "CardTraitRetain"
+                        TraitStateName = "CardTraitPermafrost"
                     },
                     new CardTraitDataBuilder
                     {
@@ -40,14 +40,14 @@ namespace DiscipleClan.Cards.Units
                     new CardTriggerEffectDataBuilder
                     {
                         trigger = CardTriggerType.OnUnplayed,
-                        //EffectBuilders = new List<CardEffectDataBuilder>
-                        //{
-                        //    new CardEffectDataBuilder
-                        //    {
-                        //        EffectStateName = "CardEffectAdjustEnergy",
-                        //        ParamInt = -1,
-                        //    }
-                        //}
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectAdjustEnergy",
+                                ParamInt = -1,
+                            }
+                        }
                     }
                 }
             };

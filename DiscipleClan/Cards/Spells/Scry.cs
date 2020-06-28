@@ -7,47 +7,45 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
+using DiscipleClan.Cards.CardEffects;
 using ShinyShoe;
 
 namespace DiscipleClan.Cards.Spells
 {
-    class CrunchTime
+    class Scry
     {
-        public static string IDName = "Crunch Time";
+        public static string IDName = "Scry";
 
         public static void Make()
         {
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 2,
+                Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                TargetsRoom = true,
                 Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.Room,
-                        TargetTeamType = Team.Type.Heroes,
-                    },
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.Room,
-                        TargetTeamType = Team.Type.Heroes,
+                        EffectStateName = typeof(CardEffectScry).AssemblyQualifiedName,
+                        ParamInt = 5,
+                        AdditionalParamInt = 1,
+                        TargetMode = TargetMode.Deck,
                     }
-
                 },
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder {
+                        TraitStateName = "CardTraitIntrinsicState",
+                    }
+                }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Dazed), 1);
-            railyard.EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Quick), 1);
-
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "body-building-fitness-sports-athlete-implementation-person-royalty-free-thumbnail.png");
+            Utils.AddImg(railyard, "image0.jpg");
 
             // Do this to complete
             railyard.BuildAndRegister();

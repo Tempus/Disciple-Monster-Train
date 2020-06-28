@@ -11,43 +11,33 @@ using ShinyShoe;
 
 namespace DiscipleClan.Cards.Spells
 {
-    class CrunchTime
+    class EpochTome
     {
-        public static string IDName = "Crunch Time";
+        public static string IDName = "EpochTome";
 
         public static void Make()
         {
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 2,
-                Rarity = CollectableRarity.Uncommon,
-                TargetsRoom = true,
-                Targetless = true,
+                Cost = 3,
+                Rarity = CollectableRarity.Rare,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.Room,
-                        TargetTeamType = Team.Type.Heroes,
+                        TargetMode = TargetMode.DropTargetCharacter,
+                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     },
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.Room,
-                        TargetTeamType = Team.Type.Heroes,
-                    }
-
                 },
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Dazed), 1);
-            railyard.EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Quick), 1);
+            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Sweep), 1);
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "body-building-fitness-sports-athlete-implementation-person-royalty-free-thumbnail.png");
+            Utils.AddImg(railyard, "sigmaligma.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

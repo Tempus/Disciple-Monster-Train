@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DiscipleClan.Cards.CardEffects;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
@@ -8,46 +9,37 @@ using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
 using ShinyShoe;
+using UnityEngine;
 
 namespace DiscipleClan.Cards.Spells
 {
-    class CrunchTime
+    class Flashfire
     {
-        public static string IDName = "Crunch Time";
+        public static string IDName = "Flashfire";
 
         public static void Make()
         {
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 2,
+                Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
                 TargetsRoom = true,
-                Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.Room,
-                        TargetTeamType = Team.Type.Heroes,
-                    },
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectAddStatusEffect",
+                        EffectStateName = typeof(CardEffectPyreAttack).AssemblyQualifiedName,
+                        ParamInt = 0,
                         TargetMode = TargetMode.Room,
                         TargetTeamType = Team.Type.Heroes,
                     }
-
                 },
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Dazed), 1);
-            railyard.EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Quick), 1);
-
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "body-building-fitness-sports-athlete-implementation-person-royalty-free-thumbnail.png");
+            Utils.AddImg(railyard, "image0.jpg");
 
             // Do this to complete
             railyard.BuildAndRegister();

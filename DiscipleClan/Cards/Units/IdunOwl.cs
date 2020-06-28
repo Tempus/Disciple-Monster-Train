@@ -43,7 +43,33 @@ namespace DiscipleClan.Cards.Units
 
                 Size = 1,
                 Health = 5,
-                AttackDamage = 1
+                AttackDamage = 1,
+
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.OnAttacking,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectAddStatusEffect",
+                                TargetMode = TargetMode.LastAttackedCharacter,
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectAddStatusEffect",
+                                TargetMode = TargetMode.LastAttackedCharacter,
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectAddStatusEffect",
+                                TargetMode = TargetMode.LastAttackedCharacter,
+                            },
+                        }
+                    }
+                }
             };
             // Unit art asset, complex stuff!
             characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
@@ -51,21 +77,9 @@ namespace DiscipleClan.Cards.Units
                 "8a96184904fce5745ab5139b620b4d31"
             );
 
-            // Drop down a floor on hit
-            var strikeTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.OnAttacking};
-            var effectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectAddStatusEffect",
-                TargetMode = TargetMode.LastAttackedCharacter
-            };
-            effectBuilder.AddStatusEffect(typeof(MTStatusEffect_Stealth), 1);
-            effectBuilder.AddStatusEffect(typeof(MTStatusEffect_Rooted), 1);
-            effectBuilder.AddStatusEffect(typeof(MTStatusEffect_Dazed), 1);
-
-            strikeTrigger.Effects.Add(effectBuilder.Build());
-
-            characterDataBuilder.Triggers.Add(strikeTrigger.Build());
+            characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Stealth), 1);
+            characterDataBuilder.TriggerBuilders[0].EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Rooted), 1);
+            characterDataBuilder.TriggerBuilders[0].EffectBuilders[2].AddStatusEffect(typeof(MTStatusEffect_Dazed), 1);
 
             return characterDataBuilder.BuildAndRegister();
         }

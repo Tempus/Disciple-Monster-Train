@@ -47,41 +47,23 @@ namespace DiscipleClan.Cards.Upgrades
                     // Buff everyone on the floor when we shift
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = CharacterTriggerData.Trigger.PostAscension,
+                        Trigger = CharacterTriggerData.Trigger.PostCombat,
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectBuffDamage",
                                 ParamInt = buffAmount,
-                                TargetMode = TargetMode.Room
+                                TargetMode = TargetMode.Room,
+                                TargetTeamType = Team.Type.Monsters,
                             },
 
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectBuffMaxHealth",
                                 ParamInt = buffAmount,
-                                TargetMode = TargetMode.Room
-                            }
-                        }
-                    },
-                    new CharacterTriggerDataBuilder
-                    {
-                        Trigger = CharacterTriggerData.Trigger.PostDescension,
-                        EffectBuilders = new List<CardEffectDataBuilder>
-                        {
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectBuffDamage",
-                                ParamInt = buffAmount,
-                                TargetMode = TargetMode.Room
-                            },
-
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectBuffMaxHealth",
-                                ParamInt = buffAmount,
-                                TargetMode = TargetMode.Room
+                                TargetMode = TargetMode.Room,
+                                TargetTeamType = Team.Type.Monsters,
                             }
                         }
                     },

@@ -14,6 +14,7 @@ using DiscipleClan;
 using System.Linq;
 using DiscipleClan.Cards.Units;
 using DiscipleClan.Cards.Spells;
+using DiscipleClan.Cards.StatusEffects;
 
 namespace DiscipleClan
 {
@@ -35,12 +36,23 @@ namespace DiscipleClan
         public void Initialize()
         {
             clanRef = Clan.Make();
+            MakeStatuses();
             MakeCards();
 
             //foreach (SubtypeData s in SubtypeManager.AllData)
             //{
             //    API.Log(BepInEx.Logging.LogLevel.All, "Subtype: " + s.LocalizedName + " - Key: " + s.Key);
             //}
+        }
+
+        static void MakeStatuses()
+        {
+            // Status Effects
+            //var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.StatusEffects"));
+            //foreach (var status in types) { Make(status); }
+            // Dunno why the above doesn't work
+            StatusEffectPyreboost.Make();
+            StatusEffectChronolock.Make();
         }
 
         static void MakeCards()

@@ -16,7 +16,7 @@ namespace DiscipleClan.Cards
         public static void AddSpell(CardDataBuilder r, string IDName)
         {
             r.CardID = IDName;
-            r.Name = IDName + "_Name";
+            r.NameKey = IDName + "_Name";
             r.OverrideDescriptionKey = IDName + "_Desc";
             r.LinkedClass = DiscipleClan.getClan();
 
@@ -30,7 +30,7 @@ namespace DiscipleClan.Cards
         public static void AddUnit(CardDataBuilder r, string IDName, CharacterData character)
         {
             r.CardID = IDName;
-            r.Name = IDName + "_Name";
+            r.NameKey = IDName + "_Name";
             r.OverrideDescriptionKey = IDName + "_Desc";
             r.LinkedClass = DiscipleClan.getClan();
             r.ClanID = Clan.IDName;

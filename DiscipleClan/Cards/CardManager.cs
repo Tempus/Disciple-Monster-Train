@@ -33,11 +33,7 @@ namespace DiscipleClan.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Disciple.IDName));
-            //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
-            //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
-            //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
-            //        __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Scry.IDName));
 
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("[S] Ascend"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("[S] Descend"));
@@ -59,7 +55,7 @@ namespace DiscipleClan.Cards
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
 
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Ancient Savant"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Ancient Savant"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Auspex"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Backilisk"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Chain Dragon"));
@@ -74,7 +70,7 @@ namespace DiscipleClan.Cards
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Jelly Scholar"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Lakshimi Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Lash Lizard"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Minerva Owl"));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(MinervaOwl.IDName));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Ragana Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Sampati Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Sklink"));

@@ -1,4 +1,6 @@
-﻿using MonsterTrainModdingAPI.Builders;
+﻿using HarmonyLib;
+using MonsterTrainModdingAPI;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using System;
 using System.Collections;
@@ -8,44 +10,46 @@ using UnityEngine;
 
 namespace DiscipleClan.Cards.CardEffects
 {
-    class RoomStateModifierRewind : RoomStateModifierBase, IRoomStateModifier, IRoomStateCardManagerModifier, IProvider, IClient
+    class RoomStateModifierRewind : RoomStateModifierBase, IRoomStateModifier
     {
         public CardManager cardManager;
         public int numOfCards;
+        public List<CardState> storedCards = new List<CardState>();
 
         public override void Initialize(RoomModifierData roomModifierData, RoomManager roomManager)
         {
             base.Initialize(roomModifierData, roomManager);
             this.numOfCards = roomModifierData.GetParamInt();
+            this.cardManager = GameObject.FindObjectOfType<CardManager>().GetComponent<CardManager>() as CardManager;
+            this.cardManager.OnCardPlayedCallback += new CardManager.OnCardPlayedEvent(this.OnPlayedCard);
         }
 
-        public void NewProviderAvailable(IProvider provider)
+        private void OnPlayedCard(
+              CardState cardState,
+              int roomIndex,
+              SpawnPoint dropLocation,
+              CombatManager.ApplyPreEffectsVfxAction onPreEffectsFiredVfx,
+              CombatManager.ApplyEffectsAction onEffectsFired)
         {
-            DepInjector.MapProvider<CardManager>(provider, ref this.cardManager);
-        }
+            cardManager = GameObject.FindObjectOfType<CardManager>().GetComponent<CardManager>() as CardManager;
+            API.Log(BepInEx.Logging.LogLevel.All, "Rewind: Card Discarded");
 
-        public void CardDiscarded(CardState cardState)
-        {
+            if (cardState.GetCardType() != CardType.Spell) { return; }
+
             if (cardManager.GetCardStatistics().GetNumCardsPlayedThisTurnOfType(CardType.Spell) +
-                cardManager.GetCardStatistics().GetNumCardsPlayedThisTurnOfType(CardType.Monster) < numOfCards)
+                cardManager.GetCardStatistics().GetNumCardsPlayedThisTurnOfType(CardType.Monster) <= numOfCards)
             {
-                cardManager.DrawSpecificCard(cardState);
+                API.Log(BepInEx.Logging.LogLevel.All, "Rewind: Queing the action");
+                //storedCards.Add(cardState);
+                cardManager.DrawSpecificCard(cardState, 0.2f, HandUI.DrawSource.Discard, cardState);
+                cardManager.RefreshHandCards();
             }
         }
 
-        public void CardDrawn(CardState cardState)
+        public void DrawStoredCard()
         {
-            throw new NotImplementedException();
+            //cardManager.DrawSpecificCard(cardState);
         }
 
-        public void ProviderRemoved(IProvider removeProvider)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NewProviderFullyInstalled(IProvider newProvider)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

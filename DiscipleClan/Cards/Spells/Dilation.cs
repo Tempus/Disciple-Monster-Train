@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DiscipleClan.Cards.CardEffects;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
@@ -11,49 +12,55 @@ using ShinyShoe;
 
 namespace DiscipleClan.Cards.Spells
 {
-    class TimeLash
+    class Dilation
     {
-        public static string IDName = "Time Lash";
+        public static string IDName = "Dilation";
 
         public static void Make()
         {
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 0,
-                Rarity = CollectableRarity.Rare,
-                TargetsRoom = true,
+                CostType = CardData.CostType.ConsumeRemainingEnergy,
+                Rarity = CollectableRarity.Uncommon,
+                Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectAddStatusEffect",
+                        EffectStateName = "CardEffectAddTempUpgradeToUnits",
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                        ParamCardUpgradeData = new CardUpgradeDataBuilder
+                        {
+                            bonusDamage = 10,
+                            bonusHP = 5,
+                            bonusSize = 1,
+                            hideUpgradeIconOnCard = true,
+                        }.Build(),
                     },
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
-                    }
                 },
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
                     new CardTraitDataBuilder
                     {
-                        TraitStateName = "CardTraitMagneticState"
-                    }
+                         TraitStateName = typeof(CardTraitMultiplyCharacterUpgrade).AssemblyQualifiedName,
+                         ParamUseScalingParams = true,
+                         ParamInt = 1,
+                    },
+                    new CardTraitDataBuilder
+                    {
+                         TraitStateName = "CardTraitExhaustState",
+                    },
                 }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Haste), 1);
-            railyard.EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Rooted), 1);
+            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Armor), 0);
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "hi.jpg");
+            Utils.AddImg(railyard, "image0.jpg");
 
             // Do this to complete
             railyard.BuildAndRegister();

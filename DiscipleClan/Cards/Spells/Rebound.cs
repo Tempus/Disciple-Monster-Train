@@ -31,6 +31,12 @@ namespace DiscipleClan.Cards.Spells
                         EffectStateName = "CardEffectAddStatusEffect",
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                    },
+                    new CardEffectDataBuilder
+                    {
+                        EffectStateName = "CardEffectAddStatusEffect",
+                        TargetMode = TargetMode.DropTargetCharacter,
+                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     }
                 },
 
@@ -43,8 +49,8 @@ namespace DiscipleClan.Cards.Spells
                 }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Rooted), 1);
             railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Quick), 1);
+            railyard.EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Rooted), 1);
 
 
             Utils.AddSpell(railyard, IDName);

@@ -6,8 +6,6 @@ using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 
-// TODO - Innate
-
 namespace DiscipleClan.Cards.Units
 {
     class LakshimiOwl

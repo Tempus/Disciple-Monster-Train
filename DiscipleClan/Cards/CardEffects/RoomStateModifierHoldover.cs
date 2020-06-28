@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace DiscipleClan.Cards.CardEffects
 {
-    class RoomStateModifierHoldover : RoomStateModifierBase, IRoomStateModifier, IProvider, IClient
+    class RoomStateModifierHoldover : RoomStateModifierBase, IRoomStateModifier
     {
         public CardManager cardManager;
         public int numOfCards;
@@ -17,12 +17,8 @@ namespace DiscipleClan.Cards.CardEffects
         {
             base.Initialize(roomModifierData, roomManager);
             this.numOfCards = roomModifierData.GetParamInt();
-        }
-
-        public void NewProviderAvailable(IProvider provider)
-        {
-            if (DepInjector.MapProvider<CardManager>(provider, ref this.cardManager))
-                this.cardManager.OnCardPlayedCallback += new CardManager.OnCardPlayedEvent(this.OnPlayedCard);
+            this.cardManager = GameObject.FindObjectOfType<CardManager>().GetComponent<CardManager>() as CardManager;
+            this.cardManager.OnCardPlayedCallback += new CardManager.OnCardPlayedEvent(this.OnPlayedCard);
         }
 
         private void OnPlayedCard(
@@ -36,18 +32,12 @@ namespace DiscipleClan.Cards.CardEffects
                 cardManager.GetCardStatistics().GetNumCardsPlayedThisTurnOfType(CardType.Monster) < numOfCards)
             {
                 var trait = new CardTraitDataBuilder { TraitStateName = "CardTraitRetain" };
-                cardState.AddTemporaryTrait(trait.Build(), cardManager);
+                if (!cardState.HasTemporaryTrait(typeof(CardTraitRetain)))
+                {
+                    cardState.AddTemporaryTrait(trait.Build(), cardManager);
+                    cardState.UpdateCardBodyText();
+                }
             }
-        }
-
-        public void ProviderRemoved(IProvider removeProvider)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NewProviderFullyInstalled(IProvider newProvider)
-        {
-            throw new NotImplementedException();
         }
     }
 }
