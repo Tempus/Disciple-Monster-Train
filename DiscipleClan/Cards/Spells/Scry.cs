@@ -30,7 +30,7 @@ namespace DiscipleClan.Cards.Spells
                     new CardEffectDataBuilder
                     {
                         EffectStateName = typeof(CardEffectScry).AssemblyQualifiedName,
-                        ParamInt = 5,
+                        ParamInt = 4,
                         AdditionalParamInt = 1,
                         TargetMode = TargetMode.Deck,
                     }
@@ -45,7 +45,7 @@ namespace DiscipleClan.Cards.Spells
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "image0.jpg");
+            Utils.AddImg(railyard, "cutie.jpg");
 
             // Do this to complete
             railyard.BuildAndRegister();

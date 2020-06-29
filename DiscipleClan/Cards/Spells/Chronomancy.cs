@@ -12,9 +12,9 @@ using ShinyShoe;
 
 namespace DiscipleClan.Cards.Spells
 {
-    class PalmReading
+    class Chronomancy
     {
-        public static string IDName = "PalmReading";
+        public static string IDName = "Chronomancy";
 
         public static void Make()
         {
@@ -29,12 +29,31 @@ namespace DiscipleClan.Cards.Spells
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = typeof(CardEffectScryDiscard).AssemblyQualifiedName,
+                        EffectStateName = typeof(CardEffectScryApplyUpgrade).AssemblyQualifiedName,
                         ParamInt = 4,
-                        AdditionalParamInt = 4,
+                        AdditionalParamInt = 1,
                         TargetMode = TargetMode.Deck,
+                        ParamCardUpgradeData = new CardUpgradeDataBuilder
+                        {
+                            hideUpgradeIconOnCard = true,
+                            statusEffectUpgrades = new List<StatusEffectStackData>
+                            {
+                                new StatusEffectStackData
+                                {
+                                    statusId = "ambush",
+                                    count = 1,
+                                }
+                            }
+                        }.Build(),
                     }
                 },
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder {
+                        TraitStateName = "CardTraitExhaustState",
+                    }
+                }
             };
 
             Utils.AddSpell(railyard, IDName);

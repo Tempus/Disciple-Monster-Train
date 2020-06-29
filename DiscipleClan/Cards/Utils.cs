@@ -51,6 +51,30 @@ namespace DiscipleClan.Cards
             // API.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,," + r.Description + ",,,,,");
         }
 
+        public static void AddWard(CardDataBuilder r, string IDName, CharacterData character)
+        {
+            r.CardID = IDName;
+            r.NameKey = IDName + "_Name";
+            r.OverrideDescriptionKey = IDName + "_Desc";
+            r.LinkedClass = DiscipleClan.getClan();
+            r.ClanID = Clan.IDName;
+
+            r.CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_ChronoPool)), MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) };
+            r.CardType = CardType.Spell;
+            r.TargetsRoom = true;
+
+            r.EffectBuilders.Add(
+                new CardEffectDataBuilder
+                {
+                    EffectStateName = "CardEffectSpawnMonster",
+                    TargetMode = TargetMode.BackInRoom,
+                    ParamCharacterData = character,
+                });
+
+            // API.Log(BepInEx.Logging.LogLevel.All, r.Name + ",Text,,,,," + r.Name + ",,,,,");
+            // API.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,," + r.Description + ",,,,,");
+        }
+
         public static void AddImg(CardDataBuilder r, string imgName)
         {
             r.AssetPath = rootPath + cardPath + imgName;

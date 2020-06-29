@@ -53,7 +53,7 @@ namespace DiscipleClan.Cards.StatusEffects
             {
                 statusEffectStateName = typeof(StatusEffectPyreboost).AssemblyQualifiedName,
                 statusId = "pyreboost",
-                displayCategory = StatusEffectData.DisplayCategory.Negative,
+                displayCategory = StatusEffectData.DisplayCategory.Positive,
                 triggerStage = StatusEffectData.TriggerStage.OnPreMovement,
 				icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
 			}.Build();

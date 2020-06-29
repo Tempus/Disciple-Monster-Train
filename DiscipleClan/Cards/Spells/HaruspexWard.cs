@@ -3,27 +3,36 @@ using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
+using MonsterTrainModdingAPI.Enums.MTClans;
+using MonsterTrainModdingAPI.Enums.MTStatusEffects;
+using MonsterTrainModdingAPI.Managers;
 
 namespace DiscipleClan.Cards.Units
 {
-    class Snecko
+    class HaruspexWard
     {
-        public static string IDName = "Snecko";
+        public static string IDName = "HaruspexWard";
+
         public static void Make()
         {
-
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 3,
+                Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "Shifter",
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitExhaustState",
+                    },
+                }
             };
 
-            Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "15924082478465092503139501393540.jpg");
+            Utils.AddWard(railyard, IDName, BuildUnit());
+            Utils.AddImg(railyard, "IMG_20190731_020156.png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -38,32 +47,28 @@ namespace DiscipleClan.Cards.Units
                 CharacterID = IDName,
                 Name = IDName,
 
-                Size = 3,
-                Health = 30,
-                AttackDamage = 15,
-
+                Size = 0,
+                Health = 1,
+                AttackDamage = 0,
+                AssetPath = "Disciple/chrono/Unit Assets/IMG_20190731_020156.png",
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                        Trigger = CharacterTriggerData.Trigger.OnAnyUnitDeathOnFloor,
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
-                                EffectStateName = typeof(ShinyShoe.CardEffectTeleport).AssemblyQualifiedName,
-                                TargetMode = TargetMode.DropTargetCharacter,
+                                EffectStateName = "CardEffectBuffDamage",
+                                TargetMode = TargetMode.Pyre,
                                 TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                                ParamInt = 3,
                             }
                         }
                     },
                 }
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
             return characterDataBuilder.BuildAndRegister();
         }

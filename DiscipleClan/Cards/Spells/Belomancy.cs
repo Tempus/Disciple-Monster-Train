@@ -1,21 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DiscipleClan.Cards.CardEffects;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
+using DiscipleClan.Cards.CardEffects;
 using ShinyShoe;
-using UnityEngine;
 
 namespace DiscipleClan.Cards.Spells
 {
-    class Flashfire
+    class Belomancy
     {
-        public static string IDName = "Flashfire";
+        public static string IDName = "Belomancy";
 
         public static void Make()
         {
@@ -24,17 +23,25 @@ namespace DiscipleClan.Cards.Spells
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                TargetsRoom = true,
+                Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = typeof(CardEffectPyreAttack).AssemblyQualifiedName,
-                        TargetMode = TargetMode.Room,
-                        TargetTeamType = Team.Type.Heroes,
+                        EffectStateName = typeof(CardEffectScryConsumePyrehit).AssemblyQualifiedName,
+                        ParamInt = 3,
+                        AdditionalParamInt = 1,
+                        TargetMode = TargetMode.Deck,
                     }
                 },
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder {
+                        TraitStateName = "CardTraitExhaustState",
+                    }
+                }
             };
 
             Utils.AddSpell(railyard, IDName);
