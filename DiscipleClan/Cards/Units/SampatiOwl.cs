@@ -13,6 +13,7 @@ namespace DiscipleClan.Cards.Units
     class SampatiOwl
     {
         public static string IDName = "Sampati Owl";
+        public static string imgName = "HornedOwl";
         public static void Make()
         {
 
@@ -21,11 +22,10 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Rare,
-                Description = "(TODO)Icarian. Resolve: Enhance with +10 dmg, +3 health.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "15924082478465092503139501393540.jpg");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -38,47 +38,43 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 1,
                 Health = 3,
-                AttackDamage = 20
+                AttackDamage = 20,
+
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectBuffDamage",
+                                ParamInt = 10,
+                                TargetMode = TargetMode.Self
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectBuffMaxHealth",
+                                ParamInt = 3,
+                                TargetMode = TargetMode.Self
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectBump",
+                                ParamInt = 1,
+                                TargetMode = TargetMode.Self
+                            },
+                        }
+                    }
+                }
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
-            // Resolve
-            var resolveTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.PostCombat};
-            var resolveBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectBuffDamage",
-                ParamInt = 10,
-                TargetMode = TargetMode.Self
-            };
-            resolveTrigger.Effects.Add(resolveBuilder.Build());
-
-            var healthBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectBuffMaxHealth",
-                ParamInt = 3,
-                TargetMode = TargetMode.Self
-            };
-            resolveTrigger.Effects.Add(healthBuilder.Build());
-
-            var icarianBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectBump",
-                ParamInt = 1,
-                TargetMode = TargetMode.Self
-            };
-            resolveTrigger.Effects.Add(icarianBuilder.Build());
-
-            characterDataBuilder.Triggers.Add(resolveTrigger.Build());
-
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

@@ -13,6 +13,7 @@ namespace DiscipleClan.Cards.Units
     class Yoremaster
     {
         public static string IDName = "Yoremaster";
+        public static string imgName = "Peingoop";
         public static void Make()
         {
 
@@ -21,11 +22,10 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "(TODO) Slow. (TODO)Units on this floor gain (TODO)slow.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "15924082478465092503139501393540.jpg");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -38,33 +38,33 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 2,
                 Health = 22,
-                AttackDamage = 5
+                AttackDamage = 5,
+
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.OnTurnBegin,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectAddStatusEffect",
+                                TargetMode = TargetMode.Room
+                            }
+                        }
+                    }
+                }
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
             // characterDataBuilder.AddStartingStatusEffect(MTStatusEffect.Slow, 1);
+            // characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect.Slow, 1);
 
-            // Drop down a floor on hit
-            var strikeTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.OnTurnBegin};
-            var effectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectAddStatusEffect",
-                TargetMode = TargetMode.Room
-            };
-            // effectBuilder.AddStatusEffect(typeof(MTStatusEffect.Slow, 1);
-            strikeTrigger.Effects.Add(effectBuilder.Build());
-
-            characterDataBuilder.Triggers.Add(strikeTrigger.Build());
-
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

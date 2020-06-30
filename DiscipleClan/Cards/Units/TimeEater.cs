@@ -14,6 +14,7 @@ namespace DiscipleClan.Cards.Units
     class TimeEater
     {
         public static string IDName = "Time Eater";
+        public static string imgName = "NudibranchB";
         public static void Make()
         {
 
@@ -22,11 +23,10 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 3,
                 Rarity = CollectableRarity.Rare,
-                Description = "(TODO)Slow. Multistrike (TODO)Empowered.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "15924082478465092503139501393540.jpg");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -39,18 +39,14 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 3,
                 Health = 20,
                 AttackDamage = 13
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

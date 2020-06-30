@@ -6,13 +6,14 @@ using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 
-// TODO - Innate, Can't target floor above/below easily? Look into target filters, also 'how to tell which floor I'm on'. Otherwise, COMPRESS EVERYTHING chronoTicked
+// TODO - Can't target floor above/below easily? Look into target filters, also 'how to tell which floor I'm on'. Otherwise, COMPRESS EVERYTHING chronoTicked
 
 namespace DiscipleClan.Cards.Units
 {
     class Constrictor
     {
         public static string IDName = "Constrictor";
+        public static string imgName = "Cutezacotl";
         public static void Make()
         {
 
@@ -21,11 +22,18 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "(TODO)Innate. (Broken)Summon: Ascends enemies on the floor below. Descends enemies on the floor above.",
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitIntrinsicState"
+                    }
+                }
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "people-lazy-fit-tough.png");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -38,36 +46,38 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 2,
                 Health = 15,
                 AttackDamage = 12,
-                AssetPath = "Disciple/chrono/Unit Assets/people-lazy-fit-tough.png",
+
+                // Pulls everything that it can to this floor on summon
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.OnSpawn,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectBump",
+                                ParamInt = -1,
+                                TargetMode = TargetMode.Tower
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectBump",
+                                ParamInt = 1,
+                                TargetMode = TargetMode.Tower
+                            },
+                        }
+                    }
+                }
             };
 
-            // Pulls everything that it can to this floor on summon
-            var strikeTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.OnSpawn};
-            var downBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectBump",
-                ParamInt = -1,
-                TargetMode = TargetMode.Tower
-            };
-            strikeTrigger.Effects.Add(downBuilder.Build());
-
-            var upBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectBump",
-                ParamInt = 1,
-                TargetMode = TargetMode.Tower
-            };
-            strikeTrigger.Effects.Add(upBuilder.Build());
-
-            characterDataBuilder.Triggers.Add(strikeTrigger.Build());
-
-
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

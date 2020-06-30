@@ -13,19 +13,18 @@ namespace DiscipleClan.Cards.Units
     class JellyScholar
     {
         public static string IDName = "Jelly Scholar";
+        public static string imgName = "JellyFish";
         public static void Make()
         {
-
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 3,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "Resolve: Enhance with +10 dmg, +15 health, +1 capacity.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "Tima.png");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -38,35 +37,38 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 3,
                 Health = 5,
                 AttackDamage = 15,
-                AssetPath = "Disciple/chrono/Unit Assets/Tima.jpg",
+                
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
+                                TargetMode = TargetMode.DropTargetCharacter,
+                                TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                                ParamCardUpgradeData = new CardUpgradeDataBuilder
+                                {
+                                    bonusDamage = 10,
+                                    bonusHP = 15,
+                                    bonusSize = 1,
+                                    hideUpgradeIconOnCard = true,
+                                }.Build(),
+                            },
+                        }
+                    }
+                }
             };
 
-            // Resolve
-            var resolveTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.PostCombat};
-            var resolveBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectBuffDamage",
-                ParamInt = 10,
-                TargetMode = TargetMode.Self
-            };
-            resolveTrigger.Effects.Add(resolveBuilder.Build());
-
-            var healthBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectBuffMaxHealth",
-                ParamInt = 15,
-                TargetMode = TargetMode.Self
-            };
-            resolveTrigger.Effects.Add(healthBuilder.Build());
-
-            characterDataBuilder.Triggers.Add(resolveTrigger.Build());
-
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

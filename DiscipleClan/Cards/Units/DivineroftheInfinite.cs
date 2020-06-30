@@ -13,6 +13,7 @@ namespace DiscipleClan.Cards.Units
     class DivineroftheInfinite
     {
         public static string IDName = "Diviner of the Infinite";
+        public static string imgName = "Clockness";
         public static void Make()
         {
 
@@ -21,7 +22,6 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 5,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "Permafrost. Pyrebound. Reserve: Apply 1 (TODO)Chronolock, (TODO)Cost -1.",
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
@@ -53,7 +53,7 @@ namespace DiscipleClan.Cards.Units
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "zyzzy.png");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // CardTriggerEffectData needs to add a trigger for OnUnplayed here, that activates the cost and stasis effects
 
@@ -69,18 +69,14 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 3,
                 Health = 60,
                 AttackDamage = 40
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

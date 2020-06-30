@@ -14,6 +14,7 @@ namespace DiscipleClan.Cards.Units
     class MinervaOwl
     {
         public static string IDName = "Minerva Owl";
+        public static string imgName = "Owlit";
         public static void Make()
         {
 
@@ -25,7 +26,7 @@ namespace DiscipleClan.Cards.Units
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "15924082478465092503139501393540.jpg");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -38,19 +39,17 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 1,
                 Health = 5,
                 AttackDamage = 0,
-
-                AssetPath = "Disciple/chrono/Card Assets/15924082478465092503139501393540.jpg",
             };
             // Unit art asset, complex stuff!
             characterDataBuilder.AddStartingStatusEffect(typeof(MTStatusEffect_Sweep), 1);
             characterDataBuilder.AddStartingStatusEffect("pyreboost", 1);
 
-
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

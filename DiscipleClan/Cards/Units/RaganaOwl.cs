@@ -6,11 +6,14 @@ using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 
+// TODO: Relocate
+
 namespace DiscipleClan.Cards.Units
 {
     class RaganaOwl
     {
         public static string IDName = "Ragana Owl";
+        public static string imgName = "Hootiful";
         public static void Make()
         {
 
@@ -19,11 +22,10 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "Relocate: Heal all units on the floor to full.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "15924082478465092503139501393540.jpg");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -36,36 +38,32 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 1,
                 Health = 10,
-                AttackDamage = 0
+                AttackDamage = 0,
+
+                // Relocate
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder {
+                        Trigger = CharacterTriggerData.Trigger.PostAscension,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectHeal",
+                                ParamInt = 999,
+                                TargetMode = TargetMode.Room,
+                                TargetTeamType = Team.Type.Monsters,
+                            }
+                        }
+                    },
+                }
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
-            // This is relocate, basically! But I think it will only work for this character
-            var ascendTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.PostAscension};
-            var descendTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.PostDescension};
-
-            var effectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectHeal",
-                ParamInt = 999,
-                TargetMode = TargetMode.Room
-            };
-            ascendTrigger.Effects.Add(effectBuilder.Build());
-            descendTrigger.Effects.Add(effectBuilder.Build());
-
-            characterDataBuilder.Triggers.Add(ascendTrigger.Build());
-            characterDataBuilder.Triggers.Add(descendTrigger.Build());
-
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

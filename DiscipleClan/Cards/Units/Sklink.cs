@@ -11,19 +11,18 @@ namespace DiscipleClan.Cards.Units
     class Sklink
     {
         public static string IDName = "Sklink";
+        public static string imgName = "Coconewt";
         public static void Make()
         {
-
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "Relocate: Do 2 damage to all enemies.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "15924082478465092503139501393540.jpg");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -36,36 +35,32 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 2,
                 Health = 10,
-                AttackDamage = 0
+                AttackDamage = 0,
+
+                // Relocate
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder {
+                        Trigger = CharacterTriggerData.Trigger.PostAscension,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectDamage",
+                                ParamInt = 2,
+                                TargetMode = TargetMode.Room,
+                                TargetTeamType = Team.Type.Heroes,
+                            }
+                        }
+                    },
+                }
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
-            // This is relocate, basically! But I think it will only work for this character
-            var ascendTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.PostAscension};
-            var descendTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.PostDescension};
-
-            var damageEffectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectDamage",
-                ParamInt = 2,
-                TargetMode = TargetMode.Room
-            };
-            ascendTrigger.Effects.Add(damageEffectBuilder.Build());
-            descendTrigger.Effects.Add(damageEffectBuilder.Build());
-
-            characterDataBuilder.Triggers.Add(ascendTrigger.Build());
-            characterDataBuilder.Triggers.Add(descendTrigger.Build());
-
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

@@ -7,12 +7,14 @@ using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
+// TODO: New Trigger for Relocate (On Spawn Point Changed)
+
 namespace DiscipleClan.Cards.Units
 {
-    class IdunOwl
+    class BarredOwl
     {
-        public static string IDName = "Idun Owl";
-        public static string imgName = "Hootini";
+        public static string IDName = "BarredOwl";
+        public static string imgName = "SpectacledOwl";
         public static void Make()
         {
 
@@ -21,6 +23,7 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
+                Description = "Relocate: Daze Floor.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
@@ -39,28 +42,29 @@ namespace DiscipleClan.Cards.Units
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
 
-                Size = 1,
-                Health = 5,
-                AttackDamage = 1,
+                Size = 2,
+                Health = 20,
+                AttackDamage = 12,
 
+                // Relocate
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
-                    new CharacterTriggerDataBuilder
-                    {
-                        Trigger = CharacterTriggerData.Trigger.OnAttacking,
+                    new CharacterTriggerDataBuilder {
+                        Trigger = CharacterTriggerData.Trigger.PostAscension,
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectAddStatusEffect",
-                                TargetMode = TargetMode.LastAttackedCharacter,
-                            },
+                                TargetMode = TargetMode.Room,
+                                TargetTeamType = Team.Type.Heroes,
+                            }
                         }
-                    }
+                    },
                 }
             };
 
-            characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect("chronolock", 1);
+            characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Dazed), 1);
 
             Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();

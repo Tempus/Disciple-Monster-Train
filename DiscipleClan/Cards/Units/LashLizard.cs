@@ -7,24 +7,25 @@ using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
+// TODO Relocate Trigger
+
 namespace DiscipleClan.Cards.Units
 {
     class LashLizard
     {
         public static string IDName = "Lash Lizard";
+        public static string imgName = "SadNewt";
         public static void Make()
         {
-
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "Relocate: Gain Sweep. Resolve: Lose Sweep.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "Tima.png");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -37,49 +38,47 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 2,
                 Health = 10,
-                AttackDamage = 5
+                AttackDamage = 5,
+
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    // Relocate
+                    new CharacterTriggerDataBuilder {
+                        Trigger = CharacterTriggerData.Trigger.PostAscension,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectAddStatusEffect",
+                                TargetMode = TargetMode.Self
+                            }
+                        }
+                    },
+
+                    // Lose Sweep
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectRemoveStatusEffect",
+                                TargetMode = TargetMode.Self
+                            }
+                        }
+                    }
+                }
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
-            // This is relocate, basically! But I think it will only work for this character
-            var ascendTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.PostAscension};
-            var descendTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.PostDescension};
+            characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Sweep), 1);
+            characterDataBuilder.TriggerBuilders[1].EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Sweep), 1);
 
-            var effectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectAddStatusEffect",
-                TargetMode = TargetMode.Self
-            };
-            effectBuilder.AddStatusEffect(typeof(MTStatusEffect_Sweep), 1);
-            ascendTrigger.Effects.Add(effectBuilder.Build());
-            descendTrigger.Effects.Add(effectBuilder.Build());
-
-            // Resolve
-            var resolveTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.PostCombat};
-            var resolveBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectRemoveStatusEffect",
-                TargetMode = TargetMode.Self
-            };
-            resolveBuilder.AddStatusEffect(typeof(MTStatusEffect_Sweep), 1);
-            resolveTrigger.Effects.Add(resolveBuilder.Build());
-
-
-            characterDataBuilder.Triggers.Add(resolveTrigger.Build());
-            characterDataBuilder.Triggers.Add(ascendTrigger.Build());
-            characterDataBuilder.Triggers.Add(descendTrigger.Build());
-
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

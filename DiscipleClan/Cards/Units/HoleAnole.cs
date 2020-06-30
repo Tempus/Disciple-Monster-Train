@@ -11,19 +11,18 @@ namespace DiscipleClan.Cards.Units
     class HoleAnole
     {
         public static string IDName = "Hole Anole";
+        public static string imgName = "Muncher";
         public static void Make()
         {
-
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 2,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "Strike: Descend Target.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "Puffling.png");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -36,31 +35,31 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 2,
                 Health = 15,
-                AttackDamage = 5
+                AttackDamage = 5,
+
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.OnAttacking,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectBump",
+                                ParamInt = -1,
+                                TargetMode = TargetMode.LastAttackedCharacter
+                            }
+                        }
+                    }
+                }
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
-            // Drop down a floor on hit
-            var strikeTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.OnAttacking};
-            var resolveBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectBump",
-                ParamInt = -1,
-                TargetMode = TargetMode.LastAttackedCharacter
-            };
-            strikeTrigger.Effects.Add(resolveBuilder.Build());
-
-            characterDataBuilder.Triggers.Add(strikeTrigger.Build());
-
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

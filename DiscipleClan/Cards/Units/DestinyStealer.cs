@@ -13,6 +13,7 @@ namespace DiscipleClan.Cards.Units
     class DestinyStealer
     {
         public static string IDName = "Destiny Stealer";
+        public static string imgName = "Clocktopus";
         public static void Make()
         {
 
@@ -21,11 +22,10 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 2,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "(TODO)Strike: Deal x2?! damage if the target hasn't attacked yet.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "people-lazy-fit-tough.png");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -38,17 +38,12 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 2,
                 Health = 20,
                 AttackDamage = 25
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
             // Drop down a floor on hit
             var strikeTrigger = new CharacterTriggerDataBuilder {
@@ -56,6 +51,7 @@ namespace DiscipleClan.Cards.Units
 
             characterDataBuilder.Triggers.Add(strikeTrigger.Build());
 
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

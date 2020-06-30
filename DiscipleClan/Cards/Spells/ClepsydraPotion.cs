@@ -25,18 +25,6 @@ namespace DiscipleClan.Cards.Spells
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     },
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
-                    },
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
-                    }
                 },
 
                 TraitBuilders = new List<CardTraitDataBuilder>
@@ -48,10 +36,7 @@ namespace DiscipleClan.Cards.Spells
                 }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Dazed), 2);
-            railyard.EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Rooted), 2);
-            railyard.EffectBuilders[2].AddStatusEffect(typeof(MTStatusEffect_Stealth), 2);
-
+            railyard.EffectBuilders[0].AddStatusEffect("chronolock", 2);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "sigmaligma.png");

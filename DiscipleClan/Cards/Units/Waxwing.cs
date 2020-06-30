@@ -6,13 +6,14 @@ using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 
-// TODO - Icarian, Pyre attacks whole tower (we can fake it though), and Pyrebound (couldn't find it)
+// TODO - Icarian, Pyre attacks whole tower (we can fake it though)
 
 namespace DiscipleClan.Cards.Units
 {
     class Waxwing
     {
         public static string IDName = "Waxwing";
+        public static string imgName = "FountainPenguin";
         public static void Make()
         {
 
@@ -21,11 +22,10 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Rare,
-                Description = "(TODO)Icarian: (TODO)Pyre attacks every floor.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "15924082478465092503139501393540.jpg");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -38,30 +38,31 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 1,
                 Health = 5,
                 AttackDamage = 10,
-                AssetPath = "Disciple/chrono/Unit Assets/flyingRat.gif",
+
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectBump",
+                                ParamInt = 1,
+                                TargetMode = TargetMode.Self
+                            },
+                        }
+                    }
+                }
             };
 
-            // Resolve
-            var resolveTrigger = new CharacterTriggerDataBuilder
-            {
-                Trigger = CharacterTriggerData.Trigger.PostCombat
-            };
-            
-            var icarianBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectBump",
-                ParamInt = 1,
-                TargetMode = TargetMode.Self
-            };
-            resolveTrigger.Effects.Add(icarianBuilder.Build());
-
-            characterDataBuilder.Triggers.Add(resolveTrigger.Build());
-
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

@@ -13,6 +13,7 @@ namespace DiscipleClan.Cards.Units
     class AncientSavant
     {
         public static string IDName = "Ancient Savant";
+        public static string imgName = "KnittedSnail";
 
         public static void Make()
         {
@@ -24,7 +25,7 @@ namespace DiscipleClan.Cards.Units
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "IMG_20190731_020156.png");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -37,16 +38,16 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 3,
                 Health = 50,
                 AttackDamage = 0,
-                AssetPath = "Disciple/chrono/Unit Assets/IMG_20190731_020156.png",
             };
 
             characterDataBuilder.AddStartingStatusEffect(typeof(MTStatusEffect_Immobile), 1);
 
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

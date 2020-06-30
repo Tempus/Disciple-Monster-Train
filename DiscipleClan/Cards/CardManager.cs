@@ -27,13 +27,48 @@ namespace DiscipleClan.Cards
         }
     }
 
+    //[HarmonyPatch(typeof(CardState), "Setup")]
+    //class DebugCrashCards
+    //{
+    //    // Creates and registers card data for each card class
+    //    static void Prefix(CardState __instance, CardData setCardData)
+    //    {
+    //        API.Log(BepInEx.Logging.LogLevel.All, "Processing Card: " + setCardData.GetID() + " - " + setCardData.GetNameKey());
+    //    }
+    //}
+
+    //[HarmonyPatch(typeof(CardState), "SetupEffects")]
+    //class DebugCrashCards
+    //{
+    //    // Creates and registers card data for each card class
+    //    static void Prefix(CardState __instance, CardData cardData, SaveManager saveManager)
+    //    {
+    //        API.Log(BepInEx.Logging.LogLevel.All, "Processing Card Effect from: " + __instance.GetID() + " - " + __instance.GetAssetName());
+    //    }
+    //}
+
     [HarmonyPatch(typeof(SaveManager), "SetupRun")]
     class AddToStartingDeck
     {
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Scry.IDName));
+            // Units
+            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Units"));
+            foreach (var cardType in types) {
+                var field = cardType.GetField("IDName");
+                __instance.AddCardToDeck(CustomCardManager.GetCardDataByID((string)field.GetValue(null)));
+            }
+
+            // Spells
+            types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Spells") && !t.Name.Contains("<>"));
+            foreach (var cardType in types)
+            {
+                var field = cardType.GetField("IDName");
+                __instance.AddCardToDeck(CustomCardManager.GetCardDataByID((string)field.GetValue(null)));
+            }
+
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Scry.IDName));
 
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("[S] Ascend"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("[S] Descend"));
@@ -70,7 +105,7 @@ namespace DiscipleClan.Cards
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Jelly Scholar"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Lakshimi Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Lash Lizard"));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(MinervaOwl.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(MinervaOwl.IDName));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Ragana Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Sampati Owl"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Sklink"));

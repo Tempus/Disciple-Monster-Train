@@ -12,6 +12,7 @@ namespace DiscipleClan.Cards.Units
     class HermesOwl
     {
         public static string IDName = "Hermes Owl";
+        public static string imgName = "ElfOwl";
         public static void Make()
         {
 
@@ -23,7 +24,7 @@ namespace DiscipleClan.Cards.Units
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "Puffling.png");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -36,19 +37,15 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 1,
                 Health = 5,
                 AttackDamage = 20
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
             characterDataBuilder.AddStartingStatusEffect(typeof(MTStatusEffect_Quick), 1);
 
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

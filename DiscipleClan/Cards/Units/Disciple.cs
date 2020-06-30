@@ -10,6 +10,7 @@ namespace DiscipleClan.Cards.Units
     class Disciple
     {
         public static string IDName = "Disciple";
+        public static string imgName = "Disciple";
         public static void Make()
         {
             // Basic Card Stats 
@@ -20,7 +21,7 @@ namespace DiscipleClan.Cards.Units
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "Disciple.png");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -33,15 +34,16 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName + "_Name",
+                NameKey = IDName + "_Name" + "_Name",
 
                 Size = 2,
                 Health = 10,
                 AttackDamage = 5,
-                AssetPath = "Disciple/chrono/Unit Assets/Disciple.png",
+                
                 SubtypeKeys = new List<string> { "SubtypesData_Champion_83f21cbe-9d9b-4566-a2c3-ca559ab8ff34" },
             };
 
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

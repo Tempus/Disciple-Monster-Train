@@ -13,7 +13,7 @@ namespace DiscipleClan.Cards.Spells
 {
     class Ascend
     {
-        public static string IDName = "[S] Ascend";
+        public static string IDName = "Ascend";
 
         public static void Make()
         {

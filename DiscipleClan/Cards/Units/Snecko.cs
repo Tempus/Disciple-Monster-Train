@@ -11,6 +11,7 @@ namespace DiscipleClan.Cards.Units
     class Snecko
     {
         public static string IDName = "Snecko";
+        public static string imgName = "Bullfrog";
         public static void Make()
         {
 
@@ -19,11 +20,10 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 3,
                 Rarity = CollectableRarity.Uncommon,
-                Description = "Shifter",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "15924082478465092503139501393540.jpg");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -36,7 +36,7 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 3,
                 Health = 30,
@@ -59,12 +59,8 @@ namespace DiscipleClan.Cards.Units
                     },
                 }
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

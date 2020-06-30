@@ -29,7 +29,7 @@ namespace DiscipleClan.Cards.Spells
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectAddTempUpgradeToUnits",
+                        EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                         ParamCardUpgradeData = new CardUpgradeDataBuilder
@@ -46,7 +46,7 @@ namespace DiscipleClan.Cards.Spells
                 {
                     new CardTraitDataBuilder
                     {
-                         TraitStateName = typeof(CardTraitMultiplyCharacterUpgrade).AssemblyQualifiedName,
+                         TraitStateName = "CardTraitMultiplyCharacterUpgrade",
                          ParamUseScalingParams = true,
                          ParamInt = 1,
                     },

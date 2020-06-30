@@ -50,7 +50,7 @@ namespace DiscipleClan.Cards.Spells
                 {
                     new CardTraitDataBuilder
                     {
-                         TraitStateName = "CardTraitMagnetic",
+                         TraitStateName = "CardTraitMagneticState",
                     },
                 },
             };

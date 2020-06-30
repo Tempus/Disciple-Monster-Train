@@ -7,11 +7,14 @@ using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
+// TODO: Relocate Trigger (one spawn point change)
+
 namespace DiscipleClan.Cards.Units
 {
     class ChainDragon
     {
         public static string IDName = "Chain Dragon";
+        public static string imgName = "Axolotl";
         public static void Make()
         {
 
@@ -20,11 +23,10 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 3,
                 Rarity = CollectableRarity.Rare,
-                Description = "Relocate: Enhance with Multistrike 1.",
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "IMG_20190731_020156.png");
+            Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -37,37 +39,32 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 3,
                 Health = 15,
-                AttackDamage = 2
+                AttackDamage = 2,
+
+                // Relocate
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder {
+                        Trigger = CharacterTriggerData.Trigger.PostAscension,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectAddStatusEffect",
+                                TargetMode = TargetMode.Self
+                            }
+                        }
+                    },
+                }
             };
-            // Unit art asset, complex stuff!
-            characterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(
-                "Assets/GameData/CharacterArt/Character_Prefabs/Character_TrainSteward.prefab",
-                "8a96184904fce5745ab5139b620b4d31"
-            );
 
-            // This is relocate, basically! But I think it will only work for this character
-            var ascendTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.PostAscension};
-            var descendTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.PostDescension};
+            characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Multistrike), 1);
 
-            var effectBuilder = new CardEffectDataBuilder
-            {
-                EffectStateName = "CardEffectAddStatusEffect",
-                TargetMode = TargetMode.Self
-            };
-            effectBuilder.AddStatusEffect(typeof(MTStatusEffect_Multistrike), 1);
-
-            ascendTrigger.Effects.Add(effectBuilder.Build());
-            descendTrigger.Effects.Add(effectBuilder.Build());
-
-            characterDataBuilder.Triggers.Add(ascendTrigger.Build());
-            characterDataBuilder.Triggers.Add(descendTrigger.Build());
-
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }
