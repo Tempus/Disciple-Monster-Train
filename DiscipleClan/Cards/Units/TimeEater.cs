@@ -7,7 +7,6 @@ using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - unclear if this triggers in time, also Empowered isn't a thing yet (no way to check current energy here)
-// Also, Slow is not implemented.
 
 namespace DiscipleClan.Cards.Units
 {
@@ -45,6 +44,8 @@ namespace DiscipleClan.Cards.Units
                 Health = 20,
                 AttackDamage = 13
             };
+
+            characterDataBuilder.AddStartingStatusEffect("slow", 1);
 
             Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();

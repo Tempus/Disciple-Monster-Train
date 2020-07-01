@@ -6,7 +6,7 @@ using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 
-// TODO - Slow is not implemented. Unclear if my slow will target everyone or only the other team (it should target everyone)
+// TODO - The timing of this effect is not going to be correct right now I think. Maybe this needs to be a roomModifier
 
 namespace DiscipleClan.Cards.Units
 {
@@ -61,8 +61,8 @@ namespace DiscipleClan.Cards.Units
                 }
             };
 
-            // characterDataBuilder.AddStartingStatusEffect(MTStatusEffect.Slow, 1);
-            // characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect.Slow, 1);
+            characterDataBuilder.AddStartingStatusEffect("slow", 1);
+            characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect("slow", 1);
 
             Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
