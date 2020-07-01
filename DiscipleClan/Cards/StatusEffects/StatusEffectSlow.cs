@@ -20,7 +20,7 @@ namespace DiscipleClan.Cards.StatusEffects
         {
             new StatusEffectDataBuilder
             {
-                statusEffectStateName = typeof(StatusEffectChronolock).AssemblyQualifiedName,
+                statusEffectStateName = typeof(StatusEffectSlow).AssemblyQualifiedName,
                 statusId = "slow",
                 displayCategory = StatusEffectData.DisplayCategory.Negative,
                 removeStackAtEndOfTurn = false,
