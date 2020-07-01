@@ -5,6 +5,7 @@ using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
+using DiscipleClan.Cards.CardEffects;
 
 // TODO - OnUnplayed doesn't seem to trigger on Permafrosted cards.
 
@@ -26,7 +27,7 @@ namespace DiscipleClan.Cards.Units
                 {
                     new CardTraitDataBuilder
                     {
-                        TraitStateName = "CardTraitRetain"
+                        TraitStateName = "CardTraitFreeze"
                     }
                 },
 
@@ -39,16 +40,13 @@ namespace DiscipleClan.Cards.Units
                         {
                             new CardEffectDataBuilder
                             {
-                                EffectStateName = "CardEffectBuffDamage",
-                                ParamInt = 5,
+                                EffectStateName = typeof(CardEffectAddTempUpgrade).AssemblyQualifiedName,
+                                ParamCardUpgradeData = new CardUpgradeDataBuilder {
+                                    bonusDamage = 5,
+                                    bonusHP = 5,
+                                }.Build(),
                                 TargetMode = TargetMode.Self
                             },
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectBuffMaxHealth",
-                                ParamInt = 5,
-                                TargetMode = TargetMode.Self
-                            }
                         }
                     }
                 }

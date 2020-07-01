@@ -42,6 +42,7 @@ namespace DiscipleClan.Cards.Spells
                     {
                         EffectStateName = "CardEffectDamage",
                         TargetMode = TargetMode.Pyre,
+                        TargetIgnorePyre = false,
                         ParamInt = 10,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     },
@@ -54,8 +55,6 @@ namespace DiscipleClan.Cards.Spells
                     },
                 },
             };
-
-            railyard.EffectBuilders[0].AddStatusEffect("pyreboost", 1);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "sigmaligma.png");

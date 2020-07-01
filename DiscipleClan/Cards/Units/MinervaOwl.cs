@@ -7,7 +7,6 @@ using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
-// TODO Pyreboost not implemented
 
 namespace DiscipleClan.Cards.Units
 {

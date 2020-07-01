@@ -60,10 +60,10 @@ namespace DiscipleClan
 
                 Icons = new List<Sprite>
                 {
-                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"), // Clan Choice Icon
-                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_silhouette.png"), // Also compendium...? 56x56
-                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_92.png"), // Large Coloured Icon
-                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_silhouette.png"), // Compendium Silhouette 56x56
+                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/ClanLogo_92.png"), // Clan Choice Icon
+                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/ClanLogo_silhouette.png"), // Also compendium...? 56x56
+                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/ClanLogo_92.png"), // Large Coloured Icon
+                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/ClanLogo_silhouette.png"), // Compendium Silhouette 56x56
                 },
 
                 CardFrameUnit = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/unit-cardframe-disciple.png"),

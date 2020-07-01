@@ -35,6 +35,7 @@ namespace DiscipleClan.Cards.Spells
                     {
                         EffectStateName = "CardEffectDamage",
                         TargetMode = TargetMode.Pyre,
+                        TargetIgnorePyre = false,
                         ParamInt = 10,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     },

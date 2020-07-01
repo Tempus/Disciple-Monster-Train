@@ -6,8 +6,7 @@ using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-
-// TODO: New Trigger for Relocate (On Spawn Point Changed)
+using DiscipleClan.Cards.Triggers;
 
 namespace DiscipleClan.Cards.Units
 {
@@ -50,7 +49,7 @@ namespace DiscipleClan.Cards.Units
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder {
-                        Trigger = CharacterTriggerData.Trigger.PostAscension,
+                        Trigger = CustomTriggerManager.GetTrigger(typeof(MTCharacterTrigger_Relocate)),
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

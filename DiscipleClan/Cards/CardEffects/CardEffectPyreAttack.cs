@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MonsterTrainModdingAPI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -8,27 +9,27 @@ namespace DiscipleClan.Cards.CardEffects
 {
     class CardEffectPyreAttack : CardEffectBase
     {
+        PyreRoomState pyreroom;
+
         public override bool TestEffect(
           CardEffectState cardEffectState,
           CardEffectParams cardEffectParams)
         {
-            var pyreroom = GameObject.FindObjectOfType<PyreRoomState>() as PyreRoomState;
-            int pyreAttack = 0;
-            pyreroom.TryGetPyreAttack(out pyreAttack);
-
-            int intInRange = pyreAttack;
-            bool flag1 = pyreAttack > 0;
+            int intInRange = GetDamageAmount();
+            bool flag1 = GetDamageAmount() > 0;
             bool flag2 = true;
             if (cardEffectState.GetTargetMode() == TargetMode.DropTargetCharacter)
                 flag2 = cardEffectParams.targets.Count > 0;
             return intInRange >= 0 & flag2 & flag1;
         }
 
-        private int GetDamageAmount(CardEffectState cardEffectState, CharacterState selfTarget)
+        private int GetDamageAmount()
         {
-            var pyreroom = GameObject.FindObjectOfType<PyreRoomState>() as PyreRoomState;
+            if (pyreroom == null)
+                pyreroom = GameObject.FindObjectOfType<PyreRoomState>() as PyreRoomState;
             int pyreAttack = 0;
             pyreroom.TryGetPyreAttack(out pyreAttack);
+
             return pyreAttack;
         }
 
@@ -36,7 +37,7 @@ namespace DiscipleClan.Cards.CardEffects
           CardEffectState cardEffectState,
           CardEffectParams cardEffectParams)
         {
-            int damageAmount = this.GetDamageAmount(cardEffectState, cardEffectParams.selfTarget);
+            int damageAmount = this.GetDamageAmount();
             if (cardEffectState.GetTargetMode() == TargetMode.Room)
                 cardEffectParams.combatManager.IgnoreDuplicateSounds(true, true);
             for (int i = 0; i < cardEffectParams.targets.Count; ++i)
@@ -61,7 +62,7 @@ namespace DiscipleClan.Cards.CardEffects
           CardEffectState cardEffectState,
           out int resultantDamage)
         {
-            int damageAmount = this.GetDamageAmount(cardEffectState, (CharacterState)null);
+            int damageAmount = GetDamageAmount();
             resultantDamage = target.GetDamageToTarget(damageAmount, (CharacterState)null, card, out int _, Damage.Type.Default);
             return resultantDamage >= target.GetHP();
         }
@@ -70,8 +71,8 @@ namespace DiscipleClan.Cards.CardEffects
         {
             return "CardTraitScalingAddDamage_CurrentScaling_CardText".Localize((ILocalizationParameterContext)new LocalizedIntegers(new int[1]
             {
-      this.GetDamageAmount(cardEffectState, selfTarget)
-            }));
+                GetDamageAmount()
+            })); ;
         }
     }
 }

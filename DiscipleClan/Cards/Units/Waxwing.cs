@@ -44,23 +44,24 @@ namespace DiscipleClan.Cards.Units
                 Health = 5,
                 AttackDamage = 10,
 
-                TriggerBuilders = new List<CharacterTriggerDataBuilder>
-                {
-                    new CharacterTriggerDataBuilder
-                    {
-                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
-                        EffectBuilders = new List<CardEffectDataBuilder>
-                        {
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectBump",
-                                ParamInt = 1,
-                                TargetMode = TargetMode.Self
-                            },
-                        }
-                    }
-                }
+                //TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                //{
+                //    new CharacterTriggerDataBuilder
+                //    {
+                //        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                //        EffectBuilders = new List<CardEffectDataBuilder>
+                //        {
+                //            new CardEffectDataBuilder
+                //            {
+                //                EffectStateName = "CardEffectBump",
+                //                ParamInt = 1,
+                //                TargetMode = TargetMode.Self
+                //            },
+                //        }
+                //    }
+                //}
             };
+            characterDataBuilder.AddStartingStatusEffect("icarian", 1);
 
             Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();

@@ -53,6 +53,9 @@ namespace DiscipleClan
             // Dunno why the above doesn't work
             StatusEffectPyreboost.Make();
             StatusEffectChronolock.Make();
+            StatusEffectLoaded.Make();
+            StatusEffectSlow.Make();
+            StatusEffectIcarian.Make();
         }
 
         static void MakeCards()

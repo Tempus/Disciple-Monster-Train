@@ -10,7 +10,7 @@ namespace DiscipleClan.Cards.CardEffects
         {
             deckScreen.AddDeckScreenCardStateChosenDelegate((DeckScreen.CardStateChosenDelegate)(chosenCardState =>
             {
-                chosenCardState.AddTemporaryTrait(new CardTraitDataBuilder { TraitStateName = "CardTraitFreebie" }.Build(), cardEffectParams.cardManager);
+                chosenCardState.AddTemporaryTrait(new CardTraitDataBuilder { TraitStateName = "CardTraitFreebie", ParamInt = -99 }.Build(), cardEffectParams.cardManager);
                 cardEffectParams.screenManager.SetScreenActive(ScreenName.Deck, false, (ScreenManager.ScreenActiveCallback)null);
             }));
         }

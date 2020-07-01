@@ -55,7 +55,7 @@ namespace DiscipleClan.Cards.Units
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectFloorRearrange",
-                                ParamInt = -99,
+                                ParamInt = 1,
                                 TargetMode = TargetMode.Self
                             },
                             new CardEffectDataBuilder
@@ -75,7 +75,7 @@ namespace DiscipleClan.Cards.Units
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectFloorRearrange",
-                                ParamInt = 1,
+                                ParamInt = -1,
                                 TargetMode = TargetMode.Self
                             },
                         }

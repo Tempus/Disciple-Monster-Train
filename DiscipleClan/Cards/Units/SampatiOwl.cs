@@ -63,16 +63,11 @@ namespace DiscipleClan.Cards.Units
                                 ParamInt = 3,
                                 TargetMode = TargetMode.Self
                             },
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectBump",
-                                ParamInt = 1,
-                                TargetMode = TargetMode.Self
-                            },
                         }
                     }
                 }
             };
+            characterDataBuilder.AddStartingStatusEffect("icarian", 1);
 
             Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();

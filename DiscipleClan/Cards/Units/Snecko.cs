@@ -52,7 +52,7 @@ namespace DiscipleClan.Cards.Units
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = typeof(ShinyShoe.CardEffectTeleport).AssemblyQualifiedName,
-                                TargetMode = TargetMode.DropTargetCharacter,
+                                TargetMode = TargetMode.Self,
                                 TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                             }
                         }

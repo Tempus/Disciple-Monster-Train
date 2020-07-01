@@ -32,7 +32,7 @@ namespace DiscipleClan.Cards.Units
             };
 
             Utils.AddWard(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, "IMG_20190731_020156.png");
+            Utils.AddImg(railyard, "Webcam.png");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -45,12 +45,11 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                Name = IDName,
+                NameKey = IDName + "_Name",
 
                 Size = 0,
                 Health = 1,
                 AttackDamage = 0,
-                AssetPath = "Disciple/chrono/Unit Assets/IMG_20190731_020156.png",
                 RoomModifierBuilders = new List<RoomModifierDataBuilder>
                 {
                     new RoomModifierDataBuilder
@@ -60,6 +59,7 @@ namespace DiscipleClan.Cards.Units
                 }
             };
 
+            Utils.AddUnitImg(characterDataBuilder, IDName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

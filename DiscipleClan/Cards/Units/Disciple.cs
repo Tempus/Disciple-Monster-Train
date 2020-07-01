@@ -34,7 +34,7 @@ namespace DiscipleClan.Cards.Units
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
             {
                 CharacterID = IDName,
-                NameKey = IDName + "_Name" + "_Name",
+                NameKey = IDName + "_Name",
 
                 Size = 2,
                 Health = 10,

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MonsterTrainModdingAPI;
+using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.CardEffects
 {
@@ -13,15 +14,20 @@ namespace DiscipleClan.Cards.CardEffects
 				cardEffectParams.cardManager.MoveToStandByPile(chosenCardState, wasPlayed: false, wasExhausted: true, new RemoveFromStandByCondition(() => CardPile.ExhaustedPile), new CardManager.DiscardCardParams(), HandUI.DiscardEffect.Exhausted);
 
                 var allTargets = new List<CharacterState>();
-                cardEffectParams.monsterManager.AddCharactersInRoomToList(allTargets, cardEffectParams.GetSelectedRoom().GetRoomIndex());
+                cardEffectParams.heroManager.AddCharactersInRoomToList(allTargets, cardEffectParams.GetSelectedRoom().GetRoomIndex());
 
-                for (int i = 0; i < chosenCardState.GetCostWithoutAnyModifications(); i++)
+                API.Log(BepInEx.Logging.LogLevel.All, "Belomancy target count: " + allTargets.Count);
+
+                if (allTargets.Count > 0)
                 {
-                    cardEffectParams.combatManager.ApplyDamageToTarget(5, allTargets[0], new CombatManager.ApplyDamageToTargetParameters
+                    for (int i = 0; i < chosenCardState.GetCostWithoutAnyModifications(); i++)
                     {
-                        damageType = Damage.Type.TowerHeart,
-                        playedCard = cardEffectParams.playedCard,
-                    });
+                        cardEffectParams.combatManager.ApplyDamageToTarget(5, allTargets[0], new CombatManager.ApplyDamageToTargetParameters
+                        {
+                            damageType = Damage.Type.TowerHeart,
+                            playedCard = cardEffectParams.playedCard,
+                        });
+                    }
                 }
                 cardEffectParams.screenManager.SetScreenActive(ScreenName.Deck, false, (ScreenManager.ScreenActiveCallback)null);
             }));

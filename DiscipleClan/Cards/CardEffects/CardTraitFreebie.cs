@@ -8,7 +8,7 @@ namespace DiscipleClan.Cards.CardEffects
     {
         public override int GetModifiedCost(int cost, CardState thisCard, CardStatistics cardStats, MonsterManager monsterManager)
         {
-            return -99;
+             return GetParamInt();
         }
     }
 }

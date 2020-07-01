@@ -6,8 +6,7 @@ using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-
-// TODO Relocate Trigger
+using DiscipleClan.Cards.Triggers;
 
 namespace DiscipleClan.Cards.Units
 {
@@ -48,7 +47,7 @@ namespace DiscipleClan.Cards.Units
                 {
                     // Relocate
                     new CharacterTriggerDataBuilder {
-                        Trigger = CharacterTriggerData.Trigger.PostAscension,
+                        Trigger = CustomTriggerManager.GetTrigger(typeof(MTCharacterTrigger_Relocate)),
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

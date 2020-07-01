@@ -5,8 +5,9 @@ using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
+using DiscipleClan.Cards.CardEffects;
 
-// TODO - look into CardTraitRetain and CardTraitFreeze, no builder for CardTriggerEffectData, couldn't find Pyrebound, Chronolock unimplemented (but can be faked)
+// TODO - look into CardTraitRetain and CardTraitFreeze, no builder for CardTriggerEffectData
 
 namespace DiscipleClan.Cards.Units
 {
@@ -27,11 +28,7 @@ namespace DiscipleClan.Cards.Units
                 {
                     new CardTraitDataBuilder
                     {
-                        TraitStateName = "CardTraitPermafrost"
-                    },
-                    new CardTraitDataBuilder
-                    {
-                        TraitStateName = "CardTraitLimitedRange"
+                        TraitStateName = "CardTraitFrozen"
                     }
                 },
 
@@ -44,8 +41,10 @@ namespace DiscipleClan.Cards.Units
                         {
                             new CardEffectDataBuilder
                             {
-                                EffectStateName = "CardEffectAdjustEnergy",
-                                ParamInt = -1,
+                                EffectStateName = typeof(CardEffectAddTempUpgrade).AssemblyQualifiedName,
+                                ParamCardUpgradeData = new CardUpgradeDataBuilder { 
+                                    costReduction = 1,
+                                }.Build(),
                             }
                         }
                     }

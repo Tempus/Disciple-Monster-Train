@@ -37,13 +37,13 @@ namespace DiscipleClan.Cards
     //    }
     //}
 
-    //[HarmonyPatch(typeof(CardState), "SetupEffects")]
+    //[HarmonyPatch(typeof(CardState), "SetupBodyStatusEffectsText")]
     //class DebugCrashCards
     //{
     //    // Creates and registers card data for each card class
-    //    static void Prefix(CardState __instance, CardData cardData, SaveManager saveManager)
+    //    static void Prefix(CardState __instance)
     //    {
-    //        API.Log(BepInEx.Logging.LogLevel.All, "Processing Card Effect from: " + __instance.GetID() + " - " + __instance.GetAssetName());
+    //        API.Log(BepInEx.Logging.LogLevel.All, "Processing Card Status from: " + __instance.GetID() + " - " + __instance.GetAssetName());
     //    }
     //}
 
@@ -61,12 +61,12 @@ namespace DiscipleClan.Cards
             }
 
             // Spells
-            types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Spells") && !t.Name.Contains("<>"));
-            foreach (var cardType in types)
-            {
-                var field = cardType.GetField("IDName");
-                __instance.AddCardToDeck(CustomCardManager.GetCardDataByID((string)field.GetValue(null)));
-            }
+            //types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Spells") && !t.Name.Contains("<>"));
+            //foreach (var cardType in types)
+            //{
+            //    var field = cardType.GetField("IDName");
+            //    __instance.AddCardToDeck(CustomCardManager.GetCardDataByID((string)field.GetValue(null)));
+            //}
 
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Scry.IDName));
 

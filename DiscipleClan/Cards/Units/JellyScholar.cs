@@ -6,7 +6,6 @@ using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 
-// TODO - There's no way to increase size every turn, besides applying a temp upgrade. Do that?
 
 namespace DiscipleClan.Cards.Units
 {
