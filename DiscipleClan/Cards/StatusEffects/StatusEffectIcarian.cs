@@ -21,17 +21,7 @@ namespace DiscipleClan.Cards.StatusEffects
 
         public override bool TestTrigger(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
         {
-            // This makes them unable to move
-            outputTriggerParams.movementSpeed = 0;
-
-            // This should make them unable to attack. Need to check about the TriggerStage to confirm it's firing at the right time.
-            if (inputTriggerParams.canAttackOrHeal || inputTriggerParams.canFireTriggers)
-            {
-                outputTriggerParams.canAttackOrHeal = false;
-                outputTriggerParams.canFireTriggers = false;
-                return true;
-            }
-            return false;
+            // At end of turn, ascend and if we try to ascend into the Pyre then we kaboom and do something.
         }
 
         public static void Make()
@@ -40,9 +30,8 @@ namespace DiscipleClan.Cards.StatusEffects
             {
                 statusEffectStateName = typeof(StatusEffectIcarian).AssemblyQualifiedName,
                 statusId = "icarian",
-                displayCategory = StatusEffectData.DisplayCategory.Negative,
+                displayCategory = StatusEffectData.DisplayCategory.Neutral,
                 triggerStage = StatusEffectData.TriggerStage.OnPreMovement,
-                removeStackAtEndOfTurn = true,
                 icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
             }.Build();
         }
