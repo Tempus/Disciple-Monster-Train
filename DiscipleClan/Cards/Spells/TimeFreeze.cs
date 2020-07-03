@@ -31,7 +31,6 @@ namespace DiscipleClan.Cards.Spells
                     new CardEffectDataBuilder
                     {
                         EffectStateName = typeof(CardEffectFreezeAllCards).AssemblyQualifiedName,
-                        TargetMode = TargetMode.Self,
                     }
                 },
                 TraitBuilders = new List<CardTraitDataBuilder>

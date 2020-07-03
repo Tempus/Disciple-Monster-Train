@@ -29,6 +29,7 @@ namespace DiscipleClan.Cards.CardEffects
                 pyreroom = GameObject.FindObjectOfType<PyreRoomState>() as PyreRoomState;
             int pyreAttack = 0;
             pyreroom.TryGetPyreAttack(out pyreAttack);
+            
 
             return pyreAttack;
         }
@@ -69,10 +70,7 @@ namespace DiscipleClan.Cards.CardEffects
 
         public override string GetHintText(CardEffectState cardEffectState, CharacterState selfTarget)
         {
-            return "CardTraitScalingAddDamage_CurrentScaling_CardText".Localize((ILocalizationParameterContext)new LocalizedIntegers(new int[1]
-            {
-                GetDamageAmount()
-            })); ;
+            return "CardTraitScalingAddDamage_CurrentScaling_CardText".Localize(new LocalizedIntegers(GetDamageAmount()));
         }
     }
 }

@@ -46,7 +46,7 @@ namespace DiscipleClan.Cards.Units
                 {
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                        Trigger = CharacterTriggerData.Trigger.PostCombat,
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

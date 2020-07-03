@@ -5,6 +5,7 @@ using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
+using DiscipleClan.Cards.CardEffects;
 
 // TODO - Icarian, Pyre attacks whole tower (we can fake it though)
 
@@ -44,22 +45,22 @@ namespace DiscipleClan.Cards.Units
                 Health = 5,
                 AttackDamage = 10,
 
-                //TriggerBuilders = new List<CharacterTriggerDataBuilder>
-                //{
-                //    new CharacterTriggerDataBuilder
-                //    {
-                //        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
-                //        EffectBuilders = new List<CardEffectDataBuilder>
-                //        {
-                //            new CardEffectDataBuilder
-                //            {
-                //                EffectStateName = "CardEffectBump",
-                //                ParamInt = 1,
-                //                TargetMode = TargetMode.Self
-                //            },
-                //        }
-                //    }
-                //}
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.OnDeath,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = typeof(CardEffectPyreAttack).AssemblyQualifiedName,
+                                TargetMode = TargetMode.Tower,
+                                TargetTeamType = Team.Type.Heroes
+                            },
+                        }
+                    }
+                }
             };
             characterDataBuilder.AddStartingStatusEffect("icarian", 1);
 

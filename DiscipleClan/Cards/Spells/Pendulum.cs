@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using HarmonyLib;
+using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTClans;
@@ -47,6 +48,7 @@ namespace DiscipleClan.Cards.Spells
 
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.GetInterface("IMTStatusEffect", true) != null);
             foreach (Type status in types) {
+                API.Log(BepInEx.Logging.LogLevel.All, "Adding Status to Pendulum: " + status.Name);
                 railyard.EffectBuilders[0].AddStatusEffect(status, 1);
             }
             

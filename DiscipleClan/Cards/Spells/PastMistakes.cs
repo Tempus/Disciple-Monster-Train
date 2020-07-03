@@ -22,10 +22,15 @@ namespace DiscipleClan.Cards.Spells
             {
                 Cost = 0,
                 Rarity = CollectableRarity.Uncommon,
-                TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
+                    new CardEffectDataBuilder
+                    {
+                        EffectStateName = "CardEffectAddStatusEffect",
+                        TargetMode = TargetMode.DropTargetCharacter,
+                        TargetTeamType = Team.Type.Heroes,
+                    },
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectBump",
@@ -33,12 +38,6 @@ namespace DiscipleClan.Cards.Spells
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes,
                     },
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes,
-                    }
                 },
 
                 TraitBuilders = new List<CardTraitDataBuilder>
@@ -50,7 +49,7 @@ namespace DiscipleClan.Cards.Spells
                 }
             };
 
-            railyard.EffectBuilders[1].AddStatusEffect(typeof(MTStatusEffect_Dazed), 2);
+            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Dazed), 2);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "uhoh.png");

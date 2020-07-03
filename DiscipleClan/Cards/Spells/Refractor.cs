@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DiscipleClan.Cards.CardEffects;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
@@ -31,7 +32,7 @@ namespace DiscipleClan.Cards.Spells
                         {
                             new CardEffectDataBuilder
                             {
-                                EffectStateName = "CardEffectHealTrain",
+                                EffectStateName = typeof(CardEffectHealTrainPassive).AssemblyQualifiedName,
                                 ParamInt = 1,
                             }
                         }

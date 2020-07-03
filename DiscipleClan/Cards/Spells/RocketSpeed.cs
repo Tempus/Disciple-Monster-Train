@@ -22,7 +22,7 @@ namespace DiscipleClan.Cards.Spells
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Rare,
-                TargetsRoom = true,
+                Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {

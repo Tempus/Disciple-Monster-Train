@@ -52,8 +52,7 @@ namespace DiscipleClan.Cards.Units
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
-                                TargetMode = TargetMode.DropTargetCharacter,
-                                TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                                TargetMode = TargetMode.Self,
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder
                                 {
                                     bonusDamage = 10,

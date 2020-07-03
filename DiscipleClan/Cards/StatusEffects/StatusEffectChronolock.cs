@@ -31,7 +31,7 @@ namespace DiscipleClan.Cards.StatusEffects
                 outputTriggerParams.canFireTriggers = false;
                 return true;
             }
-            return false;
+            return true;
         }
 
         public static void Make()

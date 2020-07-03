@@ -28,7 +28,7 @@ namespace DiscipleClan.Cards.Units
                 {
                     new CardTraitDataBuilder
                     {
-                        TraitStateName = "CardTraitFrozen"
+                        TraitStateName = "CardTraitFreeze"
                     }
                 },
 
@@ -42,9 +42,10 @@ namespace DiscipleClan.Cards.Units
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = typeof(CardEffectAddTempUpgrade).AssemblyQualifiedName,
-                                ParamCardUpgradeData = new CardUpgradeDataBuilder { 
+                                ParamCardUpgradeData = new CardUpgradeDataBuilder {
                                     costReduction = 1,
                                 }.Build(),
+                                TargetMode = TargetMode.Self,
                             }
                         }
                     }

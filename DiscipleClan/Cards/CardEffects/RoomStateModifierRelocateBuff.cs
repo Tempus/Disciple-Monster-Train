@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using DiscipleClan.Cards.Triggers;
+using HarmonyLib;
 using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
@@ -10,10 +11,11 @@ using UnityEngine;
 
 namespace DiscipleClan.Cards.CardEffects
 {
-    class RoomStateModifierRelocateBuff : RoomStateModifierBase, IRoomStateModifier, IRoomStateSpawnPointsChangedModifier
-    {
+    class RoomStateModifierRelocateBuff : RoomStateModifierBase, IRoomStateModifier, IRoomStateSpawnPointsModifiedModifier
+	{
         public CombatManager combatManager;
-        public int buffAmount;
+		public RoomManager roomManager;
+		public int buffAmount;
         public List<CardState> storedCards = new List<CardState>();
 
         public override void Initialize(RoomModifierData roomModifierData, RoomManager roomManager)
@@ -21,11 +23,27 @@ namespace DiscipleClan.Cards.CardEffects
             base.Initialize(roomModifierData, roomManager);
             this.buffAmount = roomModifierData.GetParamInt();
             this.combatManager = GameObject.FindObjectOfType<CombatManager>().GetComponent<CombatManager>() as CombatManager;
+			this.roomManager = roomManager;
         }
 
-        public void SpawnPointChanged(SpawnPoint prevPoint, SpawnPoint newPoint, CardManager cardManager)
-        {
-			newPoint.GetCharacterState().BuffDamage(buffAmount);
+		public void SpawnPointModifier(CharacterState characterState)
+		{
+			characterState.BuffDamage(buffAmount);
 		}
-    }
+
+		new public string GetDescriptionKey()
+		{
+			return "RoomStateModifierRelocateBuff_Desc";
+		}
+
+		new public string GetExtraTooltipTitleKey()
+		{
+			return "RoomStateModifierRelocateBuff_TooltipTitle";
+		}
+
+		new public string GetExtraTooltipBodyKey()
+		{
+			return "RoomStateModifierRelocateBuff_TooltipBody";
+		}
+	}
 }

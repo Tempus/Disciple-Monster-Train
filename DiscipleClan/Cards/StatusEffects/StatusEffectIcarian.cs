@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
@@ -13,6 +15,7 @@ namespace DiscipleClan.Cards.StatusEffects
     class StatusEffectIcarian : StatusEffectState
     {
         public const string StatusId = "icarian";
+        public bool shouldDie = false;
 
         // This makes them unable to be targetted
         public override bool GetUnitIsTargetable(bool inCombat)
@@ -20,21 +23,24 @@ namespace DiscipleClan.Cards.StatusEffects
             return !inCombat;
         }
 
-        public override bool TestTrigger(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
+        protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
         {
             // At end of turn, ascend and if we try to ascend into the Pyre then we kaboom and do something.
             Ascend(inputTriggerParams.associatedCharacter, inputTriggerParams);
-            return true;
+            if (shouldDie)
+                yield return inputTriggerParams.associatedCharacter.Sacrifice(new CardState());
+            yield break;
         }
 
         public void DoPyreEffects(CharacterState target, MonsterManager monsterManager)
         {
-            monsterManager.RemoveCharacter(target, true, false);
+            API.Log(BepInEx.Logging.LogLevel.All, "Trying to kill myself");
+            shouldDie = true;
         }
 
         public void Ascend(CharacterState target, InputTriggerParams inputTriggerParams)
         {
-            RoomManager roomManager = inputTriggerParams.roomManager;
+            RoomManager roomManager = GameObject.FindObjectOfType<RoomManager>() as RoomManager;
             CombatManager combatManager = inputTriggerParams.combatManager;
             int bumpAmount = 1;
             SpawnPoint oldSpawnPoint = target.GetSpawnPoint(false);
@@ -79,14 +85,8 @@ namespace DiscipleClan.Cards.StatusEffects
           RoomManager roomManager,
           MonsterManager monsterManager)
         {
-            SpawnPoint spawnPoint1;
-            RoomState roomOwner = (spawnPoint1 = target.GetSpawnPoint(false)).GetRoomOwner();
-            if ((UnityEngine.Object)roomOwner == (UnityEngine.Object)null)
-            {
-                // bumpError = CardEffectTeleport.BumpError.NoRoom;
-                return (SpawnPoint)null;
-            }
-            int roomIndex1 = roomOwner.GetRoomIndex();
+            SpawnPoint spawnPoint1 = target.GetSpawnPoint(false);
+            int roomIndex1 = target.GetCurrentRoomIndex();
             int max = roomManager.GetNumRooms() - 1;
             bumpAmount = Mathf.Clamp(bumpAmount, -max, max);
             for (int index = 1; index <= Mathf.Abs(bumpAmount); ++index)

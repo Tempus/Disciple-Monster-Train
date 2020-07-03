@@ -9,6 +9,7 @@ using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Enums.MTTriggers;
 using MonsterTrainModdingAPI.Managers;
+using UnityEngine;
 
 namespace DiscipleClan.Cards.Triggers
 {
@@ -16,14 +17,12 @@ namespace DiscipleClan.Cards.Triggers
 
     // Gotta patch in places to call this trigger from... gonna be OnSpawnPointChange
 
-    [HarmonyPatch(typeof(RoomManager), "OnSpawnPointChanged")]
+    [HarmonyPatch(typeof(CharacterState), "MoveUpDownTrain")]
     class QueueRelocate
     {
-        static void Prefix(RoomManager __instance, CharacterState characterState, SpawnPoint prevPoint, SpawnPoint newPoint)
+        static void Postfix(CharacterState __instance)
         {
-            if (newPoint == null) { return; }
-
-            API.Log(BepInEx.Logging.LogLevel.All, "Moving to floor: " + newPoint.GetRoomOwner().GetRoomIndex());
+            API.Log(BepInEx.Logging.LogLevel.All, "Moving to floor: " + __instance.GetCurrentRoomIndex());
 
             //CustomTriggerManager.QueueAndRunTrigger<MTCharacterTrigger_Relocate>(
             //    characterState,
@@ -34,14 +33,33 @@ namespace DiscipleClan.Cards.Triggers
             //    }, 1);
 
             CustomTriggerManager.QueueTrigger<MTCharacterTrigger_Relocate>(
-                characterState,
+                __instance,
                 true,
                 true,
                 new CharacterState.FireTriggersData
                 {
-                    paramInt = newPoint.GetRoomOwner().GetRoomIndex(), // Destination Room?
+                    paramInt = __instance.GetCurrentRoomIndex(), // Destination Room?
                 }, 
                 1);
+
+            List<CharacterState> chars = new List<CharacterState>();
+            __instance.GetCharacterManager().AddCharactersInRoomToList(chars, __instance.GetCurrentRoomIndex());
+            foreach (var unit in chars)
+            {
+                if (unit == __instance) { continue; }
+                foreach (IRoomStateModifier roomStateModifier in unit.GetRoomStateModifiers())
+                {
+                    IRoomStateSpawnPointsModifiedModifier roomStateSpawnPointsChangedModifier;
+                    if ((roomStateSpawnPointsChangedModifier = (roomStateModifier as IRoomStateSpawnPointsModifiedModifier)) != null)
+                    {
+                        roomStateSpawnPointsChangedModifier.SpawnPointModifier(__instance);
+                    }
+                }
+            }
         }
+    }
+    public interface IRoomStateSpawnPointsModifiedModifier
+    {
+        void SpawnPointModifier(CharacterState characterState);
     }
 }

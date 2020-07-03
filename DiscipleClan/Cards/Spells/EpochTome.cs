@@ -32,6 +32,14 @@ namespace DiscipleClan.Cards.Spells
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     },
                 },
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitExhaustState"
+                    }
+                }
             };
 
             railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Sweep), 1);

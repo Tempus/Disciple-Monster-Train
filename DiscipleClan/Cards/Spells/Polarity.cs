@@ -7,41 +7,32 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
-using DiscipleClan.Cards.CardEffects;
 using ShinyShoe;
 
-namespace DiscipleClan.Cards.Unused
+namespace DiscipleClan.Cards.Spells
 {
-    class Fortunetelling
+    class Polarity
     {
-        public static string IDName = "Fortunetelling";
+        public static string IDName = "Polarity";
 
         public static void Make()
         {
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 1,
-                Rarity = CollectableRarity.Uncommon,
-                Targetless = true,
+                Cost = 0,
+                Rarity = CollectableRarity.Common,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = typeof(CardEffectScryConsumeFortune).AssemblyQualifiedName,
-                        ParamInt = 4,
-                        AdditionalParamInt = 1,
-                        TargetMode = TargetMode.Deck,
+                        EffectStateName = "CardEffectFloorRearrange",
+                        ParamInt = 1,
+                        TargetMode = TargetMode.DropTargetCharacter,
+                        TargetTeamType = Team.Type.Monsters | Team.Type.Heroes,
                     }
                 },
-
-                TraitBuilders = new List<CardTraitDataBuilder>
-                {
-                    new CardTraitDataBuilder {
-                        TraitStateName = "CardTraitExhaustState",
-                    }
-                }
             };
 
             Utils.AddSpell(railyard, IDName);

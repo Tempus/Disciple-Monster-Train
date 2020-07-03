@@ -50,6 +50,21 @@ namespace DiscipleClan.Cards.CardEffects
         {
             //cardManager.DrawSpecificCard(cardState);
         }
+        new public string GetDescriptionKey()
+        {
+            return "RoomStateModifierRelocateRewind_Desc";
+        }
+
+        new public string GetExtraTooltipTitleKey()
+        {
+            return "RoomStateModifierRelocateRewind_TooltipTitle";
+        }
+
+        new public string GetExtraTooltipBodyKey()
+        {
+            return "RoomStateModifierRelocateRewind_TooltipBody";
+        }
+
 
     }
 }

@@ -46,6 +46,20 @@ namespace DiscipleClan.Cards
     //        API.Log(BepInEx.Logging.LogLevel.All, "Processing Card Status from: " + __instance.GetID() + " - " + __instance.GetAssetName());
     //    }
     //}
+    
+    [HarmonyPatch(typeof(CharacterState), "IsImmune")]
+    class PyreQuickening
+    {
+        // Pyre is no longer immune to gaining ambush
+        static bool Prefix(CharacterState __instance, ref bool __result, string statusEffectId)
+        {
+            if (statusEffectId == "ambush" && __instance.IsPyreHeart()) {
+                API.Log(BepInEx.Logging.LogLevel.All, "Pyre is skipping ambush hopefully");
+                __result = false;
+                return false; }
+            return true;
+        }
+    }
 
     [HarmonyPatch(typeof(SaveManager), "SetupRun")]
     class AddToStartingDeck
@@ -53,13 +67,6 @@ namespace DiscipleClan.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            // Units
-            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Units"));
-            foreach (var cardType in types) {
-                var field = cardType.GetField("IDName");
-                __instance.AddCardToDeck(CustomCardManager.GetCardDataByID((string)field.GetValue(null)));
-            }
-
             // Spells
             //types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Spells") && !t.Name.Contains("<>"));
             //foreach (var cardType in types)
@@ -68,27 +75,23 @@ namespace DiscipleClan.Cards
             //    __instance.AddCardToDeck(CustomCardManager.GetCardDataByID((string)field.GetValue(null)));
             //}
 
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Scry.IDName));
 
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("[S] Ascend"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("[S] Descend"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Disperse"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Equilibrium"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Instant Replay"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Past Mistakes"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("For Testing"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Wax Pinion"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Pendulum.IDName)); // pending
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(GoldenRobe.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Infinity.IDName));
 
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Crunch Time"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Infinity"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Pendulum"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Rebound"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Time Lash"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Refractor.IDName));
 
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Seek"));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(NoetherCharge.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Feedback.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Rewind.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Dilation.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyreSpike.IDName));
+
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Waxwing"));
+
+            // And also Slow, and Rewind, and Relics, and unit banner pools
+
 
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Ancient Savant"));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID("Auspex"));

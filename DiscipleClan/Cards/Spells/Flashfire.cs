@@ -22,7 +22,7 @@ namespace DiscipleClan.Cards.Spells
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 1,
+                Cost = 3,
                 Rarity = CollectableRarity.Uncommon,
                 TargetsRoom = true,
 

@@ -20,7 +20,7 @@ namespace DiscipleClan.Cards.Spells
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 2,
+                Cost = 3,
                 Rarity = CollectableRarity.Rare,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
@@ -32,6 +32,14 @@ namespace DiscipleClan.Cards.Spells
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     },
                 },
+
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitExhaustState"
+                    }
+                }
             };
 
             railyard.EffectBuilders[0].AddStatusEffect("pyreboost", 1);

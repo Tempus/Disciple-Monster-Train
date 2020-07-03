@@ -5,6 +5,7 @@ using UnityEngine;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
+using System.Collections;
 
 namespace DiscipleClan.Cards.StatusEffects
 {
@@ -19,14 +20,14 @@ namespace DiscipleClan.Cards.StatusEffects
         // Every turn, gain max hp
         // When dead, give big gold (based on MaxHP? Based on turns?
 
-        public override bool TestTrigger(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
+        protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
         {
             // This makes them unable to move
             outputTriggerParams.movementSpeed = -1;
 
             // Increase Max HP and full heal
-            inputTriggerParams.associatedCharacter.BuffMaxHP(10);
-            inputTriggerParams.associatedCharacter.ApplyHeal(999);
+            yield return inputTriggerParams.associatedCharacter.BuffMaxHP(10);
+            yield return inputTriggerParams.associatedCharacter.ApplyHeal(999);
 
             // Give gold based on HP... 10% a turn.
             int goldGain = inputTriggerParams.associatedCharacter.GetMaxHP() / 10;
@@ -35,8 +36,6 @@ namespace DiscipleClan.Cards.StatusEffects
             characterState.ShowNotification("HudNotification_TreasureHeroTriggered".Localize(new LocalizedInteger(inputTriggerParams.combatManager.GetSaveManager().GetAdjustedGoldAmount(goldGain, isReward: true))), PopupNotificationUI.Source.General);
             //characterState.GetCharacterUI().ShowEffectVFX(characterState, cardEffectState.GetAppliedVFX());
             inputTriggerParams.combatManager.GetSaveManager().AdjustGold(goldGain, isReward: false);
-
-            return true;
         }
 
 		public static void Make()

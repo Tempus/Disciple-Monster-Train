@@ -23,7 +23,6 @@ namespace DiscipleClan.Cards.Spells
             {
                 CostType = CardData.CostType.ConsumeRemainingEnergy,
                 Rarity = CollectableRarity.Uncommon,
-                Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {

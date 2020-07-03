@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using DiscipleClan.Cards.Triggers;
+using HarmonyLib;
 using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
@@ -10,7 +11,7 @@ using UnityEngine;
 
 namespace DiscipleClan.Cards.CardEffects
 {
-    class RoomStateModifierRelocateDamage : RoomStateModifierBase, IRoomStateModifier, IRoomStateSpawnPointsChangedModifier
+    class RoomStateModifierRelocateDamage : RoomStateModifierBase, IRoomStateModifier, IRoomStateSpawnPointsModifiedModifier
     {
         public CombatManager combatManager;
         public int damage;
@@ -23,12 +24,27 @@ namespace DiscipleClan.Cards.CardEffects
             this.combatManager = GameObject.FindObjectOfType<CombatManager>().GetComponent<CombatManager>() as CombatManager;
         }
 
-        public void SpawnPointChanged(SpawnPoint prevPoint, SpawnPoint newPoint, CardManager cardManager)
+        public void SpawnPointModifier(CharacterState characterState)
         {
-            combatManager.ApplyDamageToTarget(this.damage, newPoint.GetCharacterState(), new CombatManager.ApplyDamageToTargetParameters
+            combatManager.ApplyDamageToTarget(this.damage, characterState, new CombatManager.ApplyDamageToTargetParameters
             {
                 damageType = Damage.Type.DirectAttack,
             });
+        }
+
+        new public string GetDescriptionKey()
+        {
+            return "RoomStateModifierRelocateDamage_Desc";
+        }
+
+        new public string GetExtraTooltipTitleKey()
+        {
+            return "RoomStateModifierRelocateDamage_TooltipTitle";
+        }
+
+        new public string GetExtraTooltipBodyKey()
+        {
+            return "RoomStateModifierRelocateDamage_TooltipBody";
         }
     }
 }

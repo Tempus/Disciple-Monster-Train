@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DiscipleClan.Cards.CardEffects;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
@@ -8,7 +9,7 @@ using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Unused
 {
     class SwordWard
     {
@@ -19,8 +20,8 @@ namespace DiscipleClan.Cards.Units
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 1,
-                Rarity = CollectableRarity.Common,
+                Cost = 8,
+                Rarity = CollectableRarity.Rare,
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
@@ -54,7 +55,11 @@ namespace DiscipleClan.Cards.Units
                 {
                     new RoomModifierDataBuilder
                     {
-                        roomStateModifierClassName = "",
+                        roomStateModifierClassName = typeof(RoomStateModifierRelocateStatusEffect).AssemblyQualifiedName,
+                        paramStatusEffects = new StatusEffectStackData[]
+                        {
+                            new StatusEffectStackData { count = 1, statusId = "multistrike"},
+                        }
                     }
                 }
             };

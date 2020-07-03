@@ -8,12 +8,7 @@
         {
             deckScreen.AddDeckScreenCardStateChosenDelegate((DeckScreen.CardStateChosenDelegate)(chosenCardState =>
             {
-                cardEffectParams.cardManager.DiscardCard(new CardManager.DiscardCardParams { 
-                    discardCard = chosenCardState,
-                    triggeredByCard = true,
-                    triggeredCard = cardEffectParams.playedCard,
-                    wasPlayed = false,
-            });
+                cardEffectParams.cardManager.MoveToStandByPile(chosenCardState, wasPlayed: false, wasExhausted: false, new RemoveFromStandByCondition(() => CardPile.DiscardPile), new CardManager.DiscardCardParams(), HandUI.DiscardEffect.Default);
                 cardEffectParams.screenManager.SetScreenActive(ScreenName.Deck, false, (ScreenManager.ScreenActiveCallback)null);
             }));
         }

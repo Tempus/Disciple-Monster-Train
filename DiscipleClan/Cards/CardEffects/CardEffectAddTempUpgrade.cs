@@ -13,15 +13,13 @@ namespace DiscipleClan.Cards.CardEffects
         {
             CardUpgradeState cardUpgradeState = new CardUpgradeState();
             cardUpgradeState.Setup(cardEffectState.GetParamCardUpgradeData());
+            var card = cardEffectParams.playedCard;
 
-            foreach (var card in cardEffectParams.targetCards)
-            {
-                CardAnimator.CardUpgradeAnimationInfo type = new CardAnimator.CardUpgradeAnimationInfo(card, cardUpgradeState);
-                CardAnimator.DoAddRecentCardUpgrade.Dispatch(type);
-                card.GetTemporaryCardStateModifiers().AddUpgrade(cardUpgradeState);
-                card.UpdateCardBodyText();
-                cardEffectParams.cardManager.RefreshCardInHand(card);
-            }
+            CardAnimator.CardUpgradeAnimationInfo type = new CardAnimator.CardUpgradeAnimationInfo(card, cardUpgradeState);
+            CardAnimator.DoAddRecentCardUpgrade.Dispatch(type);
+            card.GetTemporaryCardStateModifiers().AddUpgrade(cardUpgradeState);
+            card.UpdateCardBodyText();
+            cardEffectParams.cardManager.RefreshCardInHand(card);
 
             yield break;
         }

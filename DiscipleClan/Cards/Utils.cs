@@ -69,7 +69,7 @@ namespace DiscipleClan.Cards
             r.ClanID = Clan.IDName;
 
             r.CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_ChronoPool)), MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) };
-            r.CardType = CardType.Spell;
+            r.CardType = CardType.Monster;
             r.TargetsRoom = true;
 
             r.AssetPath = rootPath + scardPath;
@@ -77,7 +77,7 @@ namespace DiscipleClan.Cards
                 new CardEffectDataBuilder
                 {
                     EffectStateName = "CardEffectSpawnMonster",
-                    TargetMode = TargetMode.BackInRoom,
+                    TargetMode = TargetMode.DropTargetCharacter,
                     ParamCharacterData = character,
                 });
 
