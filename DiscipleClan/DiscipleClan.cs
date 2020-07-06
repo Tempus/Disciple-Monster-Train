@@ -14,7 +14,7 @@ using DiscipleClan;
 using System.Linq;
 using DiscipleClan.Cards.Units;
 using DiscipleClan.Cards.Spells;
-using DiscipleClan.Cards.StatusEffects;
+using DiscipleClan.StatusEffects;
 
 namespace DiscipleClan
 {
@@ -48,7 +48,7 @@ namespace DiscipleClan
         static void MakeStatuses()
         {
             // Status Effects
-            //var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.StatusEffects"));
+            //var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.StatusEffects"));
             //foreach (var status in types) { Make(status); }
             // Dunno why the above doesn't work
             StatusEffectPyreboost.Make();

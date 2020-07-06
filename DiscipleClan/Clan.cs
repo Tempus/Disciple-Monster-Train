@@ -9,7 +9,7 @@ using DiscipleClan.Cards.Spells;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using DiscipleClan.Cards.Units;
 using MonsterTrainModdingAPI;
-using DiscipleClan.Cards.Upgrades;
+using DiscipleClan.Upgrades;
 
 namespace DiscipleClan
 {
