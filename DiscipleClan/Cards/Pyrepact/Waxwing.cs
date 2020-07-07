@@ -9,7 +9,7 @@ using DiscipleClan.CardEffects;
 
 // TODO - Icarian, Pyre attacks whole tower (we can fake it though)
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Pyrepact
 {
     class Waxwing
     {

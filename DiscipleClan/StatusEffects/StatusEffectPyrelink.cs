@@ -14,7 +14,7 @@ namespace DiscipleClan.StatusEffects
 
 	class StatusEffectPyrelink : StatusEffectState
     {
-        public const string StatusId = "pyreboost";
+        public const string StatusId = "pyrelink";
 
 		public override bool TestTrigger(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
 		{

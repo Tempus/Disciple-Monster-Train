@@ -7,7 +7,7 @@ using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Unused
 {
     class IdunOwl
     {

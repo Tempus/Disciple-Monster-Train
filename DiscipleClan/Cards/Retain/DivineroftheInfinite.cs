@@ -9,7 +9,7 @@ using DiscipleClan.CardEffects;
 
 // TODO - look into CardTraitRetain and CardTraitFreeze, no builder for CardTriggerEffectData
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Retain
 {
     class DivineroftheInfinite
     {

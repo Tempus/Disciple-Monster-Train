@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - Can't target floor above/below easily? Look into target filters, also 'how to tell which floor I'm on'. Otherwise, COMPRESS EVERYTHING chronoTicked
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Shifter
 {
     class Constrictor
     {

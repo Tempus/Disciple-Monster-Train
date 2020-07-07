@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - Icarian
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Retain
 {
     class SampatiOwl
     {

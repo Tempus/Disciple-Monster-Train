@@ -9,7 +9,7 @@ using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
 using ShinyShoe;
 
-namespace DiscipleClan.Cards.Spells
+namespace DiscipleClan.Cards.Shifter
 {
     class Polarity
     {

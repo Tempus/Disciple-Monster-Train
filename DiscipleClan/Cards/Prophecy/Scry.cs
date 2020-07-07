@@ -10,7 +10,7 @@ using MonsterTrainModdingAPI.Managers;
 using DiscipleClan.CardEffects;
 using ShinyShoe;
 
-namespace DiscipleClan.Cards.Spells
+namespace DiscipleClan.Cards.Prophecy
 {
     class Scry
     {

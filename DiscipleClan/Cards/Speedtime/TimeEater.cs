@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - unclear if this triggers in time, also Empowered isn't a thing yet (no way to check current energy here)
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Speedtime
 {
     class TimeEater
     {

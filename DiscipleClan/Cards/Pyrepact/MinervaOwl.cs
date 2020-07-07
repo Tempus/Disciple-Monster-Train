@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Pyrepact
 {
     class MinervaOwl
     {

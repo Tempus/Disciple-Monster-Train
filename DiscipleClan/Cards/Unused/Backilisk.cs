@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 using DiscipleClan.Triggers;
 
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Unused
 {
     class Backilisk
     {

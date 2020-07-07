@@ -7,7 +7,7 @@ using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Retain
 {
     class JellyScholar
     {

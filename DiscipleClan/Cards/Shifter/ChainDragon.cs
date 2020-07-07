@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using DiscipleClan.Triggers;
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Shifter
 {
     class ChainDragon
     {

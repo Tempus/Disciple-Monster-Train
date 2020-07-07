@@ -10,7 +10,7 @@ using MonsterTrainModdingAPI.Managers;
 using ShinyShoe;
 using DiscipleClan.Cards;
 
-namespace DiscipleClan.Cards.Spells
+namespace DiscipleClan.Cards.Shifter
 {
     class PatternShift
     {

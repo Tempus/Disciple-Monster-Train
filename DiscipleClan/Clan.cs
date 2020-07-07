@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using HarmonyLib;
-using DiscipleClan.Cards.Spells;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using DiscipleClan.Cards.Units;
 using MonsterTrainModdingAPI;
@@ -36,9 +35,21 @@ namespace DiscipleClan
                     {
                         new List<CardUpgradeDataBuilder>
                         {
-                            DiscipleRetainBasic.Builder(),
-                            DiscipleRetainPremium.Builder(),
-                            DiscipleRetainPro.Builder(),
+                            DiscipleEmbermarkBasic.Builder(),
+                            DiscipleEmbermarkPremium.Builder(),
+                            DiscipleEmbermarkPro.Builder(),
+                        },
+                        new List<CardUpgradeDataBuilder>
+                        {
+                            DiscipleFlamelinkedBasic.Builder(),
+                            DiscipleFlamelinkedPremium.Builder(),
+                            DiscipleFlamelinkedPro.Builder(),
+                        },
+                        new List<CardUpgradeDataBuilder>
+                        {
+                            DiscipleNimbleBasic.Builder(),
+                            DiscipleNimblePremium.Builder(),
+                            DiscipleNimblePro.Builder(),
                         },
                         new List<CardUpgradeDataBuilder>
                         {

@@ -42,17 +42,36 @@ namespace DiscipleClan.CardEffects
             ProviderManager.TryGetProvider<RelicManager>(out relicManager);
             if (cardState.GetDiscardEffectWhenPlayed(relicManager, null) != HandUI.DiscardEffect.Default) { return; }
 
-            // Get the provider
+            // Make sure we're on the same floor as the Owner
+            MonsterManager monsterManager;
+            ProviderManager.TryGetProvider<MonsterManager>(out monsterManager);
+            List<CharacterState> units = new List<CharacterState>();
+            monsterManager.AddCharactersInRoomToList(units, roomIndex);
+
+            bool ret = true;
+            foreach (var unit in units)
+            {
+                foreach (var mod in unit.GetRoomStateModifiers())
+                {
+                    if (mod is RoomStateModifierRewind)
+                    {
+                        ret = false;
+                    }
+                }
+            }
+            if (ret) { return; }
+
+            // Get the provider and do the effect
             CardManager cardManager;
             ProviderManager.TryGetProvider<CardManager>(out cardManager);
 
             if (cardManager.GetCardStatistics().GetNumCardsPlayedThisTurnOfType(CardType.Spell) < numOfCards)
             {
-                var corountine = WaitAndPrint(cardState);
+                var corountine = RedrawCard(cardState);
                 cardManager.StartCoroutine(corountine);
             }
         }
-        public static IEnumerator WaitAndPrint(CardState cardState)
+        public static IEnumerator RedrawCard(CardState cardState)
         {
             yield return new WaitForSeconds(0.2f);
 

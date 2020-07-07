@@ -4,8 +4,6 @@ using System.Text;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
-using DiscipleClan.Cards.Units;
-using DiscipleClan.Cards.Spells;
 using ShinyShoe.Logging;
 using MonsterTrainModdingAPI;
 using BepInEx.Logging;

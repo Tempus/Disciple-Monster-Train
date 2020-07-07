@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTClans;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Pyrepact
 {
     class HaruspexWard
     {

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DiscipleClan.CardEffects;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
@@ -10,11 +9,11 @@ using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
 using ShinyShoe;
 
-namespace DiscipleClan.Cards.Spells
+namespace DiscipleClan.Cards.Unused
 {
-    class Cremate
+    class Pyrepact
     {
-        public static string IDName = "Cremate";
+        public static string IDName = "Pyrepact";
 
         public static void Make()
         {
@@ -28,15 +27,9 @@ namespace DiscipleClan.Cards.Spells
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = typeof(CardEffectPyreAttack).AssemblyQualifiedName,
-                        TargetMode = TargetMode.FrontInRoom,
-                        TargetTeamType = Team.Type.Heroes,
-                    },
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = typeof(CardEffectPyreAttack).AssemblyQualifiedName,
-                        TargetMode = TargetMode.FrontInRoom,
-                        TargetTeamType = Team.Type.Heroes,
+                        EffectStateName = "CardEffectAddStatusEffect",
+                        TargetMode = TargetMode.DropTargetCharacter,
+                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     },
                     new CardEffectDataBuilder
                     {
@@ -55,6 +48,8 @@ namespace DiscipleClan.Cards.Spells
                     },
                 },
             };
+
+            railyard.EffectBuilders[0].AddStatusEffect("pyreboost", 1);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "sigmaligma.png");

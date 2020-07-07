@@ -10,7 +10,7 @@ using MonsterTrainModdingAPI.Managers;
 using ShinyShoe;
 using UnityEngine;
 
-namespace DiscipleClan.Cards.Spells
+namespace DiscipleClan.Cards.Retain
 {
     class RightTiming
     {

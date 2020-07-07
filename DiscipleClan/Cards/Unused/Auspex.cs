@@ -8,7 +8,7 @@ using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO Unclear about rearrangement indices here - we don't seem to be moving around at all
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Unused
 {
     class Auspex
     {

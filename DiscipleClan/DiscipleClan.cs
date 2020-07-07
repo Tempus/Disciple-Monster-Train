@@ -12,8 +12,6 @@ using MonsterTrainModdingAPI.Interfaces;
 using MonsterTrainModdingAPI.Managers;
 using DiscipleClan;
 using System.Linq;
-using DiscipleClan.Cards.Units;
-using DiscipleClan.Cards.Spells;
 using DiscipleClan.StatusEffects;
 
 namespace DiscipleClan
@@ -56,22 +54,48 @@ namespace DiscipleClan
             StatusEffectLoaded.Make();
             StatusEffectSlow.Make();
             StatusEffectIcarian.Make();
+            StatusEffectEmberboost.Make();
+            StatusEffectGravity.Make();
+            StatusEffectPyrelink.Make();
+            StatusEffectHideUntilBoss.Make();
         }
 
         static void MakeCards()
         {
-            // Units
-            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Units"));
+            // Prophecy
+            API.Log(BepInEx.Logging.LogLevel.All, "Making Prophecy Cards");
+            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Prophecy") && !t.Name.Contains("<>"));
             foreach (var card in types) { Make(card); }
 
-            // Spells
-            types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Spells") && !t.Name.Contains("<>"));
+            // Pyrepact
+            API.Log(BepInEx.Logging.LogLevel.All, "Making Pyrepact Cards");
+            types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Pyrepact") && !t.Name.Contains("<>"));
+            foreach (var card in types) { Make(card); }
+
+            // Retain
+            API.Log(BepInEx.Logging.LogLevel.All, "Making Retain Cards");
+            types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Retain") && !t.Name.Contains("<>"));
+            foreach (var card in types) { Make(card); }
+
+            // Shifter
+            API.Log(BepInEx.Logging.LogLevel.All, "Making Shifter Cards");
+            types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Shifter") && !t.Name.Contains("<>"));
+            foreach (var card in types) { Make(card); }
+
+            // Speedtime
+            API.Log(BepInEx.Logging.LogLevel.All, "Making Speedtime Cards");
+            types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Speedtime") && !t.Name.Contains("<>"));
+            foreach (var card in types) { Make(card); }
+
+            // Chronolock
+            API.Log(BepInEx.Logging.LogLevel.All, "Making Chronolock Cards");
+            types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Chronolock") && !t.Name.Contains("<>"));
             foreach (var card in types) { Make(card); }
         }
 
         public static void Make(Type cardType)
         {
-            MethodInfo make = cardType.GetMethod("Make");
+            MethodInfo make = cardType.GetMethod("Make"); 
             make.Invoke(null, null);
         }
 

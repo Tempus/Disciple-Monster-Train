@@ -9,7 +9,7 @@ using DiscipleClan.CardEffects;
 
 // TODO - OnUnplayed doesn't seem to trigger on Permafrosted cards.
 
-namespace DiscipleClan.Cards.Units
+namespace DiscipleClan.Cards.Retain
 {
     class FriggaOwl
     {

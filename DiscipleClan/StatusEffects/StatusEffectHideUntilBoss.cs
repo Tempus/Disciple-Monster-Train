@@ -13,13 +13,13 @@ namespace DiscipleClan.StatusEffects
     class StatusEffectHideUntilBoss : StatusEffectState
     {
         public const string StatusId = "hideuntilboss";
-        public CombatManager combatManager;
-        public ScenarioData scenarioData;
 
         // This makes them unable to be targetted
         public override bool GetUnitIsTargetable(bool inCombat)
         {
-            if (scenarioData.GetSpawnPattern().GetNumGroups() - combatManager.GetTurnCount() > 0)
+            CombatManager combatManager;
+            ProviderManager.TryGetProvider<CombatManager>(out combatManager); 
+            if (combatManager.GetSaveManager().GetCurrentScenarioData().GetSpawnPattern().GetNumGroups() - combatManager.GetTurnCount() > 0)
             {
                 return !inCombat;
             } else {
@@ -27,11 +27,10 @@ namespace DiscipleClan.StatusEffects
             }
         }
 
-        public override void OnStacksAdded(CharacterState character, int numStacksAdded)
-        {
-            combatManager = character.GetCombatManager();
-            scenarioData = combatManager.GetSaveManager().GetCurrentScenarioData();
-        }
+        //public override void OnStacksAdded(CharacterState character, int numStacksAdded)
+        //{
+            
+        //}
 
         public static void Make()
         {

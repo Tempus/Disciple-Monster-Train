@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DiscipleClan.Cards.Spells
+namespace DiscipleClan.Cards.Unused
 {
     class ClepsydraPotion
     {

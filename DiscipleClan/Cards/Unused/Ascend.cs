@@ -9,11 +9,11 @@ using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
 using ShinyShoe;
 
-namespace DiscipleClan.Cards.Spells
+namespace DiscipleClan.Cards.Unused
 {
-    class Descend
+    class Ascend
     {
-        public static string IDName = "Descend";
+        public static string IDName = "Ascend";
 
         public static void Make()
         {
@@ -22,14 +22,13 @@ namespace DiscipleClan.Cards.Spells
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
-                TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectBump",
-                        ParamInt = -1,
+                        ParamInt = 1,
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Monsters,
                     }
@@ -37,9 +36,9 @@ namespace DiscipleClan.Cards.Spells
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "zyzzy.png");
-            // Do this to complete
+            Utils.AddImg(railyard, "image0.jpg");
 
+            // Do this to complete
             railyard.BuildAndRegister();
         }
     }
