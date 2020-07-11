@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using DiscipleClan.CardEffects;
+using System.Collections.Generic;
 
 // TODO - Icarian, Pyre attacks whole tower (we can fake it though)
 
@@ -40,6 +34,7 @@ namespace DiscipleClan.Cards.Pyrepact
             {
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
+                SubtypeKeys = new List<string> { "ChronoSubtype_Seer" },
 
                 Size = 1,
                 Health = 1,

@@ -1,14 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using DiscipleClan.CardEffects;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
-using ShinyShoe;
+using System.Collections.Generic;
+using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Pyrepact
 {
@@ -33,8 +25,8 @@ namespace DiscipleClan.Cards.Pyrepact
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                         ParamCardUpgradeData = new CardUpgradeDataBuilder
                         {
-                            bonusDamage = 10,
-                            bonusHP = 5,
+                            bonusDamage = 8,
+                            bonusHP = 4,
                             bonusSize = 1,
                             hideUpgradeIconOnCard = true,
                         }.Build(),
@@ -46,6 +38,8 @@ namespace DiscipleClan.Cards.Pyrepact
                     new CardTraitDataBuilder
                     {
                          TraitStateName = "CardTraitMultiplyCharacterUpgrade",
+                         ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
+                         ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
                          ParamUseScalingParams = true,
                          ParamInt = 1,
                     },
@@ -56,7 +50,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Armor), 0);
+            railyard.EffectBuilders[0].AddStatusEffect(Armor, 0);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "image0.jpg");

@@ -1,13 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
-using ShinyShoe;
+using System.Collections.Generic;
+using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Chronolock
 {
@@ -17,6 +10,7 @@ namespace DiscipleClan.Cards.Chronolock
 
         public static void Make()
         {
+
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
@@ -43,7 +37,7 @@ namespace DiscipleClan.Cards.Chronolock
                 }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Relentless), 1);
+            railyard.EffectBuilders[0].AddStatusEffect(Quick, 1);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "zyzzy.png");

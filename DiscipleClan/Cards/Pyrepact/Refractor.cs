@@ -1,14 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using DiscipleClan.CardEffects;
-using HarmonyLib;
+using DiscipleClan.Triggers;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
-using ShinyShoe;
+using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Pyrepact
 {
@@ -23,44 +15,28 @@ namespace DiscipleClan.Cards.Pyrepact
             {
                 Rarity = CollectableRarity.Rare,
 
-                EffectTriggerBuilders = new List<CharacterTriggerDataBuilder>
+                TriggerBuilders = new List<CardTriggerEffectDataBuilder>
                 {
-                    new CharacterTriggerDataBuilder
+                    new CardTriggerEffectDataBuilder
                     {
-                        Trigger = CharacterTriggerData.Trigger.CardSpellPlayed,
+                        trigger = OnGainEmber.OnGainEmberCardTrigger.GetEnum(),
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
-                                EffectStateName = typeof(CardEffectHealTrainPassive).AssemblyQualifiedName,
+                                EffectStateName = "CardEffectHealTrain",
                                 ParamInt = 1,
                             }
                         }
                     }
                 },
 
-                //TriggerBuilders = new List<CardTriggerEffectDataBuilder>
-                //{
-                //    new CardTriggerEffectDataBuilder
-                //    {
-                //        trigger = CardTriggerType.OnAnyUnitDeathOnFloor,
-                //        EffectBuilders = new List<CardEffectDataBuilder>
-                //        {
-                //            new CardEffectDataBuilder
-                //            {
-                //                EffectStateName = "CardEffectHealTrain",
-                //                ParamInt = 1,
-                //            }
-                //        }
-                //    }
-                //}
-
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
                     new CardTraitDataBuilder
                     {
                         TraitStateName = "CardTraitUnplayable"
-                    }
+                    },
                 }
             };
 

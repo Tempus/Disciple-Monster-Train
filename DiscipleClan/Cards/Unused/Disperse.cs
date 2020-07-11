@@ -1,13 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
 using ShinyShoe;
+using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Unused
 {
@@ -36,7 +29,7 @@ namespace DiscipleClan.Cards.Unused
                     },
                 },
             };
-            
+
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "zoidberg.jpg");
 

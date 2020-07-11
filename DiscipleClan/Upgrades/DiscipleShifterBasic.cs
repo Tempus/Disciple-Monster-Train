@@ -1,9 +1,6 @@
 ﻿using DiscipleClan.Triggers;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DiscipleClan.Upgrades
 {
@@ -47,7 +44,8 @@ namespace DiscipleClan.Upgrades
                     //},
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = CustomTriggerManager.GetTrigger(typeof(MTCharacterTrigger_Relocate)),
+                        Trigger = OnRelocate.OnRelocateCharTrigger.GetEnum(),
+                        DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

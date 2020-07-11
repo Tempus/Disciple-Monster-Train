@@ -1,13 +1,6 @@
 ﻿using DiscipleClan.Triggers;
-using HarmonyLib;
 using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace DiscipleClan.CardEffects
@@ -23,12 +16,11 @@ namespace DiscipleClan.CardEffects
             base.Initialize(roomModifierData, roomManager);
             this.effects = roomModifierData.GetParamStatusEffects();
             this.combatManager = GameObject.FindObjectOfType<CombatManager>().GetComponent<CombatManager>() as CombatManager;
-            
         }
 
         public void SpawnPointModifier(CharacterState characterState)
         {
-            if (effects.Length == 0 )
+            if (effects.Length == 0)
             {
                 API.Log(BepInEx.Logging.LogLevel.All, "No status effects!");
                 return;

@@ -1,16 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using HarmonyLib;
-using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
-using ShinyShoe;
+using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Chronolock
 {
@@ -46,12 +35,26 @@ namespace DiscipleClan.Cards.Chronolock
                 }
             };
 
-            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.GetInterface("IMTStatusEffect", true) != null);
-            foreach (Type status in types) {
-                API.Log(BepInEx.Logging.LogLevel.All, "Adding Status to Pendulum: " + status.Name);
-                railyard.EffectBuilders[0].AddStatusEffect(status, 1);
-            }
-            
+            railyard.EffectBuilders[0].AddStatusEffect("buff", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("damage shield", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("dazed", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("debuff", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("lifesteal", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("poison", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("regen", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("rooted", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("silenced", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("scorch", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("spell shield", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("spell weakness", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("spikes", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("trample", 1);
+
+            railyard.EffectBuilders[0].AddStatusEffect("pyreboost", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("gravity", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("emberboost", 1);
+            railyard.EffectBuilders[0].AddStatusEffect("chronolock", 1);
+
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Good_art.jpg");
 

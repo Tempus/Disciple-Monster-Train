@@ -1,10 +1,7 @@
 ﻿using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
 
 namespace DiscipleClan.Cards
 {
@@ -14,6 +11,7 @@ namespace DiscipleClan.Cards
         public static string ucardPath = "Card Assets/ProtoUnitCardArt/";
         public static string scardPath = "Card Assets/";
         public static string unitPath = "Unit Assets/";
+        public static string relicPath = "Relic/";
 
         public static void AddSpell(CardDataBuilder r, string IDName)
         {
@@ -23,7 +21,7 @@ namespace DiscipleClan.Cards
             r.LinkedClass = DiscipleClan.getClan();
 
             r.ClanID = Clan.IDName;
-            r.CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_ChronoPool)), MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) };
+            r.CardPoolIDs = new List<string> { "Chrono", MegaPool };
 
             r.AssetPath = rootPath + scardPath;
 
@@ -31,6 +29,27 @@ namespace DiscipleClan.Cards
                 API.Log(BepInEx.Logging.LogLevel.All, r.NameKey + ",Text,,,,," + r.CardID + ",,,,,");
             if (!r.OverrideDescriptionKey.HasTranslation())
                 API.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
+        }
+
+        public static void AddRelic(CollectableRelicDataBuilder r, string ID)
+        {
+            r.CollectableRelicID = ID;
+            r.NameKey = ID + "_Name";
+            r.DescriptionKey = ID + "_Desc";
+            r.RelicActivatedKey = ID + "_Active";
+            r.RelicLoreTooltipKeys = new List<string> { ID + "_Lore" };
+            r.ClanID = "Chrono";
+            r.AssetPath = rootPath + relicPath + r.AssetPath;
+            r.Rarity = CollectableRarity.Common;
+
+            if (!r.NameKey.HasTranslation())
+                API.Log(BepInEx.Logging.LogLevel.All, r.NameKey + ",Text,,,,," + ID + ",,,,,");
+            if (!r.DescriptionKey.HasTranslation())
+                API.Log(BepInEx.Logging.LogLevel.All, r.DescriptionKey + ",Text,,,,,<desc>,,,,,");
+            if (!r.RelicActivatedKey.HasTranslation())
+                API.Log(BepInEx.Logging.LogLevel.All, r.RelicActivatedKey + ",Text,,,,,<desc>,,,,,");
+            if (!r.RelicLoreTooltipKeys[0].HasTranslation())
+                API.Log(BepInEx.Logging.LogLevel.All, r.RelicLoreTooltipKeys[0] + ",Text,,,,,<desc>,,,,,");
         }
 
         public static void AddUnit(CardDataBuilder r, string IDName, CharacterData character)
@@ -41,7 +60,7 @@ namespace DiscipleClan.Cards
             r.LinkedClass = DiscipleClan.getClan();
             r.ClanID = Clan.IDName;
 
-            r.CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_ChronoPool)), MTCardPoolIDs.GetIDForType(typeof(MTCardPool_UnitsAllBanner)) };
+            r.CardPoolIDs = new List<string> { "Chrono", UnitsAllBanner };
             r.CardType = CardType.Monster;
             r.TargetsRoom = true;
 
@@ -68,7 +87,7 @@ namespace DiscipleClan.Cards
             r.LinkedClass = DiscipleClan.getClan();
             r.ClanID = Clan.IDName;
 
-            r.CardPoolIDs = new List<string> { MTCardPoolIDs.GetIDForType(typeof(MTCardPool_ChronoPool)), MTCardPoolIDs.GetIDForType(typeof(MTCardPool_MegaPool)) };
+            r.CardPoolIDs = new List<string> { "Chrono", MegaPool };
             r.CardType = CardType.Monster;
             r.TargetsRoom = true;
 

@@ -1,18 +1,17 @@
-﻿using HarmonyLib;
-using MonsterTrainModdingAPI;
+﻿using DiscipleClan.Triggers;
+using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
 
 namespace DiscipleClan.CardEffects
 {
     class CardEffectScry : CardEffectBase
     {
         public CardEffectData.CardSelectionMode cardSelectionMode;
+        public int cardsToScry = 0;
 
         public override bool CanPlayAfterBossDead
         {
@@ -44,18 +43,81 @@ namespace DiscipleClan.CardEffects
         {
             if (cardEffectParams.targetCards.Count > 0)
             {
+                cardsToScry = cardEffectState.GetParamInt();
+
+                // Fire the trigger!
+                MonsterManager monsterManager;
+                ProviderManager.TryGetProvider<MonsterManager>(out monsterManager);
+
+                List<CharacterState> units = new List<CharacterState>();
+                monsterManager.AddCharactersInTowerToList(units);
+
+                CustomTriggerManager.QueueAndRunTrigger(OnDivine.OnDivineCharTrigger, units.ToArray(), true, true, null, 1);
+
+                CardManager cardManager;
+                ProviderManager.TryGetProvider<CardManager>(out cardManager);
+                foreach (var card in cardManager.GetHand())
+                {
+                    CustomTriggerManager.FireCardTriggers(OnDivine.OnDivineCardTrigger, card, -1, true, null, 1, null);
+                }
+
+                // Check for the relic!
+                if (cardEffectParams.saveManager.GetRelicCount("SeersBoostDivine") > 0)
+                {
+                    foreach (var card in cardManager.GetAllCards())
+                    {
+                        foreach (var subtype in card.GetSpawnCharacterData().GetSubtypes())
+                        {
+                            if (subtype.Key == "ChronoSubtype_Seer")
+                                cardsToScry++;
+                        }
+                    }
+
+                }
+
                 yield return (object)this.HandleChooseCard(cardEffectState, cardEffectParams);
             }
         }
 
-        private IEnumerator HandleChooseCard(
+        public virtual IEnumerator HandleChooseCard(
           CardEffectState cardEffectState,
           CardEffectParams cardEffectParams)
         {
             // Generate the Scryed Cards
             // Param Int -> Cards to scry, Additional Param Int -> cards to choose
             List<CardState> drawPile = cardEffectParams.cardManager.GetDrawPile();
-            var scryedCards = drawPile.Skip(drawPile.Count - cardEffectState.GetParamInt()).Take(cardEffectState.GetParamInt()).ToList();
+            List<CardState> scryedCards = new List<CardState>();
+            CardState priorityUnitDraw = DivinePriorityUnit(drawPile);
+
+            // Adjust Divine for priority draw
+            if (priorityUnitDraw != null)
+                scryedCards.Add(priorityUnitDraw);
+
+            // Draw normally
+            int drawSize = scryedCards.Count;
+            for (int i = 0; i < Math.Min(cardsToScry - drawSize, drawPile.Count); i++)
+            {
+                if (drawPile[i] != priorityUnitDraw)
+                    scryedCards.Add(drawPile[i]);
+            }
+
+            // Hardcoded Divine interaction to always divine a card with ID "ChosenOne"
+            foreach (var card in drawPile)
+            {
+                if (card.GetID() == "ChosenOne")
+                {
+                    if (!scryedCards.Contains(card))
+                        scryedCards.Add(card);
+                }
+            }
+            foreach (var card in cardEffectParams.cardManager.GetDiscardPile())
+            {
+                if (card.GetID() == "ChosenOne")
+                {
+                    if (!scryedCards.Contains(card))
+                        scryedCards.Add(card);
+                }
+            }
 
             cardEffectParams.screenManager.SetScreenActive(ScreenName.Deck, true, screen =>
             {
@@ -76,7 +138,7 @@ namespace DiscipleClan.CardEffects
 
                 AddDelegate(cardEffectState, cardEffectParams, deckScreen);
             });
-            
+
             yield break;
         }
 
@@ -97,7 +159,28 @@ namespace DiscipleClan.CardEffects
             return "ScreenDeck_Select_CardEffectRecursion";
         }
 
-        private HandUI.DrawSource GetDrawSource(TargetMode targetMode)
+        public CardState DivinePriorityUnit(List<CardState> drawPile)
+        {
+            for (int i = 0; i < drawPile.Count; i++)
+            {
+                CardState cardState = drawPile[i];
+                CharacterData spawnCharacterData = cardState.GetSpawnCharacterData();
+                if (!(spawnCharacterData != null))
+                {
+                    continue;
+                }
+                foreach (SubtypeData subtype in spawnCharacterData.GetSubtypes())
+                {
+                    if (subtype.Key == "SubtypesData_Chosen")
+                    {
+                        return cardState;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public HandUI.DrawSource GetDrawSource(TargetMode targetMode)
         {
             switch (targetMode)
             {

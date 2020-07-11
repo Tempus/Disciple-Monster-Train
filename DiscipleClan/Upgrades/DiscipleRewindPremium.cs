@@ -1,9 +1,6 @@
 ﻿using DiscipleClan.CardEffects;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DiscipleClan.Upgrades
 {
@@ -30,13 +27,13 @@ namespace DiscipleClan.Upgrades
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
                 //triggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> { },
                 //cardTriggerUpgradeBuilders = new List<CardTriggerEffectDataBuilder> { },
-                roomModifierUpgradeBuilders = new List<RoomModifierDataBuilder> 
+                roomModifierUpgradeBuilders = new List<RoomModifierDataBuilder>
                 {
                     new RoomModifierDataBuilder
                     {
                     roomStateModifierClassName = typeof(RoomStateModifierRewind).AssemblyQualifiedName,
                     paramInt = 2,
-                    descriptionKey = IDName + "_Room",
+                    descriptionKey = IDName + "_Desc",
                     extraTooltipTitleKey = IDName + "_RoomTipName",
                     extraTooltipBodyKey = IDName + "_RoomTipDesc",
                     }

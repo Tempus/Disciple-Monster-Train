@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
+using System.Collections.Generic;
 
 
 namespace DiscipleClan.Cards.Pyrepact
@@ -39,6 +33,7 @@ namespace DiscipleClan.Cards.Pyrepact
             {
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
+                SubtypeKeys = new List<string> { "ChronoSubtype_Eternal" },
 
                 Size = 2,
                 Health = 20,
@@ -63,7 +58,7 @@ namespace DiscipleClan.Cards.Pyrepact
             // Unit art asset, complex stuff!
             characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect("emberboost", 1);
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png"); 
+            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

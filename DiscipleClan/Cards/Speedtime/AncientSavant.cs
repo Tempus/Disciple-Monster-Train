@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
+using DiscipleClan.Triggers;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
+using System.Collections.Generic;
+using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Speedtime
 {
@@ -39,13 +34,62 @@ namespace DiscipleClan.Cards.Speedtime
             {
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
+                SubtypeKeys = new List<string> { "ChronoSubtype_Eternal" },
 
                 Size = 3,
                 Health = 50,
                 AttackDamage = 0,
+
+                TriggerBuilders = new List<CharacterTriggerDataBuilder> {
+                    new CharacterTriggerDataBuilder {
+                        Trigger = CharacterTriggerData.Trigger.CardMonsterPlayed,
+                        DescriptionKey = IDName + "_Desc",
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectEnchant",
+                                ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId="ambush" } },
+                                ParamTrigger = CharacterTriggerData.Trigger.OnDeath,
+                                TargetMode = TargetMode.Room,
+                                TargetTeamType = Team.Type.Monsters,
+                            }
+                        }
+                    },
+                    new CharacterTriggerDataBuilder {
+                        Trigger = OnRelocate.OnRelocateCharTrigger.GetEnum(),
+                        DescriptionKey = IDName + "_Desc",
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectEnchant",
+                                ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId="ambush" } },
+                                ParamTrigger = CharacterTriggerData.Trigger.OnDeath,
+                                TargetMode = TargetMode.Room,
+                                TargetTeamType = Team.Type.Monsters,
+                            }
+                        }
+                    },
+                    new CharacterTriggerDataBuilder {
+                        Trigger = CharacterTriggerData.Trigger.PreCombat,
+                        DescriptionKey = IDName + "_Desc",
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectEnchant",
+                                ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId="ambush" } },
+                                ParamTrigger = CharacterTriggerData.Trigger.OnDeath,
+                                TargetMode = TargetMode.Room,
+                                TargetTeamType = Team.Type.Monsters,
+                            }
+                        }
+                    }
+                },
             };
 
-            characterDataBuilder.AddStartingStatusEffect(typeof(MTStatusEffect_Immobile), 1);
+            characterDataBuilder.AddStartingStatusEffect(Immobile, 1);
 
             Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();

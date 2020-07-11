@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
+﻿using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
-using UnityEngine;
 
 namespace DiscipleClan.StatusEffects
 {
-    public class MTStatusEffect_HideUntilBoss : IMTStatusEffect { public string ID => "hideuntilboss"; }
-
     class StatusEffectHideUntilBoss : StatusEffectState
     {
         public const string StatusId = "hideuntilboss";
@@ -18,18 +11,20 @@ namespace DiscipleClan.StatusEffects
         public override bool GetUnitIsTargetable(bool inCombat)
         {
             CombatManager combatManager;
-            ProviderManager.TryGetProvider<CombatManager>(out combatManager); 
+            ProviderManager.TryGetProvider<CombatManager>(out combatManager);
             if (combatManager.GetSaveManager().GetCurrentScenarioData().GetSpawnPattern().GetNumGroups() - combatManager.GetTurnCount() > 0)
             {
                 return !inCombat;
-            } else {
+            }
+            else
+            {
                 return true;
             }
         }
 
         //public override void OnStacksAdded(CharacterState character, int numStacksAdded)
         //{
-            
+
         //}
 
         public static void Make()
@@ -38,9 +33,8 @@ namespace DiscipleClan.StatusEffects
             {
                 statusEffectStateName = typeof(StatusEffectHideUntilBoss).AssemblyQualifiedName,
                 statusId = "hideuntilboss",
-                displayCategory = StatusEffectData.DisplayCategory.Negative,
-                removeStackAtEndOfTurn = true,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
+                displayCategory = StatusEffectData.DisplayCategory.Persistent,
+                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/time-trap.png"),
             }.Build();
         }
     }

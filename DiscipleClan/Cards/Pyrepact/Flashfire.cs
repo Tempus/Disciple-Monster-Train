@@ -1,15 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DiscipleClan.CardEffects;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
-using ShinyShoe;
-using UnityEngine;
+using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Pyrepact
 {

@@ -1,9 +1,5 @@
-﻿using DiscipleClan.CardEffects;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using System;
+﻿using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DiscipleClan.Upgrades
 {

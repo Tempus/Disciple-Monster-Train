@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
+using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Shifter
 {
@@ -37,6 +32,7 @@ namespace DiscipleClan.Cards.Shifter
             {
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
+                SubtypeKeys = new List<string> { "ChronoSubtype_Pythian" },
 
                 Size = 3,
                 Health = 30,

@@ -1,17 +1,11 @@
+using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Managers;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
 using UnityEngine;
 
 namespace DiscipleClan.StatusEffects
 {
-    public class MTStatusEffect_Gravity : IMTStatusEffect { public string ID => "gravity"; }
-
     class StatusEffectGravity : StatusEffectState
     {
         public const string StatusId = "gravity";
@@ -20,28 +14,26 @@ namespace DiscipleClan.StatusEffects
         protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
         {
             // At end of turn, descend, and if we did Descend remove a stack of gravity.
-            bool descended = Descend(inputTriggerParams.associatedCharacter, inputTriggerParams);
-            if (descended)
-                inputTriggerParams.associatedCharacter.RemoveStatusEffect("gravity", false, 1, true);
-            yield break;
+            yield return Descend(GetAssociatedCharacter(), inputTriggerParams);
         }
-
-        public bool Descend(CharacterState target, InputTriggerParams inputTriggerParams)
+        public IEnumerator Descend(CharacterState target, InputTriggerParams inputTriggerParams)
         {
-            RoomManager roomManager = GameObject.FindObjectOfType<RoomManager>() as RoomManager;
+            RoomManager roomManager;
+            ProviderManager.TryGetProvider<RoomManager>(out roomManager);
             CombatManager combatManager = inputTriggerParams.combatManager;
+
             int bumpAmount = -1;
             SpawnPoint oldSpawnPoint = target.GetSpawnPoint(false);
             SpawnPoint newSpawnPoint = (SpawnPoint)null;
 
             // Immobile, no ascending
-            if (target.HasStatusEffect("immobile")) { return false; }
+            if (target.HasStatusEffect("immobile")) { yield break; }
 
             // Rooted, no ascending
             if (target.HasStatusEffect("rooted"))
             {
                 target.RemoveStatusEffect("rooted", false, 1, true);
-                return false;
+                yield break;
             }
 
             newSpawnPoint = this.FindBumpSpawnPoint(target, bumpAmount, roomManager, inputTriggerParams.combatManager.GetMonsterManager());
@@ -49,12 +41,18 @@ namespace DiscipleClan.StatusEffects
 
             if (newSpawnPoint != null)
             {
-                oldSpawnPoint.SetCharacterState((CharacterState)null);
-                newSpawnPoint.SetCharacterState(target);
-                oldSpawnPoint.GetRoomOwner()?.UpdateSpawnPointPositions(target.GetTeamType(), -1, false, false);
-                newSpawnPoint.GetRoomOwner()?.UpdateSpawnPointPositions(target.GetTeamType(), -1, false, false);
-                target.SetSpawnPoint(newSpawnPoint, false, false, (Action)null, 0.0f);
-            } else { return false; }
+                if (target.IsOuterTrainBoss())
+                    yield return (object)combatManager.GetHeroManager().ForceMoveBoss(target, oldSpawnPoint.GetRoomOwner(), newSpawnPoint.GetRoomOwner(), CardEffectBump.BumpDirection.Down);
+                else if (!combatManager.GetSaveManager().PreviewMode)
+                {
+                    oldSpawnPoint.SetCharacterState((CharacterState)null);
+                    newSpawnPoint.SetCharacterState(target);
+                    oldSpawnPoint.GetRoomOwner()?.UpdateSpawnPointPositions(target.GetTeamType(), -1, false, false);
+                    newSpawnPoint.GetRoomOwner()?.UpdateSpawnPointPositions(target.GetTeamType(), -1, false, false);
+                    target.SetSpawnPoint(newSpawnPoint, false, false, (Action)null, 0.0f);
+                }
+            }
+            else { yield break; }
 
             target.GetCharacterUI().SetHighlightVisible(false, SelectionStyle.DEFAULT);
 
@@ -63,9 +61,10 @@ namespace DiscipleClan.StatusEffects
 
             target.ChatterClearedSignal.Dispatch(true);
 
-            target.MoveUpDownTrain(oldSpawnPoint, targetIndex, newSpawnPoint.GetRoomOwner().GetRoomIndex(), (Action)null, true);
+            target.MoveUpDownTrain(newSpawnPoint, targetIndex, oldSpawnPoint.GetRoomOwner().GetRoomIndex(), (Action)null, false);
+            yield return new WaitUntil((Func<bool>)(() => target.IsMovementDone));
             roomManager.AllowEnchantmentUpdates = true;
-            return true;
+            target.RemoveStatusEffect("gravity", false, 1, true);
         }
 
         private SpawnPoint FindBumpSpawnPoint(
@@ -80,7 +79,7 @@ namespace DiscipleClan.StatusEffects
             bumpAmount = Mathf.Clamp(bumpAmount, -max, max);
             for (int index = 1; index <= Mathf.Abs(bumpAmount); ++index)
             {
-                int roomIndex2 = Mathf.Clamp(roomIndex1 + index * 1, 0, max);
+                int roomIndex2 = Mathf.Clamp(roomIndex1 + index * -1, 0, max);
                 RoomState room = roomManager.GetRoom(roomIndex2);
                 SpawnPoint spawnPoint2 = (SpawnPoint)null;
                 if (!room.IsRoomEnabled())
@@ -115,9 +114,9 @@ namespace DiscipleClan.StatusEffects
                 statusEffectStateName = typeof(StatusEffectGravity).AssemblyQualifiedName,
                 statusId = "gravity",
                 displayCategory = StatusEffectData.DisplayCategory.Positive,
-                triggerStage = StatusEffectData.TriggerStage.OnPostAttacking,
+                triggerStage = StatusEffectData.TriggerStage.OnPostRoomCombat,
                 isStackable = true,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
+                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/weight.png"),
             }.Build();
         }
     }

@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
 using DiscipleClan.Triggers;
+using MonsterTrainModdingAPI.Builders;
+using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Unused
 {
@@ -46,7 +41,7 @@ namespace DiscipleClan.Cards.Unused
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder {
-                        Trigger = CustomTriggerManager.GetTrigger(typeof(MTCharacterTrigger_Relocate)),
+                        Trigger = OnRelocate.OnRelocateCharTrigger.GetEnum(),
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

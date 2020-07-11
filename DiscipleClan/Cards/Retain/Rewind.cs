@@ -1,13 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
-using ShinyShoe;
+using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Retain
 {
@@ -29,6 +21,8 @@ namespace DiscipleClan.Cards.Retain
                     new CardTraitDataBuilder
                     {
                          TraitStateName = "CardTraitScalingReturnConsumedCards",
+                         ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
+                         ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
                          ParamUseScalingParams = true,
                          ParamInt = 1,
                     },

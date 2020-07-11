@@ -1,10 +1,5 @@
-﻿using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Managers;
-using System;
+﻿using MonsterTrainModdingAPI.Managers;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
 
 namespace DiscipleClan.CardEffects
 {

@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
 using DiscipleClan.Triggers;
+using MonsterTrainModdingAPI.Builders;
+using System.Collections.Generic;
 
 
 namespace DiscipleClan.Cards.Shifter
@@ -39,6 +34,7 @@ namespace DiscipleClan.Cards.Shifter
             {
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
+                SubtypeKeys = new List<string> { "ChronoSubtype_Pythian" },
 
                 Size = 2,
                 Health = 10,
@@ -48,7 +44,7 @@ namespace DiscipleClan.Cards.Shifter
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder {
-                        Trigger = CustomTriggerManager.GetTrigger(typeof(MTCharacterTrigger_Relocate)),
+                        Trigger = OnRelocate.OnRelocateCharTrigger.GetEnum(),
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

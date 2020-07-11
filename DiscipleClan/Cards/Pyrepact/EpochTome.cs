@@ -1,13 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
-using ShinyShoe;
+using System.Collections.Generic;
+using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Pyrepact
 {
@@ -42,7 +35,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(typeof(MTStatusEffect_Sweep), 1);
+            railyard.EffectBuilders[0].AddStatusEffect(Sweep, 1);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "sigmaligma.png");

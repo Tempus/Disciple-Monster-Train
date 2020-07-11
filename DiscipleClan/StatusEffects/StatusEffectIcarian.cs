@@ -1,17 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace DiscipleClan.StatusEffects
 {
-    public class MTStatusEffect_Icarian : IMTStatusEffect { public string ID => "icarian"; }
-
     class StatusEffectIcarian : StatusEffectState
     {
         public const string StatusId = "icarian";
@@ -60,7 +55,8 @@ namespace DiscipleClan.StatusEffects
                 oldSpawnPoint.GetRoomOwner()?.UpdateSpawnPointPositions(target.GetTeamType(), -1, false, false);
                 newSpawnPoint.GetRoomOwner()?.UpdateSpawnPointPositions(target.GetTeamType(), -1, false, false);
                 target.SetSpawnPoint(newSpawnPoint, false, false, (Action)null, 0.0f);
-            } else { return; }
+            }
+            else { return; }
 
             target.GetCharacterUI().SetHighlightVisible(false, SelectionStyle.DEFAULT);
 
@@ -118,7 +114,7 @@ namespace DiscipleClan.StatusEffects
                 statusId = "icarian",
                 displayCategory = StatusEffectData.DisplayCategory.Persistent,
                 triggerStage = StatusEffectData.TriggerStage.OnPostRoomCombat,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
+                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/icarus.png"),
             }.Build();
         }
     }

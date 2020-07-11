@@ -1,9 +1,6 @@
 ﻿using DiscipleClan.Triggers;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DiscipleClan.Upgrades
 {
@@ -49,7 +46,8 @@ namespace DiscipleClan.Upgrades
                     // Buff everyone on the floor when we shift
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = CustomTriggerManager.GetTrigger(typeof(MTCharacterTrigger_GainEmber)),
+                        Trigger = OnGainEmber.OnGainEmberCharTrigger.GetEnum(),
+                        DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

@@ -1,8 +1,5 @@
 ﻿using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DiscipleClan.Cards.Shifter
 {
@@ -15,7 +12,7 @@ namespace DiscipleClan.Cards.Shifter
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 0,
-                Rarity = CollectableRarity.Uncommon,
+                Rarity = CollectableRarity.Common,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {

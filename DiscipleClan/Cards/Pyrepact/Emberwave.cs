@@ -1,14 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DiscipleClan.CardEffects;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
-using ShinyShoe;
+using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Pyrepact
 {
@@ -22,7 +14,7 @@ namespace DiscipleClan.Cards.Pyrepact
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 0,
-                Rarity = CollectableRarity.Uncommon,
+                Rarity = CollectableRarity.Common,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {

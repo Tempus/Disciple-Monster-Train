@@ -1,61 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
 using System.Collections;
-using MonsterTrainModdingAPI;
+using System.Collections.Generic;
 
 namespace DiscipleClan.StatusEffects
 {
-	public class MTStatusEffect_Pyrelink : IMTStatusEffect { public string ID => "pyrelink"; }
-
-	class StatusEffectPyrelink : StatusEffectState
+    class StatusEffectPyrelink : StatusEffectState
     {
         public const string StatusId = "pyrelink";
 
-		public override bool TestTrigger(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
-		{
-			List<CharacterState> towerchars = new List<CharacterState>();
-			inputTriggerParams.combatManager.GetHeroManager().AddCharactersInTowerToList(towerchars);
+        public override bool TestTrigger(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
+        {
+            List<CharacterState> towerchars = new List<CharacterState>();
+            inputTriggerParams.combatManager.GetHeroManager().AddCharactersInTowerToList(towerchars);
             foreach (var hero in towerchars)
             {
-				hero.AddDeathSignal(OnEnemyDeath, true);
+                hero.AddDeathSignal(OnEnemyDeath, true);
             }
 
-			return true;
-		}
+            return true;
+        }
 
-		// If the Pyre kills something, I want to know about it!
-		private IEnumerator OnEnemyDeath(CharacterDeathParams deathParams)
-		{
-			if (deathParams == null)
-			{
-				yield break;
-			}
-			CharacterState attackingCharacter = deathParams.attackingCharacter;
-			SaveManager saveManager = deathParams.saveManager;
-			if (attackingCharacter != null && attackingCharacter.IsPyreHeart())
-			{
-				var buffAmount = GetEffectMagnitude();
-				var champion = this.GetAssociatedCharacter();
+        // If the Pyre kills something, I want to know about it!
+        private IEnumerator OnEnemyDeath(CharacterDeathParams deathParams)
+        {
+            if (deathParams == null)
+            {
+                yield break;
+            }
+            CharacterState attackingCharacter = deathParams.attackingCharacter;
+            SaveManager saveManager = deathParams.saveManager;
+            if (attackingCharacter != null && attackingCharacter.IsPyreHeart())
+            {
+                var buffAmount = GetEffectMagnitude();
+                var champion = this.GetAssociatedCharacter();
 
-				// We killed something, Let's buff
-				if (!saveManager.PreviewMode)
-				{
-					// attackingCharacter.GetCharacterUI().ShowEffectVFX(attackingCharacter, _srcRelicEffectData.GetAppliedVfx());
-					champion.BuffMaxHP(buffAmount);
-				}
-				// We killed something imaginarily, we should preview here? Wait, how does the PYRE preview a kill?
-				else
-				{
-					API.Log(BepInEx.Logging.LogLevel.All, "This triggers when we're previewing pyrelink");
-					// attackingCharacter.PreviewHpOnPyreHeart(Mathf.Min(attackingCharacter.GetHP() + healAmount, saveManager.GetMaxTowerHP()));
-				}
-			}
-		}
+                // We killed something, Let's buff
+                if (!saveManager.PreviewMode)
+                {
+                    // attackingCharacter.GetCharacterUI().ShowEffectVFX(attackingCharacter, _srcRelicEffectData.GetAppliedVfx());
+                    API.Log(BepInEx.Logging.LogLevel.All, "This triggers when we're actually pyrelinking");
+                    yield return champion.BuffMaxHP(buffAmount);
+                }
+                // We killed something imaginarily, we should preview here? Wait, how does the PYRE preview a kill?
+                else
+                {
+                    API.Log(BepInEx.Logging.LogLevel.All, "This triggers when we're previewing pyrelink");
+                    //champion.BuffMaxHP(buffAmount);
+                    // attackingCharacter.PreviewHpOnPyreHeart(Mathf.Min(attackingCharacter.GetHP() + healAmount, saveManager.GetMaxTowerHP()));
+                }
+            }
+        }
 
         public static void Make()
         {
@@ -63,11 +59,11 @@ namespace DiscipleClan.StatusEffects
             {
                 statusEffectStateName = typeof(StatusEffectPyrelink).AssemblyQualifiedName,
                 statusId = "pyrelink",
-                displayCategory = StatusEffectData.DisplayCategory.Positive,
+                displayCategory = StatusEffectData.DisplayCategory.Persistent,
                 triggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
-				icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
-				isStackable = true,
-			}.Build();
+                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/fire-dash.png"),
+                isStackable = true,
+            }.Build();
         }
     }
 }

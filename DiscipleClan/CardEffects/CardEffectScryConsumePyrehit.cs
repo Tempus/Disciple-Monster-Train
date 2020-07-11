@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DiscipleClan.CardEffects
 {
-    class CardEffectScryConsumePyrehit :CardEffectScry
+    class CardEffectScryConsumePyrehit : CardEffectScry
     {
         public override void AddDelegate(CardEffectState cardEffectState,
           CardEffectParams cardEffectParams,
@@ -11,7 +11,7 @@ namespace DiscipleClan.CardEffects
         {
             deckScreen.AddDeckScreenCardStateChosenDelegate((DeckScreen.CardStateChosenDelegate)(chosenCardState =>
             {
-				cardEffectParams.cardManager.MoveToStandByPile(chosenCardState, wasPlayed: false, wasExhausted: true, new RemoveFromStandByCondition(() => CardPile.ExhaustedPile), new CardManager.DiscardCardParams(), HandUI.DiscardEffect.Exhausted);
+                cardEffectParams.cardManager.MoveToStandByPile(chosenCardState, wasPlayed: false, wasExhausted: true, new RemoveFromStandByCondition(() => CardPile.ExhaustedPile), new CardManager.DiscardCardParams(), HandUI.DiscardEffect.Exhausted);
 
                 var allTargets = new List<CharacterState>();
                 cardEffectParams.heroManager.AddCharactersInRoomToList(allTargets, cardEffectParams.GetSelectedRoom().GetRoomIndex());

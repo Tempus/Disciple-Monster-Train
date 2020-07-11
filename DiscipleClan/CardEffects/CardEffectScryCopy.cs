@@ -1,6 +1,6 @@
 ﻿namespace DiscipleClan.CardEffects
 {
-    class CardEffectScryCopy :CardEffectScry
+    class CardEffectScryCopy : CardEffectScry
     {
         public override void AddDelegate(CardEffectState cardEffectState,
           CardEffectParams cardEffectParams,

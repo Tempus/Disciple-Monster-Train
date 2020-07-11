@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
 using DiscipleClan.CardEffects;
+using MonsterTrainModdingAPI.Builders;
+using System.Collections.Generic;
 
 // TODO - look into CardTraitRetain and CardTraitFreeze, no builder for CardTriggerEffectData
 
@@ -70,6 +65,7 @@ namespace DiscipleClan.Cards.Retain
             {
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
+                SubtypeKeys = new List<string> { "ChronoSubtype_Eternal" },
 
                 Size = 3,
                 Health = 60,

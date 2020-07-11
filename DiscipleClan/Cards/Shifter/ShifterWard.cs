@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
+using System.Collections.Generic;
+using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Shifter
 {
@@ -20,7 +14,7 @@ namespace DiscipleClan.Cards.Shifter
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Common,
+                Rarity = CollectableRarity.Uncommon,
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
@@ -69,9 +63,10 @@ namespace DiscipleClan.Cards.Shifter
                     },
                 }
             };
-            characterDataBuilder.AddStartingStatusEffect(typeof(MTStatusEffect_Immobile), 1);
+            characterDataBuilder.AddStartingStatusEffect(Immobile, 1);
 
             Utils.AddUnitImg(characterDataBuilder, IDName + ".png");
+            characterDataBuilder.SubtypeKeys = new List<string> { "ChronoSubtype_Ward" };
             return characterDataBuilder.BuildAndRegister();
         }
     }

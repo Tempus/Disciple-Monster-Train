@@ -1,14 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Managers;
 using DiscipleClan.CardEffects;
-using ShinyShoe;
+using MonsterTrainModdingAPI.Builders;
+using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Prophecy
 {
@@ -22,7 +14,7 @@ namespace DiscipleClan.Cards.Prophecy
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Uncommon,
+                Rarity = CollectableRarity.Common,
                 Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>

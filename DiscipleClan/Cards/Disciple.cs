@@ -1,9 +1,5 @@
 ﻿using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using DiscipleClan.Cards;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DiscipleClan.Cards.Units
 {
@@ -39,7 +35,7 @@ namespace DiscipleClan.Cards.Units
                 Size = 2,
                 Health = 10,
                 AttackDamage = 5,
-                
+
                 SubtypeKeys = new List<string> { "SubtypesData_Champion_83f21cbe-9d9b-4566-a2c3-ca559ab8ff34" },
             };
 

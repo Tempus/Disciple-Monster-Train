@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Collections;
-using UnityEngine;
 
 namespace DiscipleClan.CardEffects
 {
@@ -40,7 +37,7 @@ namespace DiscipleClan.CardEffects
         {
             if (cardEffectParams.targetCards.Count > 0)
             {
-                 yield return (object)this.HandleChooseCard(cardEffectState, cardEffectParams);
+                yield return (object)this.HandleChooseCard(cardEffectState, cardEffectParams);
             }
         }
 

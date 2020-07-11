@@ -2,7 +2,7 @@
 
 namespace DiscipleClan.CardEffects
 {
-    class CardEffectScryFreebies :CardEffectScry
+    class CardEffectScryFreebies : CardEffectScry
     {
         public override void AddDelegate(CardEffectState cardEffectState,
           CardEffectParams cardEffectParams,

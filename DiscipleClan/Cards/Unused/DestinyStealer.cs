@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
 
 // TODO - how do I tell whether a unit has attacked or not? I can intuit it in an effect based on whether me and them are quick or slow of course, but that needs a custom effect!
 
@@ -46,8 +40,10 @@ namespace DiscipleClan.Cards.Unused
             };
 
             // Drop down a floor on hit
-            var strikeTrigger = new CharacterTriggerDataBuilder {
-                Trigger = CharacterTriggerData.Trigger.OnAttacking};
+            var strikeTrigger = new CharacterTriggerDataBuilder
+            {
+                Trigger = CharacterTriggerData.Trigger.OnAttacking
+            };
 
             characterDataBuilder.Triggers.Add(strikeTrigger.Build());
 

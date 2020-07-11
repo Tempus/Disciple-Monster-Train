@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
+using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Prophecy
 {
@@ -38,22 +32,13 @@ namespace DiscipleClan.Cards.Prophecy
             {
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
+                SubtypeKeys = new List<string> { "ChronoSubtype_Seer" },
 
                 Size = 1,
                 Health = 5,
-                AttackDamage = 20,
-
-                TriggerBuilders = new List<CharacterTriggerDataBuilder>
-                {
-                    new CharacterTriggerDataBuilder
-                    {
-                        Trigger = CharacterTriggerData.Trigger.OnTurnBegin,
-                    }
-                },
-
-                
+                AttackDamage = 10,
             };
-            characterDataBuilder.AddStartingStatusEffect(typeof(MTStatusEffect_Quick), 1);
+            characterDataBuilder.AddStartingStatusEffect("pastglory", 1);
 
             Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();

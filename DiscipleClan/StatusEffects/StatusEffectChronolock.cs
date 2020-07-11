@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
+﻿using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 
 namespace DiscipleClan.StatusEffects
 {
-    public class MTStatusEffect_Chronolock : IMTStatusEffect { public string ID => "chronolock"; }
-
     class StatusEffectChronolock : StatusEffectState
     {
         public const string StatusId = "chronolock";

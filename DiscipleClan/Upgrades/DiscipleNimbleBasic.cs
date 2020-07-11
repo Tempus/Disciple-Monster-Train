@@ -1,9 +1,5 @@
-﻿using DiscipleClan.CardEffects;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using System;
+﻿using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DiscipleClan.Upgrades
 {
@@ -28,15 +24,17 @@ namespace DiscipleClan.Upgrades
                 //bonusSize = 0,
 
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
-                triggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> { 
+                triggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> {
                     new CharacterTriggerDataBuilder {
-                        Trigger = CharacterTriggerData.Trigger.AfterSpawnEnchant,
+                        Trigger = CharacterTriggerData.Trigger.CardMonsterPlayed,
+                        DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectEnchant",
                                 ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId="ambush" } },
+                                ParamTrigger = CharacterTriggerData.Trigger.OnDeath,
                                 TargetMode = TargetMode.Room,
                                 TargetTeamType = Team.Type.Monsters,
                             }
@@ -47,7 +45,7 @@ namespace DiscipleClan.Upgrades
                 //roomModifierUpgradeBuilders = new List<RoomModifierDataBuilder> { },
                 //filtersBuilders = new List<CardUpgradeMaskDataBuilder> { },
                 //upgradesToRemoveBuilders = new List<CardUpgradeDataBuilder> { },
-                statusEffectUpgrades = new List<StatusEffectStackData> { 
+                statusEffectUpgrades = new List<StatusEffectStackData> {
                     new StatusEffectStackData { count = 1, statusId = "multistrike" }
                 },
             };

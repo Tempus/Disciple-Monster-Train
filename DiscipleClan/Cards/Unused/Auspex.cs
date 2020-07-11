@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
+using System.Collections.Generic;
 
 // TODO Unclear about rearrangement indices here - we don't seem to be moving around at all
 
@@ -21,7 +16,7 @@ namespace DiscipleClan.Cards.Unused
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 2,
-                Rarity = CollectableRarity.Uncommon, 
+                Rarity = CollectableRarity.Uncommon,
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());

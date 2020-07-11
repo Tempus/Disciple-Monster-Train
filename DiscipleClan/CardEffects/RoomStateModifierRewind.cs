@@ -1,12 +1,6 @@
-﻿using HarmonyLib;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using System;
+﻿using MonsterTrainModdingAPI.Managers;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 using UnityEngine;
 
 namespace DiscipleClan.CardEffects
@@ -20,7 +14,7 @@ namespace DiscipleClan.CardEffects
         public override void Initialize(RoomModifierData roomModifierData, RoomManager roomManager)
         {
             base.Initialize(roomModifierData, roomManager);
-        
+
             numOfCards = roomModifierData.GetParamInt();
 
             var cardManager = GameObject.FindObjectOfType<CardManager>().GetComponent<CardManager>() as CardManager;
@@ -67,22 +61,18 @@ namespace DiscipleClan.CardEffects
 
             if (cardManager.GetCardStatistics().GetNumCardsPlayedThisTurnOfType(CardType.Spell) < numOfCards)
             {
-                var corountine = RedrawCard(cardState);
+                var corountine = RedrawCard(cardState, cardManager.GetHand().Count);
                 cardManager.StartCoroutine(corountine);
             }
         }
-        public static IEnumerator RedrawCard(CardState cardState)
+        public static IEnumerator RedrawCard(CardState cardState, int cardIndex)
         {
             yield return new WaitForSeconds(0.2f);
 
             CardManager cardManager;
             ProviderManager.TryGetProvider<CardManager>(out cardManager);
-            cardManager.DrawSpecificCard(cardState, 0f, HandUI.DrawSource.Discard, cardState);
-        }
-
-        new public string GetDescriptionKey()
-        {
-            return "RoomStateModifierRelocateRewind_Desc";
+            cardManager.DrawSpecificCard(cardState, 0f, HandUI.DrawSource.Discard, cardState, cardIndex);
+            cardManager.GetDiscardPile().Remove(cardState);
         }
 
         new public string GetExtraTooltipTitleKey()
@@ -94,7 +84,7 @@ namespace DiscipleClan.CardEffects
         {
             return "RoomStateModifierRelocateRewind_TooltipBody";
         }
-       
+
 
     }
 }

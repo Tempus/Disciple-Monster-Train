@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
-using MonsterTrainModdingAPI;
+﻿using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 using MonsterTrainModdingAPI.Managers;
 
 namespace DiscipleClan.StatusEffects
 {
-
-    // TODO: When slow is applied, if quick is there cancel them out. When slow is there, if quick is applied cancel them out.
-
-    public class MTStatusEffect_Slow : IMTStatusEffect { public string ID => "slow"; }
-
     class StatusEffectSlow : StatusEffectState
     {
         public const string StatusId = "slow";
@@ -49,7 +38,7 @@ namespace DiscipleClan.StatusEffects
                 statusEffectStateName = typeof(StatusEffectSlow).AssemblyQualifiedName,
                 statusId = "slow",
                 triggerStage = StatusEffectData.TriggerStage.OnPreAttacking,
-                displayCategory = StatusEffectData.DisplayCategory.Negative,
+                displayCategory = StatusEffectData.DisplayCategory.Persistent,
                 removeStackAtEndOfTurn = false,
                 icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
             }.Build();

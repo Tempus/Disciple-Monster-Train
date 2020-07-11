@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
+using System.Collections.Generic;
 
 // TODO - The timing of this effect is not going to be correct right now I think. Maybe this needs to be a roomModifier
 
@@ -43,6 +38,8 @@ namespace DiscipleClan.Cards.Unused
                 Size = 2,
                 Health = 22,
                 AttackDamage = 5,
+
+
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {

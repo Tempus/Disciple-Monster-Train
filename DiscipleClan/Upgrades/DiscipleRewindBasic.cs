@@ -1,9 +1,6 @@
 ﻿using DiscipleClan.CardEffects;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DiscipleClan.Upgrades
 {
@@ -36,7 +33,7 @@ namespace DiscipleClan.Upgrades
                     {
                     roomStateModifierClassName = typeof(RoomStateModifierRewind).AssemblyQualifiedName,
                     paramInt = 1,
-                    descriptionKey = IDName + "_Room",
+                    descriptionKey = IDName + "_Desc",
                     extraTooltipTitleKey = IDName + "_RoomTipName",
                     extraTooltipBodyKey = IDName + "_RoomTipDesc",
                     }

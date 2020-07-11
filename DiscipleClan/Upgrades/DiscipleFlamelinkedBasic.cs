@@ -1,9 +1,5 @@
-﻿using DiscipleClan.CardEffects;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using System;
+﻿using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DiscipleClan.Upgrades
 {
@@ -33,7 +29,7 @@ namespace DiscipleClan.Upgrades
                 //roomModifierUpgradeBuilders = new List<RoomModifierDataBuilder> { },
                 //filtersBuilders = new List<CardUpgradeMaskDataBuilder> { },
                 //upgradesToRemoveBuilders = new List<CardUpgradeDataBuilder> { },
-                statusEffectUpgrades = new List<StatusEffectStackData> { 
+                statusEffectUpgrades = new List<StatusEffectStackData> {
                     new StatusEffectStackData
                     {
                         statusId = "pyreboost",

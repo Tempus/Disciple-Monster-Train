@@ -1,54 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
+﻿using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using System.Collections;
 
 namespace DiscipleClan.StatusEffects
 {
-	public class MTStatusEffect_Loaded : IMTStatusEffect { public string ID => "loaded"; }
-
-	class StatusEffectLoaded : StatusEffectState
+    class StatusEffectLoaded : StatusEffectState
     {
         public const string StatusId = "loaded";
 
-        // Every turn, descend
-        // Every turn, heal to max
-        // Every turn, gain max hp
-        // When dead, give big gold (based on MaxHP? Based on turns?
+        // Ideally lose gold every time they attack, ascend, or get hit and don't die. We may only be able to implement two of those
 
         protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
         {
-            // This makes them unable to move
-            outputTriggerParams.movementSpeed = -1;
-
-            // Increase Max HP and full heal
-            yield return inputTriggerParams.associatedCharacter.BuffMaxHP(10);
-            yield return inputTriggerParams.associatedCharacter.ApplyHeal(999);
-
-            // Give gold based on HP... 10% a turn.
-            int goldGain = inputTriggerParams.associatedCharacter.GetMaxHP() / 10;
-
-            var characterState = inputTriggerParams.associatedCharacter;
-            characterState.ShowNotification("HudNotification_TreasureHeroTriggered".Localize(new LocalizedInteger(inputTriggerParams.combatManager.GetSaveManager().GetAdjustedGoldAmount(goldGain, isReward: true))), PopupNotificationUI.Source.General);
-            //characterState.GetCharacterUI().ShowEffectVFX(characterState, cardEffectState.GetAppliedVFX());
-            inputTriggerParams.combatManager.GetSaveManager().AdjustGold(goldGain, isReward: false);
+            GetAssociatedCharacter().AddDeathSignal(OnDeath, true);
+            GetAssociatedCharacter().RemoveStatusEffect(GetStatusId(), false, 1, true);
+            yield break;
         }
 
-		public static void Make()
+        private IEnumerator OnDeath(CharacterDeathParams deathParams)
+        {
+            PlayerManager playerManager;
+            ProviderManager.TryGetProvider<PlayerManager>(out playerManager);
+            CharacterState characterState = GetAssociatedCharacter();
+            int GoldStacks = characterState.GetStatusEffectStacks(GetStatusId());
+
+            if (characterState != null)
+            {
+                characterState.ShowNotification("HudNotification_TreasureHeroTriggered".Localize(new LocalizedInteger(deathParams.saveManager.GetAdjustedGoldAmount(GoldStacks, isReward: true))), PopupNotificationUI.Source.General);
+                //characterState.GetCharacterUI().ShowEffectVFX(characterState, cardEffectState.GetAppliedVFX());
+            }
+            playerManager.AdjustGold(GoldStacks, isReward: true); yield break;
+        }
+
+        public static void Make()
         {
             new StatusEffectDataBuilder
             {
                 statusEffectStateName = typeof(StatusEffectLoaded).AssemblyQualifiedName,
                 statusId = "loaded",
-                displayCategory = StatusEffectData.DisplayCategory.Negative,
-                triggerStage = StatusEffectData.TriggerStage.OnPreMovement,
-                isStackable = false,
-				icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
-			}.Build();
+                displayCategory = StatusEffectData.DisplayCategory.Positive,
+                triggerStage = StatusEffectData.TriggerStage.OnPostAttacking,
+                isStackable = true,
+                removeStackAtEndOfTurn = true,
+                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/two-coins.png"),
+            }.Build();
         }
 
     }

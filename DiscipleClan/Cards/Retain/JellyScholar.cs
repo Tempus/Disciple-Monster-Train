@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
+using System.Collections.Generic;
 
 
 namespace DiscipleClan.Cards.Retain
@@ -37,11 +32,12 @@ namespace DiscipleClan.Cards.Retain
             {
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
+                SubtypeKeys = new List<string> { "ChronoSubtype_Eternal" },
 
                 Size = 3,
                 Health = 5,
                 AttackDamage = 15,
-                
+
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder

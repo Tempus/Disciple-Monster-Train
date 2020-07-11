@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
+﻿using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
+using System.Collections;
 
 namespace DiscipleClan.StatusEffects
 {
-    public class MTStatusEffect_Emberboost : IMTStatusEffect { public string ID => "emberboost"; }
-
     class StatusEffectEmberboost : StatusEffectState
     {
         public const string StatusId = "emberboost";
@@ -34,7 +28,7 @@ namespace DiscipleClan.StatusEffects
                 triggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
                 isStackable = true,
                 removeStackAtEndOfTurn = true,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
+                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/fire-silhouette.png"),
             }.Build();
         }
     }

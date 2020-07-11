@@ -1,8 +1,5 @@
 ﻿using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DiscipleClan.Cards.Unused
 {

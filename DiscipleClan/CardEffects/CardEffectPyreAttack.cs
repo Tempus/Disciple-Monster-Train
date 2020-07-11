@@ -1,8 +1,4 @@
-﻿using MonsterTrainModdingAPI;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace DiscipleClan.CardEffects
@@ -29,7 +25,7 @@ namespace DiscipleClan.CardEffects
                 pyreroom = GameObject.FindObjectOfType<PyreRoomState>() as PyreRoomState;
             int pyreAttack = 0;
             pyreroom.TryGetPyreAttack(out pyreAttack);
-            
+
 
             return pyreAttack;
         }
