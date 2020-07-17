@@ -6,7 +6,7 @@ namespace DiscipleClan.StatusEffects
 {
     class StatusEffectEmberboost : StatusEffectState
     {
-        public const string StatusId = "emberboost";
+        public const string statusId = "emberboost";
 
         // This makes them unable to be targetted
         protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
@@ -22,13 +22,13 @@ namespace DiscipleClan.StatusEffects
         {
             new StatusEffectDataBuilder
             {
-                statusEffectStateName = typeof(StatusEffectEmberboost).AssemblyQualifiedName,
-                statusId = "emberboost",
-                displayCategory = StatusEffectData.DisplayCategory.Positive,
-                triggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
-                isStackable = true,
-                removeStackAtEndOfTurn = true,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/fire-silhouette.png"),
+                StatusEffectStateName = typeof(StatusEffectEmberboost).AssemblyQualifiedName,
+                StatusId = "emberboost",
+                DisplayCategory = StatusEffectData.DisplayCategory.Positive,
+                TriggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
+                IsStackable = true,
+                RemoveStackAtEndOfTurn = true,
+                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/fire-silhouette.png"),
             }.Build();
         }
     }

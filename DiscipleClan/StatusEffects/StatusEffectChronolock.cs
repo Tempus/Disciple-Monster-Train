@@ -5,7 +5,7 @@ namespace DiscipleClan.StatusEffects
 {
     class StatusEffectChronolock : StatusEffectState
     {
-        public const string StatusId = "chronolock";
+        public const string statusId = "chronolock";
 
         // This makes them unable to be targetted
         public override bool GetUnitIsTargetable(bool inCombat)
@@ -32,13 +32,13 @@ namespace DiscipleClan.StatusEffects
         {
             new StatusEffectDataBuilder
             {
-                statusEffectStateName = typeof(StatusEffectChronolock).AssemblyQualifiedName,
-                statusId = "chronolock",
-                displayCategory = StatusEffectData.DisplayCategory.Negative,
-                triggerStage = StatusEffectData.TriggerStage.OnPreMovement,
-                isStackable = true,
-                removeStackAtEndOfTurn = true,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
+                StatusEffectStateName = typeof(StatusEffectChronolock).AssemblyQualifiedName,
+                StatusId = "chronolock",
+                DisplayCategory = StatusEffectData.DisplayCategory.Negative,
+                TriggerStage = StatusEffectData.TriggerStage.OnPreMovement,
+                IsStackable = true,
+                RemoveStackAtEndOfTurn = true,
+                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
             }.Build();
         }
     }

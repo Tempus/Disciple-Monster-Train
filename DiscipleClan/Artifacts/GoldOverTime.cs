@@ -1,6 +1,7 @@
 ﻿using DiscipleClan.Cards;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
+using static MonsterTrainModdingAPI.Constants.VanillaRelicPoolIDs;
 
 namespace DiscipleClan.Artifacts
 {
@@ -13,15 +14,19 @@ namespace DiscipleClan.Artifacts
             var relic = new CollectableRelicDataBuilder
             {
                 AssetPath = "Sample.png",
-                EffectBuilders = new List<RelicEffectDataBuilder>
-                {
-                    new RelicEffectDataBuilder
-                    {
-                         RelicEffectClassName = "RelicAddStatusEffectOnSpawn",
-                         ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { statusId = "loaded", count = 5 } },
-                         ParamSourceTeam = Team.Type.Heroes,
-                    }
-                }
+                RelicPoolIDs = new List<string> { MegaRelicPool },
+                //EffectBuilders = new List<RelicEffectDataBuilder>
+                //{
+                //    new RelicEffectDataBuilder
+                //    {
+                //         RelicEffectClassName = "RelicEffectAddStatusEffectOnSpawn",
+                //         ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { statusId = "loaded", count = 5 } },
+                //         ParamSourceTeam = Team.Type.Heroes,
+                //         ParamBool = false,
+                //         ParamTargetMode = TargetMode.FrontInRoom,
+                //         ParamCardType = CardType.Monster,
+                //    }
+                //}
             };
             Utils.AddRelic(relic, ID);
 

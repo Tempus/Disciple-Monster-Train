@@ -13,7 +13,7 @@ namespace DiscipleClan.Cards.Retain
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 3,
+                Cost = 2,
                 Rarity = CollectableRarity.Uncommon,
             };
 
@@ -51,10 +51,10 @@ namespace DiscipleClan.Cards.Retain
                                 TargetMode = TargetMode.Self,
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder
                                 {
-                                    bonusDamage = 10,
-                                    bonusHP = 15,
-                                    bonusSize = 1,
-                                    hideUpgradeIconOnCard = true,
+                                    BonusDamage = 10,
+                                    BonusHP = 15,
+                                    BonusSize = 1,
+                                    HideUpgradeIconOnCard = true,
                                 }.Build(),
                             },
                         }

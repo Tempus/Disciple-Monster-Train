@@ -5,7 +5,7 @@ namespace DiscipleClan.StatusEffects
 {
     class StatusEffectPastGlory : StatusEffectState
     {
-        public const string StatusId = "pastglory";
+        public const string statusId = "pastglory";
         public int lastBuff = 0;
 
         public override void ModifyVisualDamage(ref int visualDamage, int damageApplied, int unmodifiedDamage, int damageSustained, int damageBlocked, CharacterState attacker, CharacterState target)
@@ -28,11 +28,11 @@ namespace DiscipleClan.StatusEffects
         {
             new StatusEffectDataBuilder
             {
-                statusEffectStateName = typeof(StatusEffectPastGlory).AssemblyQualifiedName,
-                statusId = "pastglory",
-                displayCategory = StatusEffectData.DisplayCategory.Persistent,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/card-discard.png"),
-                paramInt = 2,
+                StatusEffectStateName = typeof(StatusEffectPastGlory).AssemblyQualifiedName,
+                StatusId = "pastglory",
+                DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
+                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/card-discard.png"),
+                ParamInt = 2,
             }.Build();
         }
     }

@@ -13,7 +13,7 @@ namespace DiscipleClan.Cards.Shifter
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 3,
+                Cost = 2,
                 Rarity = CollectableRarity.Uncommon,
             };
 

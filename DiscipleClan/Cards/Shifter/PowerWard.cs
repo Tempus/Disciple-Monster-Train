@@ -13,8 +13,8 @@ namespace DiscipleClan.Cards.Shifter
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 2,
-                Rarity = CollectableRarity.Uncommon,
+                Cost = 1,
+                Rarity = CollectableRarity.Common,
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
@@ -49,7 +49,7 @@ namespace DiscipleClan.Cards.Shifter
                     new RoomModifierDataBuilder
                     {
                         roomStateModifierClassName = typeof(RoomStateModifierRelocateBuff).AssemblyQualifiedName,
-                        paramInt = 3
+                        ParamInt = 3
                     }
                 }
             };

@@ -31,14 +31,14 @@ namespace DiscipleClan.Cards.Unused
                     new CardTriggerEffectDataBuilder
                     {
                         trigger = CardTriggerType.OnUnplayed,
-                        EffectBuilders = new List<CardEffectDataBuilder>
+                        CardEffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = typeof(CardEffectAddTempUpgrade).AssemblyQualifiedName,
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder {
-                                    bonusDamage = 5,
-                                    bonusHP = 5,
+                                    BonusDamage = 5,
+                                    BonusHP = 5,
                                 }.Build(),
                                 TargetMode = TargetMode.Self
                             },

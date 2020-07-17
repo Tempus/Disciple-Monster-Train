@@ -13,7 +13,7 @@ namespace DiscipleClan.Cards.Prophecy
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 2,
+                Cost = 1,
                 Rarity = CollectableRarity.Uncommon,
             };
 

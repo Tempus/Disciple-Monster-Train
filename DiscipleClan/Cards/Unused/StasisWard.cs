@@ -49,7 +49,7 @@ namespace DiscipleClan.Cards.Unused
                     new RoomModifierDataBuilder
                     {
                         roomStateModifierClassName = typeof(RoomStateModifierRelocateStatusEffect).AssemblyQualifiedName,
-                        paramStatusEffects = new StatusEffectStackData[]
+                        ParamStatusEffects = new StatusEffectStackData[]
                         {
                             new StatusEffectStackData { count = 1, statusId = "dazed"},
                         }

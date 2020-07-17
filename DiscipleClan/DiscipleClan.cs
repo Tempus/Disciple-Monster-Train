@@ -37,7 +37,7 @@ namespace DiscipleClan
             Clan.RegisterBanner();
             MakeArtifacts();
 
-            PrintCardStats();
+            //PrintCardStats();
             //foreach (SubtypeData s in SubtypeManager.AllData)
             //{
             //    API.Log(BepInEx.Logging.LogLevel.All, "Subtype: " + s.LocalizedName + " - Key: " + s.Key);
@@ -77,7 +77,7 @@ namespace DiscipleClan
             EmberOnDivine.Make();
             GoldOverTime.Make();
             GravityOnAscend.Make();
-            LastSpellMagnets.Make();
+            RewindFirstSpell.Make();
             PyreDamageOnEmber.Make();
             QuickAndDirty.Make();
             RageAgainstThePyre.Make();

@@ -6,7 +6,7 @@ namespace DiscipleClan.StatusEffects
 {
     class StatusEffectLoaded : StatusEffectState
     {
-        public const string StatusId = "loaded";
+        public const string statusId = "loaded";
 
         // Ideally lose gold every time they attack, ascend, or get hit and don't die. We may only be able to implement two of those
 
@@ -36,13 +36,13 @@ namespace DiscipleClan.StatusEffects
         {
             new StatusEffectDataBuilder
             {
-                statusEffectStateName = typeof(StatusEffectLoaded).AssemblyQualifiedName,
-                statusId = "loaded",
-                displayCategory = StatusEffectData.DisplayCategory.Positive,
-                triggerStage = StatusEffectData.TriggerStage.OnPostAttacking,
-                isStackable = true,
-                removeStackAtEndOfTurn = true,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/two-coins.png"),
+                StatusEffectStateName = typeof(StatusEffectLoaded).AssemblyQualifiedName,
+                StatusId = "loaded",
+                DisplayCategory = StatusEffectData.DisplayCategory.Positive,
+                TriggerStage = StatusEffectData.TriggerStage.OnPostAttacking,
+                IsStackable = true,
+                RemoveStackAtEndOfTurn = true,
+                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/two-coins.png"),
             }.Build();
         }
 

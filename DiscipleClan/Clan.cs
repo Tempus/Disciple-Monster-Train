@@ -24,7 +24,7 @@ namespace DiscipleClan
 
                 UpgradeTreeBuilder = new CardUpgradeTreeDataBuilder
                 {
-                    upgradeTrees = new List<List<CardUpgradeDataBuilder>>
+                    UpgradeTrees = new List<List<CardUpgradeDataBuilder>>
                     {
                         new List<CardUpgradeDataBuilder>
                         {
@@ -37,12 +37,6 @@ namespace DiscipleClan
                             DiscipleFlamelinkedBasic.Builder(),
                             DiscipleFlamelinkedPremium.Builder(),
                             DiscipleFlamelinkedPro.Builder(),
-                        },
-                        new List<CardUpgradeDataBuilder>
-                        {
-                            DiscipleRewindBasic.Builder(),
-                            DiscipleRewindPremium.Builder(),
-                            DiscipleRewindPro.Builder(),
                         },
                         new List<CardUpgradeDataBuilder>
                         {
@@ -74,8 +68,8 @@ namespace DiscipleClan
 
                 CardFrameUnit = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/unit-cardframe-disciple.png"),
                 CardFrameSpell = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/spell-cardframe-disciple.png"),
-                UiColor = new Color(0.43f, 0.15f, 0.81f, 1f),
-                UiColorDark = new Color(0.12f, 0.42f, 0.39f, 1f),
+                UiColor = new Color(0.964f, 0.729f, 0.015f, 1f),
+                UiColorDark = new Color(0.015f, 0.015f, 0.403f, 1f),
             };
 
             clan.StartingChampion.championCharacterArt = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/Icon_ClassSelect_Disciple.png");

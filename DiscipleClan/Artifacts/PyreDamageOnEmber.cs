@@ -3,6 +3,7 @@ using DiscipleClan.Cards;
 using DiscipleClan.Triggers;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
+using static MonsterTrainModdingAPI.Constants.VanillaRelicPoolIDs;
 
 namespace DiscipleClan.Artifacts
 {
@@ -15,6 +16,7 @@ namespace DiscipleClan.Artifacts
             var relic = new CollectableRelicDataBuilder
             {
                 AssetPath = "Sample.png",
+                RelicPoolIDs = new List<string> { MegaRelicPool },
                 EffectBuilders = new List<RelicEffectDataBuilder>
                 {
                     new RelicEffectDataBuilder

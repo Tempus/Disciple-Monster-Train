@@ -6,7 +6,7 @@ namespace DiscipleClan.StatusEffects
 {
     class StatusEffectSlow : StatusEffectState
     {
-        public const string StatusId = "slow";
+        public const string statusId = "slow";
 
         public override void OnStacksAdded(CharacterState character, int numStacksAdded)
         {
@@ -35,12 +35,12 @@ namespace DiscipleClan.StatusEffects
         {
             new StatusEffectDataBuilder
             {
-                statusEffectStateName = typeof(StatusEffectSlow).AssemblyQualifiedName,
-                statusId = "slow",
-                triggerStage = StatusEffectData.TriggerStage.OnPreAttacking,
-                displayCategory = StatusEffectData.DisplayCategory.Persistent,
-                removeStackAtEndOfTurn = false,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
+                StatusEffectStateName = typeof(StatusEffectSlow).AssemblyQualifiedName,
+                StatusId = "slow",
+                TriggerStage = StatusEffectData.TriggerStage.OnPreAttacking,
+                DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
+                RemoveStackAtEndOfTurn = false,
+                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
             }.Build();
         }
     }

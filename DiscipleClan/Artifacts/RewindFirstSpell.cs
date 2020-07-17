@@ -1,14 +1,14 @@
-﻿using DiscipleClan.Cards;
-using DiscipleClan.Triggers;
+﻿using DiscipleClan.CardEffects;
+using DiscipleClan.Cards;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaRelicPoolIDs;
 
 namespace DiscipleClan.Artifacts
 {
-    class EmberOnDivine
+    class RewindFirstSpell
     {
-        public static string ID = "EmberOnDivine";
+        public static string ID = "RewindFirstSpell";
 
         public static void Make()
         {
@@ -20,10 +20,7 @@ namespace DiscipleClan.Artifacts
                 {
                     new RelicEffectDataBuilder
                     {
-                         RelicEffectClassName = "RelicEffectEmberOnUnitTrigger",
-                         ParamTrigger = OnDivine.OnDivineCharTrigger.GetEnum(),
-                         ParamSourceTeam = Team.Type.Monsters,
-                         ParamInt = 2,
+                         RelicEffectClassName = typeof(RelicEffectRewind).AssemblyQualifiedName,
                     }
                 }
             };

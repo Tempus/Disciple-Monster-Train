@@ -8,7 +8,7 @@ namespace DiscipleClan.StatusEffects
 {
     class StatusEffectPyrelink : StatusEffectState
     {
-        public const string StatusId = "pyrelink";
+        public const string statusId = "pyrelink";
 
         public override bool TestTrigger(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
         {
@@ -33,21 +33,21 @@ namespace DiscipleClan.StatusEffects
             SaveManager saveManager = deathParams.saveManager;
             if (attackingCharacter != null && attackingCharacter.IsPyreHeart())
             {
-                var buffAmount = GetEffectMagnitude();
                 var champion = this.GetAssociatedCharacter();
+                var buffAmount = champion.GetStatusEffectStacks(GetStatusId());
 
                 // We killed something, Let's buff
                 if (!saveManager.PreviewMode)
                 {
                     // attackingCharacter.GetCharacterUI().ShowEffectVFX(attackingCharacter, _srcRelicEffectData.GetAppliedVfx());
-                    API.Log(BepInEx.Logging.LogLevel.All, "This triggers when we're actually pyrelinking");
+                    //API.Log(BepInEx.Logging.LogLevel.All, "This triggers when we're actually pyrelinking");
                     yield return champion.BuffMaxHP(buffAmount);
                 }
                 // We killed something imaginarily, we should preview here? Wait, how does the PYRE preview a kill?
                 else
                 {
-                    API.Log(BepInEx.Logging.LogLevel.All, "This triggers when we're previewing pyrelink");
-                    //champion.BuffMaxHP(buffAmount);
+                    //API.Log(BepInEx.Logging.LogLevel.All, "This triggers when we're previewing pyrelink");
+                    //yield return champion.BuffMaxHP(buffAmount);
                     // attackingCharacter.PreviewHpOnPyreHeart(Mathf.Min(attackingCharacter.GetHP() + healAmount, saveManager.GetMaxTowerHP()));
                 }
             }
@@ -57,12 +57,12 @@ namespace DiscipleClan.StatusEffects
         {
             new StatusEffectDataBuilder
             {
-                statusEffectStateName = typeof(StatusEffectPyrelink).AssemblyQualifiedName,
-                statusId = "pyrelink",
-                displayCategory = StatusEffectData.DisplayCategory.Persistent,
-                triggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/fire-dash.png"),
-                isStackable = true,
+                StatusEffectStateName = typeof(StatusEffectPyrelink).AssemblyQualifiedName,
+                StatusId = "pyrelink",
+                DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
+                TriggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
+                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/fire-dash.png"),
+                IsStackable = true,
             }.Build();
         }
     }

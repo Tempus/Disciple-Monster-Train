@@ -26,7 +26,7 @@ namespace DiscipleClan.CardEffects
                 return;
 
             roomManager.GetPyreRoom().GetPyreHeart().BuffDamage(addAmount * buffAmount);
-            CustomCardManager.SaveManager.pyreAttackChangedSignal.Dispatch(CustomCardManager.SaveManager.GetDisplayedPyreAttack());
+            CustomCardManager.SaveManager.pyreAttackChangedSignal.Dispatch(CustomCardManager.SaveManager.GetDisplayedPyreAttack(), CustomCardManager.SaveManager.GetDisplayedPyreNumAttacks());
             NotifyRelicTriggered(relicManager, roomManager.GetPyreRoom().GetPyreHeart());
         }
     }

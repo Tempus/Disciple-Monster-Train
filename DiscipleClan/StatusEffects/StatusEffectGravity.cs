@@ -8,8 +8,16 @@ namespace DiscipleClan.StatusEffects
 {
     class StatusEffectGravity : StatusEffectState
     {
-        public const string StatusId = "gravity";
+        public const string statusId = "gravity";
         public bool shouldDie = false;
+
+        public override bool TestTrigger(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
+        {
+            // This makes them unable to move
+            outputTriggerParams.movementSpeed = 0;
+
+            return true;
+        }
 
         protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
         {
@@ -87,12 +95,26 @@ namespace DiscipleClan.StatusEffects
                     //bumpError = CardEffectTeleport.BumpError.DestroyedRoom;
                     break;
                 }
-                if (room.GetIsPyreRoom())
+                if (target.IsOuterTrainBoss())
                 {
-                    //bumpError = CardEffectTeleport.BumpError.FurnaceRoom;
-                    break;
+                    if (room.GetIsPyreRoom() && target.GetBossState().GetCurrentAttackPhase() != BossState.AttackPhase.Relentless)
+                    {
+                        //bumpError = CardEffectTeleport.BumpError.BossFurnaceRoom;
+                        break;
+                    }
+                    spawnPoint2 = room.GetOuterTrainSpawnPoint();
                 }
-                spawnPoint2 = room.GetFirstEmptyMonsterPoint();
+                else if (target.GetTeamType() == Team.Type.Heroes)
+                    spawnPoint2 = room.GetFirstEmptyHeroPoint();
+                else if (target.GetTeamType() == Team.Type.Monsters)
+                {
+                    if (room.GetIsPyreRoom())
+                    {
+                        //bumpError = CardEffectTeleport.BumpError.FurnaceRoom;
+                        break;
+                    }
+                    spawnPoint2 = room.GetFirstEmptyMonsterPoint();
+                }
 
                 if (spawnPoint2 == null)
                 {
@@ -111,12 +133,12 @@ namespace DiscipleClan.StatusEffects
         {
             new StatusEffectDataBuilder
             {
-                statusEffectStateName = typeof(StatusEffectGravity).AssemblyQualifiedName,
-                statusId = "gravity",
-                displayCategory = StatusEffectData.DisplayCategory.Positive,
-                triggerStage = StatusEffectData.TriggerStage.OnPostRoomCombat,
-                isStackable = true,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/weight.png"),
+                StatusEffectStateName = typeof(StatusEffectGravity).AssemblyQualifiedName,
+                StatusId = "gravity",
+                DisplayCategory = StatusEffectData.DisplayCategory.Positive,
+                TriggerStage = StatusEffectData.TriggerStage.OnPostRoomCombat,
+                IsStackable = true,
+                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/weight.png"),
             }.Build();
         }
     }

@@ -10,21 +10,21 @@ namespace DiscipleClan.Upgrades
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
-                upgradeTitleKey = IDName + "_Name",
-                upgradeDescriptionKey = IDName + "_Desc",
+                UpgradeTitleKey = IDName + "_Name",
+                UpgradeDescriptionKey = IDName + "_Desc",
                 //upgradeNotificationKey = IDName + "_Notice",
                 //upgradeIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
-                //hideUpgradeIconOnCard = false,
-                useUpgradeHighlightTextTags = true,
-                bonusDamage = 5,
-                //bonusHP = 0,
+                //HideUpgradeIconOnCard = false,
+                UseUpgradeHighlightTextTags = true,
+                BonusDamage = 5,
+                //BonusHP = 0,
                 //costReduction = 0,
                 //xCostReduction = 0,
                 //bonusHeal = 0,
-                //bonusSize = 0,
+                //BonusSize = 0,
 
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
-                triggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> {
+                TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> {
                     new CharacterTriggerDataBuilder {
                         Trigger = CharacterTriggerData.Trigger.CardMonsterPlayed,
                         DescriptionKey = IDName + "_Desc",
@@ -42,10 +42,10 @@ namespace DiscipleClan.Upgrades
                     }
                 },
                 //cardTriggerUpgradeBuilders = new List<CardTriggerEffectDataBuilder> { },
-                //roomModifierUpgradeBuilders = new List<RoomModifierDataBuilder> { },
+                //RoomModifierUpgradeBuilders = new List<RoomModifierDataBuilder> { },
                 //filtersBuilders = new List<CardUpgradeMaskDataBuilder> { },
                 //upgradesToRemoveBuilders = new List<CardUpgradeDataBuilder> { },
-                statusEffectUpgrades = new List<StatusEffectStackData> {
+                StatusEffectUpgrades = new List<StatusEffectStackData> {
                     new StatusEffectStackData { count = 4, statusId = "multistrike" }
                 },
             };

@@ -27,8 +27,8 @@ namespace DiscipleClan.Cards.Prophecy
                         TargetMode = TargetMode.Deck,
                         ParamCardUpgradeData = new CardUpgradeDataBuilder
                         {
-                            hideUpgradeIconOnCard = true,
-                            statusEffectUpgrades = new List<StatusEffectStackData>
+                            HideUpgradeIconOnCard = true,
+                            StatusEffectUpgrades = new List<StatusEffectStackData>
                             {
                                 new StatusEffectStackData
                                 {

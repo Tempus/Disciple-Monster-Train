@@ -32,13 +32,13 @@ namespace DiscipleClan.Cards.Retain
                     new CardTriggerEffectDataBuilder
                     {
                         trigger = CardTriggerType.OnUnplayed,
-                        EffectBuilders = new List<CardEffectDataBuilder>
+                        CardEffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = typeof(CardEffectAddTempUpgrade).AssemblyQualifiedName,
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder {
-                                    costReduction = 1,
+                                    CostReduction = 1,
                                 }.Build(),
                                 TargetMode = TargetMode.Self,
                             }

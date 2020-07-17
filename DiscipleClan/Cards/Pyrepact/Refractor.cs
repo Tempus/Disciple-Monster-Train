@@ -20,7 +20,7 @@ namespace DiscipleClan.Cards.Pyrepact
                     new CardTriggerEffectDataBuilder
                     {
                         trigger = OnGainEmber.OnGainEmberCardTrigger.GetEnum(),
-                        EffectBuilders = new List<CardEffectDataBuilder>
+                        CardEffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {

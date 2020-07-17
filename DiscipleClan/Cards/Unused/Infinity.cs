@@ -2,7 +2,7 @@ using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
 
-namespace DiscipleClan.Cards.Chronolock
+namespace DiscipleClan.Cards.Unused
 {
     class Infinity
     {

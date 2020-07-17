@@ -49,7 +49,7 @@ namespace DiscipleClan.Cards.Unused
                     new RoomModifierDataBuilder
                     {
                         roomStateModifierClassName = typeof(RoomStateModifierRelocateDamage).AssemblyQualifiedName,
-                        paramInt = 10
+                        ParamInt = 10
                     }
                 }
             };

@@ -5,7 +5,7 @@ namespace DiscipleClan.StatusEffects
 {
     class StatusEffectHideUntilBoss : StatusEffectState
     {
-        public const string StatusId = "hideuntilboss";
+        public const string statusId = "hideuntilboss";
 
         // This makes them unable to be targetted
         public override bool GetUnitIsTargetable(bool inCombat)
@@ -31,10 +31,10 @@ namespace DiscipleClan.StatusEffects
         {
             new StatusEffectDataBuilder
             {
-                statusEffectStateName = typeof(StatusEffectHideUntilBoss).AssemblyQualifiedName,
-                statusId = "hideuntilboss",
-                displayCategory = StatusEffectData.DisplayCategory.Persistent,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/time-trap.png"),
+                StatusEffectStateName = typeof(StatusEffectHideUntilBoss).AssemblyQualifiedName,
+                StatusId = "hideuntilboss",
+                DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
+                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/time-trap.png"),
             }.Build();
         }
     }

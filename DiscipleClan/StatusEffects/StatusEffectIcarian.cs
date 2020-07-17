@@ -9,7 +9,7 @@ namespace DiscipleClan.StatusEffects
 {
     class StatusEffectIcarian : StatusEffectState
     {
-        public const string StatusId = "icarian";
+        public const string statusId = "icarian";
         public bool shouldDie = false;
 
         protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
@@ -110,11 +110,11 @@ namespace DiscipleClan.StatusEffects
         {
             new StatusEffectDataBuilder
             {
-                statusEffectStateName = typeof(StatusEffectIcarian).AssemblyQualifiedName,
-                statusId = "icarian",
-                displayCategory = StatusEffectData.DisplayCategory.Persistent,
-                triggerStage = StatusEffectData.TriggerStage.OnPostRoomCombat,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/icarus.png"),
+                StatusEffectStateName = typeof(StatusEffectIcarian).AssemblyQualifiedName,
+                StatusId = "icarian",
+                DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
+                TriggerStage = StatusEffectData.TriggerStage.OnPostRoomCombat,
+                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/icarus.png"),
             }.Build();
         }
     }

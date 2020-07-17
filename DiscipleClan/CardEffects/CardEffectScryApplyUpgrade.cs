@@ -13,7 +13,7 @@
 
                 foreach (CardUpgradeMaskData filter in cardUpgradeState.GetFilters())
                 {
-                    if (!filter.FilterCard(chosenCardState))
+                    if (!filter.FilterCard(chosenCardState, cardEffectParams.relicManager))
                     {
                         // If any of the filters matches, it doesn't get upgraded
                         return;

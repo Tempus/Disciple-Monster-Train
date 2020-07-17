@@ -32,7 +32,7 @@ namespace DiscipleClan.Cards.Retain
                     new CardTriggerEffectDataBuilder
                     {
                         trigger = CardTriggerType.OnUnplayed,
-                        cardTriggers = new List<CardTriggerData>
+                        CardTriggerEffects = new List<CardTriggerData>
                         {
                             new CardTriggerData
                             {

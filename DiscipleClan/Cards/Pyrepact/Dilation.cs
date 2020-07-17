@@ -1,3 +1,4 @@
+using DiscipleClan.CardEffects;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
@@ -25,10 +26,10 @@ namespace DiscipleClan.Cards.Pyrepact
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                         ParamCardUpgradeData = new CardUpgradeDataBuilder
                         {
-                            bonusDamage = 8,
-                            bonusHP = 4,
-                            bonusSize = 1,
-                            hideUpgradeIconOnCard = true,
+                            BonusDamage = 10,
+                            BonusHP = 5,
+                            BonusSize = 1,
+                            HideUpgradeIconOnCard = true,
                         }.Build(),
                     },
                 },
@@ -37,7 +38,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 {
                     new CardTraitDataBuilder
                     {
-                         TraitStateName = "CardTraitMultiplyCharacterUpgrade",
+                         TraitStateName = typeof(CardTraitMultiplyCharacterUpgrade).AssemblyQualifiedName,
                          ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
                          ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
                          ParamUseScalingParams = true,

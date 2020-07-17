@@ -6,13 +6,28 @@ namespace DiscipleClan.StatusEffects
 {
     class StatusEffectPyreboost : StatusEffectState
     {
-        public const string StatusId = "pyreboost";
+        public const string statusId = "pyreboost";
+        public int lastBuff = 0;
+
+        public void OnPyreAttackChange(int PyreAttack, int PyreNumAttacks)
+        {
+            var character = this.GetAssociatedCharacter();
+
+            character.DebuffDamage(lastBuff, null, fromStatusEffect: true);
+
+            var multiplier = character.GetStatusEffectStacks(this.GetStatusId());
+            var pyreAttack = ProviderManager.SaveManager.GetDisplayedPyreAttack();
+
+            character.BuffDamage(multiplier * pyreAttack, null, fromStatusEffect: true);
+            lastBuff = multiplier * pyreAttack;
+        }
 
         public override void OnStacksAdded(CharacterState character, int numStacksAdded)
         {
             if (character != null && numStacksAdded > 0)
             {
-                character.BuffDamage(DamageValue(numStacksAdded), null, fromStatusEffect: true);
+                ProviderManager.SaveManager.pyreAttackChangedSignal.AddListener(OnPyreAttackChange);
+                OnPyreAttackChange(0, 1);
             }
         }
 
@@ -20,7 +35,10 @@ namespace DiscipleClan.StatusEffects
         {
             if (character != null && numStacksRemoved > 0)
             {
-                character.DebuffDamage(DamageValue(numStacksRemoved), null, fromStatusEffect: true);
+                OnPyreAttackChange(0, 1);
+
+                if (character.GetStatusEffectStacks(GetStatusId()) <= 0)
+                    character.DebuffDamage(lastBuff, null, fromStatusEffect: true);
             }
         }
 
@@ -52,11 +70,11 @@ namespace DiscipleClan.StatusEffects
         {
             new StatusEffectDataBuilder
             {
-                statusEffectStateName = typeof(StatusEffectPyreboost).AssemblyQualifiedName,
-                statusId = "pyreboost",
-                displayCategory = StatusEffectData.DisplayCategory.Positive,
-                triggerStage = StatusEffectData.TriggerStage.OnDeath,
-                icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/burning-embers.png"),
+                StatusEffectStateName = typeof(StatusEffectPyreboost).AssemblyQualifiedName,
+                StatusId = "pyreboost",
+                DisplayCategory = StatusEffectData.DisplayCategory.Positive,
+                TriggerStage = StatusEffectData.TriggerStage.OnDeath,
+                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/burning-embers.png"),
             }.Build();
         }
 
