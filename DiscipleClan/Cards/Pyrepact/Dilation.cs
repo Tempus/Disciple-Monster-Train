@@ -26,8 +26,8 @@ namespace DiscipleClan.Cards.Pyrepact
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                         ParamCardUpgradeData = new CardUpgradeDataBuilder
                         {
-                            BonusDamage = 10,
-                            BonusHP = 5,
+                            BonusDamage = 8,
+                            BonusHP = 3,
                             BonusSize = 1,
                             HideUpgradeIconOnCard = true,
                         }.Build(),

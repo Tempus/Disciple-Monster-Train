@@ -59,8 +59,6 @@ namespace DiscipleClan.Cards.Pyrepact
                     },
                 }
             };
-            characterDataBuilder.AddStartingStatusEffect("icarian", 1);
-
             Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }

@@ -1,7 +1,7 @@
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 
-namespace DiscipleClan.Cards.Prophecy
+namespace DiscipleClan.Cards.Unused
 {
     class TrashPickerOwl
     {

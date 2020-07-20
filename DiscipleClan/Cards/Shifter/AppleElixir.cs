@@ -23,17 +23,9 @@ namespace DiscipleClan.Cards.Shifter
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     },
                 },
-
-                TraitBuilders = new List<CardTraitDataBuilder>
-                {
-                    new CardTraitDataBuilder
-                    {
-                        TraitStateName = "CardTraitExhaustState"
-                    }
-                }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect("gravity", 9);
+            railyard.EffectBuilders[0].AddStatusEffect("gravity", 4);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "sigmaligma.png");

@@ -33,17 +33,12 @@ namespace DiscipleClan.Upgrades
                     new StatusEffectStackData
                     {
                         statusId = "pyreboost",
-                        count = 1,
+                        count = 3,
                     },
                     new StatusEffectStackData
                     {
                         statusId = "hideuntilboss",
                         count = 1,
-                    },
-                    new StatusEffectStackData
-                    {
-                        statusId = "pyrelink",
-                        count = 20,
                     },
                 }
             };

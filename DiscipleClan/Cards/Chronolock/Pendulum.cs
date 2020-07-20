@@ -1,4 +1,5 @@
 using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Managers;
 using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Chronolock
@@ -16,15 +17,7 @@ namespace DiscipleClan.Cards.Chronolock
                 Rarity = CollectableRarity.Rare,
                 TargetsRoom = true,
 
-                EffectBuilders = new List<CardEffectDataBuilder>
-                {
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectTransferAllStatusEffects",
-                        TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
-                    }
-                },
+                EffectBuilders = new List<CardEffectDataBuilder>(),
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
@@ -35,25 +28,23 @@ namespace DiscipleClan.Cards.Chronolock
                 }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect("buff", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("damage shield", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("dazed", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("debuff", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("lifesteal", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("poison", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("regen", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("rooted", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("silenced", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("scorch", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("spell shield", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("spell weakness", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("spikes", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("trample", 1);
+            StatusEffectManager statMan;
+            ProviderManager.TryGetProvider<StatusEffectManager>(out statMan);
+            foreach (var status in statMan.GetAllStatusEffectsData().GetStatusEffectData())
+            {
+                if (status.GetDisplayCategory() != StatusEffectData.DisplayCategory.Persistent)
+                {
+                    var statTran = new CardEffectDataBuilder
+                    {
+                        EffectStateName = "CardEffectTransferAllStatusEffects",
+                        TargetMode = TargetMode.DropTargetCharacter,
+                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                    };
 
-            railyard.EffectBuilders[0].AddStatusEffect("pyreboost", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("gravity", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("emberboost", 1);
-            railyard.EffectBuilders[0].AddStatusEffect("chronolock", 1);
+                    statTran.AddStatusEffect(status.GetStatusId(), 1);
+                    railyard.EffectBuilders.Add(statTran);
+                }
+            }
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Good_art.jpg");

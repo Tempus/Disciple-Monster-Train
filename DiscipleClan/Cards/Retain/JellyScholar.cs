@@ -34,15 +34,16 @@ namespace DiscipleClan.Cards.Retain
                 NameKey = IDName + "_Name",
                 SubtypeKeys = new List<string> { "ChronoSubtype_Eternal" },
 
-                Size = 3,
+                Size = 1,
                 Health = 5,
-                AttackDamage = 15,
+                AttackDamage = 0,
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                        Trigger = CharacterTriggerData.Trigger.PostCombat,
+                        AdditionalTextOnTrigger = "The Jelly Grows",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
@@ -51,7 +52,7 @@ namespace DiscipleClan.Cards.Retain
                                 TargetMode = TargetMode.Self,
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder
                                 {
-                                    BonusDamage = 10,
+                                    BonusDamage = 5,
                                     BonusHP = 15,
                                     BonusSize = 1,
                                     HideUpgradeIconOnCard = true,

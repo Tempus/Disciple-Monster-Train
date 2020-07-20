@@ -28,6 +28,7 @@ namespace DiscipleClan.Artifacts
                         ParamBool = false,
                         ParamTargetMode = TargetMode.FrontInRoom,
                         ParamCardType = CardType.Monster,
+                        ParamCharacterSubtype = "SubtypesData_None",
                     },
                 },
             };
@@ -46,9 +47,10 @@ namespace DiscipleClan.Artifacts
             ProviderManager.TryGetProvider<SaveManager>(out saveManager);
 
             if (damageParams.attacker != null)
-                if (damageParams.attacker.GetStatusEffectStacks("buff") > 0)
-                    if (saveManager.GetRelicCount("RageAgainstThePyre") > 0)
-                        damage = 0;
+                if (__instance.IsPyreHeart())
+                    if (damageParams.attacker.GetStatusEffectStacks("buff") > 0)
+                        if (saveManager.GetRelicCount("RageAgainstThePyre") > 0)
+                            damage = 0;
         }
     }
 }

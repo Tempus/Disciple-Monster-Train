@@ -42,50 +42,19 @@ namespace DiscipleClan.Cards.Speedtime
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder> {
                     new CharacterTriggerDataBuilder {
-                        Trigger = CharacterTriggerData.Trigger.CardMonsterPlayed,
-                        DescriptionKey = IDName + "_Desc",
+                        Trigger = CharacterTriggerData.Trigger.AfterSpawnEnchant,
+                        Description = "Quick",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectEnchant",
                                 ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId="ambush" } },
-                                ParamTrigger = CharacterTriggerData.Trigger.OnDeath,
                                 TargetMode = TargetMode.Room,
                                 TargetTeamType = Team.Type.Monsters,
                             }
                         }
                     },
-                    new CharacterTriggerDataBuilder {
-                        Trigger = OnRelocate.OnRelocateCharTrigger.GetEnum(),
-                        DescriptionKey = IDName + "_Desc",
-                        EffectBuilders = new List<CardEffectDataBuilder>
-                        {
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectEnchant",
-                                ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId="ambush" } },
-                                ParamTrigger = CharacterTriggerData.Trigger.OnDeath,
-                                TargetMode = TargetMode.Room,
-                                TargetTeamType = Team.Type.Monsters,
-                            }
-                        }
-                    },
-                    new CharacterTriggerDataBuilder {
-                        Trigger = CharacterTriggerData.Trigger.PreCombat,
-                        DescriptionKey = IDName + "_Desc",
-                        EffectBuilders = new List<CardEffectDataBuilder>
-                        {
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectEnchant",
-                                ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId="ambush" } },
-                                ParamTrigger = CharacterTriggerData.Trigger.OnDeath,
-                                TargetMode = TargetMode.Room,
-                                TargetTeamType = Team.Type.Monsters,
-                            }
-                        }
-                    }
                 },
             };
 

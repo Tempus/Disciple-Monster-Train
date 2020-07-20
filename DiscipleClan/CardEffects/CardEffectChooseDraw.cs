@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace DiscipleClan.CardEffects
 {
-    public sealed class CardEffectChooseDraw : CardEffectBase, ICardEffectStatuslessTooltip
+    public sealed class CardEffectChooseDraw : CardEffectBase
     {
         public CardEffectData.CardSelectionMode cardSelectionMode;
 
@@ -84,11 +84,6 @@ namespace DiscipleClan.CardEffects
                 default:
                     return HandUI.DrawSource.Deck;
             }
-        }
-
-        public string GetTooltipBaseKey(CardEffectState cardEffectState)
-        {
-            throw new NotImplementedException();
         }
     }
 }

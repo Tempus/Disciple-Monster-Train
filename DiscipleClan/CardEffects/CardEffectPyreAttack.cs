@@ -16,6 +16,7 @@ namespace DiscipleClan.CardEffects
             bool flag2 = true;
             if (cardEffectState.GetTargetMode() == TargetMode.DropTargetCharacter)
                 flag2 = cardEffectParams.targets.Count > 0;
+
             return intInRange >= 0 & flag2 & flag1;
         }
 
@@ -62,6 +63,20 @@ namespace DiscipleClan.CardEffects
             int damageAmount = GetDamageAmount();
             resultantDamage = target.GetDamageToTarget(damageAmount, (CharacterState)null, card, out int _, Damage.Type.Default);
             return resultantDamage >= target.GetHP();
+        }
+
+        public override string GetCardText(CardEffectState cardEffectState, RelicManager relicManager = null)
+        {
+            int damage = 0;
+            try
+            {
+                damage = GetDamageAmount();
+            }
+            catch (System.Exception)
+            {
+
+            }
+            return "Flashfire_EffectDesc".Localize(new LocalizedIntegers(damage));
         }
 
         public override string GetHintText(CardEffectState cardEffectState, CharacterState selfTarget)

@@ -4,9 +4,9 @@ using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
 
 namespace DiscipleClan.Cards.Retain
 {
-    class TripletClimbers
+    class Newtons
     {
-        public static string IDName = "TripletClimbers";
+        public static string IDName = "Newtons";
         public static string imgName = "Coconewt";
         public static void Make()
         {
@@ -14,7 +14,7 @@ namespace DiscipleClan.Cards.Retain
             CardDataBuilder r = new CardDataBuilder
             {
                 Cost = 2,
-                Rarity = CollectableRarity.Uncommon,
+                Rarity = CollectableRarity.Rare,
             };
 
             r.CardID = IDName;
@@ -54,8 +54,8 @@ namespace DiscipleClan.Cards.Retain
                 SubtypeKeys = new List<string> { "ChronoSubtype_Pythian" },
 
                 Size = 1,
-                Health = 5,
-                AttackDamage = 12,
+                Health = 1,
+                AttackDamage = 1,
 
 
             };

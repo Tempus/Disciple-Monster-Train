@@ -30,7 +30,7 @@ namespace DiscipleClan.Cards
             if (!r.OverrideDescriptionKey.HasTranslation())
                 API.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
 
-            API.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Spell", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), r.OverrideDescriptionKey.Localize() }));
+            //API.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Spell", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), r.OverrideDescriptionKey.Localize() }));
         }
 
         public static void AddRelic(CollectableRelicDataBuilder r, string ID)
@@ -81,7 +81,7 @@ namespace DiscipleClan.Cards
             if (!r.OverrideDescriptionKey.HasTranslation())
                 API.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
 
-            API.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Unit", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), character.GetSize().ToString(), character.GetHealth().ToString(), character.GetAttackDamage().ToString(), character.GetLocalizedSubtype(), r.OverrideDescriptionKey.Localize() }));
+            //API.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Unit", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), character.GetSize().ToString(), character.GetHealth().ToString(), character.GetAttackDamage().ToString(), character.GetLocalizedSubtype(), r.OverrideDescriptionKey.Localize() }));
         }
 
         public static void AddWard(CardDataBuilder r, string IDName, CharacterData character)
@@ -110,7 +110,7 @@ namespace DiscipleClan.Cards
             if (!r.OverrideDescriptionKey.HasTranslation())
                 API.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
 
-            API.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Spell", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), r.OverrideDescriptionKey.Localize() }));
+            //API.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Spell", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), r.OverrideDescriptionKey.Localize() }));
         }
 
         public static void AddImg(CardDataBuilder r, string imgName)

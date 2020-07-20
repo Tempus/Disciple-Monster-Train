@@ -12,5 +12,9 @@ namespace DiscipleClan.Triggers
         {
             CustomTriggerManager.AssociateTriggers(OnDivineCardTrigger, OnDivineCharTrigger);
         }
+        public interface IRelicEffectOnDivine
+        {
+            int OnDivine(int divineAmount);
+        }
     }
 }

@@ -36,22 +36,20 @@ namespace DiscipleClan.Cards.Pyrepact
                 {
                     new CardTraitDataBuilder
                     {
-                         TraitStateName = "CardTraitScalingAddStatusEffect",
-                         ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
-                         ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
-                         ParamUseScalingParams = true,
-                         ParamInt = 5,
-                         ParamFloat = 1,
-
-                    },
-                    new CardTraitDataBuilder
-                    {
                          TraitStateName = "CardTraitScalingBuffDamage",
                          ParamUseScalingParams = true,
                          ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
                          ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
                          ParamInt = 5,
-                         ParamFloat = 1,
+                    },
+                    new CardTraitDataBuilder
+                    {
+                         TraitStateName = "CardTraitScalingAddStatusEffect",
+                         ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
+                         ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
+                         ParamUseScalingParams = true,
+                         ParamInt = 5,
+                         ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { statusId=Armor, count=0} }
                     },
                     new CardTraitDataBuilder
                     {
@@ -60,7 +58,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect(Armor, 0);
+            railyard.EffectBuilders[0].AddStatusEffect("armor", 0);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "image0.jpg");

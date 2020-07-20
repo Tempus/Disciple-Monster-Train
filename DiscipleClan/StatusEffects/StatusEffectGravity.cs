@@ -1,3 +1,4 @@
+using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using System;
@@ -11,12 +12,15 @@ namespace DiscipleClan.StatusEffects
         public const string statusId = "gravity";
         public bool shouldDie = false;
 
-        public override bool TestTrigger(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
+        [HarmonyPatch(typeof(CharacterState), "GetMovementSpeed")]
+        class GravityNoMove
         {
-            // This makes them unable to move
-            outputTriggerParams.movementSpeed = 0;
-
-            return true;
+        // Creates and registers card data for each card class
+            static void Postfix(ref int __result, CharacterState __instance)
+            {
+                if (__instance.GetStatusEffectStacks("gravity") > 0)
+                    __result = 0;
+            }
         }
 
         protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
@@ -24,6 +28,7 @@ namespace DiscipleClan.StatusEffects
             // At end of turn, descend, and if we did Descend remove a stack of gravity.
             yield return Descend(GetAssociatedCharacter(), inputTriggerParams);
         }
+
         public IEnumerator Descend(CharacterState target, InputTriggerParams inputTriggerParams)
         {
             RoomManager roomManager;

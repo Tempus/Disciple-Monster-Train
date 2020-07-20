@@ -37,6 +37,7 @@ namespace DiscipleClan.Upgrades
                             {
                                 EffectStateName = typeof(CardEffectBuffOnDeckSize).AssemblyQualifiedName,
                                 ParamInt = buffAmount,
+                                AdditionalParamInt = buffAmount,
                                 TargetMode = TargetMode.Self,
                                 TargetTeamType = Team.Type.Monsters,
                             }
