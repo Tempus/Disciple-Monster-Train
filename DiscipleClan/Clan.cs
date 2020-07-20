@@ -69,7 +69,7 @@ namespace DiscipleClan
                 CardFrameUnit = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/unit-cardframe-disciple.png"),
                 CardFrameSpell = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/spell-cardframe-disciple.png"),
                 UiColor = new Color(0.964f, 0.729f, 0.015f, 1f),
-                UiColorDark = new Color(0.015f, 0.015f, 0.403f, 1f),
+                UiColorDark = new Color(0.12f, 0.375f, 0.5f, 1f),
             };
 
             clan.StartingChampion.championCharacterArt = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/Icon_ClassSelect_Disciple.png");
@@ -101,9 +101,9 @@ namespace DiscipleClan
                 EnabledSpritePath = "Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
                 DisabledSpritePath = "Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Disabled.png",
                 DisabledVisitedSpritePath = "Disciple/chrono/Clan Assets/AllCardsBanner_Disabled_Visited.png",
-                GlowSpritePath = "Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
+                GlowSpritePath = "Disciple/chrono/Clan Assets/MSK_Map_Clan_CDisciple_01.png",
                 MapIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png"),
-                MinimapIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png"),
+                MinimapIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/Icon_MiniMap_ClanBanner.png"),
                 SkipCheckInBattleMode = true,
                 OverrideTooltipTitleBody = false,
                 NodeSelectedSfxCue = "Node_Banner",
