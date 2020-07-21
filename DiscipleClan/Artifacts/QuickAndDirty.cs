@@ -23,7 +23,7 @@ namespace DiscipleClan.Artifacts
                          RelicEffectClassName = typeof(RelicEffectApplyStatusOnHitIfStatus).AssemblyQualifiedName,
                          ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { statusId = "dazed", count = 1 } },
                          ParamSourceTeam = Team.Type.Monsters,
-                         ParamTrigger = CharacterTriggerData.Trigger.OnHit,
+                         ParamTrigger = CharacterTriggerData.Trigger.OnAttacking,
                     }
                 }
             };

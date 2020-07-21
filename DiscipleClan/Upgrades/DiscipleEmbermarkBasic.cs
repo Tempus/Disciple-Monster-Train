@@ -52,7 +52,7 @@ namespace DiscipleClan.Upgrades
                             {
                                 EffectStateName = "CardEffectBuffDamage",
                                 ParamInt = buffAmount,
-                                TargetMode = TargetMode.Room,
+                                TargetMode = TargetMode.Self,
                                 TargetTeamType = Team.Type.Monsters,
                             },
 
@@ -60,7 +60,7 @@ namespace DiscipleClan.Upgrades
                             {
                                 EffectStateName = "CardEffectBuffMaxHealth",
                                 ParamInt = buffAmount,
-                                TargetMode = TargetMode.Room,
+                                TargetMode = TargetMode.Self,
                                 TargetTeamType = Team.Type.Monsters,
                             }
                         }

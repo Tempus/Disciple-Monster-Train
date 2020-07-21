@@ -14,6 +14,7 @@ namespace DiscipleClan.Cards.Shifter
             {
                 Cost = 1,
                 Rarity = CollectableRarity.Starter,
+                TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {

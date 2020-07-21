@@ -29,7 +29,7 @@ namespace DiscipleClan.CardEffects
 
             if (relicEffectParams.cardState.GetCardType() == CardType.Spell)
                 if (relicEffectParams.cardState.GetDiscardEffectWhenPlayed(relicEffectParams.relicManager, null) == HandUI.DiscardEffect.Default)
-                    if (relicEffectParams.cardManager.GetCardStatistics().GetNumCardsPlayedThisTurnOfType(CardType.Spell) < 1)
+                    if (relicEffectParams.cardManager.GetCardStatistics().GetNumCardsPlayedThisTurnOfType(CardType.Spell) <= 1)
                         relicEffectParams.cardManager.StartCoroutine(corountine);
 
             yield break;

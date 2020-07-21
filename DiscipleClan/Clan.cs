@@ -18,9 +18,6 @@ namespace DiscipleClan
             ClassDataBuilder clan = new ClassDataBuilder
             {
                 ClassID = IDName,
-                Name = IDName + "_Name",
-                Description = IDName + "_Class",
-                SubclassDescription = IDName + "_SubClass",
 
                 UpgradeTreeBuilder = new CardUpgradeTreeDataBuilder
                 {
@@ -28,10 +25,10 @@ namespace DiscipleClan
                     {
                         new List<CardUpgradeDataBuilder>
                         {
-                            DiscipleEmbermarkBasic.Builder(),
-                            DiscipleEmbermarkPremium.Builder(),
-                            DiscipleEmbermarkPro.Builder(),
-                        },
+                            DiscipleEphemeralBasic.Builder(),
+                            DiscipleEphemeralPremium.Builder(),
+                            DiscipleEphemeralPro.Builder(),
+                        },                        
                         new List<CardUpgradeDataBuilder>
                         {
                             DiscipleFlamelinkedBasic.Builder(),
@@ -43,12 +40,6 @@ namespace DiscipleClan
                             DiscipleShifterBasic.Builder(),
                             DiscipleShifterPremium.Builder(),
                             DiscipleShifterPro.Builder(),
-                        },
-                        new List<CardUpgradeDataBuilder>
-                        {
-                            DiscipleTarotBasic.Builder(),
-                            DiscipleTarotPremium.Builder(),
-                            DiscipleTarotPro.Builder(),
                         },
                     },
                 },
@@ -83,47 +74,53 @@ namespace DiscipleClan
             CardPool cardPool = UnityEngine.ScriptableObject.CreateInstance<CardPool>();
             var cardDataList = (Malee.ReorderableArray<CardData>)AccessTools.Field(typeof(CardPool), "cardDataList").GetValue(cardPool);
 
+            SubtypeData wardSub;
+            CustomCharacterManager.CustomSubtypeData.TryGetValue("ChronoSubtype_Ward", out wardSub);
+
             // This shit needs to be automated in a loop
             foreach (var card in CustomCardManager.CustomCardData)
             {
                 if (card.Value.GetLinkedClassID() == "Chrono" && card.Value.GetSpawnCharacterData() != null && !card.Value.GetSpawnCharacterData().IsChampion())
-                    cardDataList.Add(card.Value);
-            }
-
-            new RewardNodeDataBuilder()
-            {
-                RewardNodeID = "Disciple_UnitBanner",
-                MapNodePoolIDs = new List<string> { "RandomChosenMainClassUnit", "RandomChosenSubClassUnit" },
-                Name = "RewardNodeData_Disciple_UnitBanner_TooltipBodyKey",
-                Description = "RewardNodeData_Disciple_UnitBanner_TooltipTitleKey",
-                RequiredClass = CustomClassManager.GetClassDataByID("Chrono"),
-                FrozenSpritePath = "Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Frozen.png",
-                EnabledSpritePath = "Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
-                DisabledSpritePath = "Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Disabled.png",
-                DisabledVisitedSpritePath = "Disciple/chrono/Clan Assets/AllCardsBanner_Disabled_Visited.png",
-                GlowSpritePath = "Disciple/chrono/Clan Assets/MSK_Map_Clan_CDisciple_01.png",
-                MapIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png"),
-                MinimapIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/Icon_MiniMap_ClanBanner.png"),
-                SkipCheckInBattleMode = true,
-                OverrideTooltipTitleBody = false,
-                NodeSelectedSfxCue = "Node_Banner",
-                RewardBuilders = new List<IRewardDataBuilder>
-            {
-                new DraftRewardDataBuilder()
                 {
-                    DraftRewardID = "Disciple_UnitsDraft",
-                    _RewardSprite = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png"),
-                    _RewardTitleKey = "ArcadianReward_Title",
-                    _RewardDescriptionKey = "ArcadianReward_Desc",
-                    Costs = new int[] { 100 },
-                    _IsServiceMerchantReward = false,
-                    DraftPool = cardPool,
-                    ClassType = (RunState.ClassType)7,
-                    DraftOptionsCount = 2,
-                    RarityFloorOverride = CollectableRarity.Uncommon
+                    if (!card.Value.GetSpawnCharacterData().GetSubtypes()[0].Equals(wardSub))
+                        cardDataList.Add(card.Value);
                 }
+
+                new RewardNodeDataBuilder()
+                {
+                    RewardNodeID = "Disciple_UnitBanner",
+                    MapNodePoolIDs = new List<string> { "RandomChosenMainClassUnit", "RandomChosenSubClassUnit" },
+                    Name = "RewardNodeData_Disciple_UnitBanner_TooltipBodyKey",
+                    Description = "RewardNodeData_Disciple_UnitBanner_TooltipTitleKey",
+                    RequiredClass = CustomClassManager.GetClassDataByID("Chrono"),
+                    FrozenSpritePath = "Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Frozen.png",
+                    EnabledSpritePath = "Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
+                    DisabledSpritePath = "Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Disabled.png",
+                    DisabledVisitedSpritePath = "Disciple/chrono/Clan Assets/AllCardsBanner_Disabled_Visited.png",
+                    GlowSpritePath = "Disciple/chrono/Clan Assets/MSK_Map_Clan_CDisciple_01.png",
+                    MapIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png"),
+                    MinimapIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/Icon_MiniMap_ClanBanner.png"),
+                    SkipCheckInBattleMode = true,
+                    OverrideTooltipTitleBody = false,
+                    NodeSelectedSfxCue = "Node_Banner",
+                    RewardBuilders = new List<IRewardDataBuilder>
+                    {
+                        new DraftRewardDataBuilder()
+                        {
+                            DraftRewardID = "Disciple_UnitsDraft",
+                            _RewardSprite = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png"),
+                            _RewardTitleKey = "ArcadianReward_Title",
+                            _RewardDescriptionKey = "ArcadianReward_Desc",
+                            Costs = new int[] { 100 },
+                            _IsServiceMerchantReward = false,
+                            DraftPool = cardPool,
+                            ClassType = (RunState.ClassType)7,
+                            DraftOptionsCount = 2,
+                            RarityFloorOverride = CollectableRarity.Uncommon
+                        }
+                    }
+                }.BuildAndRegister();
             }
-            }.BuildAndRegister();
         }
     }
 }

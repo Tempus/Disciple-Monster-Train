@@ -5,55 +5,56 @@ using System.Collections.Generic;
 
 namespace DiscipleClan.Upgrades
 {
-    class DiscipleTarotBasic
+    class DiscipleEphemeralPro
     {
-        public static string IDName = "TarotUpgradeBasic";
-        public static int buffAmount = 1;
+        public static string IDName = "EphemeralUpgradePro";
+        public static int buffAmount = 3;
+
         public static CardUpgradeDataBuilder Builder()
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
                 UpgradeTitleKey = IDName + "_Name",
                 UpgradeDescriptionKey = IDName + "_Desc",
-                //upgradeNotificationKey = IDName + "_Notice",
                 //upgradeIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
                 //HideUpgradeIconOnCard = false,
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = 5,
-                //BonusHP = 0,
+                BonusHP = 110,
                 //costReduction = 0,
                 //xCostReduction = 0,
                 //bonusHeal = 0,
                 //BonusSize = 0,
 
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
-                TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> {
-                    new CharacterTriggerDataBuilder {
-                        Trigger = OnShuffle.OnShuffleCharTrigger.GetEnum(),
-                        DescriptionKey = IDName + "_Desc",
-                        EffectBuilders = new List<CardEffectDataBuilder>
-                        {
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = typeof(CardEffectBuffOnDeckSize).AssemblyQualifiedName,
-                                ParamInt = buffAmount,
-                                AdditionalParamInt = buffAmount,
-                                TargetMode = TargetMode.Self,
-                                TargetTeamType = Team.Type.Monsters,
-                            }
-                        }
-                    }
-                },
+                //TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> { },
                 //cardTriggerUpgradeBuilders = new List<CardTriggerEffectDataBuilder> { },
-                //RoomModifierUpgradeBuilders = new List<RoomModifierDataBuilder> { },
+                RoomModifierUpgradeBuilders = new List<RoomModifierDataBuilder>
+                {
+                    new RoomModifierDataBuilder
+                    {
+                         roomStateModifierClassName = typeof(RoomStateModifierRefund).AssemblyQualifiedName,
+                         ParamInt = buffAmount,
+                         DescriptionKey = "RoomModifierRefund_Desc" + buffAmount,
+                         ExtraTooltipTitleKey = "RoomModifierRefund_TooltipTitle",
+                         ExtraTooltipBodyKey = "RoomModifierRefund_TooltipBody",
+                    },
+                    new RoomModifierDataBuilder
+                    {
+                         roomStateModifierClassName = typeof(RoomStateModifierStartersTempConsume).AssemblyQualifiedName,
+                         ParamInt = buffAmount,
+                         DescriptionKey = "RoomStateModifierStartersTempConsume_Desc",
+                    },
+                },
                 //filtersBuilders = new List<CardUpgradeMaskDataBuilder> { },
                 //upgradesToRemoveBuilders = new List<CardUpgradeDataBuilder> { },
-                //StatusEffectUpgrades = new List<StatusEffectStackData> { 
+                //StatusEffectUpgrades = new List<StatusEffectStackData> { },
             };
 
             return railtie;
         }
 
         public static CardUpgradeData Make() { return Builder().Build(); }
+
     }
 }

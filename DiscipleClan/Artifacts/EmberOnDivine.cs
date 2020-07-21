@@ -1,4 +1,5 @@
-﻿using DiscipleClan.Cards;
+﻿using DiscipleClan.CardEffects;
+using DiscipleClan.Cards;
 using DiscipleClan.Triggers;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
@@ -20,9 +21,7 @@ namespace DiscipleClan.Artifacts
                 {
                     new RelicEffectDataBuilder
                     {
-                         RelicEffectClassName = "RelicEffectEmberOnUnitTrigger",
-                         ParamTrigger = OnDivine.OnDivineCharTrigger.GetEnum(),
-                         ParamSourceTeam = Team.Type.Monsters,
+                         RelicEffectClassName = typeof(RelicEffectEmberOnDivine).AssemblyQualifiedName,
                          ParamInt = 2,
                     }
                 }

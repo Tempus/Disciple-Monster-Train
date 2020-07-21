@@ -21,8 +21,8 @@ namespace DiscipleClan.Cards.Prophecy
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = typeof(CardEffectScryDiscard).AssemblyQualifiedName,
-                        ParamInt = 99,
+                        EffectStateName = typeof(CardEffectScryConsume).AssemblyQualifiedName,
+                        ParamInt = 4,
                         AdditionalParamInt = 99,
                         TargetMode = TargetMode.Deck,
                     }

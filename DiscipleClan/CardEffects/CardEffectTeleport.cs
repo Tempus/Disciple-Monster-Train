@@ -52,15 +52,27 @@ namespace ShinyShoe
             {
                 target1 = characters[i];
                 Team.Type teamType = target1.GetTeamType();
+                CardEffectTeleport.BumpError bumpError = CardEffectTeleport.BumpError.None;
+
+                // Return if 2 floors are gone and we're friendly
+                RoomState room = roomManager.GetRoom(1);
+                if (!room.IsRoomEnabled() && target1.GetTeamType() == Team.Type.Monsters)
+                {
+                    bumpError = CardEffectTeleport.BumpError.DestroyedRoom;
+                    target1.ShowNotification(CardEffectTeleport.GetErrorMessage(bumpError), PopupNotificationUI.Source.General, (RelicState)null);
+                    break;
+                }
 
                 // This should randomly teleport you to an available floor
                 while (bumpAmount == 0)
                 {
                     bumpAmount = RandomManager.Range(0, target1.GetTeamType() == Team.Type.Monsters ? 3 : 4, RngId.Battle) - target1.GetCurrentRoomIndex();
+                    // a non destroyed one lol
+                    if (!roomManager.GetRoom(1).IsRoomEnabled())
+                        bumpAmount = 0;
                 }
 
                 oldSpawnPoint = target1.GetSpawnPoint(false);
-                CardEffectTeleport.BumpError bumpError = CardEffectTeleport.BumpError.None;
                 newSpawnPoint = (SpawnPoint)null;
                 if (target1.HasStatusEffect("immobile"))
                 {

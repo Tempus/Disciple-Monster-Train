@@ -9,8 +9,10 @@ namespace DiscipleClan.CardEffects
             int deckSize = cardEffectParams.cardManager.GetDrawPile().Count;
             foreach (var target in cardEffectParams.targets)
             {
+                NotifyHealthEffectTriggered(cardEffectParams.saveManager, cardEffectParams.popupNotificationManager, GetActivatedDescription(cardEffectState), target.GetCharacterUI());
+
                 target.BuffDamage(cardEffectState.GetParamInt() * deckSize);
-                target.BuffMaxHP(cardEffectState.GetAdditionalParamInt() * deckSize);
+                yield return target.BuffMaxHP(cardEffectState.GetParamInt() * deckSize, false);
             }
 
             yield break;

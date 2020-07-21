@@ -13,7 +13,7 @@ namespace DiscipleClan.Cards.Prophecy
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 1,
+                Cost = 0,
                 Rarity = CollectableRarity.Common,
                 Targetless = true,
 
@@ -22,8 +22,9 @@ namespace DiscipleClan.Cards.Prophecy
                     new CardEffectDataBuilder
                     {
                         EffectStateName = typeof(CardEffectScryDiscard).AssemblyQualifiedName,
-                        ParamInt = 4,
-                        AdditionalParamInt = 4,
+                        ParamBool = true,
+                        ParamInt = 1,
+                        AdditionalParamInt = 99,
                         TargetMode = TargetMode.Deck,
                     }
                 },

@@ -9,8 +9,10 @@ namespace DiscipleClan.CardEffects
             int energy = cardEffectParams.playerManager.GetEnergy();
             foreach (var target in cardEffectParams.targets)
             {
+                NotifyHealthEffectTriggered(cardEffectParams.saveManager, cardEffectParams.popupNotificationManager, GetActivatedDescription(cardEffectState), target.GetCharacterUI());
+
                 target.BuffDamage(cardEffectState.GetParamInt() * energy);
-                target.BuffMaxHP(cardEffectState.GetAdditionalParamInt() * energy);
+                yield return target.BuffMaxHP(cardEffectState.GetAdditionalParamInt() * energy, false);
             }
 
             yield break;

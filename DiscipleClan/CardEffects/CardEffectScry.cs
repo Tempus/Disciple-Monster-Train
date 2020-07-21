@@ -44,6 +44,14 @@ namespace DiscipleClan.CardEffects
             if (cardEffectParams.targetCards.Count > 0)
             {
                 cardsToScry = cardEffectState.GetParamInt();
+                if (cardEffectState.GetParamBool())
+                {
+                    int empowerMultiplier = cardEffectState.GetAdditionalParamInt();
+                    if (empowerMultiplier == 0)
+                        empowerMultiplier = 1;
+
+                    cardsToScry = cardEffectParams.playerManager.GetEnergy() * empowerMultiplier;
+                }
 
                 // Fire the trigger!
                 MonsterManager monsterManager;
@@ -61,18 +69,30 @@ namespace DiscipleClan.CardEffects
                     CustomTriggerManager.FireCardTriggers(OnDivine.OnDivineCardTrigger, card, -1, true, null, 1, null);
                 }
 
+                foreach (var relic in CustomCardManager.SaveManager.GetCollectedRelics())
+                {
+                    foreach (var effect in relic.GetEffectsOfType<RelicEffectEmberOnDivine>())
+                    {
+                        if (effect == null)
+                            continue;
+                        effect.OnDivine();
+                    }
+                }
+
                 // Check for the relic!
                 if (cardEffectParams.saveManager.GetRelicCount("SeersBoostDivine") > 0)
                 {
                     foreach (var card in cardManager.GetAllCards())
                     {
-                        foreach (var subtype in card.GetSpawnCharacterData().GetSubtypes())
-                        {
-                            if (subtype.Key == "ChronoSubtype_Seer")
-                                cardsToScry++;
+                        if (card.GetSpawnCharacterData() != null)
+                        { 
+                            foreach (var subtype in card.GetSpawnCharacterData().GetSubtypes())
+                            {
+                                if (subtype.Key == "ChronoSubtype_Seer")
+                                    cardsToScry++;
+                            }
                         }
                     }
-
                 }
 
                 yield return (object)this.HandleChooseCard(cardEffectState, cardEffectParams);

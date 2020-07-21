@@ -16,6 +16,8 @@ namespace DiscipleClan.StatusEffects
             statusEffectStacks++;
             inputTriggerParams.playerManager.AddEnergy(statusEffectStacks);
             inputTriggerParams.associatedCharacter.ShowNotification(string.Format("StatusEffectEmberboostState_Activated".Localize(), statusEffectStacks), PopupNotificationUI.Source.General);
+
+            GetAssociatedCharacter().RemoveStatusEffect(GetStatusId(), false, 1, true);
         }
 
         public static void Make()
@@ -27,7 +29,6 @@ namespace DiscipleClan.StatusEffects
                 DisplayCategory = StatusEffectData.DisplayCategory.Positive,
                 TriggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
                 IsStackable = true,
-                RemoveStackAtEndOfTurn = true,
                 Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/fire-silhouette.png"),
             }.Build();
         }

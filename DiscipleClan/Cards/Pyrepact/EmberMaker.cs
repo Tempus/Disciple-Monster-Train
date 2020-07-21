@@ -43,7 +43,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 {
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = CharacterTriggerData.Trigger.OnHit,
+                        Trigger = CharacterTriggerData.Trigger.OnAttacking,
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
