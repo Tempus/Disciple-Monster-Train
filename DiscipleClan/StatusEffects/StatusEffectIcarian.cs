@@ -24,7 +24,10 @@ namespace DiscipleClan.StatusEffects
         public void DoPyreEffects(CharacterState target, MonsterManager monsterManager)
         {
             API.Log(BepInEx.Logging.LogLevel.All, "Trying to kill myself");
-            shouldDie = true;
+            // if gravity should tick, don't check if should die
+            if (target.GetStatusEffectStacks("gravity") > 0)
+               shouldDie = false;
+            else shouldDie = true;
         }
 
         public void Ascend(CharacterState target, InputTriggerParams inputTriggerParams)
