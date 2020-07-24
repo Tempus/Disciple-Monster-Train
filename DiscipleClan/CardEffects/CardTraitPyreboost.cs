@@ -16,11 +16,12 @@ namespace DiscipleClan.CardEffects
             if (!GetCard().GetTemporaryCardStateModifiers().HasUpgrade(cardUpgradeState))
                 GetCard().GetTemporaryCardStateModifiers().AddUpgrade(cardUpgradeState);
 
-            cardUpgradeState.SetAttackDamage(PyreAttack * PyreNumAttacks);
-            cardUpgradeState.SetAdditionalHeal(PyreAttack * PyreNumAttacks);
+            int PyreboostMultiplier = GetPyreboostCount();
+
+            cardUpgradeState.SetAttackDamage(PyreAttack * PyreNumAttacks * PyreboostMultiplier);
+            cardUpgradeState.SetAdditionalHeal(PyreAttack * PyreNumAttacks * PyreboostMultiplier);
 
             GetCard().UpdateDamageText(null);
-            GetCard().UpdateCardBodyText();
         }
 
         [HarmonyPatch(typeof(CardTraitState), "Setup")]
@@ -31,18 +32,20 @@ namespace DiscipleClan.CardEffects
                 CardTraitPyreboost trait;
                 if ((trait = (__instance as CardTraitPyreboost)) != null)
                 {
-                    trait.cardUpgradeState = new CardUpgradeState();
-                    trait.cardUpgradeState.Setup(new CardUpgradeDataBuilder
+                    if (trait.cardUpgradeState == null)
                     {
-                        UpgradeTitleKey = "StatusEffect_pyreboost_CardText",
-                        UpgradeDescriptionKey = "StatusEffect_pyreboost_CardTooltipText"
-                    }.Build());
+                        trait.cardUpgradeState = new CardUpgradeState();
+                        trait.cardUpgradeState.Setup(new CardUpgradeDataBuilder
+                        {
+                            UpgradeTitleKey = "StatusEffect_pyreboost_CardText",
+                            UpgradeDescriptionKey = "StatusEffect_pyreboost_CardTooltipText"
+                        }.Build());
 
-                    trait.GetCard().GetTemporaryCardStateModifiers().AddUpgrade(trait.cardUpgradeState);
-                    trait.GetCard().UpdateCardBodyText();
+                        trait.GetCard().GetTemporaryCardStateModifiers().AddUpgrade(trait.cardUpgradeState);
 
-                    ProviderManager.SaveManager.pyreAttackChangedSignal.AddListener(trait.OnPyreAttackChange);
-                    trait.OnPyreAttackChange(ProviderManager.SaveManager.GetDisplayedPyreAttack(), ProviderManager.SaveManager.GetDisplayedPyreNumAttacks());
+                        ProviderManager.SaveManager.pyreAttackChangedSignal.AddListener(trait.OnPyreAttackChange);
+                        trait.OnPyreAttackChange(ProviderManager.SaveManager.GetDisplayedPyreAttack(), ProviderManager.SaveManager.GetDisplayedPyreNumAttacks());
+                    }
                 }
             }
         }
@@ -53,11 +56,47 @@ namespace DiscipleClan.CardEffects
             return cost;
         }
 
-        //public override int OnApplyingDamage(ApplyingDamageParameters damageParams)
-        //{
-        //    OnPyreAttackChange(0, 0);
-        //    return damageParams.damage;
-        //}
+        public int GetPyreboostCount()
+        {
+            int count = 0;
+            foreach (var trait in GetCard().GetTraitStates())
+            {
+                if (trait.GetTraitStateName().Contains("Pyreboost"))
+                    count++;
+            }
+
+            foreach (var cardUpgrade in GetCard().GetCardStateModifiers().GetCardUpgrades())
+            {
+                foreach (var trait in cardUpgrade.GetTraitDataUpgrades())
+                {
+                    if (trait.GetTraitStateName().Contains("Pyreboost"))
+                        count++;
+                }
+            }
+
+            foreach (var trait in GetCard().GetCardStateModifiers().GetTemporaryTraits())
+            {
+                if (trait.GetTraitStateName().Contains("Pyreboost"))
+                    count++;
+            }
+
+            foreach (var cardUpgrade in GetCard().GetTemporaryCardStateModifiers().GetCardUpgrades())
+            {
+                foreach (var trait in cardUpgrade.GetTraitDataUpgrades())
+                {
+                    if (trait.GetTraitStateName().Contains("Pyreboost"))
+                        count++;
+                }
+            }
+
+            foreach (var trait in GetCard().GetTemporaryCardStateModifiers().GetTemporaryTraits())
+            {
+                if (trait.GetTraitStateName().Contains("Pyreboost"))
+                    count++;
+            }
+
+            return count;
+        }
 
         //public override void CreateAdditionalTooltips(TooltipContainer tooltipContainer)
         //{
@@ -68,6 +107,10 @@ namespace DiscipleClan.CardEffects
         //}
         public override string GetCardText()
         {
+            //var basetext = LocalizeTraitKey("StatusEffect_pyreboost_Stack_CardText");
+            //if (GetPyreboostCount() > 1)
+            //    return string.Format(basetext, GetPyreboostCount());
+            
             return LocalizeTraitKey("StatusEffect_pyreboost_CardText");
         }
     }

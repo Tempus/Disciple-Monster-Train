@@ -22,12 +22,9 @@ namespace DiscipleClan.Cards
             __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyreSpike.IDName));
             __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyreSpike.IDName));
 
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AppleElixir.IDName));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AppleElixir.IDName));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AppleElixir.IDName));
-
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Waxwing.IDName));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Waxwing.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashfire.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashfire.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashfire.IDName));
 
             //__instance.AddRelic(__instance.GetAllGameData().FindCollectableRelicData(PyreDamageOnEmber.ID));
         }
