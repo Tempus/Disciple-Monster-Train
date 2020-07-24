@@ -29,7 +29,7 @@ namespace DiscipleClan.Cards.Shifter
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "Untitled.jpg");
+            Utils.AddImg(railyard, "Wax-Pinion.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

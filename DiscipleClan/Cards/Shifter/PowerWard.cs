@@ -44,12 +44,13 @@ namespace DiscipleClan.Cards.Shifter
                 Size = 0,
                 Health = 1,
                 AttackDamage = 0,
+                CanAttack = false,
                 RoomModifierBuilders = new List<RoomModifierDataBuilder>
                 {
                     new RoomModifierDataBuilder
                     {
                         roomStateModifierClassName = typeof(RoomStateModifierRelocateBuff).AssemblyQualifiedName,
-                        ParamInt = 3
+                        ParamInt = 5
                     }
                 }
             };

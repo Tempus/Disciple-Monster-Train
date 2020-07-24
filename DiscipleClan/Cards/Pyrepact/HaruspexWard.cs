@@ -1,3 +1,4 @@
+using DiscipleClan.CardEffects;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 
@@ -43,6 +44,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 Size = 0,
                 Health = 1,
                 AttackDamage = 0,
+                CanAttack = false,
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder
@@ -55,8 +57,12 @@ namespace DiscipleClan.Cards.Pyrepact
                                 EffectStateName = "CardEffectBuffDamage",
                                 TargetMode = TargetMode.Pyre,
                                 TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
-                                ParamInt = 3,
-                            }
+                                ParamInt = 2,
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = typeof(CardEffectPyreAttackDispatch),
+                            },
                         }
                     },
                 }

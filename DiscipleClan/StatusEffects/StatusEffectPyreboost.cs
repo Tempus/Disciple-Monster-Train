@@ -8,6 +8,7 @@ namespace DiscipleClan.StatusEffects
     {
         public const string statusId = "pyreboost";
         public int lastBuff = 0;
+        public SaveManager saveManager;
 
         public void OnPyreAttackChange(int PyreAttack, int PyreNumAttacks)
         {
@@ -16,8 +17,8 @@ namespace DiscipleClan.StatusEffects
             character.DebuffDamage(lastBuff, null, fromStatusEffect: true);
 
             var multiplier = character.GetStatusEffectStacks(this.GetStatusId());
-            var pyreAttack = ProviderManager.SaveManager.GetDisplayedPyreAttack();
-
+            int pyreAttack = saveManager.GetDisplayedPyreAttack();
+            
             character.BuffDamage(multiplier * pyreAttack, null, fromStatusEffect: true);
             lastBuff = multiplier * pyreAttack;
         }
@@ -26,7 +27,8 @@ namespace DiscipleClan.StatusEffects
         {
             if (character != null && numStacksAdded > 0)
             {
-                ProviderManager.SaveManager.pyreAttackChangedSignal.AddListener(OnPyreAttackChange);
+                saveManager = character.GetCombatManager().GetSaveManager();
+                saveManager.pyreAttackChangedSignal.AddListener(OnPyreAttackChange);
                 OnPyreAttackChange(0, 1);
             }
         }
@@ -60,10 +62,7 @@ namespace DiscipleClan.StatusEffects
 
         public override int GetMagnitudePerStack()
         {
-            var pyreroom = GameObject.FindObjectOfType<PyreRoomState>() as PyreRoomState;
-            int pyreAttack = 0;
-            pyreroom.TryGetPyreAttack(out pyreAttack);
-            return pyreAttack;
+            return ProviderManager.SaveManager.GetDisplayedPyreAttack(); ;
         }
 
         public static void Make()

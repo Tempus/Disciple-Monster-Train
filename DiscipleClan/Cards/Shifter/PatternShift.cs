@@ -28,7 +28,7 @@ namespace DiscipleClan.Cards.Shifter
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "IMAG0286.jpg");
+            Utils.AddImg(railyard, "Pattern-Shift.png");
 
             railyard.BuildAndRegister();
         }

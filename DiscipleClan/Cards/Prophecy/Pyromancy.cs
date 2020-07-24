@@ -21,7 +21,7 @@ namespace DiscipleClan.Cards.Prophecy
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = typeof(CardEffectScryApplyUpgrade).AssemblyQualifiedName,
+                        EffectStateName = typeof(CardEffectScryApplyPyreboost).AssemblyQualifiedName,
                         ParamInt = 4,
                         AdditionalParamInt = 1,
                         TargetMode = TargetMode.Deck,
@@ -35,7 +35,7 @@ namespace DiscipleClan.Cards.Prophecy
                                     statusId = "pyreboost",
                                     count = 1,
                                 }
-                            }
+                            },
                         }.Build(),
                     }
                 },
@@ -49,7 +49,7 @@ namespace DiscipleClan.Cards.Prophecy
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "image0.jpg");
+            Utils.AddImg(railyard, "Pyromancy.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

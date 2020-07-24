@@ -27,7 +27,7 @@ namespace DiscipleClan.CardEffects
         {
             List<CardState> hand = cardEffectParams.cardManager.GetHand(true);
             CardEffectFreezeRandomCard.FilterCards(hand);
-            return hand.Count > 0;
+            return hand.Count >= 0;
         }
 
         public override IEnumerator ApplyEffect(

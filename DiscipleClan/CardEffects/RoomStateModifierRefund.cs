@@ -28,17 +28,14 @@ namespace DiscipleClan.CardEffects
 
         public void OnCardPlayed(CardState cardState, int roomIndex, List<CharacterState> targets)
         {
-            API.Log(BepInEx.Logging.LogLevel.All, "Refunding function for " + cardState.GetDebugName());
             if (cardState.HasTrait(typeof(CardTraitExhaustState)))
             {
-                API.Log(BepInEx.Logging.LogLevel.All, "We exhaust.");
                 int refund = refundAmount;
                 if (cardState.GetCostWithoutAnyModifications() < refund)
                 {
                     refund = cardState.GetCostWithoutAnyModifications();
                 }
 
-                API.Log(BepInEx.Logging.LogLevel.All, "Refunding " + refund + " for " + cardState.GetDebugName());
                 playerManager.AddEnergy(refund);
             }
         }
@@ -54,9 +51,6 @@ namespace DiscipleClan.CardEffects
     {
         static void Prefix(CardManager __instance, CardState playCard, int selectedRoom, RoomState roomState, SpawnPoint dropLocation, CharacterState characterSummoned, List<CharacterState> targets, bool discardCard)
         {
-            //if (ProviderManager.SaveManager.PreviewMode) { return; }
-            API.Log(BepInEx.Logging.LogLevel.All, "We played " + playCard.GetDebugName());
-
             int roomindex = selectedRoom;
             if (roomindex == -1)
             {
@@ -69,10 +63,7 @@ namespace DiscipleClan.CardEffects
 
         static IEnumerator TriggerOnCardPlayed(CardState cardState, int roomIndex, List<CharacterState> targets)
         {
-            API.Log(BepInEx.Logging.LogLevel.All, "Waiting");
-
             yield return new WaitForSeconds(0.2f);
-            API.Log(BepInEx.Logging.LogLevel.All, "Here we go!");
 
             List<CharacterState> chars = new List<CharacterState>();
             ProviderManager.CombatManager.GetMonsterManager().AddCharactersInRoomToList(chars, roomIndex);

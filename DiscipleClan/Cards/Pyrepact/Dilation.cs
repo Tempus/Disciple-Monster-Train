@@ -54,7 +54,7 @@ namespace DiscipleClan.Cards.Pyrepact
             railyard.EffectBuilders[0].AddStatusEffect(Armor, 0);
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "image0.jpg");
+            Utils.AddImg(railyard, "Dilation.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

@@ -51,14 +51,14 @@ namespace DiscipleClan
 
                 Icons = new List<Sprite>
                 {
-                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/ClanLogo_92.png"), // Clan Choice Icon
-                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/ClanLogo_silhouette.png"), // Also compendium...? 56x56
-                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/ClanLogo_92.png"), // Large Coloured Icon
+                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/ClanLogo_92_stroke1.png"), // Clan Choice Icon
+                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/ClanLogo_92_stroke2.png"), // Also compendium...? 56x56
+                    CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/ClanLogo_92_stroke1.png"), // Large Coloured Icon
                     CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/ClanLogo_silhouette.png"), // Compendium Silhouette 56x56
                 },
 
-                CardFrameUnit = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/unit-cardframe-disciple.png"),
-                CardFrameSpell = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/spell-cardframe-disciple.png"),
+                CardFrameUnit = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/unit-cardframe-arcadian.png"),
+                CardFrameSpell = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/spell-cardframe-arcadian.png"),
                 UiColor = new Color(0.964f, 0.729f, 0.015f, 1f),
                 UiColorDark = new Color(0.12f, 0.375f, 0.5f, 1f),
             };

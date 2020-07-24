@@ -23,7 +23,7 @@ namespace DiscipleClan.Cards.Prophecy
                     {
                         EffectStateName = typeof(CardEffectScryDiscard).AssemblyQualifiedName,
                         ParamBool = true,
-                        ParamInt = 1,
+                        ParamInt = 2,
                         AdditionalParamInt = 99,
                         TargetMode = TargetMode.Deck,
                     }
@@ -31,7 +31,7 @@ namespace DiscipleClan.Cards.Prophecy
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "image0.jpg");
+            Utils.AddImg(railyard, "Palm-Reading.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

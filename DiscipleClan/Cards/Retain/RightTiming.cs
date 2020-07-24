@@ -47,7 +47,7 @@ namespace DiscipleClan.Cards.Retain
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "image0.jpg");
+            Utils.AddImg(railyard, "Right-Timing.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

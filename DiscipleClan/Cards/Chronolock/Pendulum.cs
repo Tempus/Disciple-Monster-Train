@@ -13,8 +13,8 @@ namespace DiscipleClan.Cards.Chronolock
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 3,
-                Rarity = CollectableRarity.Rare,
+                Cost = 1,
+                Rarity = CollectableRarity.Uncommon,
                 TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>(),
@@ -47,7 +47,7 @@ namespace DiscipleClan.Cards.Chronolock
             }
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "Good_art.jpg");
+            Utils.AddImg(railyard, "Pendulum.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

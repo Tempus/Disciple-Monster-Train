@@ -35,6 +35,7 @@ namespace DiscipleClan.StatusEffects
                 StatusId = "hideuntilboss",
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
                 Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/time-trap.png"),
+                ShowStackCount = false,
             }.Build();
         }
     }

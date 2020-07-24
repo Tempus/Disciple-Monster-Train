@@ -9,6 +9,7 @@ using HarmonyLib;
 using I2.Loc;
 using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Managers;
+using UnityEngine;
 
 namespace DiscipleClan.Cards
 {
@@ -18,9 +19,17 @@ namespace DiscipleClan.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AncientSavant.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyreSpike.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyreSpike.IDName));
 
-            //__instance.AddRelic(__instance.GetAllGameData().FindCollectableRelicData(QuickAndDirty.ID));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AppleElixir.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AppleElixir.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AppleElixir.IDName));
+
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Waxwing.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Waxwing.IDName));
+
+            //__instance.AddRelic(__instance.GetAllGameData().FindCollectableRelicData(PyreDamageOnEmber.ID));
         }
     }
 

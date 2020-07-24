@@ -15,21 +15,27 @@ namespace DiscipleClan.Cards.Pyrepact
             {
                 Cost = 3,
                 Rarity = CollectableRarity.Common,
-                TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = typeof(CardEffectPyreAttack).AssemblyQualifiedName,
+                        EffectStateType = typeof(CardEffectDamage),
                         TargetMode = TargetMode.Room,
                         TargetTeamType = Team.Type.Heroes,
                     }
                 },
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateType = typeof(CardTraitPyreboost),
+                    }
+                }
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "image0.jpg");
+            Utils.AddImg(railyard, "Flashfire.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

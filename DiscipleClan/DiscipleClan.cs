@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using DiscipleClan.Artifacts;
 using DiscipleClan.Cards.Units;
+using DiscipleClan.Enhancers;
 using DiscipleClan.StatusEffects;
 using HarmonyLib;
 using MonsterTrainModdingAPI;
@@ -32,6 +33,7 @@ namespace DiscipleClan
             clanRef = Clan.Make();
             RegisterSubtypes();
             MakeStatuses();
+            MakeEnhancers();
             MakeCards();
             Disciple.Make();
             Clan.RegisterBanner();
@@ -65,6 +67,15 @@ namespace DiscipleClan
             StatusEffectPyrelink.Make();
             StatusEffectHideUntilBoss.Make();
             StatusEffectPastGlory.Make();
+        }
+
+        static void MakeEnhancers()
+        {
+            SpellUpgradePyreboost.Make();
+            UnitUpgradePyreboost.Make();
+            UnitUpgradePyrelink.Make();
+            UnitUpgradeRelocate.Make();
+            UnitUpgradeSweep.Make();
         }
 
         static void MakeArtifacts()

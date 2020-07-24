@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using static CharacterState;
+using static TargetHelper;
 
 namespace DiscipleClan
 {
@@ -41,7 +42,7 @@ namespace DiscipleClan
         // Pyre is no longer immune to gaining statuses like Ambush and Armor
         static bool Prefix(CharacterState __instance, ref bool __result, string statusEffectId)
         {
-            if (__instance.IsPyreHeart())
+            if (__instance.IsPyreHeart() && !__instance.PreviewMode)
             {
                 API.Log(BepInEx.Logging.LogLevel.All, "Pyre is no longer immune to: " + statusEffectId);
                 __result = false;
@@ -58,7 +59,7 @@ namespace DiscipleClan
         // Pyre is no longer immune to gaining statuses like Ambush and Armor
         static void Prefix(CharacterState __instance, string statusId, int numStacks, ref AddStatusEffectParams addStatusEffectParams)
         {
-            if (__instance.IsPyreHeart())
+            if (__instance.IsPyreHeart() && !__instance.PreviewMode)
             {
                 API.Log(BepInEx.Logging.LogLevel.All, "Pyre is overriding immunity for: " + statusId);
                 addStatusEffectParams.overrideImmunity = true;
@@ -95,4 +96,75 @@ namespace DiscipleClan
         }
     }
 
+
+    // This fixes TargetIgnoresBosses for all target modes, because the base game just forgets to pass it?
+    [HarmonyPatch(typeof(TargetHelper), "CollectTargets", new Type[] { typeof(CollectTargetsData), typeof(List<CharacterState>) }, new ArgumentType[] { HarmonyLib.ArgumentType.Normal, HarmonyLib.ArgumentType.Ref })]
+    class BossTargetIgnoreFix
+    {
+        public static bool targetIgnoreBosses = true;
+        static void Prefix(CollectTargetsData data, ref List<CharacterState> targets)
+        {
+            if (data.targetIgnoreBosses)
+            {
+                targetIgnoreBosses = true;
+                return;
+            }
+            targetIgnoreBosses = false;
+        }
+    }
+
+    [HarmonyPatch(typeof(TargetHelper), "CheckTargetsOverride")]
+    class BossTargetIgnoreFixB
+    {
+        static void Postfix(CardEffectState effectState, List<CharacterState> targets, SpawnPoint dropLocation, SubtypeData targetSubtype)
+        {
+            if (BossTargetIgnoreFix.targetIgnoreBosses && effectState.GetTargetMode() == TargetMode.DropTargetCharacter && dropLocation != null)
+            {
+                CharacterState characterState = dropLocation.GetCharacterState();
+                if (characterState.IsMiniboss() || characterState.IsOuterTrainBoss())
+                {
+                    targets.Clear();
+                    // lastTargetedCharacters.Clear();
+                }
+            }
+        }
+    }
+
+    //[HarmonyPatch(typeof(DeckScreen), "FilterCardStatesByRelicEffect")]
+    //class Idunnowhatwrong
+    //{
+    //    static void Prefix(DeckScreen __instance, List<CardState> cardStatesToFilter, RelicEffectData ___relicEffectData)
+    //    {
+    //        API.Log(BepInEx.Logging.LogLevel.All, "What up 1");
+    //        if (___relicEffectData.GetParamCardType() != CardType.Invalid)
+    //        {
+    //            API.Log(BepInEx.Logging.LogLevel.All, "What up 1.1");
+    //            cardStatesToFilter.RemoveAll((CardState c) => c.GetCardType() != ___relicEffectData.GetParamCardType());
+    //        }
+    //        API.Log(BepInEx.Logging.LogLevel.All, "What up 2");
+    //        if (!___relicEffectData.GetParamCharacterSubtype().IsNone)
+    //        {
+    //            API.Log(BepInEx.Logging.LogLevel.All, "What up 2.1");
+    //            for (int num = cardStatesToFilter.Count - 1; num >= 0; num--)
+    //            {
+    //                API.Log(BepInEx.Logging.LogLevel.All, "What up 2.1." + num);
+    //                foreach (CardEffectState effectState in cardStatesToFilter[num].GetEffectStates())
+    //                {
+    //                    API.Log(BepInEx.Logging.LogLevel.All, "What up 2.1." + num + " some loop");
+    //                    if (effectState.GetCardEffect() is CardEffectSpawnMonster && !effectState.GetParamCharacterData().GetSubtypes().Contains(___relicEffectData.GetParamCharacterSubtype()))
+    //                    {
+    //                        API.Log(BepInEx.Logging.LogLevel.All, "What up 2.2");
+    //                        cardStatesToFilter.RemoveAt(num);
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        API.Log(BepInEx.Logging.LogLevel.All, "What up 3");
+    //        if (___relicEffectData.GetUseIntRange())
+    //        {
+    //            API.Log(BepInEx.Logging.LogLevel.All, "What up 3.1");
+    //            cardStatesToFilter.RemoveAll((CardState c) => c.GetCostWithoutAnyModifications() < ___relicEffectData.GetParamMinInt() || c.GetCostWithoutAnyModifications() > ___relicEffectData.GetParamMaxInt());
+    //        }
+    //    } 
+    //}
 }

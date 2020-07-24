@@ -14,7 +14,7 @@ namespace DiscipleClan.Cards.Prophecy
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 0,
-                Rarity = CollectableRarity.Uncommon,
+                Rarity = CollectableRarity.Rare,
                 Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
@@ -41,7 +41,7 @@ namespace DiscipleClan.Cards.Prophecy
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "image0.jpg");
+            Utils.AddImg(railyard, "Seek.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

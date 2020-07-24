@@ -46,7 +46,7 @@ namespace DiscipleClan.CardEffects
                 cardsToScry = cardEffectState.GetParamInt();
                 if (cardEffectState.GetParamBool())
                 {
-                    int empowerMultiplier = cardEffectState.GetAdditionalParamInt();
+                    int empowerMultiplier = cardEffectState.GetParamInt();
                     if (empowerMultiplier == 0)
                         empowerMultiplier = 1;
 

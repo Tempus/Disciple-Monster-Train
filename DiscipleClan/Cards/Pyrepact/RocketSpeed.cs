@@ -40,7 +40,7 @@ namespace DiscipleClan.Cards.Pyrepact
 
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "sigmaligma.png");
+            Utils.AddImg(railyard, "Rocket-Speed.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

@@ -36,7 +36,7 @@ namespace DiscipleClan.Cards.Retain
 
                 Size = 1,
                 Health = 5,
-                AttackDamage = 0,
+                AttackDamage = 10,
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
@@ -52,7 +52,6 @@ namespace DiscipleClan.Cards.Retain
                                 TargetMode = TargetMode.Self,
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder
                                 {
-                                    BonusDamage = 5,
                                     BonusHP = 15,
                                     BonusSize = 1,
                                     HideUpgradeIconOnCard = true,

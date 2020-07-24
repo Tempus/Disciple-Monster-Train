@@ -21,6 +21,7 @@ namespace DiscipleClan.Cards.Shifter
                         EffectStateName = "CardEffectAddStatusEffect",
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                        TargetIgnoreBosses = true,
                     },
                 },
             };
@@ -28,7 +29,7 @@ namespace DiscipleClan.Cards.Shifter
             railyard.EffectBuilders[0].AddStatusEffect("gravity", 4);
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "sigmaligma.png");
+            Utils.AddImg(railyard, "Apple-Elixir.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

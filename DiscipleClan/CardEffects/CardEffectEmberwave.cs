@@ -11,11 +11,10 @@ namespace DiscipleClan.CardEffects
           CardEffectParams cardEffectParams)
         {
             int intInRange = GetDamageAmount(cardEffectState);
-            bool flag1 = GetDamageAmount(cardEffectState) > 0;
             bool flag2 = true;
             if (cardEffectState.GetTargetMode() == TargetMode.DropTargetCharacter)
                 flag2 = cardEffectParams.targets.Count > 0;
-            return intInRange >= 0 & flag2 & flag1;
+            return intInRange >= 0 & flag2;
         }
 
         private int GetDamageAmount(CardEffectState cardEffectState)

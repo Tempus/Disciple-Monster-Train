@@ -1,3 +1,4 @@
+using DiscipleClan.CardEffects;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
@@ -16,6 +17,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 CostType = CardData.CostType.ConsumeRemainingEnergy,
                 Rarity = CollectableRarity.Rare,
                 Targetless = true,
+                TargetsRoom =true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -23,25 +25,23 @@ namespace DiscipleClan.Cards.Pyrepact
                     {
                         EffectStateName = "CardEffectAddStatusEffect",
                         TargetMode = TargetMode.Pyre,
+                        ShouldTest = true,
                     },
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectBuffDamage",
                         ParamInt = 5,
                         TargetMode = TargetMode.Pyre,
+                        ShouldTest = true,
+                    },
+                    new CardEffectDataBuilder
+                    {
+                        EffectStateType = typeof(CardEffectPyreAttackDispatch),
                     },
                 },
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
-                    new CardTraitDataBuilder
-                    {
-                         TraitStateName = "CardTraitScalingBuffDamage",
-                         ParamUseScalingParams = true,
-                         ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
-                         ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
-                         ParamInt = 5,
-                    },
                     new CardTraitDataBuilder
                     {
                          TraitStateName = "CardTraitScalingAddStatusEffect",
@@ -53,6 +53,14 @@ namespace DiscipleClan.Cards.Pyrepact
                     },
                     new CardTraitDataBuilder
                     {
+                         TraitStateName = "CardTraitScalingBuffDamage",
+                         ParamUseScalingParams = true,
+                         ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
+                         ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
+                         ParamInt = 5,
+                    },
+                    new CardTraitDataBuilder
+                    {
                          TraitStateName = "CardTraitExhaustState",
                     },
                 }
@@ -61,7 +69,7 @@ namespace DiscipleClan.Cards.Pyrepact
             railyard.EffectBuilders[0].AddStatusEffect("armor", 0);
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "image0.jpg");
+            Utils.AddImg(railyard, "Pyrespike.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

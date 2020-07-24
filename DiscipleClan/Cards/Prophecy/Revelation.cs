@@ -37,7 +37,7 @@ namespace DiscipleClan.Cards.Prophecy
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "image0.jpg");
+            Utils.AddImg(railyard, "Revelation.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

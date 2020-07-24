@@ -38,7 +38,7 @@ namespace DiscipleClan.Cards.Pyrepact
             railyard.EffectBuilders[0].AddStatusEffect(Sweep, 1);
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "sigmaligma.png");
+            Utils.AddImg(railyard, "Epoch-Tome.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

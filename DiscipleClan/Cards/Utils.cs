@@ -9,7 +9,7 @@ namespace DiscipleClan.Cards
     {
         public static string rootPath = "Disciple/chrono/";
         public static string ucardPath = "Card Assets/ProtoUnitCardArt/";
-        public static string scardPath = "Card Assets/";
+        public static string scardPath = "Card Assets/DiscipleMTBetaArt/";
         public static string unitPath = "Unit Assets/";
         public static string relicPath = "Relic/";
 
