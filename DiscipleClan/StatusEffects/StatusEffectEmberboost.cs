@@ -26,7 +26,7 @@ namespace DiscipleClan.StatusEffects
             {
                 StatusEffectStateName = typeof(StatusEffectEmberboost).AssemblyQualifiedName,
                 StatusId = "emberboost",
-                DisplayCategory = StatusEffectData.DisplayCategory.Positive,
+                DisplayCategory = StatusEffectData.DisplayCategory.Negative,
                 TriggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
                 IsStackable = true,
                 Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/fire-silhouette.png"),

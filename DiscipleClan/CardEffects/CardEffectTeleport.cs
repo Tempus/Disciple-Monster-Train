@@ -11,7 +11,7 @@ namespace ShinyShoe
     public class CardEffectTeleport : CardEffectBase, ICardEffectStatuslessTooltip
     {
         private CardEffectBump bumper;
-
+        
         public override void Setup(CardEffectState cardEffectState)
         {
             base.Setup(cardEffectState);
@@ -20,8 +20,14 @@ namespace ShinyShoe
 
         public override IEnumerator ApplyEffect(CardEffectState cardEffectState, CardEffectParams cardEffectParams)
         {
+            if (cardEffectParams.targets.Count == 0) { yield break; }
+
             var availableFloors = GetAvailableFloors(cardEffectParams.targets[0], cardEffectParams.roomManager);
-            int chosenFloor = availableFloors[RandomManager.Range(0, availableFloors.Count, RngId.Battle)];
+            int chosenFloor = 0;
+            if (availableFloors.Count > 0)
+            {
+                chosenFloor = availableFloors[RandomManager.Range(0, availableFloors.Count, RngId.Battle)];
+            }
 
             yield return bumper.Bump(cardEffectParams, chosenFloor - cardEffectParams.targets[0].GetCurrentRoomIndex());
 

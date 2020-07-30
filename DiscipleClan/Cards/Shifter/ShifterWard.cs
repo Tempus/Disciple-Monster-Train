@@ -45,6 +45,7 @@ namespace DiscipleClan.Cards.Shifter
                 Health = 1,
                 AttackDamage = 0,
                 CanAttack = false,
+                PriorityDraw = false,
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder

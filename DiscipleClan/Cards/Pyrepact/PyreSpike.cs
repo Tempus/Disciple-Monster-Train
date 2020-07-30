@@ -17,8 +17,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 CostType = CardData.CostType.ConsumeRemainingEnergy,
                 Rarity = CollectableRarity.Rare,
                 Targetless = true,
-                TargetsRoom =true,
-                
+                TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -26,7 +25,7 @@ namespace DiscipleClan.Cards.Pyrepact
                     {
                         EffectStateName = "CardEffectAddStatusEffect",
                         TargetMode = TargetMode.Pyre,
-                        ShouldTest = true,
+                        ShouldTest = false,
                     },
                     new CardEffectDataBuilder
                     {
@@ -34,10 +33,6 @@ namespace DiscipleClan.Cards.Pyrepact
                         ParamInt = 5,
                         TargetMode = TargetMode.Pyre,
                         ShouldTest = true,
-                    },
-                    new CardEffectDataBuilder
-                    {
-                        EffectStateType = typeof(CardEffectPyreAttackDispatch),
                     },
                 },
 
@@ -64,10 +59,14 @@ namespace DiscipleClan.Cards.Pyrepact
                     {
                          TraitStateName = "CardTraitExhaustState",
                     },
+                    new CardTraitDataBuilder
+                    {
+                         TraitStateName = typeof(CardTraitJustPyreka).AssemblyQualifiedName,
+                    },
                 }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect("armor", 0);
+            railyard.EffectBuilders[0].AddStatusEffect(Armor, 0);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Pyrespike.png");

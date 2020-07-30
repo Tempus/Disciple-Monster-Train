@@ -15,7 +15,7 @@ namespace DiscipleClan.Cards.Pyrepact
             CardDataBuilder railyard = new CardDataBuilder
             {
                 CostType = CardData.CostType.ConsumeRemainingEnergy,
-                Rarity = CollectableRarity.Uncommon,
+                Rarity = CollectableRarity.Rare,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {

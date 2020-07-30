@@ -20,7 +20,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateType = typeof(CardEffectDamage),
+                        EffectStateName = "CardEffectDamage",
                         TargetMode = TargetMode.Room,
                         TargetTeamType = Team.Type.Heroes,
                     }

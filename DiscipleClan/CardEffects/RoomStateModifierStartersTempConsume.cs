@@ -8,11 +8,13 @@ using UnityEngine;
 
 namespace DiscipleClan.CardEffects
 {
-    class RoomStateModifierStartersTempConsume : RoomStateModifierBase, IRoomStateModifier, IRoomStateRoomSelectedModifier, IRoomStateCardManagerModifier
+    class RoomStateModifierStartersTempConsume : RoomStateModifierBase, IRoomStateModifier, IRoomStateRoomSelectedModifier, IRoomStateCardManagerModifier, IRoomStateSpawnPointsChangedModifier
     {
         public string ID = "RoomStateModifierStartersTempConsume";
         public List<CardState> cardsWeHaveModified = new List<CardState>();
         CardManager cardManager;
+
+        public bool CanApplyInPreviewMode => false;
 
         public override void Initialize(RoomModifierData roomModifierData, RoomManager roomManager)
         {
@@ -31,19 +33,13 @@ namespace DiscipleClan.CardEffects
             }
             else
             {
-                foreach (var card in cardsWeHaveModified)
-                {
-                    cardManager.RemoveTemporaryTraitFromCard(card, new CardTraitData { traitStateName = "CardTraitExhaustState" });
-                    cardManager.RefreshCardInHand(card);
-                    card.RefreshCardBodyTextLocalization();
-                }
-                cardsWeHaveModified.Clear();
+                cardManager.StartCoroutine(RemoveConsume());
             }
         }
 
         public IEnumerator ApplyConsume(CardState card)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.01f);
 
             if ((card.GetRarityType() == CollectableRarity.Starter || card.GetDebugName().Contains("Starter")) && card.GetCardType() == CardType.Spell && !card.HasTrait(typeof(CardTraitExhaustState)))
             {
@@ -52,6 +48,8 @@ namespace DiscipleClan.CardEffects
                 card.RefreshCardBodyTextLocalization();
                 cardsWeHaveModified.Add(card);
             }
+
+            yield break;
         }
 
         public new string GetDescriptionKey()
@@ -68,16 +66,32 @@ namespace DiscipleClan.CardEffects
         {
         }
 
-        public IEnumerator RemoveConsume(CardState cardState)
+        public IEnumerator RemoveConsume()
         {
-            yield return new WaitForSeconds(0.2f);
+            //yield return new WaitForSeconds(0.2f);
 
-            if (cardsWeHaveModified.Contains(cardState))
+            foreach (var card in cardsWeHaveModified)
             {
-                cardManager.RemoveTemporaryTraitFromCard(cardState, new CardTraitData { traitStateName = "CardTraitExhaustState" });
-                cardManager.RefreshCardInHand(cardState);
-                cardState.RefreshCardBodyTextLocalization();
-                cardsWeHaveModified.Remove(cardState);
+                cardManager.RemoveTemporaryTraitFromCard(card, new CardTraitData { traitStateName = "CardTraitExhaustState" });
+                cardManager.RefreshCardInHand(card);
+                card.RefreshCardBodyTextLocalization();
+            }
+            cardsWeHaveModified.Clear();
+            yield break;
+        }
+
+        public void SpawnPointChanged(CharacterState characterState, SpawnPoint prevPoint, SpawnPoint newPoint, CardManager cardManager)
+        {
+            bool newSelected = newPoint?.GetRoomOwner().GetSelected() ?? false;
+            bool oldIsSelected = prevPoint?.GetRoomOwner().GetSelected() ?? false;
+            
+            if (newSelected)
+            {
+                RoomSelectionChanged(true, cardManager);
+            }
+            else if (oldIsSelected || ((object)characterState != null && characterState.IsDead))
+            {
+                RoomSelectionChanged(false, cardManager);
             }
         }
     }

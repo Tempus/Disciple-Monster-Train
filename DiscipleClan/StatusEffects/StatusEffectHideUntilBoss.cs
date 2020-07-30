@@ -36,6 +36,7 @@ namespace DiscipleClan.StatusEffects
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
                 Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/time-trap.png"),
                 ShowStackCount = false,
+                IsStackable = false,
             }.Build();
         }
     }

@@ -36,6 +36,14 @@ namespace DiscipleClan.Enhancers
                             statusId = "pyrelink",
                             count = 2,
                         }
+                    },
+                    FiltersBuilders = new List<CardUpgradeMaskDataBuilder>
+                    {
+                        new CardUpgradeMaskDataBuilder
+                        {
+                            CardType = CardType.Monster,
+                            UpgradeDisabledReason = CardState.UpgradeDisabledReason.CardType,
+                        }
                     }
                 },
             }.BuildAndRegister();

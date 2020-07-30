@@ -15,6 +15,7 @@ namespace DiscipleClan.Cards.Pyrepact
             {
                 Cost = 0,
                 Rarity = CollectableRarity.Common,
+                TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {

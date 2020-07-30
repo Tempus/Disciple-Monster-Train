@@ -45,6 +45,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 Health = 1,
                 AttackDamage = 0,
                 CanAttack = false,
+                PriorityDraw = false,
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder
@@ -58,10 +59,6 @@ namespace DiscipleClan.Cards.Pyrepact
                                 TargetMode = TargetMode.Pyre,
                                 TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                                 ParamInt = 2,
-                            },
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateType = typeof(CardEffectPyreAttackDispatch),
                             },
                         }
                     },

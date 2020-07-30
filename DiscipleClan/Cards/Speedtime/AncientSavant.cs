@@ -16,7 +16,7 @@ namespace DiscipleClan.Cards.Speedtime
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 2,
-                Rarity = CollectableRarity.Uncommon,
+                Rarity = CollectableRarity.Rare,
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());

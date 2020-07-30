@@ -87,6 +87,7 @@ namespace DiscipleClan.CardEffects
                     EffectStateName = "CardEffectBuffDamage",
                     TargetTeamType = Team.Type.Monsters | Team.Type.Heroes,
                     TargetMode = TargetMode.DropTargetCharacter,
+                    TargetIgnoreBosses = true,
                     ParamInt = damageBuff,
                 });
             }

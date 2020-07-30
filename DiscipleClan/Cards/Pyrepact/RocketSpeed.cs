@@ -1,3 +1,4 @@
+using DiscipleClan.CardEffects;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
@@ -14,7 +15,7 @@ namespace DiscipleClan.Cards.Pyrepact
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Rare,
+                Rarity = CollectableRarity.Uncommon,
                 Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
@@ -32,7 +33,12 @@ namespace DiscipleClan.Cards.Pyrepact
                     new CardTraitDataBuilder
                     {
                         TraitStateName = "CardTraitExhaustState"
-                    }
+                    },
+                    new CardTraitDataBuilder
+                    {
+                         TraitStateName = typeof(CardTraitJustPyreka).AssemblyQualifiedName,
+                    },
+
                 }
             };
 

@@ -36,6 +36,15 @@ namespace DiscipleClan.Enhancers
                             statusId = "pyreboost",
                             count = 1,
                         }
+                    },
+                    FiltersBuilders = new List<CardUpgradeMaskDataBuilder>
+                    {
+                        new CardUpgradeMaskDataBuilder
+                        {
+                            CardType = CardType.Monster,
+                            UpgradeDisabledReason = CardState.UpgradeDisabledReason.NotEligible,
+                            ExcludeNonAttackingMonsters = true,
+                        }
                     }
                 },
             }.BuildAndRegister();

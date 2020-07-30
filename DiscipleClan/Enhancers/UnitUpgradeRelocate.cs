@@ -44,6 +44,18 @@ namespace DiscipleClan.Enhancers
                                 }
                             }
                         },
+                    },
+                    FiltersBuilders = new List<CardUpgradeMaskDataBuilder>
+                    {
+                        new CardUpgradeMaskDataBuilder
+                        {
+                            CardType = CardType.Monster,
+                            UpgradeDisabledReason = CardState.UpgradeDisabledReason.NotEligible,
+                            ExcludedStatusEffects = new List<StatusEffectStackData>
+                            {
+                                new StatusEffectStackData { statusId = "immobile", count=1 }
+                            },
+                        }
                     }
                 },
             }.BuildAndRegister();

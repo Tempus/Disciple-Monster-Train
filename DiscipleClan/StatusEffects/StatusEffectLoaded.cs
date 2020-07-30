@@ -1,4 +1,5 @@
-﻿using MonsterTrainModdingAPI.Builders;
+﻿using MonsterTrainModdingAPI;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using System.Collections;
 
@@ -12,9 +13,13 @@ namespace DiscipleClan.StatusEffects
 
         protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
         {
-            GetAssociatedCharacter().AddDeathSignal(OnDeath, true);
             GetAssociatedCharacter().RemoveStatusEffect(GetStatusId(), false, 1, true);
             yield break;
+        }
+
+        public override void OnStacksAdded(CharacterState character, int numStacksAdded)
+        {
+            GetAssociatedCharacter().AddDeathSignal(OnDeath, true);
         }
 
         private IEnumerator OnDeath(CharacterDeathParams deathParams)
@@ -24,12 +29,17 @@ namespace DiscipleClan.StatusEffects
             CharacterState characterState = GetAssociatedCharacter();
             int GoldStacks = characterState.GetStatusEffectStacks(GetStatusId());
 
+            if (GoldStacks == 0) { yield break; }
+
+            if (characterState.PreviewMode) { yield break; }
+
             if (characterState != null)
             {
                 characterState.ShowNotification("HudNotification_TreasureHeroTriggered".Localize(new LocalizedInteger(deathParams.saveManager.GetAdjustedGoldAmount(GoldStacks, isReward: true))), PopupNotificationUI.Source.General);
                 //characterState.GetCharacterUI().ShowEffectVFX(characterState, cardEffectState.GetAppliedVFX());
             }
-            playerManager.AdjustGold(GoldStacks, isReward: true); yield break;
+            playerManager.AdjustGold(GoldStacks, isReward: true); 
+            yield break;
         }
 
         public static void Make()

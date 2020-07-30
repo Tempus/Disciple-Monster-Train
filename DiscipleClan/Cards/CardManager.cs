@@ -19,14 +19,18 @@ namespace DiscipleClan.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyreSpike.IDName));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyreSpike.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(MinervaOwl.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(HaruspexWard.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(MinervaOwl.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(HaruspexWard.IDName));
 
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashfire.IDName));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashfire.IDName));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashfire.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashfire.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashfire.IDName));
 
-            //__instance.AddRelic(__instance.GetAllGameData().FindCollectableRelicData(PyreDamageOnEmber.ID));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Emberwave.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Emberwave.IDName));
+
+            //__instance.AddRelic(__instance.GetAllGameData().FindCollectableRelicData(GoldOverTime.ID));
         }
     }
 

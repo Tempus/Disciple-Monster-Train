@@ -7,7 +7,7 @@ namespace DiscipleClan.Upgrades
     class DiscipleShifterPro
     {
         public static string IDName = "ShifterUpgradePro";
-        public static int buffAmount = 11;
+        public static int buffAmount = 10;
 
         public static CardUpgradeDataBuilder Builder()
         {

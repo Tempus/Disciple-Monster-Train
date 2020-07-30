@@ -23,7 +23,7 @@ namespace DiscipleClan.Cards.Retain
                         EffectStateName = "CardEffectDamage",
                         ParamInt = 20,
                         TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes,
+                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     }
                 },
 

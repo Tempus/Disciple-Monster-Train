@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using DiscipleClan.Artifacts;
+using DiscipleClan.CardEffects;
 using DiscipleClan.Cards.Units;
 using DiscipleClan.Enhancers;
 using DiscipleClan.StatusEffects;
@@ -8,6 +9,7 @@ using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Interfaces;
 using MonsterTrainModdingAPI.Managers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -76,6 +78,23 @@ namespace DiscipleClan
             UnitUpgradePyrelink.Make();
             UnitUpgradeRelocate.Make();
             UnitUpgradeSweep.Make();
+
+            // This section below edits existing Enhancers to allow my custom cards.
+            AddToSpellPowerEnhancers(typeof(CardEffectEmberwave).AssemblyQualifiedName);
+            //AddToDoublestackEnhancers()
+        }
+
+        public static void AddToSpellPowerEnhancers(string CardEffectID)
+        {
+            var allGameData = ProviderManager.SaveManager.GetAllGameData();
+            Traverse.Create(allGameData.FindEnhancerDataByName("SpellMagicPower").GetEffects()[0].GetParamCardUpgradeData().GetFilters()[0]).Field("requiredCardEffects").GetValue<List<string>>().Add(CardEffectID);
+            Traverse.Create(allGameData.FindEnhancerDataByName("SpellMagicPowerBigExtraCost").GetEffects()[0].GetParamCardUpgradeData().GetFilters()[0]).Field("requiredCardEffects").GetValue<List<string>>().Add(CardEffectID);
+        }
+
+        public static void AddToDoublestackEnhancers(string CardEffectID)
+        {
+            var allGameData = ProviderManager.SaveManager.GetAllGameData();
+            Traverse.Create(allGameData.FindEnhancerDataByName("UpgradeTraitAddJuice").GetEffects()[0].GetParamCardUpgradeData().GetFilters()[0]).Field("requiredCardEffects").GetValue<List<string>>().Add(CardEffectID);
         }
 
         static void MakeArtifacts()

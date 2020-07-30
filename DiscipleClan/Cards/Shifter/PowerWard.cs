@@ -45,6 +45,7 @@ namespace DiscipleClan.Cards.Shifter
                 Health = 1,
                 AttackDamage = 0,
                 CanAttack = false,
+                PriorityDraw = false,
                 RoomModifierBuilders = new List<RoomModifierDataBuilder>
                 {
                     new RoomModifierDataBuilder

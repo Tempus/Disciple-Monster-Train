@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using DiscipleClan.CardEffects;
+using HarmonyLib;
 using I2.Loc;
 using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Managers;
@@ -125,6 +126,52 @@ namespace DiscipleClan
                 {
                     targets.Clear();
                     // lastTargetedCharacters.Clear();
+                }
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(CardEffectState), "GetModifiedParam")]
+    class MagicPowerIsntShit
+    {
+        static void Postfix(CardEffectState __instance, ref int __result, int startingParam)
+        {
+            CardStateModifiers cardStateModifiers = null;
+            CardStateModifiers cardStateModifiers2 = null;
+            if (__instance.GetParentCardState() != null)
+            {
+                cardStateModifiers = __instance.GetParentCardState().GetCardStateModifiers();
+                cardStateModifiers2 = __instance.GetParentCardState().GetTemporaryCardStateModifiers();
+            }
+            if (__instance.GetCardEffect() is CardEffectEmberwave)
+            {
+                __result = CardStateModifiers.GetUpgradedStatValue(__result, CardStateModifiers.StatType.Damage, cardStateModifiers);
+                __result = CardStateModifiers.GetUpgradedStatValue(__result, CardStateModifiers.StatType.Damage, cardStateModifiers2);
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(CardManager), "DrawChosenUnitCardInHand")]
+    class DebugPriorityDraw
+    {
+        static void Prefix(CardManager __instance)
+        {
+            for (int i = 0; i < __instance.GetDrawPile().Count; i++)
+            {
+                CardState cardState = __instance.GetDrawPile()[i];
+                CharacterData spawnCharacterData = cardState.GetSpawnCharacterData();
+                if (!(spawnCharacterData != null))
+                {
+                    continue;
+                }
+                foreach (SubtypeData subtype in spawnCharacterData.GetSubtypes())
+                {
+                    if (subtype.Key == "SubtypesData_Chosen")
+                    {
+                        API.Log(BepInEx.Logging.LogLevel.All, "Chosen Unit: " + spawnCharacterData.name);
+                        return;
+                    }
+                    API.Log(BepInEx.Logging.LogLevel.All, "Unchosen Unit: " + spawnCharacterData.name);
                 }
             }
         }

@@ -14,7 +14,7 @@ namespace DiscipleClan.CardEffects
             bool flag2 = true;
             if (cardEffectState.GetTargetMode() == TargetMode.DropTargetCharacter)
                 flag2 = cardEffectParams.targets.Count > 0;
-            return intInRange >= 0 & flag2;
+            return intInRange >= 0 && flag2;
         }
 
         private int GetDamageAmount(CardEffectState cardEffectState)
@@ -22,7 +22,7 @@ namespace DiscipleClan.CardEffects
             PlayerManager playerManager;
             ProviderManager.TryGetProvider<PlayerManager>(out playerManager);
 
-            int num = cardEffectState.GetIntInRange() * playerManager.GetEnergy();
+            int num = cardEffectState.GetParamInt() * playerManager.GetEnergy();
 
             return num;
         }

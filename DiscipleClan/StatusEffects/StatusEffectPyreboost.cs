@@ -13,14 +13,14 @@ namespace DiscipleClan.StatusEffects
         public void OnPyreAttackChange(int PyreAttack, int PyreNumAttacks)
         {
             var character = this.GetAssociatedCharacter();
+            if (character.IsDead || character.IsDestroyed) { return; }
 
             character.DebuffDamage(lastBuff, null, fromStatusEffect: true);
 
             var multiplier = character.GetStatusEffectStacks(this.GetStatusId());
-            int pyreAttack = saveManager.GetDisplayedPyreAttack();
             
-            character.BuffDamage(multiplier * pyreAttack, null, fromStatusEffect: true);
-            lastBuff = multiplier * pyreAttack;
+            character.BuffDamage(multiplier * PyreAttack * PyreNumAttacks, null, fromStatusEffect: true);
+            lastBuff = multiplier * PyreAttack * PyreNumAttacks;
         }
 
         public override void OnStacksAdded(CharacterState character, int numStacksAdded)
@@ -29,7 +29,7 @@ namespace DiscipleClan.StatusEffects
             {
                 saveManager = character.GetCombatManager().GetSaveManager();
                 saveManager.pyreAttackChangedSignal.AddListener(OnPyreAttackChange);
-                OnPyreAttackChange(0, 1);
+                OnPyreAttackChange(saveManager.GetDisplayedPyreAttack(), saveManager.GetDisplayedPyreNumAttacks());
             }
         }
 
@@ -43,12 +43,6 @@ namespace DiscipleClan.StatusEffects
                     character.DebuffDamage(lastBuff, null, fromStatusEffect: true);
             }
         }
-
-        //protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
-        //{
-        //          // Do damage to the pyre here!
-        //          yield break;
-        //}
 
         private int DamageValue(int stacks)
         {
@@ -71,7 +65,7 @@ namespace DiscipleClan.StatusEffects
             {
                 StatusEffectStateName = typeof(StatusEffectPyreboost).AssemblyQualifiedName,
                 StatusId = "pyreboost",
-                DisplayCategory = StatusEffectData.DisplayCategory.Positive,
+                DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
                 TriggerStage = StatusEffectData.TriggerStage.OnDeath,
                 Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/burning-embers.png"),
             }.Build();
