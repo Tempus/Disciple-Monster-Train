@@ -67,7 +67,7 @@ namespace DiscipleClan.StatusEffects
                 StatusId = "pyreboost",
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
                 TriggerStage = StatusEffectData.TriggerStage.OnDeath,
-                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/burning-embers.png"),
+                Icon = CustomAssetManager.LoadSpriteFromPath("chrono/Status/burning-embers.png"),
             }.Build();
         }
 

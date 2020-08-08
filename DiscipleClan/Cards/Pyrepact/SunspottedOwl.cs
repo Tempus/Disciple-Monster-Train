@@ -38,7 +38,7 @@ namespace DiscipleClan.Cards.Pyrepact
 
                 Size = 1,
                 Health = 1,
-                AttackDamage = 5,
+                AttackDamage = 3,
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
@@ -62,7 +62,7 @@ namespace DiscipleClan.Cards.Pyrepact
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectGainEnergy",
-                                ParamInt = 5,
+                                ParamInt = 3,
                             },
                         }
                     }

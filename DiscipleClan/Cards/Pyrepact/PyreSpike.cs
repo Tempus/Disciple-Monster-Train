@@ -30,7 +30,7 @@ namespace DiscipleClan.Cards.Pyrepact
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectBuffDamage",
-                        ParamInt = 5,
+                        ParamInt = 3,
                         TargetMode = TargetMode.Pyre,
                         ShouldTest = true,
                     },
@@ -44,7 +44,7 @@ namespace DiscipleClan.Cards.Pyrepact
                          ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
                          ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
                          ParamUseScalingParams = true,
-                         ParamInt = 5,
+                         ParamInt = 3,
                          ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { statusId=Armor, count=0} }
                     },
                     new CardTraitDataBuilder
@@ -53,7 +53,7 @@ namespace DiscipleClan.Cards.Pyrepact
                          ParamUseScalingParams = true,
                          ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
                          ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
-                         ParamInt = 5,
+                         ParamInt = 3,
                     },
                     new CardTraitDataBuilder
                     {

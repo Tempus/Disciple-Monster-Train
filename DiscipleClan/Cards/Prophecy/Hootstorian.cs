@@ -1,14 +1,13 @@
 using DiscipleClan.Triggers;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
 
-namespace DiscipleClan.Cards.Shifter
+namespace DiscipleClan.Cards.Prophecy
 {
-    class LashLizard
+    class Hootstorian
     {
-        public static string IDName = "Lash Lizard";
-        public static string imgName = "SadNewt";
+        public static string IDName = "Hootstorian";
+        public static string imgName = "SpectacledOwl";
         public static void Make()
         {
             // Basic Card Stats 
@@ -33,45 +32,31 @@ namespace DiscipleClan.Cards.Shifter
             {
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
-                SubtypeKeys = new List<string> { "ChronoSubtype_Pythian" },
+                SubtypeKeys = new List<string> { "ChronoSubtype_Seer" },
 
-                Size = 2,
-                Health = 10,
-                AttackDamage = 5,
+                Size = 1,
+                Health = 3,
+                AttackDamage = 0,
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
-                    // Relocate
-                    new CharacterTriggerDataBuilder {
-                        Trigger = OnRelocate.OnRelocateCharTrigger.GetEnum(),
-                        EffectBuilders = new List<CardEffectDataBuilder>
-                        {
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectAddStatusEffect",
-                                TargetMode = TargetMode.Self
-                            }
-                        }
-                    },
-
-                    // Lose Sweep
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                        Trigger = OnExhaust.OnExhaustCharTrigger.GetEnum(),
+                        DisplayEffectHintText = true,
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
-                                EffectStateName = "CardEffectRemoveStatusEffect",
-                                TargetMode = TargetMode.Self
+                                EffectStateName = "CardEffectBuffDamage",
+                                ParamInt = 5,
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Monsters,
                             }
                         }
                     }
-                }
+                },
             };
-
-            characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect(Sweep, 1);
-            characterDataBuilder.TriggerBuilders[1].EffectBuilders[0].AddStatusEffect(Sweep, 1);
 
             Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();

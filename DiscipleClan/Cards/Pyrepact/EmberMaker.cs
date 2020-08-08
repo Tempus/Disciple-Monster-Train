@@ -37,7 +37,7 @@ namespace DiscipleClan.Cards.Pyrepact
 
                 Size = 2,
                 Health = 20,
-                AttackDamage = 15,
+                AttackDamage = 2,
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {

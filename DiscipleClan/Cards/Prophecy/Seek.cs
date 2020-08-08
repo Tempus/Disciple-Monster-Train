@@ -32,10 +32,6 @@ namespace DiscipleClan.Cards.Prophecy
                     {
                         TraitStateName = "CardTraitExhaustState"
                     },
-                    new CardTraitDataBuilder
-                    {
-                        TraitStateName = "CardTraitIntrinsicState"
-                    }
                 }
 
             };

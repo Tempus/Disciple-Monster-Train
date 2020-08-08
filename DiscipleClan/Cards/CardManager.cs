@@ -5,6 +5,7 @@ using DiscipleClan.Cards.Pyrepact;
 using DiscipleClan.Cards.Retain;
 using DiscipleClan.Cards.Shifter;
 using DiscipleClan.Cards.Speedtime;
+using DiscipleClan.Cards.Unused;
 using HarmonyLib;
 using I2.Loc;
 using MonsterTrainModdingAPI;
@@ -19,16 +20,11 @@ namespace DiscipleClan.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(MinervaOwl.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(HaruspexWard.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(MinervaOwl.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(HaruspexWard.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyromancyWard.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Cinderborn.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Hootstorian.IDName));
 
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashfire.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashfire.IDName));
-
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Emberwave.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Emberwave.IDName));
+            // Slag should have a chance of being cute statues, or having hats, etc. Like the cute rocks
 
             //__instance.AddRelic(__instance.GetAllGameData().FindCollectableRelicData(GoldOverTime.ID));
         }

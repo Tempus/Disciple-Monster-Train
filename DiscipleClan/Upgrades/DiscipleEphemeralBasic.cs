@@ -16,7 +16,7 @@ namespace DiscipleClan.Upgrades
             {
                 UpgradeTitleKey = IDName + "_Name",
                 UpgradeDescriptionKey = IDName + "_Desc",
-                //upgradeIcon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Clan Assets/clan_32.png"),
+                //upgradeIcon = CustomAssetManager.LoadSpriteFromPath("chrono/Clan Assets/clan_32.png"),
                 //HideUpgradeIconOnCard = false,
                 UseUpgradeHighlightTextTags = true,
                 //BonusDamage = 5,

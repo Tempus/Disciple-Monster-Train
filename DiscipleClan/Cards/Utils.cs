@@ -1,4 +1,5 @@
-﻿using MonsterTrainModdingAPI;
+﻿using DiscipleClan.Triggers;
+using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
@@ -7,7 +8,7 @@ namespace DiscipleClan.Cards
 {
     class Utils
     {
-        public static string rootPath = "Disciple/chrono/";
+        public static string rootPath = "chrono/";
         public static string ucardPath = "Card Assets/ProtoUnitCardArt/";
         public static string scardPath = "Card Assets/DiscipleMTBetaArt/";
         public static string unitPath = "Unit Assets/";
@@ -84,7 +85,7 @@ namespace DiscipleClan.Cards
             //API.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Unit", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), character.GetSize().ToString(), character.GetHealth().ToString(), character.GetAttackDamage().ToString(), character.GetLocalizedSubtype(), r.OverrideDescriptionKey.Localize() }));
         }
 
-        public static void AddWard(CardDataBuilder r, string IDName, CharacterData character)
+        public static void AddWard(CardDataBuilder r, string IDName, CharacterDataBuilder character)
         {
             r.CardID = IDName;
             r.NameKey = IDName + "_Name";
@@ -96,14 +97,32 @@ namespace DiscipleClan.Cards
             r.CardType = CardType.Monster;
             r.TargetsRoom = true;
 
+            character.AddStartingStatusEffect("fragile", 1);
+            // character.AddStartingStatusEffect("immobile", 1);
+
             r.AssetPath = rootPath + scardPath;
             r.EffectBuilders.Add(
                 new CardEffectDataBuilder
                 {
                     EffectStateName = "CardEffectSpawnMonster",
-                    TargetMode = TargetMode.DropTargetCharacter,
-                    ParamCharacterData = character,
+                    TargetMode = TargetMode.BackInRoom,
+                    ParamCharacterData = character.BuildAndRegister(),
                 });
+
+            character.TriggerBuilders.Add(new CharacterTriggerDataBuilder
+            {
+                Trigger = OnSpawnChange.OnSpawnChangeCharTrigger.GetEnum(),
+                HideTriggerTooltip = true,
+                EffectBuilders = new List<CardEffectDataBuilder>
+                {
+                    new CardEffectDataBuilder
+                    {
+                        EffectStateName = "CardEffectFloorRearrange",
+                        ParamInt = 1,
+                        TargetMode = TargetMode.Self
+                    },
+                }
+            });
 
             if (!r.NameKey.HasTranslation())
                 API.Log(BepInEx.Logging.LogLevel.All, r.NameKey + ",Text,,,,," + r.CardID + ",,,,,");

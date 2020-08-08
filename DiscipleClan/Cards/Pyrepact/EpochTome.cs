@@ -1,3 +1,4 @@
+using DiscipleClan.CardEffects;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
@@ -21,6 +22,12 @@ namespace DiscipleClan.Cards.Pyrepact
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectAddStatusEffect",
+                        TargetMode = TargetMode.DropTargetCharacter,
+                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                    },
+                    new CardEffectDataBuilder
+                    {
+                        EffectStateName = typeof(CardEffectHalveDamageDebuff).AssemblyQualifiedName,
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     },

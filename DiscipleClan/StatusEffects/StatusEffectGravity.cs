@@ -17,11 +17,14 @@ namespace DiscipleClan.StatusEffects
         [HarmonyPatch(typeof(CharacterState), "GetMovementSpeed")]
         class GravityNoMove
         {
-        // Creates and registers card data for each card class
+            // Creates and registers card data for each card class
             static void Postfix(ref int __result, CharacterState __instance)
             {
-                if (__instance.GetStatusEffectStacks("gravity") > 0 && !__instance.IsMiniboss() && !__instance.IsOuterTrainBoss())
+                if (__instance.GetStatusEffectStacks("gravity") > 0 && !__instance.IsMiniboss() && !__instance.IsOuterTrainBoss()) 
+                {
                     __result = 0;
+                    __instance.RemoveStatusEffect("gravity", false, 1, true);
+                }
             }
         }
 
@@ -71,7 +74,7 @@ namespace DiscipleClan.StatusEffects
                 DisplayCategory = StatusEffectData.DisplayCategory.Positive,
                 TriggerStage = StatusEffectData.TriggerStage.OnPostRoomCombat,
                 IsStackable = true,
-                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/weight.png"),
+                Icon = CustomAssetManager.LoadSpriteFromPath("chrono/Status/weight.png"),
             }.Build();
         }
     }

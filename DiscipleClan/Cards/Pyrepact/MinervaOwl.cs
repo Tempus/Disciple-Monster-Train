@@ -37,7 +37,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 SubtypeKeys = new List<string> { "ChronoSubtype_Seer" },
 
                 Size = 1,
-                Health = 5,
+                Health = 3,
                 AttackDamage = 0,
             };
             // Unit art asset, complex stuff!

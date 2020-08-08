@@ -33,7 +33,7 @@ namespace DiscipleClan.Cards.Unused
         }
 
         // Builds the unit
-        public static CharacterData BuildUnit()
+        public static CharacterDataBuilder BuildUnit()
         {
             // Monster card, so we build an attached unit
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
@@ -58,7 +58,7 @@ namespace DiscipleClan.Cards.Unused
             };
 
             Utils.AddUnitImg(characterDataBuilder, IDName + ".png");
-            return characterDataBuilder.BuildAndRegister();
+            return characterDataBuilder;
         }
     }
 }

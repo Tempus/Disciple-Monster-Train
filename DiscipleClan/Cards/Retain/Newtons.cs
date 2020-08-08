@@ -27,7 +27,7 @@ namespace DiscipleClan.Cards.Retain
             r.CardType = CardType.Monster;
             r.TargetsRoom = true;
 
-            r.AssetPath = "Disciple/chrono/" + "Card Assets/ProtoUnitCardArt/";
+            r.AssetPath = "chrono/" + "Card Assets/ProtoUnitCardArt/";
             r.EffectBuilders.Add(
                 new CardEffectDataBuilder
                 {

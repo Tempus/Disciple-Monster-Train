@@ -33,7 +33,7 @@ namespace DiscipleClan.Cards.Pyrepact
         }
 
         // Builds the unit
-        public static CharacterData BuildUnit()
+        public static CharacterDataBuilder BuildUnit()
         {
             // Monster card, so we build an attached unit
             CharacterDataBuilder characterDataBuilder = new CharacterDataBuilder
@@ -67,7 +67,7 @@ namespace DiscipleClan.Cards.Pyrepact
 
             Utils.AddUnitImg(characterDataBuilder, IDName + ".png");
             characterDataBuilder.SubtypeKeys = new List<string> { "ChronoSubtype_Ward" };
-            return characterDataBuilder.BuildAndRegister();
+            return characterDataBuilder;
         }
     }
 }

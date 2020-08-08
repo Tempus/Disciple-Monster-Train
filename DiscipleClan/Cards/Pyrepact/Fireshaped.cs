@@ -16,8 +16,8 @@ namespace DiscipleClan.Cards.Pyrepact
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 0,
-                Rarity = CollectableRarity.Uncommon,
+                Cost = 1,
+                Rarity = CollectableRarity.Rare,
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
@@ -38,7 +38,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 SubtypeKeys = new List<string> { "ChronoSubtype_Eternal" },
 
                 Size = 2,
-                Health = 10,
+                Health = 20,
                 AttackDamage = 0,
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
@@ -50,10 +50,13 @@ namespace DiscipleClan.Cards.Pyrepact
                         {
                             new CardEffectDataBuilder
                             {
-                                EffectStateName = typeof(CardEffectEmpowerOnSpawn).AssemblyQualifiedName,
+                                EffectStateName = typeof(CardEffectEmpowerStatusOnSpawn).AssemblyQualifiedName,
                                 TargetMode = TargetMode.Self,
-                                ParamInt = 5,
-                                AdditionalParamInt = 10,
+                                ParamStatusEffects = new StatusEffectStackData[]
+                                {
+                                    new StatusEffectStackData { statusId="buff", count=3 },
+                                    new StatusEffectStackData { statusId="regen", count=2 },
+                                }
                             },
                         }
                     },

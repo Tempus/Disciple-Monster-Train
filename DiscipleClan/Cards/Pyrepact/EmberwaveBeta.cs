@@ -2,43 +2,44 @@ using DiscipleClan.CardEffects;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 
-namespace DiscipleClan.Cards.Prophecy
+namespace DiscipleClan.Cards.Pyrepact
 {
-    class Cartomancy
+    class EmberwaveBeta
     {
-        public static string IDName = "Cartomancy";
+        public static string IDName = "EmberwaveBeta";
 
         public static void Make()
         {
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 1,
-                Rarity = CollectableRarity.Uncommon,
-                Targetless = true,
+                Cost = 0,
+                Rarity = CollectableRarity.Common,
+                TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = typeof(CardEffectScryConsume).AssemblyQualifiedName,
-                        ParamInt = 4,
-                        AdditionalParamInt = 99,
-                        TargetMode = TargetMode.Deck,
-                    }
+                        EffectStateName = "CardEffectDamage",
+                        ParamInt = 5,
+                        TargetMode = TargetMode.DropTargetCharacter,
+                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                    },
                 },
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
                     new CardTraitDataBuilder
                     {
-                        TraitStateName = "CardTraitExhaustState"
+                        TraitStateName = typeof(CardTraitScalingEmberwave).AssemblyQualifiedName,
+                        ParamInt = 5,
                     }
                 }
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "Cartomancy.png");
+            Utils.AddImg(railyard, "Emberwave.png");
 
             // Do this to complete
             railyard.BuildAndRegister();

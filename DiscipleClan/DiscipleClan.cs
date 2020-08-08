@@ -69,19 +69,22 @@ namespace DiscipleClan
             StatusEffectPyrelink.Make();
             StatusEffectHideUntilBoss.Make();
             StatusEffectPastGlory.Make();
+            StatusEffectSymbiote.Make();
         }
 
         static void MakeEnhancers()
         {
             SpellUpgradePyreboost.Make();
-            UnitUpgradePyreboost.Make();
-            UnitUpgradePyrelink.Make();
+            // UnitUpgradePyreboost.Make();
+            // UnitUpgradePyrelink.Make();
             UnitUpgradeRelocate.Make();
-            UnitUpgradeSweep.Make();
+            // UnitUpgradeSweep.Make();
 
             // This section below edits existing Enhancers to allow my custom cards.
             AddToSpellPowerEnhancers(typeof(CardEffectEmberwave).AssemblyQualifiedName);
-            //AddToDoublestackEnhancers()
+            AddToSpellPowerEnhancers(typeof(CardEffectEmberwaveFibonacci).AssemblyQualifiedName);
+            AddToSpellPowerEnhancers(typeof(CardEffectEmberwaveEmberDmg).AssemblyQualifiedName);
+            //AddToDoublestackEnhancers(typeof(CardEffectIncreaseStatusEffects).AssemblyQualifiedName);
         }
 
         public static void AddToSpellPowerEnhancers(string CardEffectID)
@@ -104,7 +107,7 @@ namespace DiscipleClan
             //foreach (var relic in types) { API.Log(BepInEx.Logging.LogLevel.All, "Artifact Name: " + relic.Name);  Make(relic); }
 
             BullshitThing.Make();
-            EmberOnDivine.Make();
+            // EmberOnDivine.Make();
             GoldOverTime.Make();
             GravityOnAscend.Make();
             RewindFirstSpell.Make();
@@ -112,7 +115,7 @@ namespace DiscipleClan
             QuickAndDirty.Make();
             RageAgainstThePyre.Make();
             RefundXCosts.Make();
-            SeersBoostDivine.Make();
+            // SeersBoostDivine.Make();
         }
 
         static void MakeCards()
@@ -150,6 +153,7 @@ namespace DiscipleClan
 
         public static void Make(Type cardType)
         {
+            API.Log(BepInEx.Logging.LogLevel.All, "Making... " + cardType.Name);
             MethodInfo make = cardType.GetMethod("Make");
             make.Invoke(null, null);
         }

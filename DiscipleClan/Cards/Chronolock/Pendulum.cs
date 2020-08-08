@@ -18,14 +18,6 @@ namespace DiscipleClan.Cards.Chronolock
                 TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>(),
-
-                TraitBuilders = new List<CardTraitDataBuilder>
-                {
-                    new CardTraitDataBuilder
-                    {
-                        TraitStateName = "CardTraitExhaustState"
-                    }
-                }
             };
 
             StatusEffectManager statMan;

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Pyrepact
 {
-    class Emberwave
+    class EmberwaveDelta
     {
-        public static string IDName = "Emberwave";
+        public static string IDName = "EmberwaveDelta";
 
         public static void Make()
         {
@@ -21,8 +21,8 @@ namespace DiscipleClan.Cards.Pyrepact
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = typeof(CardEffectEmberwave).AssemblyQualifiedName,
-                        ParamInt = 5,
+                        EffectStateName = typeof(CardEffectEmberwaveFibonacci).AssemblyQualifiedName,
+                        ParamInt = 0,
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     },

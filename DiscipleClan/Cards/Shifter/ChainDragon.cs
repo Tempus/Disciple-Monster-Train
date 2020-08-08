@@ -1,5 +1,6 @@
 using DiscipleClan.Triggers;
 using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Managers;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
 
@@ -11,12 +12,24 @@ namespace DiscipleClan.Cards.Shifter
         public static string imgName = "Axolotl";
         public static void Make()
         {
+            var upgradeBlocker = new CardUpgradeDataBuilder
+            {
+                UpgradeTitle = "Unusable",
+                UpgradeDescription = "This slot is unavailable.",
+                HideUpgradeIconOnCard = false,
+                UpgradeIcon = CustomAssetManager.LoadSpriteFromPath("chrono/Enhancer/UnitUpgradePyrelink.png"),
+            }.Build();
 
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 3,
+                Cost = 2,
                 Rarity = CollectableRarity.Uncommon,
+                StartingUpgrades = new List<CardUpgradeData>
+                {
+                    upgradeBlocker,
+                    upgradeBlocker,
+                }
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
@@ -37,7 +50,7 @@ namespace DiscipleClan.Cards.Shifter
                 SubtypeKeys = new List<string> { "ChronoSubtype_Pythian" },
 
                 Size = 3,
-                Health = 15,
+                Health = 20,
                 AttackDamage = 2,
 
                 // Relocate

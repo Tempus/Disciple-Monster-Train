@@ -6,6 +6,7 @@ using MonsterTrainModdingAPI.Managers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Tayx.Graphy.Utils.NumString;
 using static CharacterState;
 using static TargetHelper;
 
@@ -17,7 +18,7 @@ namespace DiscipleClan
     {
         static void Postfix()
         {
-            CustomLocalizationManager.ImportCSV("Disciple/chrono/Disciple.csv", ';');
+            CustomLocalizationManager.ImportCSV("chrono/Disciple.csv", ';');
         }
     }
 
@@ -97,6 +98,19 @@ namespace DiscipleClan
         }
     }
 
+    // This Makes the squoosher look cute
+    [HarmonyPatch(typeof(CharacterUI), "UpdateCharacterSize")]
+    class SquoosherSize
+    {
+        static void Postfix(CharacterUI __instance, CharacterState characterState)
+        {
+            if (characterState.GetSourceCharacterData().GetID() == "Squoosher")
+            {
+                float scale = characterState.GetMaxHP().ToFloat() / 30.0f;
+                __instance.SetScale(scale);
+            }
+        }
+    }
 
     // This fixes TargetIgnoresBosses for all target modes, because the base game just forgets to pass it?
     [HarmonyPatch(typeof(TargetHelper), "CollectTargets", new Type[] { typeof(CollectTargetsData), typeof(List<CharacterState>) }, new ArgumentType[] { HarmonyLib.ArgumentType.Normal, HarmonyLib.ArgumentType.Ref })]

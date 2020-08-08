@@ -16,11 +16,29 @@ namespace DiscipleClan.StatusEffects
         {
             if (inputTriggerParams.associatedCharacter.GetCurrentRoomIndex() == 2 && inputTriggerParams.associatedCharacter.GetStatusEffectStacks("gravity") > 0)
                 return false;
+
+            List<CharacterState> characters = new List<CharacterState>();
+            inputTriggerParams.combatManager.GetHeroManager().AddCharactersInRoomToList(characters, inputTriggerParams.associatedCharacter.GetCurrentRoomIndex());
+            foreach (var character in characters)
+            {
+                if (character.GetStatusEffect("relentless") != null)
+                    return false;
+            }
             return true;
         }
 
         protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
         {
+            // Don't fly up during Relentless
+            List<CharacterState> characters = new List<CharacterState>();
+            inputTriggerParams.combatManager.GetHeroManager().AddCharactersInRoomToList(characters, inputTriggerParams.associatedCharacter.GetCurrentRoomIndex());
+            foreach (var character in characters)
+            {
+                if (character.GetStatusEffect("relentless") != null)
+                    yield break;
+            }
+
+            // Provider
             ProviderManager.TryGetProvider<RoomManager>(out inputTriggerParams.roomManager);
 
             // At end of turn, ascend and if we try to ascend into the Pyre then we kaboom and do something.
@@ -51,7 +69,7 @@ namespace DiscipleClan.StatusEffects
                 StatusId = "icarian",
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
                 TriggerStage = StatusEffectData.TriggerStage.OnPostCombatRegen,
-                Icon = CustomAssetManager.LoadSpriteFromPath("Disciple/chrono/Status/icarus.png"),
+                Icon = CustomAssetManager.LoadSpriteFromPath("chrono/Status/icarus.png"),
             }.Build();
         }
     }

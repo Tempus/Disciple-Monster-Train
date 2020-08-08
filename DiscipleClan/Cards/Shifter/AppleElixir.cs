@@ -11,7 +11,7 @@ namespace DiscipleClan.Cards.Shifter
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 0,
+                Cost = 1,
                 Rarity = CollectableRarity.Common,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
@@ -24,9 +24,13 @@ namespace DiscipleClan.Cards.Shifter
                         TargetIgnoreBosses = true,
                     },
                 },
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder { TraitStateType = typeof(CardTraitExhaustState) }
+                }
             };
 
-            railyard.EffectBuilders[0].AddStatusEffect("gravity", 4);
+            railyard.EffectBuilders[0].AddStatusEffect("gravity", 3);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Apple-Elixir.png");
