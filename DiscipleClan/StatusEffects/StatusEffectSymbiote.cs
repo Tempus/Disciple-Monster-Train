@@ -67,7 +67,7 @@ namespace DiscipleClan.StatusEffects
                 TriggerStage = StatusEffectData.TriggerStage.OnPreCharacterTrigger,
                 StatusId = statusId,
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
-                Icon = CustomAssetManager.LoadSpriteFromPath("chrono/Status/card-discard.png"),
+                IconPath = "chrono/Status/card-discard.png",
                 IsStackable = false,
                 ShowStackCount = false,
             }.Build();

@@ -14,10 +14,6 @@
   </PropertyGroup>
 	
   <ItemGroup>
-    <Compile Remove="CardEffects\CardEffectScryConsumeFortune.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>..\..\BepInEx\core\0Harmony.dll</HintPath>
       <Private>False</Private>
@@ -36,8 +32,8 @@
     </Reference>
     <Reference Include="MonsterTrainModdingAPI">
       <HintPath>..\..\BepInEx\plugins\netstandard2.0\MonsterTrainModdingAPI.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
+	  <Private>False</Private>
+	</Reference>
     <Reference Include="Unity.Addressables">
       <HintPath>..\..\MonsterTrain_Data\Managed\Unity.Addressables.dll</HintPath>
       <Private>false</Private>
@@ -54,10 +50,6 @@
       <HintPath>..\..\MonsterTrain_Data\Managed\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="..\..\..\..\..\..\..\Program Files %2528x86%2529\Steam\steamapps\common\Monster Train\Disciple-Monster-Train\DiscipleClan\Cards\Pyrepact\" />
   </ItemGroup>
 
 </Project>

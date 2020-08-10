@@ -9,9 +9,9 @@ using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
 
 namespace DiscipleClan.Cards.Units
 {
-    class Disciple
+    class SecondDisciple
     {
-        public static string IDName = "Disciple";
+        public static string IDName = "SecondDisciple";
         public static string imgName = "Disciple";
         public static void Make()
         {
@@ -28,21 +28,21 @@ namespace DiscipleClan.Cards.Units
                     {
                         new List<CardUpgradeDataBuilder>
                         {
-                            DiscipleEphemeralBasic.Builder(),
-                            DiscipleEphemeralPremium.Builder(),
-                            DiscipleEphemeralPro.Builder(),
+                            DiscipleEmbermarkBasic.Builder(),
+                            DiscipleEmbermarkPremium.Builder(),
+                            DiscipleEmbermarkPro.Builder(),
                         },
                         new List<CardUpgradeDataBuilder>
                         {
-                            DiscipleFlamelinkedBasic.Builder(),
-                            DiscipleFlamelinkedPremium.Builder(),
-                            DiscipleFlamelinkedPro.Builder(),
+                            DiscipleNimbleBasic.Builder(),
+                            DiscipleNimblePremium.Builder(),
+                            DiscipleNimblePro.Builder(),
                         },
                         new List<CardUpgradeDataBuilder>
                         {
-                            DiscipleShifterBasic.Builder(),
-                            DiscipleShifterPremium.Builder(),
-                            DiscipleShifterPro.Builder(),
+                            DiscipleTarotBasic.Builder(),
+                            DiscipleTarotPremium.Builder(),
+                            DiscipleTarotPro.Builder(),
                         },
                     },
                 },
@@ -68,7 +68,7 @@ namespace DiscipleClan.Cards.Units
             Utils.AddImg(railyard, imgName + ".png");
 
             // Do this to complete
-            railyard.BuildAndRegister();
+            railyard.BuildAndRegister(1);
         }
 
         // Builds the unit

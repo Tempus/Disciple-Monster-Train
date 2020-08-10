@@ -38,6 +38,7 @@ namespace DiscipleClan
             MakeEnhancers();
             MakeCards();
             Disciple.Make();
+            SecondDisciple.Make();
             Clan.RegisterBanner();
             MakeArtifacts();
 

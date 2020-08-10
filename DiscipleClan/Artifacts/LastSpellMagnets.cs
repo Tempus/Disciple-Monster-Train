@@ -14,7 +14,7 @@ namespace DiscipleClan.Artifacts
         {
             var relic = new CollectableRelicDataBuilder
             {
-                AssetPath = "Sample.png",
+                IconPath = "chrono/Relic/Sample.png",
                 RelicPoolIDs = new List<string> { MegaRelicPool },
                 EffectBuilders = new List<RelicEffectDataBuilder>
                 {
@@ -26,7 +26,8 @@ namespace DiscipleClan.Artifacts
             };
             Utils.AddRelic(relic, ID);
 
-            relic.BuildAndRegister();
+            var r = relic.BuildAndRegister();
+            r.GetNameEnglish();
         }
     }
 }

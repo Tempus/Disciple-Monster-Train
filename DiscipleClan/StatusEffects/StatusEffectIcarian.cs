@@ -69,7 +69,7 @@ namespace DiscipleClan.StatusEffects
                 StatusId = "icarian",
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
                 TriggerStage = StatusEffectData.TriggerStage.OnPostCombatRegen,
-                Icon = CustomAssetManager.LoadSpriteFromPath("chrono/Status/icarus.png"),
+                IconPath = "chrono/Status/icarus.png",
             }.Build();
         }
     }
