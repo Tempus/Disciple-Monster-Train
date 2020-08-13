@@ -1,3 +1,4 @@
+using DiscipleClan.CardEffects;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Enums.MTTriggers;
 using MonsterTrainModdingAPI.Managers;
@@ -23,6 +24,7 @@ namespace DiscipleClan.Triggers
     {
         static void Postfix(CharacterState __instance, SpawnPoint destinationSpawnPoint, int delayIndex, int prevRoomIndex)
         {
+            // CustomTrigger
             CustomTriggerManager.QueueTrigger(OnRelocate.OnRelocateCharTrigger, __instance, true, true,
                                                 new CharacterState.FireTriggersData
                                                 {
@@ -30,6 +32,10 @@ namespace DiscipleClan.Triggers
                                                 },
                                                 1);
 
+            // WardTriggers
+            WardManager.TriggerWardsNow("Power", destinationSpawnPoint.GetRoomOwner().GetRoomIndex(), new List<CharacterState> { __instance });
+
+            // Room Modifier
             List<CharacterState> chars = new List<CharacterState>();
             __instance.GetCharacterManager().AddCharactersInRoomToList(chars, __instance.GetCurrentRoomIndex());
             foreach (var unit in chars)

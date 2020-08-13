@@ -16,37 +16,12 @@ namespace DiscipleClan.Upgrades
                 //upgradeIcon = CustomAssetManager.LoadSpriteFromPath("chrono/Clan Assets/clan_32.png"),
                 //HideUpgradeIconOnCard = false,
                 UseUpgradeHighlightTextTags = true,
-                BonusDamage = 5,
+                BonusDamage = 95,
                 //BonusHP = 0,
-                //costReduction = 0,
-                //xCostReduction = 0,
-                //bonusHeal = 0,
-                //BonusSize = 0,
-
-                //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
-                TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> {
-                    new CharacterTriggerDataBuilder {
-                        Trigger = CharacterTriggerData.Trigger.CardMonsterPlayed,
-                        DescriptionKey = IDName + "_Desc",
-                        EffectBuilders = new List<CardEffectDataBuilder>
-                        {
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectEnchant",
-                                ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId="ambush" } },
-                                ParamTrigger = CharacterTriggerData.Trigger.OnDeath,
-                                TargetMode = TargetMode.Room,
-                                TargetTeamType = Team.Type.Monsters,
-                            }
-                        }
-                    }
-                },
-                //cardTriggerUpgradeBuilders = new List<CardTriggerEffectDataBuilder> { },
-                //RoomModifierUpgradeBuilders = new List<RoomModifierDataBuilder> { },
-                //filtersBuilders = new List<CardUpgradeMaskDataBuilder> { },
-                //upgradesToRemoveBuilders = new List<CardUpgradeDataBuilder> { },
+                
                 StatusEffectUpgrades = new List<StatusEffectStackData> {
-                    new StatusEffectStackData { count = 2, statusId = "multistrike" }
+                    new StatusEffectStackData { count = 1, statusId = "ambush" },
+                    new StatusEffectStackData { count = 1, statusId = "adapted" },
                 },
             };
 

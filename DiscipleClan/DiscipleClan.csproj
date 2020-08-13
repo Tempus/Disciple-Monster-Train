@@ -10,7 +10,7 @@
 	</PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\BepInEx\plugins\Disciple</OutputPath>
+    <OutputPath>C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\Disciple\plugins</OutputPath>
   </PropertyGroup>
 	
   <ItemGroup>
@@ -35,7 +35,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="MonsterTrainModdingAPI">
-      <HintPath>..\..\BepInEx\plugins\netstandard2.0\MonsterTrainModdingAPI.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\MonsterTrainModdingAPI\plugins\netstandard2.0\MonsterTrainModdingAPI.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Unity.Addressables">
@@ -50,14 +50,14 @@
       <HintPath>..\..\MonsterTrain_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\..\MonsterTrain_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <Private>False</Private>
+	</Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\..\MonsterTrain_Data\Managed\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="..\..\..\..\..\..\..\Program Files %2528x86%2529\Steam\steamapps\common\Monster Train\Disciple-Monster-Train\DiscipleClan\Cards\Pyrepact\" />
   </ItemGroup>
 
 </Project>

@@ -20,7 +20,20 @@ namespace DiscipleClan.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyromancyWard.IDName));
+            // Gotta make my own "CardEffectAddStatusToPyre"
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Firewall.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Firewall.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Firewall.IDName));
+
+            // Adding these because I've mussed up the start effects, and I need to test the Chain Dragon friend (and ensure Wardmaster is targeting enemies)
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PatternShift.IDName));
+
+            // Needs to summon Slag, remove capacity, check if can be played on capcity floors
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyromancyWardBeta.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyromancyWardBeta.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyromancyWardBeta.IDName));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Cinderborn.IDName));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Hootstorian.IDName));
 

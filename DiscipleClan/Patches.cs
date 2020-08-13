@@ -80,23 +80,23 @@ namespace DiscipleClan
     }
 
     // This fixes Enchantments for players, which are hardcoded to only check heroes
-    [HarmonyPatch(typeof(RoomManager), "UpdateEnchantments")]
-    class EnchantUpdateFix
-    {
-        static void Prefix(RoomManager __instance)
-        {
-            if (!__instance.AllowEnchantmentUpdates)
-            {
-                return;
-            }
-            var toProcessCharacters = new List<CharacterState>();
-            ProviderManager.CombatManager.GetMonsterManager().AddCharactersInTowerToList(toProcessCharacters);
-            foreach (CharacterState toProcessCharacter in toProcessCharacters)
-            {
-                toProcessCharacter.TryTriggerEnchantment();
-            }
-        }
-    }
+    //[HarmonyPatch(typeof(RoomManager), "UpdateEnchantments")]
+    //class EnchantUpdateFix
+    //{
+    //    static void Prefix(RoomManager __instance)
+    //    {
+    //        if (!__instance.AllowEnchantmentUpdates)
+    //        {
+    //            return;
+    //        }
+    //        var toProcessCharacters = new List<CharacterState>();
+    //        ProviderManager.CombatManager.GetMonsterManager().AddCharactersInTowerToList(toProcessCharacters);
+    //        foreach (CharacterState toProcessCharacter in toProcessCharacters)
+    //        {
+    //            toProcessCharacter.TryTriggerEnchantment();
+    //        }
+    //    }
+    //}
 
     // This Makes the squoosher look cute
     [HarmonyPatch(typeof(CharacterUI), "UpdateCharacterSize")]

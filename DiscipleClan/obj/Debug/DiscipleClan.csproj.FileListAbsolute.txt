@@ -7,3 +7,9 @@ C:\Program Files (x86)\Steam\steamapps\common\Monster Train\BepInEx\plugins\Disc
 C:\Program Files (x86)\Steam\steamapps\common\Monster Train\Disciple-Monster-Train\DiscipleClan\obj\Debug\DiscipleClan.dll
 C:\Program Files (x86)\Steam\steamapps\common\Monster Train\Disciple-Monster-Train\DiscipleClan\obj\Debug\DiscipleClan.pdb
 C:\Program Files (x86)\Steam\steamapps\common\Monster Train\Disciple-Monster-Train\DiscipleClan\obj\Debug\DiscipleClan.csprojAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\Disciple\DiscipleClan.deps.json
+C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\Disciple\DiscipleClan.dll
+C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\Disciple\DiscipleClan.pdb
+C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\Disciple\plugins\DiscipleClan.deps.json
+C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\Disciple\plugins\DiscipleClan.dll
+C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\Disciple\plugins\DiscipleClan.pdb

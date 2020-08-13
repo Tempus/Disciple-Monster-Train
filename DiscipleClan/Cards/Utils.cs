@@ -42,7 +42,6 @@ namespace DiscipleClan.Cards
             r.RelicActivatedKey = ID + "_Active";
             r.RelicLoreTooltipKeys = new List<string> { ID + "_Lore" };
             r.ClanID = "Chrono";
-            r.AssetPath = rootPath + relicPath + r.AssetPath;
             r.Rarity = CollectableRarity.Common;
             r.IsBossGivenRelic = false;
 

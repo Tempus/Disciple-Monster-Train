@@ -70,6 +70,7 @@ namespace DiscipleClan
             StatusEffectHideUntilBoss.Make();
             StatusEffectPastGlory.Make();
             StatusEffectSymbiote.Make();
+            StatusEffectAdapted.Make();
         }
 
         static void MakeEnhancers()

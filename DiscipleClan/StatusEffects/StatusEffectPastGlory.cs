@@ -31,7 +31,7 @@ namespace DiscipleClan.StatusEffects
                 StatusEffectStateName = typeof(StatusEffectPastGlory).AssemblyQualifiedName,
                 StatusId = "pastglory",
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
-                Icon = CustomAssetManager.LoadSpriteFromPath("chrono/Status/card-discard.png"),
+                IconPath = "chrono/Status/card-discard.png",
                 ParamInt = 2,
             }.Build();
         }

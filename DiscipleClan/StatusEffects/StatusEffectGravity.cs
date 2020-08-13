@@ -74,7 +74,7 @@ namespace DiscipleClan.StatusEffects
                 DisplayCategory = StatusEffectData.DisplayCategory.Positive,
                 TriggerStage = StatusEffectData.TriggerStage.OnPostRoomCombat,
                 IsStackable = true,
-                Icon = CustomAssetManager.LoadSpriteFromPath("chrono/Status/weight.png"),
+                IconPath = "chrono/Status/weight.png",
             }.Build();
         }
     }

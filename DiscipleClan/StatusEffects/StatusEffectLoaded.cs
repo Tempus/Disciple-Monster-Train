@@ -52,7 +52,7 @@ namespace DiscipleClan.StatusEffects
                 TriggerStage = StatusEffectData.TriggerStage.OnPostAttacking,
                 IsStackable = true,
                 RemoveStackAtEndOfTurn = true,
-                Icon = CustomAssetManager.LoadSpriteFromPath("chrono/Status/two-coins.png"),
+                IconPath = "chrono/Status/two-coins.png",
             }.Build();
         }
 

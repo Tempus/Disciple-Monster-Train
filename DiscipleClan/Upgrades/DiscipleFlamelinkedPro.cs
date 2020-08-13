@@ -17,7 +17,7 @@ namespace DiscipleClan.Upgrades
                 //HideUpgradeIconOnCard = false,
                 UseUpgradeHighlightTextTags = true,
                 //BonusDamage = 0,
-                BonusHP = 7,
+                BonusHP = 2,
                 //costReduction = 0,
                 //xCostReduction = 0,
                 //bonusHeal = 0,

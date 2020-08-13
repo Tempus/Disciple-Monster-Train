@@ -34,7 +34,7 @@ namespace DiscipleClan.StatusEffects
                 StatusEffectStateName = typeof(StatusEffectHideUntilBoss).AssemblyQualifiedName,
                 StatusId = "hideuntilboss",
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
-                Icon = CustomAssetManager.LoadSpriteFromPath("chrono/Status/time-trap.png"),
+                IconPath = "chrono/Status/time-trap.png",
                 ShowStackCount = false,
                 IsStackable = false,
             }.Build();
