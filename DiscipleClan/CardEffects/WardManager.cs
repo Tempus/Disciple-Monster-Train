@@ -63,11 +63,6 @@ namespace DiscipleClan.CardEffects
 
         public static IEnumerator TriggerWards(string ID = "", int floor = -1, List<CharacterState> targets = null)
         {
-            if (targets != null)
-                API.Log(BepInEx.Logging.LogLevel.All, "Ward Trigger " + ID + ", for floor " + floor + " for targets: " + targets.Join());
-            else
-                API.Log(BepInEx.Logging.LogLevel.All, "Ward Trigger " + ID + ", for floor " + floor + " with no targets.");
-
             if (floor != -1)
             {
                 foreach (var ward in wardStates[floor])
@@ -110,11 +105,6 @@ namespace DiscipleClan.CardEffects
 
         public static void TriggerWardsNow(string ID = "", int floor = -1, List<CharacterState> targets = null)
         {
-            if (targets != null)
-                API.Log(BepInEx.Logging.LogLevel.All, "Ward Trigger " + ID + ", for floor " + floor + " for targets: " + targets.Join());
-            else
-                API.Log(BepInEx.Logging.LogLevel.All, "Ward Trigger " + ID + ", for floor " + floor + " with no targets.");
-
             if (floor != -1)
             {
                 foreach (var ward in wardStates[floor])

@@ -23,16 +23,13 @@ namespace DiscipleClan.Cards.Pyrepact
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.Pyre,
-                        ShouldTest = false,
+                        EffectStateType = typeof(CardEffectAddPyreStatus),
                     },
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectBuffDamage",
                         ParamInt = 3,
                         TargetMode = TargetMode.Pyre,
-                        ShouldTest = true,
                     },
                 },
 
@@ -58,10 +55,6 @@ namespace DiscipleClan.Cards.Pyrepact
                     new CardTraitDataBuilder
                     {
                          TraitStateName = "CardTraitExhaustState",
-                    },
-                    new CardTraitDataBuilder
-                    {
-                         TraitStateName = typeof(CardTraitJustPyreka).AssemblyQualifiedName,
                     },
                 }
             };

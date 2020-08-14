@@ -1,4 +1,5 @@
-﻿using MonsterTrainModdingAPI.Builders;
+﻿using MonsterTrainModdingAPI;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
 using System.Collections;
 using UnityEngine;
@@ -27,27 +28,29 @@ namespace DiscipleClan.StatusEffects
 			attacked.DebuffDamage(min);
 
 			outputTriggerParams.damage = inputTriggerParams.damage - min;
+			//outputTriggerParams.visualDamage = inputTriggerParams.damage - min;
+			//outputTriggerParams.damageBlocked = min;
 			return true;
 		}
 
-		//protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
-		//{
-		//	CharacterState attacked = inputTriggerParams.attacked;
-		//	if (!(attacked == null))
-		//	{
-		//		attacked.ShowNotification("StatusEffect_Fragile_NotificationText".Localize(), PopupNotificationUI.Source.General);
-		//	}
-		//	yield break;
-		//}
+        //protected override IEnumerator OnTriggered(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
+        //{
+        //    CharacterState attacked = inputTriggerParams.attacked;
+        //    if (!(attacked == null))
+        //    {
+        //        attacked.ShowNotification("StatusEffect_Fragile_NotificationText".Localize(), PopupNotificationUI.Source.General);
+        //    }
+        //    yield break;
+        //}
 
-		public static void Make()
+        public static void Make()
         {
             new StatusEffectDataBuilder
             {
                 StatusEffectStateName = typeof(StatusEffectAdapted).AssemblyQualifiedName,
                 StatusId = statusId,
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
-                TriggerStage = StatusEffectData.TriggerStage.OnAttacked,
+                TriggerStage = StatusEffectData.TriggerStage.OnPreAttacked,
                 IsStackable = false,
                 IconPath = "chrono/Status/weight.png",
             }.Build();

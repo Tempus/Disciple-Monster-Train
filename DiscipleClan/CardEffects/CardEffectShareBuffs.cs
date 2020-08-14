@@ -1,11 +1,16 @@
-﻿using MonsterTrainModdingAPI.Managers;
+﻿using HarmonyLib;
+using MonsterTrainModdingAPI.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using static CharacterState;
 
 namespace DiscipleClan.CardEffects
 {
+    // Triggers on losing a stack, whoops. That's not right.
+    // Adds +1 to stacks from everyone else, that's not right either.
+
     class CardEffectShareBuffs : CardEffectBase
     {
         public CharacterState owner;
@@ -13,15 +18,17 @@ namespace DiscipleClan.CardEffects
         public int flatIncrease = 0;
         public float multiplyIncrease = 1f;
 
+        public static CardEffectShareBuffs instance;
+
         public override IEnumerator ApplyEffect(CardEffectState cardEffectState, CardEffectParams cardEffectParams)
         {
             owner = cardEffectParams.targets[0];
-            owner.AddStatusEffectChangedListener(ShareStatusEffects);
             reflectDebuffs = cardEffectState.GetParamBool();
             flatIncrease = cardEffectState.GetParamInt();
             multiplyIncrease = cardEffectState.GetParamMultiplier();
+            instance = this;
 
-        yield break;
+            yield break;
         }
 
         public void ShareStatusEffects(string statusId, int count)
@@ -43,6 +50,20 @@ namespace DiscipleClan.CardEffects
             {
                 if (target != owner)
                     target.AddStatusEffect(statusId, (count * (int)multiplyIncrease) + flatIncrease);
+            }
+        }
+    }
+
+    // Reset the Ward List
+    [HarmonyPatch(typeof(CharacterState), "AddStatusEffect", new Type[] { typeof(string), typeof(int), typeof(AddStatusEffectParams) })]
+    class OnStatusEffect
+    {
+        static void Postfix(CharacterState __instance, string statusId, int numStacks, AddStatusEffectParams addStatusEffectParams)
+        {
+            if (CardEffectShareBuffs.instance == null) { return; }
+            if (CardEffectShareBuffs.instance.owner == __instance)
+            {
+                CardEffectShareBuffs.instance.ShareStatusEffects(statusId, numStacks);
             }
         }
     }

@@ -22,8 +22,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetMode = TargetMode.Pyre,
+                        EffectStateType = typeof(CardEffectAddPyreStatus),
                     },
                 },
 

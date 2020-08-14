@@ -21,7 +21,6 @@ namespace DiscipleClan.CardEffects
         public virtual void OnAdd(int floor)
         {
             this.floor = floor;
-            API.Log(BepInEx.Logging.LogLevel.All, "Ward added to floor " + floor);
 
             //!saveManager.PreviewMode && 
             if (wardPresentVfx != null)

@@ -60,7 +60,7 @@ namespace DiscipleClan
             // Dunno why the above doesn't work, it works for cards
 
             StatusEffectPyreboost.Make();
-            StatusEffectChronolock.Make();
+            //StatusEffectChronolock.Make();
             StatusEffectLoaded.Make();
             StatusEffectSlow.Make();
             StatusEffectIcarian.Make();
@@ -117,6 +117,7 @@ namespace DiscipleClan
             RageAgainstThePyre.Make();
             RefundXCosts.Make();
             // SeersBoostDivine.Make();
+            FirstBuffExtraStack.Make();
         }
 
         static void MakeCards()

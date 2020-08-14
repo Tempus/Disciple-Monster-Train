@@ -27,7 +27,7 @@ namespace DiscipleClan.Upgrades
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
                 TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> {
                     new CharacterTriggerDataBuilder {
-                        Trigger = CharacterTriggerData.Trigger.AfterSpawnEnchant,
+                        Trigger = CharacterTriggerData.Trigger.OnUnscaledSpawn,
                         DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
