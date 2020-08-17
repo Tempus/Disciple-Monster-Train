@@ -14,7 +14,7 @@ namespace DiscipleClan.Cards.Prophecy
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Common,
+                Rarity = CollectableRarity.Uncommon,
                 Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>

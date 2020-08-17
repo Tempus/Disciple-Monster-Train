@@ -12,15 +12,20 @@ namespace DiscipleClan.StatusEffects
 
         public void OnPyreAttackChange(int PyreAttack, int PyreNumAttacks)
         {
-            var character = this.GetAssociatedCharacter();
+            CharacterState character = this.GetAssociatedCharacter();
+            if (character == null) { return; }
             if (character.IsDead || character.IsDestroyed) { return; }
 
-            character.DebuffDamage(lastBuff, null, fromStatusEffect: true);
+            try
+            {
+                character.DebuffDamage(lastBuff, null, fromStatusEffect: true);
 
-            var multiplier = character.GetStatusEffectStacks(this.GetStatusId());
-            
-            character.BuffDamage(multiplier * PyreAttack * PyreNumAttacks, null, fromStatusEffect: true);
-            lastBuff = multiplier * PyreAttack * PyreNumAttacks;
+                var multiplier = character.GetStatusEffectStacks(this.GetStatusId());
+
+                character.BuffDamage(multiplier * PyreAttack * PyreNumAttacks, null, fromStatusEffect: true);
+                lastBuff = multiplier * PyreAttack * PyreNumAttacks;
+            }
+            catch (System.Exception) {}
         }
 
         public override void OnStacksAdded(CharacterState character, int numStacksAdded)

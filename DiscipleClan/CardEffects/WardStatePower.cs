@@ -26,7 +26,8 @@ namespace DiscipleClan.CardEffects
         {
             foreach (var unit in targets)
             {
-                unit.BuffDamage(power);
+                if (unit.GetTeamType() == Team.Type.Monsters)
+                    unit.BuffDamage(power);
             }
         }
     }

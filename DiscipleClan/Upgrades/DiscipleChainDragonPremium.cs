@@ -18,7 +18,7 @@ namespace DiscipleClan.Upgrades
                 UpgradeDescriptionKey = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = 3,
-                BonusHP = 0,
+                BonusHP = 24,
 
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
                 TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>
@@ -40,7 +40,7 @@ namespace DiscipleClan.Upgrades
                 },
                 //cardTriggerUpgradeBuilders = new List<CardTriggerEffectDataBuilder> { },
                 //RoomModifierUpgradeBuilders = new List<RoomModifierDataBuilder> { },
-                //StatusEffectUpgrades = new List<StatusEffectStackData> { },
+                StatusEffectUpgrades = new List<StatusEffectStackData> { new StatusEffectStackData { statusId = "gravity", count = 1 } },
             };
 
             return railtie;

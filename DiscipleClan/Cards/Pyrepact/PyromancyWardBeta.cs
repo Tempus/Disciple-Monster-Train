@@ -26,15 +26,23 @@ namespace DiscipleClan.Cards.Pyrepact
                         ParamStr = "WardStatePyrebound",
                         TargetMode = TargetMode.Room,
                     },
-                    //new CardEffectDataBuilder
-                    //{
-                    //    EffectStateName = "CardEffectSpawnMonster",
-                    //    TargetMode = TargetMode.FrontInRoom,
-                    //    ParamInt = 7,
-                    //    ParamCharacterData = CustomCharacterManager.GetCharacterDataByID("Slag"),
-                    //}
                 },
-                
+                //TriggerBuilders = new List<CardTriggerEffectDataBuilder>
+                //{
+                //     new CardTriggerEffectDataBuilder
+                //     {
+                //         Trigger = CardTriggerType.OnCast,
+                //         CardEffectBuilders = new List<CardEffectDataBuilder>
+                //         {
+                //            new CardEffectDataBuilder
+                //            {
+                //                EffectStateName = "CardEffectSpawnMonster",
+                //                ParamInt = 7,
+                //                ParamCharacterData = BuildFillerUnit(),
+                //            }
+                //         }
+                //     }
+                //},
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
                     new CardTraitDataBuilder
@@ -74,9 +82,10 @@ namespace DiscipleClan.Cards.Pyrepact
                     new StatusEffectStackData { count=1, statusId="fragile" },
                     new StatusEffectStackData { count=1, statusId="cardless" },
                 },
+                StatusEffectImmunities = new string[] { "pyreboost" },
             };
 
-            Utils.AddUnitImg(characterDataBuilder, "StasisWard.png");
+            Utils.AddUnitImg(characterDataBuilder, "rocka.png");
             characterDataBuilder.SubtypeKeys = new List<string> { "ChronoSubtype_Ward" };
             return characterDataBuilder.BuildAndRegister();
         }

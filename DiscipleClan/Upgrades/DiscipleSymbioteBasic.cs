@@ -17,12 +17,12 @@ namespace DiscipleClan.Upgrades
                 //upgradeIcon = CustomAssetManager.LoadSpriteFromPath("chrono/Clan Assets/clan_32.png"),
                 //HideUpgradeIconOnCard = false,
                 UseUpgradeHighlightTextTags = true,
-                BonusDamage = 3,
-                BonusHP = 0,
+                BonusDamage = -5,
+                BonusHP = 10,
                 //costReduction = 0,
                 //xCostReduction = 0,
                 //bonusHeal = 0,
-                //BonusSize = 0,
+                BonusSize = -1,
 
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
                 TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> {
@@ -36,7 +36,7 @@ namespace DiscipleClan.Upgrades
                                 EffectStateType = typeof(CardEffectBuffOnCapacityChange),
                                 TargetMode = TargetMode.Self,
                                 TargetTeamType = Team.Type.Monsters,
-                                ParamInt = 2,
+                                ParamInt = 5,
                             }
                         }
                     }

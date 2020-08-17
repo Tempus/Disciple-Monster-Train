@@ -48,7 +48,7 @@ namespace DiscipleClan.CardEffects
 
             foreach (var target in targets)
             {
-                if (target != owner)
+                if (target != owner && count > 0)
                     target.AddStatusEffect(statusId, (count * (int)multiplyIncrease) + flatIncrease);
             }
         }

@@ -10,6 +10,7 @@ using HarmonyLib;
 using I2.Loc;
 using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Managers;
+using System.Net.Sockets;
 using UnityEngine;
 
 namespace DiscipleClan.Cards
@@ -20,14 +21,10 @@ namespace DiscipleClan.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            // Needs to summon Slag, remove capacity, check if can be played on capcity floors
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyromancyWardBeta.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyromancyWardBeta.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PyromancyWardBeta.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Analog.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(SunspottedOwl.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(SunspottedOwl.IDName));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Cinderborn.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Hootstorian.IDName));
-
-            // Slag should have a chance of being cute statues, or having hats, etc. Like the cute rocks
 
             //__instance.AddRelic(__instance.GetAllGameData().FindCollectableRelicData(FirstBuffExtraStack.ID));
         }

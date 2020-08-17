@@ -24,6 +24,7 @@ namespace DiscipleClan.Cards.Shifter
                         EffectStateType = typeof(CardEffectAddWard),
                         ParamStr = "WardStatePower",
                         TargetMode = TargetMode.Room,
+                        TargetTeamType = Team.Type.Monsters,
                         ParamInt = 5,
                     }
                 },

@@ -19,7 +19,7 @@ namespace DiscipleClan.CardEffects
             var mainClass = ProviderManager.SaveManager.GetMainClass();
 			var subClass = ProviderManager.SaveManager.GetSubClass();
 
-			if (mainClass = DiscipleClan.clanRef)
+			if (mainClass == DiscipleClan.clanRef)
             {
 				otherClass = subClass;
             }
@@ -30,6 +30,7 @@ namespace DiscipleClan.CardEffects
 
             int Param = cardEffectState.GetParamInt();
 
+			if (otherClass == null) { return null; }
             switch (otherClass.GetID())
             {
                 case Hellhorned:
@@ -45,7 +46,7 @@ namespace DiscipleClan.CardEffects
                     statusEffectStackData = new StatusEffectStackData { statusId = DamageShield, count = Param / 2 };
                     break;
                 case MeltingRemnant:
-                    statusEffectStackData = new StatusEffectStackData { statusId = Burnout, count = Param };
+                    statusEffectStackData = new StatusEffectStackData { statusId = Burnout, count = Param + 1 };
                     break;
                 default:
                     statusEffectStackData = new StatusEffectStackData { statusId = "gravity", count = Param / 2 };
@@ -59,12 +60,19 @@ namespace DiscipleClan.CardEffects
         {
             LocalizationUtil.GeneratedTextDisplay = LocalizationUtil.GeneratedTextDisplayType.Show;
             var status = GetStatusEffectStack(cardEffectState);
-            return "Apply " + StatusEffectManager.GetLocalizedName(status.statusId, status.count, true);
+			if (status == null)
+				return "Apply a status dependent on your allied clan.<br><i>(See tooltips)</i>";
+			return "Apply " + StatusEffectManager.GetLocalizedName(status.statusId, status.count, true);
         }
 
 		public override bool TestEffect(CardEffectState cardEffectState, CardEffectParams cardEffectParams)
 		{
 			StatusEffectStackData statusEffectStack = GetStatusEffectStack(cardEffectState);
+			if (statusEffectStack.statusId == Burnout)
+            {
+				if (cardEffectParams.targets[0].IsMiniboss() || cardEffectParams.targets[0].IsOuterTrainBoss())
+					return false;
+            }
 			if (statusEffectStack == null)
 			{
 				return false;
@@ -98,6 +106,11 @@ namespace DiscipleClan.CardEffects
 			{
 				yield break;
 			}
+			if (statusEffectStack.statusId == Burnout)
+			{
+				if (cardEffectParams.targets[0].IsMiniboss() || cardEffectParams.targets[0].IsOuterTrainBoss())
+					yield break;
+			}
 			CharacterState.AddStatusEffectParams addStatusEffectParams = default(CharacterState.AddStatusEffectParams);
 			addStatusEffectParams.sourceRelicState = cardEffectParams.sourceRelic;
 			addStatusEffectParams.sourceCardState = cardEffectParams.playedCard;
@@ -118,6 +131,14 @@ namespace DiscipleClan.CardEffects
 			if (statusEffectStack != null)
 			{
 				outStatusIdList.Add(statusEffectStack.statusId);
+			} else
+            {
+				outStatusIdList.Add(Rage);
+				outStatusIdList.Add(Regen);
+				outStatusIdList.Add(SpellWeakness);
+				outStatusIdList.Add(DamageShield);
+				outStatusIdList.Add(Burnout);
+				outStatusIdList.Add("gravity");
 			}
 		}
 	}

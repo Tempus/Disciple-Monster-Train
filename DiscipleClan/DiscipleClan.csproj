@@ -36,11 +36,11 @@
     </Reference>
     <Reference Include="MonsterTrainModdingAPI">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\MonsterTrainModdingAPI\plugins\netstandard2.0\MonsterTrainModdingAPI.dll</HintPath>
-      <Private>false</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Addressables">
       <HintPath>..\..\MonsterTrain_Data\Managed\Unity.Addressables.dll</HintPath>
-      <Private>false</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\..\MonsterTrain_Data\Managed\UnityEngine.dll</HintPath>

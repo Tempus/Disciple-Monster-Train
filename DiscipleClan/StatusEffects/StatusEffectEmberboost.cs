@@ -13,7 +13,6 @@ namespace DiscipleClan.StatusEffects
         {
             yield return inputTriggerParams.roomManager.GetRoomUI().SetSelectedRoom(inputTriggerParams.associatedCharacter.GetCurrentRoomIndex());
             int statusEffectStacks = inputTriggerParams.associatedCharacter.GetStatusEffectStacks(GetStatusId());
-            statusEffectStacks++;
             inputTriggerParams.playerManager.AddEnergy(statusEffectStacks);
             inputTriggerParams.associatedCharacter.ShowNotification(string.Format("StatusEffectEmberboostState_Activated".Localize(), statusEffectStacks), PopupNotificationUI.Source.General);
 

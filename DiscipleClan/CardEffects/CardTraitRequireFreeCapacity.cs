@@ -6,7 +6,7 @@
 		{
 			int selectedRoom = roomManager.GetSelectedRoom();
 			var capInfo = roomManager.GetRoom(selectedRoom).GetCapacityInfo(Team.Type.Monsters);
-			if (capInfo.max > capInfo.count + GetParamInt())
+			if (capInfo.max >= capInfo.count + GetParamInt())
 			{
 				selectionError = CardSelectionBehaviour.SelectionError.None;
 				return true;
@@ -19,7 +19,7 @@
 		{
 			int selectedRoom = roomManager.GetSelectedRoom();
 			var capInfo = roomManager.GetRoom(selectedRoom).GetCapacityInfo(Team.Type.Monsters);
-			if (capInfo.max > capInfo.count + GetParamInt())
+			if (capInfo.max >= capInfo.count + GetParamInt())
 			{
 				selectionError = CardSelectionBehaviour.SelectionError.None;
 				return true;

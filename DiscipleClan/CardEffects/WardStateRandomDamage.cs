@@ -30,7 +30,7 @@ namespace DiscipleClan.CardEffects
         }
     }
 
-    [HarmonyPatch(typeof(CombatManager), "DoUnitPostCombat")]
+    [HarmonyPatch(typeof(CombatManager), "DoUnitCombat")]
     class SpikeWardTrigger
     {
         static IEnumerator Postfix(IEnumerator __result, CombatManager __instance, RoomState room)

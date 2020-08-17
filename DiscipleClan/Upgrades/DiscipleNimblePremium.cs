@@ -16,7 +16,7 @@ namespace DiscipleClan.Upgrades
                 //upgradeIcon = CustomAssetManager.LoadSpriteFromPath("chrono/Clan Assets/clan_32.png"),
                 //HideUpgradeIconOnCard = false,
                 UseUpgradeHighlightTextTags = true,
-                BonusDamage = 95,
+                BonusDamage = 75,
                 //BonusHP = 0,
                 
                 StatusEffectUpgrades = new List<StatusEffectStackData> {

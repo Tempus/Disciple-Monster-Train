@@ -23,54 +23,54 @@ namespace DiscipleClan
                 {
                     UpgradeTrees = new List<List<CardUpgradeDataBuilder>>
                     {
-                        new List<CardUpgradeDataBuilder>
-                        {
-                            DiscipleEphemeralBasic.Builder(),
-                            DiscipleEphemeralPremium.Builder(),
-                            DiscipleEphemeralPro.Builder(),
-                        },                        
-                        new List<CardUpgradeDataBuilder>
-                        {
-                            DiscipleFlamelinkedBasic.Builder(),
-                            DiscipleFlamelinkedPremium.Builder(),
-                            DiscipleFlamelinkedPro.Builder(),
-                        },
-                        new List<CardUpgradeDataBuilder>
-                        {
-                            DiscipleShifterBasic.Builder(),
-                            DiscipleShifterPremium.Builder(),
-                            DiscipleShifterPro.Builder(),
-                        },
-                        new List<CardUpgradeDataBuilder>
-                        {
-                            DiscipleWardmasterBasic.Builder(),
-                            DiscipleWardmasterPremium.Builder(),
-                            DiscipleWardmasterPro.Builder(),
-                        },
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleEphemeralBasic.Builder(),
+                        //    DiscipleEphemeralPremium.Builder(),
+                        //    DiscipleEphemeralPro.Builder(),
+                        //},                        
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleFlamelinkedBasic.Builder(),
+                        //    DiscipleFlamelinkedPremium.Builder(),
+                        //    DiscipleFlamelinkedPro.Builder(),
+                        //},
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleShifterBasic.Builder(),
+                        //    DiscipleShifterPremium.Builder(),
+                        //    DiscipleShifterPro.Builder(),
+                        //},
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleWardmasterBasic.Builder(),
+                        //    DiscipleWardmasterPremium.Builder(),
+                        //    DiscipleWardmasterPro.Builder(),
+                        //},
                         new List<CardUpgradeDataBuilder>
                         {
                             DiscipleEchoBasic.Builder(),
                             DiscipleEchoPremium.Builder(),
                             DiscipleEchoPro.Builder(),
                         },
-                        new List<CardUpgradeDataBuilder>
-                        {
-                            DiscipleNimbleBasic.Builder(),
-                            DiscipleNimblePremium.Builder(),
-                            DiscipleNimblePro.Builder(),
-                        },
-                        new List<CardUpgradeDataBuilder>
-                        {
-                            DiscipleSymbioteBasic.Builder(),
-                            DiscipleSymbiotePremium.Builder(),
-                            DiscipleSymbiotePro.Builder(),
-                        },
-                        new List<CardUpgradeDataBuilder>
-                        {
-                            DiscipleChainDragonBasic.Builder(),
-                            DiscipleChainDragonPremium.Builder(),
-                            DiscipleChainDragonPro.Builder(),
-                        },
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleNimbleBasic.Builder(),
+                        //    DiscipleNimblePremium.Builder(),
+                        //    DiscipleNimblePro.Builder(),
+                        //},
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleSymbioteBasic.Builder(),
+                        //    DiscipleSymbiotePremium.Builder(),
+                        //    DiscipleSymbiotePro.Builder(),
+                        //},
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleChainDragonBasic.Builder(),
+                        //    DiscipleChainDragonPremium.Builder(),
+                        //    DiscipleChainDragonPro.Builder(),
+                        //},
                     },
                 },
 
@@ -110,7 +110,7 @@ namespace DiscipleClan
             // This shit needs to be automated in a loop
             foreach (var card in CustomCardManager.CustomCardData)
             {
-                if (card.Value.GetLinkedClassID() == "Chrono" && card.Value.GetSpawnCharacterData() != null && !card.Value.GetSpawnCharacterData().IsChampion())
+                if (card.Value.GetLinkedClassID() == DiscipleClan.clanRef.GetID() && card.Value.GetSpawnCharacterData() != null && !card.Value.GetSpawnCharacterData().IsChampion())
                 {
                     if (!card.Value.GetSpawnCharacterData().GetSubtypes()[0].Equals(wardSub))
                         cardDataList.Add(card.Value);
@@ -122,7 +122,7 @@ namespace DiscipleClan
                     MapNodePoolIDs = new List<string> { "RandomChosenMainClassUnit", "RandomChosenSubClassUnit" },
                     Name = "RewardNodeData_Disciple_UnitBanner_TooltipBodyKey",
                     Description = "RewardNodeData_Disciple_UnitBanner_TooltipTitleKey",
-                    RequiredClass = CustomClassManager.GetClassDataByID("Chrono"),
+                    RequiredClass = DiscipleClan.clanRef,
                     FrozenSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Frozen.png",
                     EnabledSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
                     DisabledSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Disabled.png",
