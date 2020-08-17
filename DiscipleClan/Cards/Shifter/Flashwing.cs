@@ -15,11 +15,12 @@ namespace DiscipleClan.Cards.Shifter
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Starter,
+                Rarity = CollectableRarity.Common,
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
             Utils.AddImg(railyard, imgName + ".png");
+            railyard.CardPoolIDs = new List<string>();
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -38,6 +39,8 @@ namespace DiscipleClan.Cards.Shifter
                 Size = 1,
                 Health = 3,
                 AttackDamage = 5,
+
+                PriorityDraw = false,
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
@@ -61,6 +64,7 @@ namespace DiscipleClan.Cards.Shifter
             characterDataBuilder.AddStartingStatusEffect("icarian", 1);
 
             Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+
             return characterDataBuilder.BuildAndRegister();
         }
     }

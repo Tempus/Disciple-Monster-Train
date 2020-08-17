@@ -28,15 +28,21 @@ namespace DiscipleClan.Cards.Units
                     {
                         new List<CardUpgradeDataBuilder>
                         {
-                            DiscipleEphemeralBasic.Builder(),
-                            DiscipleEphemeralPremium.Builder(),
-                            DiscipleEphemeralPro.Builder(),
+                            DiscipleWardmasterBasic.Builder(),
+                            DiscipleWardmasterPremium.Builder(),
+                            DiscipleWardmasterPro.Builder(),
                         },
                         new List<CardUpgradeDataBuilder>
                         {
-                            DiscipleFlamelinkedBasic.Builder(),
-                            DiscipleFlamelinkedPremium.Builder(),
-                            DiscipleFlamelinkedPro.Builder(),
+                            DiscipleSymbioteBasic.Builder(),
+                            DiscipleSymbiotePremium.Builder(),
+                            DiscipleSymbiotePro.Builder(),
+                        },
+                        new List<CardUpgradeDataBuilder>
+                        {
+                            DiscipleChainDragonBasic.Builder(),
+                            DiscipleChainDragonPremium.Builder(),
+                            DiscipleChainDragonPro.Builder(),
                         },
                         new List<CardUpgradeDataBuilder>
                         {

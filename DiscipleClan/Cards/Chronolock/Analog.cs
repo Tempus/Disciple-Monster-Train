@@ -15,7 +15,7 @@ namespace DiscipleClan.Cards.Chronolock
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Starter,
+                Rarity = CollectableRarity.Common,
                 TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
@@ -32,6 +32,7 @@ namespace DiscipleClan.Cards.Chronolock
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Pendulum.png");
+            railyard.CardPoolIDs = new List<string>();
 
             // Do this to complete
             railyard.BuildAndRegister();

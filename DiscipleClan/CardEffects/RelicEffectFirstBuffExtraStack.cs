@@ -37,61 +37,29 @@ namespace DiscipleClan.CardEffects
 			API.Log(BepInEx.Logging.LogLevel.All, "Effects: " + statusIds.ToList().Join());
 		}
 
-		public override bool AreConditionsTrue(CardStatistics cardStatistics)
-		{
-			return true;
-		}
+		public void OnStatusEffectAddedApplyMultiplier(OnStatusEffectAddedRelicEffectParams relicEffectParams) { }
 
-		public void OnPreStatusAdded(OnStatusEffectAddedRelicEffectParams relicEffectParams)
+		public void OnStatusEffectAddedApplyAdder(OnStatusEffectAddedRelicEffectParams relicEffectParams)
 		{
-			if (!canApply) { return; }
-
-			if (statusIds.Contains(relicEffectParams.statusId))
+			if (lastStatus == relicEffectParams.statusId && !relicEffectParams.saveManager.PreviewMode && relicEffectParams.characterState != null)
 			{
-				relicEffectParams.stacksAdded += additionalStacks[statusIds.IndexOf(relicEffectParams.statusId)];
-                lastStatus = relicEffectParams.statusId;
-				NotifyRelicTriggered(relicEffectParams.relicManager, relicEffectParams.character);
-			}
-			return; 
-		}
-
-		public void OnPreStatusRemoved(OnStatusEffectAddedRelicEffectParams relicEffectParams)
-		{
-		}
-
-		public void OnStatusAdded(OnStatusEffectAddedRelicEffectParams relicEffectParams)
-		{
-			API.Log(BepInEx.Logging.LogLevel.All, "Hi: " + relicEffectParams.statusId);
-			if (lastStatus == relicEffectParams.statusId && !relicEffectParams.saveManager.PreviewMode && relicEffectParams.character != null)
-			{
-
 				canApply = false;
-				API.Log(BepInEx.Logging.LogLevel.All, "Bye: " + relicEffectParams.statusId);
-
+				NotifyRelicTriggered(relicEffectParams.relicManager, relicEffectParams.characterState);
 			}
 		}
-		public int GetModifiedStatusEffectStacks(StatusEffectStackData statusEffectStackData, CharacterState onCharacter)
+
+		public void OnStatusEffectRemoved(OnStatusEffectAddedRelicEffectParams relicEffectParams) { }
+
+		public int GetModifiedStatusEffectStacksFromMultiplier(StatusEffectStackData statusEffectStackData, CharacterState onCharacter)
 		{
-			//API.Log(BepInEx.Logging.LogLevel.All, "Hi: " + statusEffectStackData.statusId + " - " + canApply);
-			//if (!statusIds.Contains(statusEffectStackData.statusId))
-			//{
-			//	return statusEffectStackData.count;
-			//}
+			return statusEffectStackData.count;
+		}
 
-			//ProviderManager.TryGetProvider<StatusEffectManager>(out StatusEffectManager statusEffectManager);
-			////if (statusEffectManager.GetStatusEffectDataById(statusEffectStackData.statusId).GetDisplayCategory() == StatusEffectData.DisplayCategory.Positive && onCharacter.GetTeamType() == Team.Type.Heroes)
-			////         {
-			////	return statusEffectStackData.count;
-			////}
-
-			//API.Log(BepInEx.Logging.LogLevel.All, "Status effect: " + statusEffectStackData.statusId + " - Count: " + currentCount + "/" + timesPerTurn);
-			//if (currentCount >= timesPerTurn) { return statusEffectStackData.count; }
-			//currentCount++;
-
-			//API.Log(BepInEx.Logging.LogLevel.All, "It is happening");
-
-			if (!canApply || !statusIds.Contains(statusEffectStackData.statusId)) { return statusEffectStackData.count; }
-			return statusEffectStackData.count + additionalStacks[statusIds.IndexOf(statusEffectStackData.statusId)];
+		public int GetStatusEffectStacksToAdd(StatusEffectStackData statusEffectStackData, CharacterState onCharacter)
+		{
+			if (!canApply || !statusIds.Contains(statusEffectStackData.statusId) || (onCharacter != null && onCharacter.GetTeamType() != Team.Type.Monsters)) { return 0; }
+			lastStatus = statusEffectStackData.statusId;
+			return additionalStacks[statusIds.IndexOf(statusEffectStackData.statusId)];
 		}
 
 		public override string GetActivatedDescription()

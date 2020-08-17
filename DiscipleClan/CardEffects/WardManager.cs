@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-=======
 ﻿using HarmonyLib;
 using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Managers;
@@ -14,15 +9,11 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
->>>>>>> master
 
 namespace DiscipleClan.CardEffects
 {
     public class WardManager
     {
-<<<<<<< HEAD
-        public static List<List<WardState>> wardStates; 
-=======
         public static List<List<WardState>> wardStates;
         public static WardUI ui;
         public static RoomCapacityObject prefab;
@@ -43,7 +34,6 @@ namespace DiscipleClan.CardEffects
             GameObject.Destroy(wardUI.GetComponent<Image>());
             ui = wardUI.AddComponent<WardUI>();
         }
->>>>>>> master
 
         public static void ResetWards()
         {
@@ -62,18 +52,7 @@ namespace DiscipleClan.CardEffects
             {
                 wardStates[floor].Add(ward);
                 ward.OnAdd(floor);
-<<<<<<< HEAD
-            }
-        }
 
-    }
-
-    public class WardState
-    {
-        public virtual void OnAdd(int floor)
-        {
-
-=======
                 ui.SetupWardIcons(floor);
             }
         }
@@ -260,7 +239,6 @@ namespace DiscipleClan.CardEffects
         static void Postfix(RoomUIDisplayBase __instance)
         {
             WardManager.ui.gameObject.SetActive(false);
->>>>>>> master
         }
     }
 }

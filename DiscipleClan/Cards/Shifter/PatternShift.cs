@@ -13,7 +13,7 @@ namespace DiscipleClan.Cards.Shifter
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Starter,
+                Rarity = CollectableRarity.Common,
                 TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
@@ -29,6 +29,7 @@ namespace DiscipleClan.Cards.Shifter
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Pattern-Shift.png");
+            railyard.CardPoolIDs = new List<string>();
 
             railyard.BuildAndRegister();
         }

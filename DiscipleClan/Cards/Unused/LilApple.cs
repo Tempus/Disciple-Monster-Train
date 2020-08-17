@@ -1,7 +1,7 @@
 ﻿using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 
-namespace DiscipleClan.Cards.Shifter
+namespace DiscipleClan.Cards.Unused
 {
     class LilApple
     {
@@ -12,7 +12,7 @@ namespace DiscipleClan.Cards.Shifter
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Starter,
+                Rarity = CollectableRarity.Common,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {

@@ -38,6 +38,7 @@ namespace DiscipleClan.Cards.Pyrepact
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Emberwave.png");
+            railyard.CardPoolIDs = new List<string>();
 
             // Do this to complete
             railyard.BuildAndRegister();

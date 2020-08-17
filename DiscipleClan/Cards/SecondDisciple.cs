@@ -1,9 +1,12 @@
 ﻿using BepInEx.Logging;
+using DiscipleClan.Cards.Chronolock;
+using DiscipleClan.Cards.Pyrepact;
 using DiscipleClan.Cards.Shifter;
 using DiscipleClan.Upgrades;
 using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Managers;
+using System;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
 
@@ -12,37 +15,47 @@ namespace DiscipleClan.Cards.Units
     class SecondDisciple
     {
         public static string IDName = "SecondDisciple";
-        public static string imgName = "Disciple";
+        public static string imgName = "Peingoop";
         public static void Make()
         {
+            var random = new Random();
+
+            List<string> starterCards = new List<string> { Analog.IDName, Firewall.IDName, Flashwing.IDName };
+            int index = random.Next(starterCards.Count);
             // Basic Card Stats 
             ChampionCardDataBuilder railyard = new ChampionCardDataBuilder
             {
                 Cost = 0,
                 Champion = BuildUnit(),
                 ChampionIcon = "chrono/Clan Assets/Icon_ClassSelect_Disciple.png",
-                StarterCardData = CustomCardManager.GetCardDataByID(PatternShift.IDName),
+                StarterCardData = CustomCardManager.GetCardDataByID(starterCards[index]),
                 UpgradeTree = new CardUpgradeTreeDataBuilder
                 {
                     UpgradeTrees = new List<List<CardUpgradeDataBuilder>>
                     {
                         new List<CardUpgradeDataBuilder>
                         {
-                            DiscipleEmbermarkBasic.Builder(),
-                            DiscipleEmbermarkPremium.Builder(),
-                            DiscipleEmbermarkPro.Builder(),
+                            DiscipleEphemeralBasic.Builder(),
+                            DiscipleEphemeralPremium.Builder(),
+                            DiscipleEphemeralPro.Builder(),
+                        },
+                        new List<CardUpgradeDataBuilder>
+                        {
+                            DiscipleFlamelinkedBasic.Builder(),
+                            DiscipleFlamelinkedPremium.Builder(),
+                            DiscipleFlamelinkedPro.Builder(),
+                        },
+                        new List<CardUpgradeDataBuilder>
+                        {
+                            DiscipleEchoBasic.Builder(),
+                            DiscipleEchoPremium.Builder(),
+                            DiscipleEchoPro.Builder(),
                         },
                         new List<CardUpgradeDataBuilder>
                         {
                             DiscipleNimbleBasic.Builder(),
                             DiscipleNimblePremium.Builder(),
                             DiscipleNimblePro.Builder(),
-                        },
-                        new List<CardUpgradeDataBuilder>
-                        {
-                            DiscipleTarotBasic.Builder(),
-                            DiscipleTarotPremium.Builder(),
-                            DiscipleTarotPro.Builder(),
                         },
                     },
                 },
