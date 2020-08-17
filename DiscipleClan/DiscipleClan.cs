@@ -1,6 +1,12 @@
 ﻿using BepInEx;
 using DiscipleClan.Artifacts;
 using DiscipleClan.CardEffects;
+using DiscipleClan.Cards.Chronolock;
+using DiscipleClan.Cards.Prophecy;
+using DiscipleClan.Cards.Pyrepact;
+using DiscipleClan.Cards.Retain;
+using DiscipleClan.Cards.Shifter;
+using DiscipleClan.Cards.Speedtime;
 using DiscipleClan.Cards.Units;
 using DiscipleClan.Enhancers;
 using DiscipleClan.StatusEffects;
@@ -36,7 +42,16 @@ namespace DiscipleClan
             RegisterSubtypes();
             MakeStatuses();
             MakeEnhancers();
-            MakeCards();
+
+            //MakeCards();
+
+            MakeCardsEcho();
+            //MakeCardsNimble();
+            //MakeCardsFlamelinked();
+            //MakeCardsChain();
+            //MakeCardsSymbiote();
+            //MakeCardsWardmaster();
+
             Disciple.Make();
             SecondDisciple.Make();
             Clan.RegisterBanner();
@@ -61,7 +76,7 @@ namespace DiscipleClan
             // Dunno why the above doesn't work, it works for cards
 
             StatusEffectPyreboost.Make();
-            StatusEffectChronolock.Make();
+            //StatusEffectChronolock.Make();
             StatusEffectLoaded.Make();
             StatusEffectSlow.Make();
             StatusEffectIcarian.Make();
@@ -71,11 +86,14 @@ namespace DiscipleClan
             StatusEffectHideUntilBoss.Make();
             StatusEffectPastGlory.Make();
             StatusEffectSymbiote.Make();
+            StatusEffectAdapted.Make();
         }
 
         static void MakeEnhancers()
         {
-            SpellUpgradePyreboost.Make();
+            //SpellUpgradePyreboost.Make();
+            //UnitUpgradeAdapter.Make();
+            //UnitUpgradeImpervious.Make();
             // UnitUpgradePyreboost.Make();
             // UnitUpgradePyrelink.Make();
             UnitUpgradeRelocate.Make();
@@ -85,7 +103,7 @@ namespace DiscipleClan
             AddToSpellPowerEnhancers(typeof(CardEffectEmberwave).AssemblyQualifiedName);
             AddToSpellPowerEnhancers(typeof(CardEffectEmberwaveFibonacci).AssemblyQualifiedName);
             AddToSpellPowerEnhancers(typeof(CardEffectEmberwaveEmberDmg).AssemblyQualifiedName);
-            //AddToDoublestackEnhancers(typeof(CardEffectIncreaseStatusEffects).AssemblyQualifiedName);
+            //AddToDoublestackEnhancers(typeof(CardEffectAddClassStatus).AssemblyQualifiedName);
         }
 
         public static void AddToSpellPowerEnhancers(string CardEffectID)
@@ -117,6 +135,7 @@ namespace DiscipleClan
             RageAgainstThePyre.Make();
             RefundXCosts.Make();
             // SeersBoostDivine.Make();
+            FirstBuffExtraStack.Make();
         }
 
         static void MakeCards()
@@ -199,6 +218,184 @@ namespace DiscipleClan
             API.Log(BepInEx.Logging.LogLevel.All, "Rare Cards: " + rares);
             API.Log(BepInEx.Logging.LogLevel.All, "Units + Wards: " + units);
             API.Log(BepInEx.Logging.LogLevel.All, "Spell Cards: " + spells);
+        }
+
+        static void MakeCardsEcho()
+        {
+            UnitUpgradeAdapter.Make();
+            //UnitUpgradeImpervious.Make();
+            //UnitUpgradeSweep.Make();
+
+            Analog.Make();
+
+            Newtons.Make();
+            Fireshaped.Make();
+            EmberMaker.Make();
+            Cinderborn.Make();
+            SunspottedOwl.Make();
+            Hootstorian.Make();
+
+            TimeStamp.Make();
+            EpochTome.Make();
+            Refractor.Make();
+            Pendulum.Make();
+            PendulumBeta.Make();
+            PendulumDelta.Make();
+            TimeFreeze.Make();
+            EmberwaveBeta.Make();
+            WaxPinion.Make();
+            PalmReading.Make();
+            //PowerWardBeta.Make();
+            AppleElixir.Make();
+            RightTimingBeta.Make();
+        }
+        static void MakeCardsNimble()
+        {
+            UnitUpgradeAdapter.Make();
+            //UnitUpgradeImpervious.Make();
+            //UnitUpgradeSweep.Make();
+
+            Flashwing.Make();
+
+            AncientSavant.Make();
+            Fireshaped.Make();
+            EmberMaker.Make();
+            Cinderborn.Make();
+            SunspottedOwl.Make();
+            Waxwing.Make();
+
+            TimeStamp.Make();
+            Chronomancyb.Make();
+            Rewind.Make();
+            RocketSpeed.Make();
+            PendulumBeta.Make();
+            ShifterWardBeta.Make();
+            TimeFreeze.Make();
+            EmberwaveBeta.Make();
+            RightTimingDelta.Make();
+            HaruspexWardBeta.Make();
+            PowerWardBeta.Make();
+            AppleElixir.Make();
+            PalmReading.Make();
+        }
+        static void MakeCardsFlamelinked()
+        {
+            //UnitUpgradeAdapter.Make();
+            UnitUpgradeImpervious.Make();
+            //UnitUpgradeSweep.Make();
+
+            Firewall.Make();
+
+            MinervaOwl.Make();
+            DivineroftheInfinite.Make();
+            Hootstorian.Make();
+            Cinderborn.Make();
+            ChainDragon.Make();
+            Waxwing.Make();
+
+            PyromancyWardBeta.Make();
+            PyreSpike.Make();
+            Rewind.Make();
+            RocketSpeed.Make();
+            Refractor.Make();
+            ShifterWardBeta.Make();
+            PendulumDelta.Make();
+            EmberwaveBeta.Make();
+            RightTimingDelta.Make();
+            HaruspexWardBeta.Make();
+            Flashfire.Make();
+            AppleElixir.Make();
+            WaxPinion.Make();
+        }
+        static void MakeCardsChain()
+        {
+            //UnitUpgradeAdapter.Make();
+            //UnitUpgradeImpervious.Make();
+            UnitUpgradeSweep.Make();
+
+            PatternShift.Make();
+
+            AncientSavant.Make();
+            JellyScholar.Make();
+            Snecko.Make();
+            FortuneFinder.Make();
+            SunspottedOwl.Make();
+            Waxwing.Make();
+
+            PyromancyWardBeta.Make();
+            TimeStamp.Make();
+            Dilation.Make();
+            PendulumBeta.Make();
+            Refractor.Make();
+            ShifterWardBeta.Make();
+            PendulumDelta.Make();
+            TimeFreeze.Make();
+            EmberwaveBeta.Make();
+            RightTimingBeta.Make();
+            PalmReading.Make();
+            PowerWardBeta.Make();
+            AppleElixir.Make();
+            WaxPinion.Make();
+        }
+        static void MakeCardsSymbiote()
+        {
+            //UnitUpgradeAdapter.Make();
+            //UnitUpgradeImpervious.Make();
+            UnitUpgradeSweep.Make();
+
+            PatternShift.Make();
+
+            Newtons.Make();
+            JellyScholar.Make();
+            Hootstorian.Make();
+            FortuneFinder.Make();
+            ChainDragon.Make();
+            Snecko.Make();
+
+            PyromancyWardBeta.Make();
+            EpochTome.Make();
+            Dilation.Make();
+            Rewind.Make();
+            Refractor.Make();
+            ShifterWardBeta.Make();
+            PendulumDelta.Make();
+            TimeFreeze.Make();
+            Seek.Make();
+            RightTimingBeta.Make();
+            PalmReading.Make();
+            PowerWardBeta.Make();
+            AppleElixir.Make();
+            WaxPinion.Make();
+        }
+        static void MakeCardsWardmaster()
+        {
+            //UnitUpgradeAdapter.Make();
+            UnitUpgradeImpervious.Make();
+            //UnitUpgradeSweep.Make();
+
+            PatternShift.Make();
+
+            MinervaOwl.Make();
+            DivineroftheInfinite.Make();
+            Hootstorian.Make();
+            FortuneFinder.Make();
+            Waxwing.Make();
+            Snecko.Make();
+
+            PyromancyWardBeta.Make();
+            TimeStamp.Make();
+            Rewind.Make();
+            PendulumDelta.Make();
+            RocketSpeed.Make();
+            ShifterWardBeta.Make();
+            Refractor.Make();
+            TimeFreeze.Make();
+            Flashfire.Make();
+            RightTimingDelta.Make();
+            HaruspexWardBeta.Make();
+            PowerWardBeta.Make();
+            AppleElixir.Make();
+            WaxPinion.Make();
         }
     }
 }

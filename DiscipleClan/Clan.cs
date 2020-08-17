@@ -18,9 +18,6 @@ namespace DiscipleClan
             ClassDataBuilder clan = new ClassDataBuilder
             {
                 ClassID = IDName,
-
-
-                //ChampionIcon = CustomAssetManager.LoadSpriteFromPath("chrono/Clan Assets/Icon_ClassSelect_Disciple.png"),
                 ClanSelectSfxCue = copyClan.GetClanSelectSfxCue(),
 
                 DraftIconPath = "chrono/Clan Assets/Icon_CardBack_Disciple.png",
@@ -35,6 +32,56 @@ namespace DiscipleClan
 
                 CardFrameUnitPath =  "chrono/Clan Assets/unit-cardframe-arcadian.png",
                 CardFrameSpellPath = "chrono/Clan Assets/spell-cardframe-arcadian.png",
+
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleEphemeralBasic.Builder(),
+                        //    DiscipleEphemeralPremium.Builder(),
+                        //    DiscipleEphemeralPro.Builder(),
+                        //},                        
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleFlamelinkedBasic.Builder(),
+                        //    DiscipleFlamelinkedPremium.Builder(),
+                        //    DiscipleFlamelinkedPro.Builder(),
+                        //},
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleShifterBasic.Builder(),
+                        //    DiscipleShifterPremium.Builder(),
+                        //    DiscipleShifterPro.Builder(),
+                        //},
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleWardmasterBasic.Builder(),
+                        //    DiscipleWardmasterPremium.Builder(),
+                        //    DiscipleWardmasterPro.Builder(),
+                        //},
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleEchoBasic.Builder(),
+                        //    DiscipleEchoPremium.Builder(),
+                        //    DiscipleEchoPro.Builder(),
+                        //},
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleNimbleBasic.Builder(),
+                        //    DiscipleNimblePremium.Builder(),
+                        //    DiscipleNimblePro.Builder(),
+                        //},
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleSymbioteBasic.Builder(),
+                        //    DiscipleSymbiotePremium.Builder(),
+                        //    DiscipleSymbiotePro.Builder(),
+                        //},
+                        //new List<CardUpgradeDataBuilder>
+                        //{
+                        //    DiscipleChainDragonBasic.Builder(),
+                        //    DiscipleChainDragonPremium.Builder(),
+                        //    DiscipleChainDragonPro.Builder(),
+                        //},
+
                 UiColor = new Color(0.964f, 0.729f, 0.015f, 1f),
                 UiColorDark = new Color(0.12f, 0.375f, 0.5f, 1f),
             };

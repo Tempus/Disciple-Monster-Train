@@ -3,6 +3,7 @@ using MonsterTrainModdingAPI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.CardEffects
 {
@@ -12,12 +13,12 @@ namespace DiscipleClan.CardEffects
 		{
 			["buff"] = "debuff",
 			["regen"] = "poison",
-			["stealth"] = "dazed",
+			[Stealth] = Dazed,
 			["spell shield"] = "spell weakness",
 			["emberboost"] = "scorch",
-			["spikes"] = "exploit poison",
+			["spikes"] = "poison",
 			["gravity"] = "rooted",
-			["damage shield"] = "fragile",
+			[DamageShield] = "fragile",
 			["lifesteal"] = "heal immunity",
 		};
 
@@ -48,7 +49,7 @@ namespace DiscipleClan.CardEffects
 
 							string debuff = StatusFlips.GetValueSafe(status.State.GetStatusId());
 							API.Log(BepInEx.Logging.LogLevel.All, "Flipping " + status.State.GetStatusId() + " to " + debuff + " - " + count);
-							character.AddStatusEffect(debuff, count, addStatusEffectParams2);
+							character.AddStatusEffect(debuff, count);
 						}
 					}
 					else
@@ -58,9 +59,9 @@ namespace DiscipleClan.CardEffects
 							int count = status.Count;
 							character.RemoveStatusEffect(status.State.GetStatusId(), false, count);
 
-							string buff = StatusFlips.FirstOrDefault(x => x.Value == "one").Key;
+							string buff = StatusFlips.FirstOrDefault(x => x.Value == status.State.GetStatusId()).Key;
 							API.Log(BepInEx.Logging.LogLevel.All, "Flipping " + status.State.GetStatusId() + " to " + buff + " - " + count);
-							character.AddStatusEffect(buff, count, addStatusEffectParams2);
+							character.AddStatusEffect(buff, count);
 						}
 					}
 				}

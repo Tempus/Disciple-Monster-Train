@@ -50,7 +50,7 @@ namespace DiscipleClan.Cards.Shifter
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectRewardGold",
-                                ParamInt = 10,
+                                ParamInt = 20,
                                 TargetMode = TargetMode.Self
                             }
                         }

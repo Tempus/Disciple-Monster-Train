@@ -80,23 +80,23 @@ namespace DiscipleClan
     }
 
     // This fixes Enchantments for players, which are hardcoded to only check heroes
-    [HarmonyPatch(typeof(RoomManager), "UpdateEnchantments")]
-    class EnchantUpdateFix
-    {
-        static void Prefix(RoomManager __instance)
-        {
-            if (!__instance.AllowEnchantmentUpdates)
-            {
-                return;
-            }
-            var toProcessCharacters = new List<CharacterState>();
-            ProviderManager.CombatManager.GetMonsterManager().AddCharactersInTowerToList(toProcessCharacters);
-            foreach (CharacterState toProcessCharacter in toProcessCharacters)
-            {
-                toProcessCharacter.TryTriggerEnchantment();
-            }
-        }
-    }
+    //[HarmonyPatch(typeof(RoomManager), "UpdateEnchantments")]
+    //class EnchantUpdateFix
+    //{
+    //    static void Prefix(RoomManager __instance)
+    //    {
+    //        if (!__instance.AllowEnchantmentUpdates)
+    //        {
+    //            return;
+    //        }
+    //        var toProcessCharacters = new List<CharacterState>();
+    //        ProviderManager.CombatManager.GetMonsterManager().AddCharactersInTowerToList(toProcessCharacters);
+    //        foreach (CharacterState toProcessCharacter in toProcessCharacters)
+    //        {
+    //            toProcessCharacter.TryTriggerEnchantment();
+    //        }
+    //    }
+    //}
 
     // This Makes the squoosher look cute
     [HarmonyPatch(typeof(CharacterUI), "UpdateCharacterSize")]
@@ -191,41 +191,18 @@ namespace DiscipleClan
         }
     }
 
-    //[HarmonyPatch(typeof(DeckScreen), "FilterCardStatesByRelicEffect")]
-    //class Idunnowhatwrong
+    //[HarmonyPatch(typeof(CardState), "IsSpawnerCard")]
+    //class WardsAreSpawnersToo
     //{
-    //    static void Prefix(DeckScreen __instance, List<CardState> cardStatesToFilter, RelicEffectData ___relicEffectData)
+    //    static void Postfix(ref bool __result, CardState __instance)
     //    {
-    //        API.Log(BepInEx.Logging.LogLevel.All, "What up 1");
-    //        if (___relicEffectData.GetParamCardType() != CardType.Invalid)
+    //        foreach (CardEffectState effectState in __instance.GetEffectStates())
     //        {
-    //            API.Log(BepInEx.Logging.LogLevel.All, "What up 1.1");
-    //            cardStatesToFilter.RemoveAll((CardState c) => c.GetCardType() != ___relicEffectData.GetParamCardType());
-    //        }
-    //        API.Log(BepInEx.Logging.LogLevel.All, "What up 2");
-    //        if (!___relicEffectData.GetParamCharacterSubtype().IsNone)
-    //        {
-    //            API.Log(BepInEx.Logging.LogLevel.All, "What up 2.1");
-    //            for (int num = cardStatesToFilter.Count - 1; num >= 0; num--)
+    //            if (effectState.GetCardEffect() is CardEffectSpawnMonster)
     //            {
-    //                API.Log(BepInEx.Logging.LogLevel.All, "What up 2.1." + num);
-    //                foreach (CardEffectState effectState in cardStatesToFilter[num].GetEffectStates())
-    //                {
-    //                    API.Log(BepInEx.Logging.LogLevel.All, "What up 2.1." + num + " some loop");
-    //                    if (effectState.GetCardEffect() is CardEffectSpawnMonster && !effectState.GetParamCharacterData().GetSubtypes().Contains(___relicEffectData.GetParamCharacterSubtype()))
-    //                    {
-    //                        API.Log(BepInEx.Logging.LogLevel.All, "What up 2.2");
-    //                        cardStatesToFilter.RemoveAt(num);
-    //                    }
-    //                }
+    //                __result = true;
     //            }
     //        }
-    //        API.Log(BepInEx.Logging.LogLevel.All, "What up 3");
-    //        if (___relicEffectData.GetUseIntRange())
-    //        {
-    //            API.Log(BepInEx.Logging.LogLevel.All, "What up 3.1");
-    //            cardStatesToFilter.RemoveAll((CardState c) => c.GetCostWithoutAnyModifications() < ___relicEffectData.GetParamMinInt() || c.GetCostWithoutAnyModifications() > ___relicEffectData.GetParamMaxInt());
-    //        }
-    //    } 
+    //    }
     //}
 }

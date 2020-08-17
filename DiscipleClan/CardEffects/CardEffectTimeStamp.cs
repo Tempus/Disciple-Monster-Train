@@ -65,6 +65,7 @@ namespace DiscipleClan.CardEffects
             CardDataBuilder cardDataBuilder = new CardDataBuilder()
             {
                 CardID = "TimeStampInked" + IDOffset,
+                ClanID = DiscipleClan.clanRef.GetID(),
                 Name = unit.GetSourceCharacterData().GetNameKey().Localize() + " Stamp",
                 Description = desc,
                 OverrideDescriptionKey = "TimeStampInked" + IDOffset + "_CardText",

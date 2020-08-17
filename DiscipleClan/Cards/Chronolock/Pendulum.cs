@@ -20,8 +20,7 @@ namespace DiscipleClan.Cards.Chronolock
                 EffectBuilders = new List<CardEffectDataBuilder>(),
             };
 
-            StatusEffectManager statMan;
-            ProviderManager.TryGetProvider<StatusEffectManager>(out statMan);
+            ProviderManager.TryGetProvider<StatusEffectManager>(out StatusEffectManager statMan);
             foreach (var status in statMan.GetAllStatusEffectsData().GetStatusEffectData())
             {
                 if (status.GetDisplayCategory() != StatusEffectData.DisplayCategory.Persistent)
