@@ -32,6 +32,16 @@ namespace DiscipleClan.Cards
         }
     }
 
+    [HarmonyPatch(typeof(CompendiumSectionCards), "IsCardUnlockedAndDiscovered")]
+    class RevealAllCards
+    {
+        // Creates and registers card data for each card class
+        static void Postfix(ref bool __result)
+        {
+            __result = true;
+        }
+    }
+
     //[HarmonyPatch(typeof(CardState), "Setup")]
     //class DebugCrashCards
     //{
