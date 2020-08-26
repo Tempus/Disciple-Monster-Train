@@ -68,6 +68,10 @@ namespace DiscipleClan.CardEffects
 		public override bool TestEffect(CardEffectState cardEffectState, CardEffectParams cardEffectParams)
 		{
 			StatusEffectStackData statusEffectStack = GetStatusEffectStack(cardEffectState);
+			if (cardEffectParams.targets.Count <= 0)
+			{
+				return false;
+			}
 			if (statusEffectStack.statusId == Burnout)
             {
 				if (cardEffectParams.targets[0].IsMiniboss() || cardEffectParams.targets[0].IsOuterTrainBoss())
@@ -80,10 +84,6 @@ namespace DiscipleClan.CardEffects
 			if (cardEffectState.GetTargetMode() != TargetMode.DropTargetCharacter)
 			{
 				return true;
-			}
-			if (cardEffectParams.targets.Count <= 0)
-			{
-				return false;
 			}
 			if (cardEffectParams.statusEffectManager.GetStatusEffectDataById(statusEffectStack.statusId).IsStackable())
 			{

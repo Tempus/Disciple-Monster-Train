@@ -13,13 +13,9 @@ namespace DiscipleClan
 
         public static ClassData Make()
         {
-            var copyClan = CustomClassManager.SaveManager.GetAllGameData().GetAllClassDatas()[1];
-
             ClassDataBuilder clan = new ClassDataBuilder
-            {
+             {
                 ClassID = IDName,
-                ClanSelectSfxCue = copyClan.GetClanSelectSfxCue(),
-
                 DraftIconPath = "chrono/Clan Assets/Icon_CardBack_Disciple.png",
 
                 IconAssetPaths = new List<string>

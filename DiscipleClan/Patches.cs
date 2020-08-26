@@ -13,14 +13,14 @@ using static TargetHelper;
 namespace DiscipleClan
 {
     // This patch is used to import localization data when it gets the localization sources
-    [HarmonyPatch(typeof(LocalizationManager), "UpdateSources")]
-    class LocalizationInjection
-    {
-        static void Postfix()
-        {
-            CustomLocalizationManager.ImportCSV("chrono/Disciple.csv", ';');
-        }
-    }
+    //[HarmonyPatch(typeof(LocalizationManager), "UpdateSources")]
+    //class LocalizationInjection
+    //{
+    //    static void Postfix()
+    //    {
+    //        CustomLocalizationManager.ImportCSV("chrono/Disciple.csv", ';');
+    //    }
+    //}
 
     // This attempted to make Wards into spells, but failed.
     //[HarmonyPatch(typeof(CardState), "IsSpawnerCard")]

@@ -37,7 +37,7 @@ namespace DiscipleClan.CardEffects
         {
             int damageAmount = this.GetDamageAmount();
             if (cardEffectState.GetTargetMode() == TargetMode.Room)
-                cardEffectParams.combatManager.IgnoreDuplicateSounds(true, true);
+                cardEffectParams.combatManager.IgnoreDuplicateSounds(true);
             for (int i = 0; i < cardEffectParams.targets.Count; ++i)
             {
                 CharacterState target = cardEffectParams.targets[i];
@@ -51,7 +51,7 @@ namespace DiscipleClan.CardEffects
                     showDamageVfx = cardEffectParams.allowPlayingDamageVfx
                 });
             }
-            cardEffectParams.combatManager.IgnoreDuplicateSounds(false, false);
+            cardEffectParams.combatManager.IgnoreDuplicateSounds(false);
         }
 
         public bool WillEffectKillTarget(

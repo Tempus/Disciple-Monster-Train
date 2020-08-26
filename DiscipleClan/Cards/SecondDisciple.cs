@@ -27,7 +27,8 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 0,
                 Champion = BuildUnit(),
-                ChampionIcon = "chrono/Clan Assets/Icon_ClassSelect_Disciple.png",
+                ChampionIconPath = "chrono/Clan Assets/Icon_ClassSelect_Disciple.png",
+                ChampionSelectedCue = "",
                 StarterCardData = CustomCardManager.GetCardDataByID(starterCards[index]),
                 UpgradeTree = new CardUpgradeTreeDataBuilder
                 {

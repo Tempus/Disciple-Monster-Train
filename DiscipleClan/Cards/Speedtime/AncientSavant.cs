@@ -1,5 +1,6 @@
 using DiscipleClan.Triggers;
 using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Utilities;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
 
@@ -40,6 +41,14 @@ namespace DiscipleClan.Cards.Speedtime
                 Health = 50,
                 AttackDamage = 0,
 
+                BundleLoadingInfo = new BundleAssetLoadingInfo
+                {
+                    FilePath = "chrono/arcadian_units",
+                    SpriteName = "assets/plr_ancient.png",
+                    ObjectName = "assets/plr_ancient.prefab",
+                    AssetType = AssetRefBuilder.AssetTypeEnum.Character
+                },
+
                 TriggerBuilders = new List<CharacterTriggerDataBuilder> {
                     new CharacterTriggerDataBuilder {
                         Trigger = CharacterTriggerData.Trigger.AfterSpawnEnchant,
@@ -60,7 +69,7 @@ namespace DiscipleClan.Cards.Speedtime
 
             characterDataBuilder.AddStartingStatusEffect(Immobile, 1);
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            //Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

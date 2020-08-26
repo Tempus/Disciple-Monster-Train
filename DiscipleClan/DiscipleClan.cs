@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEngine;
 
 namespace DiscipleClan
 {
@@ -38,12 +39,18 @@ namespace DiscipleClan
 
         public void Initialize()
         {
+            CustomLocalizationManager.ImportCSV("chrono/Disciple.csv", ';');
             clanRef = Clan.Make();
             RegisterSubtypes();
             MakeStatuses();
             MakeEnhancers();
 
             MakeCards();
+
+            foreach (var bundle in BundleManager.LoadedAssetBundles)
+            {
+                API.Log(BepInEx.Logging.LogLevel.All, bundle.Value.GetAllAssetNames().Join());
+            }
 
             Disciple.Make();
             SecondDisciple.Make();
