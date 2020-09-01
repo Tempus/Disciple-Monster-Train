@@ -17,7 +17,7 @@ namespace DiscipleClan.Cards.Pyrepact
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Rare,
+                Rarity = CollectableRarity.Uncommon,
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
@@ -35,7 +35,7 @@ namespace DiscipleClan.Cards.Pyrepact
             {
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
-                SubtypeKeys = new List<string> { "ChronoSubtype_Eternal" },
+                SubtypeKeys = new List<string> { "ChronoSubtype_Pythian" },
 
                 Size = 2,
                 Health = 20,

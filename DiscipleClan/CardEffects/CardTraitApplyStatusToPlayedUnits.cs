@@ -13,7 +13,6 @@ namespace DiscipleClan.CardEffects
         {
             if (upgrade == null)
             {
-                API.Log(BepInEx.Logging.LogLevel.All, "Creating first time upgrade");
                 var upgradeBuilder = new CardUpgradeDataBuilder
                 {
                      HideUpgradeIconOnCard = true,
@@ -24,8 +23,6 @@ namespace DiscipleClan.CardEffects
                 upgrade = new CardUpgradeState();
                 upgrade.Setup(upgradeBuilder.Build());
             }
-
-            API.Log(BepInEx.Logging.LogLevel.All, "Activate Chronomancy");
 
             foreach (CardState item in cardManager.GetAllCards())
                 if (item.IsMonsterCard() && !item.GetTemporaryCardStateModifiers().HasUpgrade(upgrade))

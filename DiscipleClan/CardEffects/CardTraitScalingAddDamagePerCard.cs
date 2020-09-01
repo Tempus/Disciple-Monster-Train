@@ -37,14 +37,12 @@ namespace DiscipleClan.CardEffects
 			if (cardManager == null) { return paramInt; }
 
 			int statValue = 0;
-			API.Log(BepInEx.Logging.LogLevel.All, "Checking for Right Timing: " + GetCardTraitData().GetParamStr());
 			foreach (var card in cardManager.GetAllCards())
             {
 				if (card.GetCardDataID() == GetCardTraitData().GetParamStr())
 					statValue++;
             }
 
-			API.Log(BepInEx.Logging.LogLevel.All, "Right Timing Delta: " + statValue + " x " + paramInt);
 			return paramInt * statValue;
 		}
 

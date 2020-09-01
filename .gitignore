@@ -3,4 +3,7 @@
 DiscipleClan/.DS_Store
 
 .vs/*
-obj\*
+DiscipleClan/obj/*
+
+.vs\*
+DiscipleClan\obj\*

@@ -22,11 +22,11 @@ namespace DiscipleClan.Cards
         static void Postfix(ref SaveManager __instance)
         {
             __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AncientSavant.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(SunspottedOwl.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(SunspottedOwl.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(SunspottedOwl.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(SunspottedOwl.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Cinderborn.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AncientPyresnail.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Firewall.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Firewall.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Firewall.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Firewall.IDName));
 
             //__instance.AddRelic(__instance.GetAllGameData().FindCollectableRelicData(FirstBuffExtraStack.ID));
         }

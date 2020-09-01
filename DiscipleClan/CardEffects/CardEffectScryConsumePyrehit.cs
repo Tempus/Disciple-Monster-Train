@@ -16,8 +16,6 @@ namespace DiscipleClan.CardEffects
                 var allTargets = new List<CharacterState>();
                 cardEffectParams.heroManager.AddCharactersInRoomToList(allTargets, cardEffectParams.GetSelectedRoom().GetRoomIndex());
 
-                API.Log(BepInEx.Logging.LogLevel.All, "Belomancy target count: " + allTargets.Count);
-
                 if (allTargets.Count > 0)
                 {
                     for (int i = 0; i < chosenCardState.GetCostWithoutAnyModifications(); i++)

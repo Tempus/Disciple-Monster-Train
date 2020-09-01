@@ -14,31 +14,22 @@ namespace DiscipleClan.Cards.Pyrepact
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 1,
-                Rarity = CollectableRarity.Starter,
+                Cost = 0,
+                Rarity = CollectableRarity.Common,
                 Targetless = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
                     new CardEffectDataBuilder
                     {
-                        EffectStateType = typeof(CardEffectAddPyreStatus),
+                        EffectStateType = typeof(CardEffectAddPyreStatusEmpowered),
                     },
                 },
-
-                //TraitBuilders = new List<CardTraitDataBuilder>
-                //{
-                //    new CardTraitDataBuilder
-                //    {
-                //         TraitStateName = typeof(CardTraitJustPyreka).AssemblyQualifiedName,
-                //    },
-                //}
             };
-            railyard.EffectBuilders[0].AddStatusEffect(Armor, 3);
+            railyard.EffectBuilders[0].AddStatusEffect(Armor, 1);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Emberwave.png");
-            railyard.CardPoolIDs = new List<string>();
 
             // Do this to complete
             railyard.BuildAndRegister();

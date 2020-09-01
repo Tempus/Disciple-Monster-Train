@@ -1,6 +1,7 @@
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
 
 namespace DiscipleClan.Cards.Shifter
 {
@@ -20,7 +21,7 @@ namespace DiscipleClan.Cards.Shifter
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
             Utils.AddImg(railyard, imgName + ".png");
-            railyard.CardPoolIDs = new List<string>();
+            railyard.CardPoolIDs = new List<string> { "Chrono", MegaPool };
 
             // Do this to complete
             railyard.BuildAndRegister();

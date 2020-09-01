@@ -24,14 +24,11 @@ namespace DiscipleClan.Triggers
         {
             if (playCard.HasTrait(typeof(CardTraitExhaustState)))
             {
-                API.Log(BepInEx.Logging.LogLevel.All, "Exhaust trait found: " + roomState);
                 ProviderManager.TryGetProvider<RoomManager>(out RoomManager roomManager);
                 roomManager.GetSelectedRoom();
                 int roomindex = roomManager.GetSelectedRoom();
                 if (roomindex != -1)
                 {
-                    API.Log(BepInEx.Logging.LogLevel.All, "Room: " + selectedRoom);
-
                     List<CharacterState> charList = new List<CharacterState>();
                     ProviderManager.CombatManager.GetMonsterManager().AddCharactersInRoomToList(charList, roomManager.GetSelectedRoom());
                     foreach (var unit in charList)

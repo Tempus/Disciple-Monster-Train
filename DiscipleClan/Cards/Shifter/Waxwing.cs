@@ -1,6 +1,7 @@
 using DiscipleClan.Triggers;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
+using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
 
 // TODO - Icarian, Pyre attacks whole tower (we can fake it though)
 
@@ -17,11 +18,12 @@ namespace DiscipleClan.Cards.Pyrepact
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Uncommon,
+                Rarity = CollectableRarity.Rare,
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
             Utils.AddImg(railyard, imgName + ".png");
+            railyard.CardPoolIDs = new List<string> { "Chrono", MegaPool };
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -39,7 +41,7 @@ namespace DiscipleClan.Cards.Pyrepact
 
                 Size = 1,
                 Health = 3,
-                AttackDamage = 10,
+                AttackDamage = 20,
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
@@ -51,13 +53,7 @@ namespace DiscipleClan.Cards.Pyrepact
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectBuffDamage",
-                                ParamInt = 10,
-                                TargetMode = TargetMode.Self
-                            },
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectBuffMaxHealth",
-                                ParamInt = 3,
+                                ParamInt = 5,
                                 TargetMode = TargetMode.Self
                             },
                         }

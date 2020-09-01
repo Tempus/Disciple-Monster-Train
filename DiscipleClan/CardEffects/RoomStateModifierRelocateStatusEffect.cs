@@ -22,7 +22,6 @@ namespace DiscipleClan.CardEffects
         {
             if (effects.Length == 0)
             {
-                API.Log(BepInEx.Logging.LogLevel.All, "No status effects!");
                 return;
             }
 

@@ -14,7 +14,7 @@ namespace DiscipleClan.Cards.Retain
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 2,
-                Rarity = CollectableRarity.Rare,
+                Rarity = CollectableRarity.Uncommon,
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());

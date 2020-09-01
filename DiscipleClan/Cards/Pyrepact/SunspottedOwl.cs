@@ -1,5 +1,6 @@
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
+using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
 
 // TODO - Icarian, Pyre attacks whole tower (we can fake it though)
 
@@ -21,6 +22,7 @@ namespace DiscipleClan.Cards.Pyrepact
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
             Utils.AddImg(railyard, imgName + ".png");
+            railyard.CardPoolIDs = new List<string> { "Chrono", MegaPool };
 
             // Do this to complete
             railyard.BuildAndRegister();

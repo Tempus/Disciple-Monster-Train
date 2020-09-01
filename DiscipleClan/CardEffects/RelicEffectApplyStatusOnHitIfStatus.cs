@@ -42,15 +42,12 @@ namespace DiscipleClan.CardEffects
             {
                 return false;
             }
-            API.Log(BepInEx.Logging.LogLevel.All, "We've gotten past all the checks!");
 
             TargetMode targetMode = TargetMode.LastAttackedCharacter;
             if (characterState.GetStatusEffectStacks("sweep") > 0)
             {
                 targetMode = TargetMode.Room;
             }
-
-            API.Log(BepInEx.Logging.LogLevel.All, "Target mode is " + targetMode.ToString());
 
             try
             {
@@ -69,7 +66,6 @@ namespace DiscipleClan.CardEffects
 
                 _targets.Clear();
                 TargetHelper.CollectTargets(collectTargetsData, ref _targets);
-                API.Log(BepInEx.Logging.LogLevel.All, "Targets " + _targets.Count + " are " + _targets.Join());
 
                 return _targets.Count > 0;
             }
@@ -83,10 +79,8 @@ namespace DiscipleClan.CardEffects
         {
             CharacterState characterState = relicEffectParams.characterState;
 
-            API.Log(BepInEx.Logging.LogLevel.All, "Applying Daze for the attack of " + characterState.name);
             if (alreadyGone.Contains(characterState)) { yield break; }
 
-            API.Log(BepInEx.Logging.LogLevel.All, "We haven't attacked before: " + characterState.name);
             foreach (var target in _targets)
             {
                 target.AddStatusEffect(statusEffects[0].statusId, 1);
@@ -97,7 +91,6 @@ namespace DiscipleClan.CardEffects
                     relicEffectParams.relicManager.ShowRelicActivated(_srcRelicState.GetIcon(), activatedDescription, target.GetCharacterUI());
                 }
             }
-            API.Log(BepInEx.Logging.LogLevel.All, "They should be dazed now: " + _targets.Join());
 
             alreadyGone.Add(characterState);
             yield break;

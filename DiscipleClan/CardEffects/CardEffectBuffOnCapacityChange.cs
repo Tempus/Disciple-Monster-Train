@@ -41,8 +41,6 @@ namespace DiscipleClan.CardEffects
             if (diff < 0)
                 target.DebuffDamage(Mathf.Abs(diff * addDamage));
 
-            API.Log(BepInEx.Logging.LogLevel.All, "Updating Capacity: " + diff);
-
             if (!ProviderManager.SaveManager.PreviewMode)
                 lastCap = capacityInfo.count;
         }

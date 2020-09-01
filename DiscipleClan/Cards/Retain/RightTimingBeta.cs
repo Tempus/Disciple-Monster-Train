@@ -39,7 +39,7 @@ namespace DiscipleClan.Cards.Retain
                             {
                                  persistenceMode = PersistenceMode.SingleBattle,
                                  cardTriggerEffect = typeof(CardTriggerEffectBuffSpellDamageForEveryCardOfType).AssemblyQualifiedName,
-                                 paramInt = 10,
+                                 paramInt = 15,
                                  buffEffectType = "CardEffectBuffDamage",
                             }
                         }

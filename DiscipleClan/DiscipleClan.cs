@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using MonsterTrainModdingAPI.Managers;
 
 namespace DiscipleClan
 {
@@ -46,11 +47,12 @@ namespace DiscipleClan
             MakeEnhancers();
 
             MakeCards();
+            RegisterCustomAsset();
 
-            foreach (var bundle in BundleManager.LoadedAssetBundles)
-            {
-                API.Log(BepInEx.Logging.LogLevel.All, bundle.Value.GetAllAssetNames().Join());
-            }
+            //foreach (var bundle in BundleManager.LoadedAssetBundles)
+            //{
+            //    API.Log(BepInEx.Logging.LogLevel.All, bundle.Value.GetAllAssetNames().Join());
+            //}
 
             Disciple.Make();
             SecondDisciple.Make();
@@ -78,7 +80,7 @@ namespace DiscipleClan
             StatusEffectPyreboost.Make();
             //StatusEffectChronolock.Make();
             StatusEffectLoaded.Make();
-            StatusEffectSlow.Make();
+            //StatusEffectSlow.Make();
             StatusEffectIcarian.Make();
             StatusEffectEmberboost.Make();
             StatusEffectGravity.Make();
@@ -91,13 +93,13 @@ namespace DiscipleClan
 
         static void MakeEnhancers()
         {
-            //SpellUpgradePyreboost.Make();
-            UnitUpgradeAdapter.Make();
+            // SpellUpgradePyreboost.Make();
+            // UnitUpgradeAdapter.Make();
             UnitUpgradeImpervious.Make();
             // UnitUpgradePyreboost.Make();
             // UnitUpgradePyrelink.Make();
             UnitUpgradeRelocate.Make();
-            UnitUpgradeSweep.Make();
+            // UnitUpgradeSweep.Make();
 
             // This section below edits existing Enhancers to allow my custom cards.
             AddToSpellPowerEnhancers(typeof(CardEffectEmberwave).AssemblyQualifiedName);

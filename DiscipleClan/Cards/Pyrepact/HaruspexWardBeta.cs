@@ -15,7 +15,7 @@ namespace DiscipleClan.Cards.Pyrepact
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 1,
-                Rarity = CollectableRarity.Common,
+                Rarity = CollectableRarity.Uncommon,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -24,7 +24,7 @@ namespace DiscipleClan.Cards.Pyrepact
                         EffectStateType = typeof(CardEffectAddWard),
                         ParamStr = "WardStatePyreHarvest",
                         TargetMode = TargetMode.Room,
-                        ParamInt = 2
+                        ParamInt = 1
                     }
                 },
                 

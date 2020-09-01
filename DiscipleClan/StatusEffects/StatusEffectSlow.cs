@@ -23,7 +23,6 @@ namespace DiscipleClan.StatusEffects
             if (inputTriggerParams.associatedCharacter == null) { return true; }
             if (inputTriggerParams.associatedCharacter.HasStatusEffect("ambush"))
             {
-                API.Log(BepInEx.Logging.LogLevel.All, "Removed ambush from: " + inputTriggerParams.associatedCharacter.name);
                 inputTriggerParams.associatedCharacter.RemoveStatusEffect("ambush", false, 1, false);
                 inputTriggerParams.associatedCharacter.RemoveStatusEffect("slow", false, 1, true);
                 inputTriggerParams.associatedCharacter.UpdateCharacterStateUI();

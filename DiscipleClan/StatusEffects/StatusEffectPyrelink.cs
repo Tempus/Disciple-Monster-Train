@@ -40,13 +40,11 @@ namespace DiscipleClan.StatusEffects
                 if (!saveManager.PreviewMode)
                 {
                     // attackingCharacter.GetCharacterUI().ShowEffectVFX(attackingCharacter, _srcRelicEffectData.GetAppliedVfx());
-                    //API.Log(BepInEx.Logging.LogLevel.All, "This triggers when we're actually pyrelinking");
                     yield return champion.BuffMaxHP(buffAmount);
                 }
                 // We killed something imaginarily, we should preview here? Wait, how does the PYRE preview a kill?
                 else
                 {
-                    //API.Log(BepInEx.Logging.LogLevel.All, "This triggers when we're previewing pyrelink");
                     //yield return champion.BuffMaxHP(buffAmount);
                     // attackingCharacter.PreviewHpOnPyreHeart(Mathf.Min(attackingCharacter.GetHP() + healAmount, saveManager.GetMaxTowerHP()));
                 }

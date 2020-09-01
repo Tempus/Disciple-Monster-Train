@@ -20,8 +20,6 @@ namespace DiscipleClan.Cards.Units
         {
             var random = new Random();
 
-            List<string> starterCards = new List<string> { Analog.IDName, Firewall.IDName, Flashwing.IDName };
-            int index = random.Next(starterCards.Count);
             // Basic Card Stats 
             ChampionCardDataBuilder railyard = new ChampionCardDataBuilder
             {
@@ -29,7 +27,7 @@ namespace DiscipleClan.Cards.Units
                 Champion = BuildUnit(),
                 ChampionIconPath = "chrono/Clan Assets/Icon_ClassSelect_Disciple.png",
                 ChampionSelectedCue = "",
-                StarterCardData = CustomCardManager.GetCardDataByID(starterCards[index]),
+                StarterCardData = CustomCardManager.GetCardDataByID(Analog.IDName),
                 UpgradeTree = new CardUpgradeTreeDataBuilder
                 {
                     UpgradeTrees = new List<List<CardUpgradeDataBuilder>>
@@ -52,12 +50,6 @@ namespace DiscipleClan.Cards.Units
                             DiscipleEchoPremium.Builder(),
                             DiscipleEchoPro.Builder(),
                         },
-                        new List<CardUpgradeDataBuilder>
-                        {
-                            DiscipleNimbleBasic.Builder(),
-                            DiscipleNimblePremium.Builder(),
-                            DiscipleNimblePro.Builder(),
-                        },
                     },
                 },
 
@@ -73,11 +65,6 @@ namespace DiscipleClan.Cards.Units
 
                 AssetPath = Utils.rootPath + Utils.ucardPath,
             };
-
-            if (!railyard.NameKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, railyard.NameKey + ",Text,,,,," + railyard.CardID + ",,,,,");
-            if (!railyard.OverrideDescriptionKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, railyard.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
 
             Utils.AddImg(railyard, imgName + ".png");
 

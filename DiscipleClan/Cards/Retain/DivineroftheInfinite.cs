@@ -17,7 +17,7 @@ namespace DiscipleClan.Cards.Retain
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 5,
-                Rarity = CollectableRarity.Rare,
+                Rarity = CollectableRarity.Uncommon,
 
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {

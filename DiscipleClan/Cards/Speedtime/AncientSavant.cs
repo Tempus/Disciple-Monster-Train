@@ -17,7 +17,7 @@ namespace DiscipleClan.Cards.Speedtime
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 2,
-                Rarity = CollectableRarity.Rare,
+                Rarity = CollectableRarity.Uncommon,
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
@@ -52,7 +52,7 @@ namespace DiscipleClan.Cards.Speedtime
                 TriggerBuilders = new List<CharacterTriggerDataBuilder> {
                     new CharacterTriggerDataBuilder {
                         Trigger = CharacterTriggerData.Trigger.AfterSpawnEnchant,
-                        Description = "Quick",
+                        DescriptionKey = "Ancient Savant_Trigger",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

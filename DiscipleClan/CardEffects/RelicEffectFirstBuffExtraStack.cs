@@ -34,7 +34,6 @@ namespace DiscipleClan.CardEffects
 			additionalStacks = (from status in relicEffectData.GetParamStatusEffects() select status.count).ToList();
 			timesPerTurn = currentCount = relicEffectData.GetParamInt();
 			statusStacks = relicEffectData.GetParamStatusEffects();
-			API.Log(BepInEx.Logging.LogLevel.All, "Effects: " + statusIds.ToList().Join());
 		}
 
 		public void OnStatusEffectAddedApplyMultiplier(OnStatusEffectAddedRelicEffectParams relicEffectParams) { }
@@ -77,7 +76,6 @@ namespace DiscipleClan.CardEffects
 
         public bool TestEffect(RelicEffectParams relicEffectParams)
         {
-			API.Log(BepInEx.Logging.LogLevel.All, "Start of turn");
 			canApply = true;
 			return true;
 		}
@@ -96,7 +94,6 @@ namespace DiscipleClan.CardEffects
         {
 			if (!relicEffectParams.saveManager.PreviewMode)
 			{
-				API.Log(BepInEx.Logging.LogLevel.All, "End of turn");
 				canApply = false;
 			}
 			yield break;

@@ -46,7 +46,6 @@ namespace DiscipleClan
         {
             if (__instance.IsPyreHeart() && !__instance.PreviewMode)
             {
-                API.Log(BepInEx.Logging.LogLevel.All, "Pyre is no longer immune to: " + statusEffectId);
                 __result = false;
                 return false;
             }
@@ -63,7 +62,6 @@ namespace DiscipleClan
         {
             if (__instance.IsPyreHeart() && !__instance.PreviewMode)
             {
-                API.Log(BepInEx.Logging.LogLevel.All, "Pyre is overriding immunity for: " + statusId);
                 addStatusEffectParams.overrideImmunity = true;
             }
         }
@@ -182,10 +180,8 @@ namespace DiscipleClan
                 {
                     if (subtype.Key == "SubtypesData_Chosen")
                     {
-                        API.Log(BepInEx.Logging.LogLevel.All, "Chosen Unit: " + spawnCharacterData.name);
                         return;
                     }
-                    API.Log(BepInEx.Logging.LogLevel.All, "Unchosen Unit: " + spawnCharacterData.name);
                 }
             }
         }

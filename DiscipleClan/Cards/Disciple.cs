@@ -41,12 +41,6 @@ namespace DiscipleClan.Cards.Units
                         },
                         new List<CardUpgradeDataBuilder>
                         {
-                            DiscipleChainDragonBasic.Builder(),
-                            DiscipleChainDragonPremium.Builder(),
-                            DiscipleChainDragonPro.Builder(),
-                        },
-                        new List<CardUpgradeDataBuilder>
-                        {
                             DiscipleShifterBasic.Builder(),
                             DiscipleShifterPremium.Builder(),
                             DiscipleShifterPro.Builder(),
@@ -66,11 +60,6 @@ namespace DiscipleClan.Cards.Units
 
                 AssetPath = Utils.rootPath + Utils.ucardPath,
             };
-
-            if (!railyard.NameKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, railyard.NameKey + ",Text,,,,," + railyard.CardID + ",,,,,");
-            if (!railyard.OverrideDescriptionKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, railyard.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
 
             Utils.AddImg(railyard, imgName + ".png");
 

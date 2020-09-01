@@ -28,7 +28,7 @@ namespace DiscipleClan.Enhancers
                     UpgradeTitleKey = ID + "_Name",
                     UpgradeDescriptionKey = ID + "_CardDesc",
                     HideUpgradeIconOnCard = false,
-                    UpgradeIcon = CustomAssetManager.LoadSpriteFromPath("chrono/Enhancer/" + ID + ".png"),
+                    UpgradeIconPath = ("chrono/Enhancer/" + ID + ".png"),
                     StatusEffectUpgrades = new List<StatusEffectStackData>
                     {
                         new StatusEffectStackData
