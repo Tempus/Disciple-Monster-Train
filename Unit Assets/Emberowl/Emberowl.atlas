@@ -1,0 +1,76 @@
+
+Emberowl.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Emberowl/Left_Wing
+  rotate: false
+  xy: 121, 1
+  size: 83, 173
+  orig: 83, 173
+  offset: 0, 0
+  index: -1
+Emberowl/Right_Wing
+  rotate: false
+  xy: 1, 1
+  size: 118, 181
+  orig: 118, 181
+  offset: 0, 0
+  index: -1
+Emberowl/R_Arm
+  rotate: false
+  xy: 191, 176
+  size: 46, 60
+  orig: 46, 60
+  offset: 0, 0
+  index: -1
+Emberowl/L_Arm
+  rotate: false
+  xy: 206, 1
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+Emberowl/heal1
+  rotate: false
+  xy: 49, 184
+  size: 42, 52
+  orig: 42, 52
+  offset: 0, 0
+  index: -1
+Emberowl/SPL_CrucibleExtension_01
+  rotate: false
+  xy: 1, 184
+  size: 46, 51
+  orig: 46, 51
+  offset: 0, 0
+  index: -1
+Emberowl/Left_Claw
+  rotate: false
+  xy: 206, 80
+  size: 25, 47
+  orig: 25, 47
+  offset: 0, 0
+  index: -1
+Emberowl/Right_Claw
+  rotate: false
+  xy: 93, 184
+  size: 26, 47
+  orig: 26, 47
+  offset: 0, 0
+  index: -1
+Emberowl/Body
+  rotate: false
+  xy: 121, 176
+  size: 68, 78
+  orig: 68, 78
+  offset: 0, 0
+  index: -1
+Emberowl/Eyes
+  rotate: false
+  xy: 206, 52
+  size: 48, 26
+  orig: 48, 26
+  offset: 0, 0
+  index: -1

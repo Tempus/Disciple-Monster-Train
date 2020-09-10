@@ -195,7 +195,7 @@ Enchant:Quick/Layer_34
   index: -1
 Enchant:Quick/Layer_35
   rotate: false
-  xy: 969, 280
+  xy: 969, 346
   size: 54, 64
   orig: 54, 64
   offset: 0, 0
@@ -335,7 +335,7 @@ Enchant:Quick/Layer_52
   index: -1
 Enchant:Quick/Layer_53
   rotate: false
-  xy: 969, 346
+  xy: 969, 280
   size: 54, 64
   orig: 54, 64
   offset: 0, 0
