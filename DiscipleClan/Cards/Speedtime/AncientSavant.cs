@@ -44,8 +44,8 @@ namespace DiscipleClan.Cards.Speedtime
                 BundleLoadingInfo = new BundleAssetLoadingInfo
                 {
                     FilePath = "chrono/arcadian_units",
-                    SpriteName = "assets/plr_ancient.png",
-                    ObjectName = "assets/plr_ancient.prefab",
+                    SpriteName = "assets/ancientpreview.png",
+                    ObjectName = "assets/ancient.prefab",
                     AssetType = AssetRefBuilder.AssetTypeEnum.Character
                 },
 
@@ -69,7 +69,6 @@ namespace DiscipleClan.Cards.Speedtime
 
             characterDataBuilder.AddStartingStatusEffect(Immobile, 1);
 
-            //Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

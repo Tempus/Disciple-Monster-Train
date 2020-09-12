@@ -7,3 +7,17 @@ DiscipleClan/obj/*
 
 .vs\*
 DiscipleClan\obj\*
+DiscipleClan/obj/Debug/.NETStandard,Version=v2.0.AssemblyAttributes.cs
+DiscipleClan/obj/Debug/DiscipleClan.AssemblyInfo.cs
+DiscipleClan/obj/Debug/DiscipleClan.AssemblyInfoInputs.cache
+DiscipleClan/obj/Debug/DiscipleClan.assets.cache
+DiscipleClan/obj/Debug/DiscipleClan.csproj.CoreCompileInputs.cache
+DiscipleClan/obj/Debug/DiscipleClan.csproj.FileListAbsolute.txt
+DiscipleClan/obj/Debug/DiscipleClan.csprojAssemblyReference.cache
+DiscipleClan/obj/Debug/DiscipleClan.dll
+DiscipleClan/obj/Debug/DiscipleClan.pdb
+DiscipleClan/obj/DiscipleClan.csproj.nuget.dgspec.json
+DiscipleClan/obj/DiscipleClan.csproj.nuget.g.props
+DiscipleClan/obj/DiscipleClan.csproj.nuget.g.targets
+DiscipleClan/obj/project.assets.json
+DiscipleClan/obj/project.nuget.cache

@@ -1,4 +1,5 @@
 using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Utilities;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
 
@@ -42,6 +43,14 @@ namespace DiscipleClan.Cards.Pyrepact
                 Health = 1,
                 AttackDamage = 3,
 
+                BundleLoadingInfo = new BundleAssetLoadingInfo
+                {
+                    FilePath = "chrono/arcadian_units",
+                    SpriteName = "assets/morsowlpreview.png",
+                    ObjectName = "assets/morsowl.prefab",
+                    AssetType = AssetRefBuilder.AssetTypeEnum.Character
+                },
+
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder
@@ -73,7 +82,7 @@ namespace DiscipleClan.Cards.Pyrepact
             };
             characterDataBuilder.AddStartingStatusEffect("icarian", 1);
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            //Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

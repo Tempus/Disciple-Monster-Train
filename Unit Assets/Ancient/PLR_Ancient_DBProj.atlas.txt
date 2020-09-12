@@ -1,0 +1,363 @@
+
+PLR_Ancient_DBProj.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Enchant:Quick/L_Stalk
+  rotate: false
+  xy: 969, 1
+  size: 39, 98
+  orig: 39, 98
+  offset: 0, 0
+  index: -1
+Enchant:Quick/L_Eye
+  rotate: false
+  xy: 105, 728
+  size: 67, 68
+  orig: 67, 68
+  offset: 0, 0
+  index: -1
+Enchant:Quick/L_Shimmer
+  rotate: false
+  xy: 948, 684
+  size: 17, 23
+  orig: 17, 23
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Body
+  rotate: false
+  xy: 1, 446
+  size: 541, 143
+  orig: 541, 143
+  offset: 0, 0
+  index: -1
+Enchant:Quick/ShellShadow
+  rotate: false
+  xy: 544, 446
+  size: 389, 134
+  orig: 389, 134
+  offset: 0, 0
+  index: -1
+Enchant:Quick/YellowShell
+  rotate: false
+  xy: 485, 1
+  size: 482, 443
+  orig: 482, 443
+  offset: 0, 0
+  index: -1
+Enchant:Quick/BlueShell
+  rotate: false
+  xy: 1, 1
+  size: 482, 443
+  orig: 482, 443
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_7
+  rotate: false
+  xy: 323, 591
+  size: 62, 60
+  orig: 62, 60
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_10
+  rotate: false
+  xy: 463, 591
+  size: 56, 66
+  orig: 56, 66
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_11
+  rotate: false
+  xy: 1, 893
+  size: 44, 56
+  orig: 44, 56
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_12
+  rotate: false
+  xy: 200, 788
+  size: 34, 48
+  orig: 34, 48
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_14
+  rotate: false
+  xy: 155, 591
+  size: 76, 62
+  orig: 76, 62
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_15
+  rotate: false
+  xy: 864, 582
+  size: 63, 90
+  orig: 63, 90
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_18
+  rotate: false
+  xy: 654, 666
+  size: 104, 74
+  orig: 104, 74
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_20
+  rotate: false
+  xy: 1, 833
+  size: 108, 58
+  orig: 108, 58
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_21
+  rotate: false
+  xy: 862, 770
+  size: 104, 61
+  orig: 104, 61
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_22
+  rotate: false
+  xy: 968, 780
+  size: 46, 88
+  orig: 46, 88
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_24
+  rotate: false
+  xy: 654, 582
+  size: 114, 82
+  orig: 114, 82
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_26
+  rotate: false
+  xy: 969, 101
+  size: 52, 72
+  orig: 52, 72
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_27
+  rotate: false
+  xy: 935, 576
+  size: 76, 106
+  orig: 76, 106
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_28
+  rotate: false
+  xy: 862, 684
+  size: 84, 84
+  orig: 84, 84
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_29
+  rotate: false
+  xy: 1, 798
+  size: 80, 30
+  orig: 80, 30
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_30
+  rotate: false
+  xy: 521, 643
+  size: 20, 44
+  orig: 20, 44
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_31
+  rotate: false
+  xy: 313, 653
+  size: 42, 34
+  orig: 42, 34
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_32
+  rotate: false
+  xy: 233, 591
+  size: 88, 44
+  orig: 88, 44
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_33
+  rotate: false
+  xy: 1, 742
+  size: 102, 54
+  orig: 102, 54
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_34
+  rotate: false
+  xy: 111, 798
+  size: 56, 46
+  orig: 56, 46
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_35
+  rotate: false
+  xy: 969, 346
+  size: 54, 64
+  orig: 54, 64
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_36
+  rotate: false
+  xy: 47, 893
+  size: 58, 38
+  orig: 58, 38
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_37
+  rotate: false
+  xy: 93, 678
+  size: 104, 48
+  orig: 104, 48
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_38
+  rotate: false
+  xy: 1, 678
+  size: 90, 58
+  orig: 90, 58
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_39
+  rotate: false
+  xy: 968, 684
+  size: 54, 94
+  orig: 54, 94
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_40
+  rotate: false
+  xy: 770, 582
+  size: 92, 84
+  orig: 92, 84
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_41
+  rotate: false
+  xy: 267, 715
+  size: 40, 78
+  orig: 40, 78
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_42
+  rotate: false
+  xy: 236, 788
+  size: 28, 44
+  orig: 28, 44
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_43
+  rotate: false
+  xy: 174, 788
+  size: 24, 122
+  orig: 24, 122
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_44
+  rotate: false
+  xy: 267, 637
+  size: 44, 76
+  orig: 44, 76
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_45
+  rotate: false
+  xy: 760, 668
+  size: 100, 74
+  orig: 100, 74
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_46
+  rotate: false
+  xy: 387, 643
+  size: 56, 66
+  orig: 56, 66
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_9
+  rotate: false
+  xy: 111, 870
+  size: 48, 56
+  orig: 48, 56
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_6
+  rotate: false
+  xy: 73, 591
+  size: 80, 60
+  orig: 80, 60
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_47
+  rotate: false
+  xy: 174, 728
+  size: 76, 58
+  orig: 76, 58
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_48
+  rotate: false
+  xy: 544, 582
+  size: 108, 94
+  orig: 108, 94
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_49
+  rotate: false
+  xy: 935, 446
+  size: 68, 128
+  orig: 68, 128
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_50
+  rotate: false
+  xy: 1, 591
+  size: 70, 72
+  orig: 70, 72
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_51
+  rotate: false
+  xy: 387, 591
+  size: 74, 50
+  orig: 74, 50
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_52
+  rotate: false
+  xy: 521, 591
+  size: 20, 50
+  orig: 20, 50
+  offset: 0, 0
+  index: -1
+Enchant:Quick/Layer_53
+  rotate: false
+  xy: 969, 280
+  size: 54, 64
+  orig: 54, 64
+  offset: 0, 0
+  index: -1
+Enchant:Quick/R_Stalk
+  rotate: false
+  xy: 969, 175
+  size: 35, 103
+  orig: 35, 103
+  offset: 0, 0
+  index: -1
+Enchant:Quick/R_Eye
+  rotate: false
+  xy: 199, 655
+  size: 66, 65
+  orig: 66, 65
+  offset: 0, 0
+  index: -1
+Enchant:Quick/R_Shimmer
+  rotate: false
+  xy: 83, 798
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: -1

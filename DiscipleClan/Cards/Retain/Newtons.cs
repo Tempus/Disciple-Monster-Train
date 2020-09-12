@@ -1,4 +1,5 @@
 using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Utilities;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
 
@@ -57,12 +58,18 @@ namespace DiscipleClan.Cards.Retain
                 Health = 1,
                 AttackDamage = 1,
 
-
+                BundleLoadingInfo = new BundleAssetLoadingInfo
+                {
+                    FilePath = "chrono/arcadian_units",
+                    SpriteName = "assets/newtonpreview.png",
+                    ObjectName = "assets/newton.prefab",
+                    AssetType = AssetRefBuilder.AssetTypeEnum.Character
+                },
             };
 
             characterDataBuilder.AddStartingStatusEffect("gravity", 1);
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            //Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
             return characterDataBuilder.BuildAndRegister();
         }
     }

@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
-using MonsterTrainModdingAPI.Managers;
 
 namespace DiscipleClan
 {
@@ -47,7 +46,6 @@ namespace DiscipleClan
             MakeEnhancers();
 
             MakeCards();
-            RegisterCustomAsset();
 
             //foreach (var bundle in BundleManager.LoadedAssetBundles)
             //{
