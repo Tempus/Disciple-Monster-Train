@@ -52,10 +52,12 @@ namespace DiscipleClan.Cards.Pyrepact
                         {
                             new CardEffectDataBuilder
                             {
-                                EffectStateName = "CardEffectBuffDamage",
-                                ParamInt = 5,
-                                TargetMode = TargetMode.Self
-                            },
+                                EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
+                                ParamCardUpgradeData = new CardUpgradeDataBuilder {
+                                     BonusDamage = 5,
+                                }.Build(),
+                                TargetMode = TargetMode.Self,
+                            }
                         }
                     }
                 }

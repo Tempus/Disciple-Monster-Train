@@ -13,7 +13,7 @@ Newton/Tail
   index: -1
 Newton/RearLeftLeg
   rotate: false
-  xy: 38, 122
+  xy: 66, 122
   size: 26, 32
   orig: 26, 32
   offset: 0, 0
@@ -34,7 +34,7 @@ Newton/Body
   index: -1
 Newton/RearRightLeg
   rotate: false
-  xy: 66, 122
+  xy: 38, 122
   size: 26, 32
   orig: 26, 32
   offset: 0, 0

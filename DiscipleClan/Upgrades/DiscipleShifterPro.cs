@@ -53,16 +53,11 @@ namespace DiscipleClan.Upgrades
                         {
                             new CardEffectDataBuilder
                             {
-                                EffectStateName = "CardEffectBuffDamage",
-                                ParamInt = buffAmount,
-                                TargetMode = TargetMode.Room,
-                                TargetTeamType = Team.Type.Monsters,
-                            },
-
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectBuffMaxHealth",
-                                ParamInt = buffAmount,
+                                EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
+                                ParamCardUpgradeData = new CardUpgradeDataBuilder {
+                                     BonusDamage = buffAmount,
+                                     BonusHP = buffAmount
+                                }.Build(),
                                 TargetMode = TargetMode.Room,
                                 TargetTeamType = Team.Type.Monsters,
                             }

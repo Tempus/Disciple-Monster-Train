@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Managers;
 using System;
 using System.Collections;
@@ -49,7 +50,10 @@ namespace DiscipleClan.CardEffects
             foreach (var target in targets)
             {
                 if (target != owner && count > 0)
-                    target.AddStatusEffect(statusId, (count * (int)multiplyIncrease) + flatIncrease);
+                {
+                    int statCount = Math.Min(count, flatIncrease);
+                    target.AddStatusEffect(statusId, statCount);
+                }
             }
         }
     }

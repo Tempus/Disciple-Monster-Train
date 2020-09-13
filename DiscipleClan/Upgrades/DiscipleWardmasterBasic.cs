@@ -34,6 +34,7 @@ namespace DiscipleClan.Upgrades
                                 EffectStateType = typeof(CardEffectAddWard),
                                 ParamStr = "WardStateRandomDamage",
                                 ParamInt = damageAmount,
+                                ParamBool = true,
                             },
 
                         }

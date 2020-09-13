@@ -44,7 +44,7 @@ namespace DiscipleClan.Cards.Speedtime
                 BundleLoadingInfo = new BundleAssetLoadingInfo
                 {
                     FilePath = "chrono/arcadian_units",
-                    SpriteName = "assets/ancientpreview.png",
+                    SpriteName = "assets/ancient.png",
                     ObjectName = "assets/ancient.prefab",
                     AssetType = AssetRefBuilder.AssetTypeEnum.Character
                 },

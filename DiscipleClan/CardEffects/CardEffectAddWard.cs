@@ -40,8 +40,14 @@ namespace DiscipleClan.CardEffects
             }
 
             int roomIndex = cardEffectParams.selectedRoom;
-            WardManager.AddWard(wardState, roomIndex);
 
+            if (cardEffectState.GetParamBool())
+            {
+                WardManager.AddWardLater(wardState, roomIndex);
+                yield break;
+            }
+
+            WardManager.AddWard(wardState, roomIndex);
             yield break;
         }
     }

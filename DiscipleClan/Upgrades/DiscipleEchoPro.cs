@@ -37,7 +37,7 @@ namespace DiscipleClan.Upgrades
                                 TargetMode = TargetMode.Self,
                                 TargetTeamType = Team.Type.Monsters,
                                 ParamBool = true,
-                                ParamInt = 1,
+                                ParamInt = 3,
                             }
                         }
                     }

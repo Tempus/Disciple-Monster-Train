@@ -7,9 +7,9 @@ using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
 
 namespace DiscipleClan.Cards.Pyrepact
 {
-    class SunspottedOwl
+    class Morsowl
     {
-        public static string IDName = "SunspottedOwl";
+        public static string IDName = "Morsowl";
         public static string imgName = "YarnOwl";
         public static void Make()
         {
@@ -46,7 +46,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 BundleLoadingInfo = new BundleAssetLoadingInfo
                 {
                     FilePath = "chrono/arcadian_units",
-                    SpriteName = "assets/morsowlpreview.png",
+                    SpriteName = "assets/morsowl.png",
                     ObjectName = "assets/morsowl.prefab",
                     AssetType = AssetRefBuilder.AssetTypeEnum.Character
                 },

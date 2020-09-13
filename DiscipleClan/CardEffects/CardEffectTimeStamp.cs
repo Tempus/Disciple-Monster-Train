@@ -11,17 +11,28 @@ namespace DiscipleClan.CardEffects
         public static int IDOffset = 1;
         public override IEnumerator ApplyEffect(CardEffectState cardEffectState, CardEffectParams cardEffectParams)
         {
-            
+            // Grab the information on stats and statuses. Won't read unit upgrades applied to heroes due to Ascension shenanigans and shitty tracking from PrimaryStateInformation.
             CharacterState unit = cardEffectParams.targets[0];
             if (unit.PreviewMode)
                 yield break;
 
-            int damageBuff = unit.GetAttackDamageWithoutStatusEffectBuffs() - unit.GetSourceCharacterData().GetAttackDamage();
-            int hpBuff = unit.GetMaxHP() - unit.GetSourceCharacterData().GetHealth();
-            int sizeBuff = unit.GetSize() - unit.GetSourceCharacterData().GetSize();
+            int damageBuff = 0;
+            int hpBuff = 0;
+            int sizeBuff = 0;
 
-            List<CharacterState.StatusEffectStack> statuses = new List<CharacterState.StatusEffectStack>();
-            unit.GetStatusEffects(out statuses, true);
+            if (unit.GetTeamType() == Team.Type.Monsters)
+            {
+                damageBuff = unit.GetAttackDamageWithoutStatusEffectBuffs() - unit.GetSourceCharacterData().GetAttackDamage();
+                hpBuff = unit.GetMaxHP() - unit.GetSourceCharacterData().GetHealth();
+                sizeBuff = unit.GetSize() - unit.GetSourceCharacterData().GetSize();
+            }
+
+            unit.GetStatusEffects(out List<CharacterState.StatusEffectStack> statuses, true);
+            List<StatusEffectStackData> statusList = new List<StatusEffectStackData>();
+            foreach (var status in statuses)
+            {
+                statusList.Add(new StatusEffectStackData { statusId=status.State.GetStatusId(), count=status.Count });
+            }
 
             // Description builder
             string desc = "";
@@ -71,8 +82,22 @@ namespace DiscipleClan.CardEffects
                 OverrideDescriptionKey = "TimeStampInked" + IDOffset + "_CardText",
                 Cost = 0,
                 AssetPath = "chrono/Card Assets/15924082478465092503139501393540.jpg",
-                EffectBuilders = new List<CardEffectDataBuilder>(),
-                TraitBuilders = new List<CardTraitDataBuilder>()
+                EffectBuilders = new List<CardEffectDataBuilder> 
+                {
+                    new CardEffectDataBuilder
+                    {
+                        EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
+                        ParamCardUpgradeData = new CardUpgradeDataBuilder
+                        {
+                            BonusDamage = damageBuff,
+                            BonusHP = hpBuff,
+                            BonusSize = sizeBuff,
+                            StatusEffectUpgrades = statusList,
+                        }.Build(),
+                        TargetMode = TargetMode.Self,
+                    }
+                },
+                TraitBuilders = new List<CardTraitDataBuilder>
                 {
                     new CardTraitDataBuilder
                     {
@@ -80,60 +105,6 @@ namespace DiscipleClan.CardEffects
                     }
                 }
             };
-
-            if (damageBuff > 0)
-            {
-                cardDataBuilder.EffectBuilders.Add(new CardEffectDataBuilder
-                {
-                    EffectStateName = "CardEffectBuffDamage",
-                    TargetTeamType = Team.Type.Monsters | Team.Type.Heroes,
-                    TargetMode = TargetMode.DropTargetCharacter,
-                    TargetIgnoreBosses = true,
-                    ParamInt = damageBuff,
-                });
-            }
-
-            if (hpBuff > 0)
-            {
-                cardDataBuilder.EffectBuilders.Add(new CardEffectDataBuilder
-                {
-                    EffectStateName = "CardEffectBuffMaxHealth",
-                    TargetTeamType = Team.Type.Monsters | Team.Type.Heroes,
-                    TargetMode = TargetMode.DropTargetCharacter,
-                    ParamInt = hpBuff,
-                });
-            }
-
-            if (sizeBuff > 0)
-            {
-                cardDataBuilder.EffectBuilders.Add(new CardEffectDataBuilder
-                {
-                    EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
-                    TargetMode = TargetMode.DropTargetCharacter,
-                    TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
-                    ParamCardUpgradeData = new CardUpgradeDataBuilder
-                    {
-                        BonusSize = sizeBuff,
-                        HideUpgradeIconOnCard = true,
-                    }.Build(),
-                });
-            }
-
-            if (statuses.Count > 0)
-            {
-                foreach (var status in statuses)
-                {
-                    var statbuilder = new CardEffectDataBuilder
-                    {
-                        EffectStateName = "CardEffectAddStatusEffect",
-                        TargetTeamType = Team.Type.Monsters | Team.Type.Heroes,
-                        TargetMode = TargetMode.DropTargetCharacter,
-                    };
-
-                    statbuilder.AddStatusEffect(status.State.GetStatusId(), unit.GetStatusEffectStacks(status.State.GetStatusId()));
-                    cardDataBuilder.EffectBuilders.Add(statbuilder);
-                }
-            }
 
             IDOffset++;
             cardEffectParams.cardManager.AddCard(cardDataBuilder.Build(), CardPile.HandPile, 1, 1, false, false, null);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MonsterTrainModdingAPI.Builders;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -37,7 +38,17 @@ namespace DiscipleClan.CardEffects
 						buffAmount = traitState.OnApplyingBuffDamageToUnit(cardEffectParams.cardManager, damageParams);
 					}
 				}
-				target.DebuffDamage(-buffAmount);
+
+				CardUpgradeData upgrade = new CardUpgradeDataBuilder
+				{
+					BonusDamage = -buffAmount
+				}.Build();
+
+				var upgradeState = new CardUpgradeState();
+				upgradeState.Setup(upgrade);
+
+				target.ApplyCardUpgrade(upgradeState);
+				
 				NotifyHealthEffectTriggered(cardEffectParams.saveManager, cardEffectParams.popupNotificationManager, GetActivatedDescription(cardEffectState), target.GetCharacterUI());
 				if (!cardEffectParams.saveManager.PreviewMode && target.IsPyreHeart() && cardEffectState.GetTargetMode() == TargetMode.Pyre)
 				{

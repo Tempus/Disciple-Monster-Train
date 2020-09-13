@@ -15,6 +15,7 @@ namespace DiscipleClan.CardEffects
     public class WardManager
     {
         public static List<List<WardState>> wardStates;
+        public static List<List<WardState>> incomingWards;
         public static WardUI ui;
         public static RoomCapacityObject prefab;
 
@@ -44,6 +45,14 @@ namespace DiscipleClan.CardEffects
                 new List<WardState>(),
                 new List<WardState>(),
             };
+
+            incomingWards = new List<List<WardState>>
+            {
+                new List<WardState>(),
+                new List<WardState>(),
+                new List<WardState>(),
+                new List<WardState>(),
+            };
         }
 
         public static void AddWard(WardState ward, int floor)
@@ -54,6 +63,14 @@ namespace DiscipleClan.CardEffects
                 ward.OnAdd(floor);
 
                 ui.SetupWardIcons(floor);
+            }
+        }
+
+        public static void AddWardLater(WardState ward, int floor)
+        {
+            if (0 <= floor && floor <= 3)
+            {
+                incomingWards[floor].Add(ward);
             }
         }
 
@@ -101,6 +118,18 @@ namespace DiscipleClan.CardEffects
                     }
                 }
             }
+
+            // Avoids list breaking issues
+            int i = 0;
+            foreach (var wardFloor in incomingWards)
+            {
+                foreach (var ward in wardFloor)
+                {
+                    AddWard(ward, i);
+                }
+                i++;
+                wardFloor.Clear();
+            }
             yield break;
         }
 
@@ -143,6 +172,19 @@ namespace DiscipleClan.CardEffects
                     }
                 }
             }
+
+            // Avoids list breaking issues
+            int i = 0;
+            foreach (var floorWards in incomingWards)
+            {
+                foreach (var ward in floorWards)
+                {
+                    AddWard(ward, i);
+                }
+                i++;
+                floorWards.Clear();
+            }
+
         }
     }
     

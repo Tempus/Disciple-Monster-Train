@@ -61,7 +61,7 @@ namespace DiscipleClan.Cards.Retain
                 BundleLoadingInfo = new BundleAssetLoadingInfo
                 {
                     FilePath = "chrono/arcadian_units",
-                    SpriteName = "assets/newtonpreview.png",
+                    SpriteName = "assets/newton.png",
                     ObjectName = "assets/newton.prefab",
                     AssetType = AssetRefBuilder.AssetTypeEnum.Character
                 },

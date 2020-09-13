@@ -47,10 +47,10 @@ namespace DiscipleClan
 
             MakeCards();
 
-            //foreach (var bundle in BundleManager.LoadedAssetBundles)
-            //{
-            //    API.Log(BepInEx.Logging.LogLevel.All, bundle.Value.GetAllAssetNames().Join());
-            //}
+            foreach (var bundle in BundleManager.LoadedAssetBundles)
+            {
+                API.Log(BepInEx.Logging.LogLevel.All, bundle.Value.GetAllAssetNames().Join());
+            }
 
             Disciple.Make();
             SecondDisciple.Make();

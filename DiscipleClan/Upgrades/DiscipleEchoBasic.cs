@@ -36,6 +36,8 @@ namespace DiscipleClan.Upgrades
                                 EffectStateType = typeof(CardEffectShareBuffs),
                                 TargetMode = TargetMode.Self,
                                 TargetTeamType = Team.Type.Monsters,
+                                ParamBool = true,
+                                ParamInt = 1,
                             }
                         }
                     }
