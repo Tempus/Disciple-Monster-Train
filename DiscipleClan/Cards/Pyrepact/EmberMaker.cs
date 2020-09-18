@@ -7,7 +7,7 @@ namespace DiscipleClan.Cards.Pyrepact
     class EmberMaker
     {
         public static string IDName = "EmberMaker";
-        public static string imgName = "Warlocktopus";
+        public static string imgName = "Embermaker";
         public static void Make()
         {
 

@@ -6,7 +6,7 @@ namespace DiscipleClan.Cards.Shifter
     class Snecko
     {
         public static string IDName = "Snecko";
-        public static string imgName = "Bullfrog";
+        public static string imgName = "Galilizard";
         public static void Make()
         {
 

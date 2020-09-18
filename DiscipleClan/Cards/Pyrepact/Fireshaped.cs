@@ -9,7 +9,7 @@ namespace DiscipleClan.Cards.Pyrepact
     class Fireshaped
     {
         public static string IDName = "Fireshaped";
-        public static string imgName = "Gorgonzola";
+        public static string imgName = "Fireshaped";
         public static void Make()
         {
 

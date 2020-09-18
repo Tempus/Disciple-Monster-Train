@@ -41,14 +41,6 @@ namespace DiscipleClan.Cards.Speedtime
                 Health = 50,
                 AttackDamage = 0,
 
-                BundleLoadingInfo = new BundleAssetLoadingInfo
-                {
-                    FilePath = "chrono/arcadian_units",
-                    SpriteName = "assets/ancient.png",
-                    ObjectName = "assets/ancient.prefab",
-                    AssetType = AssetRefBuilder.AssetTypeEnum.Character
-                },
-
                 TriggerBuilders = new List<CharacterTriggerDataBuilder> {
                     new CharacterTriggerDataBuilder {
                         Trigger = CharacterTriggerData.Trigger.AfterSpawnEnchant,
@@ -68,6 +60,7 @@ namespace DiscipleClan.Cards.Speedtime
             };
 
             characterDataBuilder.AddStartingStatusEffect(Immobile, 1);
+            Utils.AddUnitAnim(characterDataBuilder, "ancient");
 
             return characterDataBuilder.BuildAndRegister();
         }

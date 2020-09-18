@@ -57,19 +57,11 @@ namespace DiscipleClan.Cards.Retain
                 Size = 1,
                 Health = 1,
                 AttackDamage = 1,
-
-                BundleLoadingInfo = new BundleAssetLoadingInfo
-                {
-                    FilePath = "chrono/arcadian_units",
-                    SpriteName = "assets/newton.png",
-                    ObjectName = "assets/newton.prefab",
-                    AssetType = AssetRefBuilder.AssetTypeEnum.Character
-                },
             };
 
             characterDataBuilder.AddStartingStatusEffect("gravity", 1);
 
-            //Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "newton");
             return characterDataBuilder.BuildAndRegister();
         }
     }

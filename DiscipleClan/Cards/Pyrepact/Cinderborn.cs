@@ -59,7 +59,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 }
             };
             // Unit art asset, complex stuff!
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "cinderborn");
             return characterDataBuilder.BuildAndRegister();
         }
     }

@@ -38,18 +38,11 @@ namespace DiscipleClan.Cards.Pyrepact
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
                 SubtypeKeys = new List<string> { "ChronoSubtype_Seer" },
+                PriorityDraw = false,
 
                 Size = 1,
                 Health = 1,
                 AttackDamage = 3,
-
-                BundleLoadingInfo = new BundleAssetLoadingInfo
-                {
-                    FilePath = "chrono/arcadian_units",
-                    SpriteName = "assets/morsowl.png",
-                    ObjectName = "assets/morsowl.prefab",
-                    AssetType = AssetRefBuilder.AssetTypeEnum.Character
-                },
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
@@ -82,7 +75,7 @@ namespace DiscipleClan.Cards.Pyrepact
             };
             characterDataBuilder.AddStartingStatusEffect("icarian", 1);
 
-            //Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "morsowl");
             return characterDataBuilder.BuildAndRegister();
         }
     }

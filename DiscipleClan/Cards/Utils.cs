@@ -1,6 +1,7 @@
 ﻿using DiscipleClan.Triggers;
 using MonsterTrainModdingAPI;
 using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Utilities;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
 
@@ -139,6 +140,17 @@ namespace DiscipleClan.Cards
         public static void AddUnitImg(CharacterDataBuilder r, string imgName)
         {
             r.AssetPath = rootPath + unitPath + imgName;
+        }
+
+        public static void AddUnitAnim(CharacterDataBuilder r, string imgName)
+        {
+            r.BundleLoadingInfo = new BundleAssetLoadingInfo
+            {
+                FilePath = "chrono/arcadian_units",
+                SpriteName = "assets/" + imgName + ".png",
+                ObjectName = "assets/" + imgName + ".prefab",
+                AssetType = AssetRefBuilder.AssetTypeEnum.Character
+            };
         }
     }
 }

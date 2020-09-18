@@ -69,7 +69,7 @@ namespace DiscipleClan.Cards.Pyrepact
 
             characterDataBuilder.AddStartingStatusEffect(Immobile, 1);
 
-            //Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "pyresnail");
             return characterDataBuilder.BuildAndRegister();
         }
     }

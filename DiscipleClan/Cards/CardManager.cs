@@ -21,8 +21,15 @@ namespace DiscipleClan.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PowerWardBeta.IDName));
-            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(PowerWardBeta.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Cinderborn.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(EmberMaker.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashwing.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Snecko.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AncientSavant.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AncientPyresnail.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Morsowl.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Fireshaped.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Waxwing.IDName));
 
             //__instance.AddRelic(__instance.GetAllGameData().FindCollectableRelicData(FirstBuffExtraStack.ID));
         }

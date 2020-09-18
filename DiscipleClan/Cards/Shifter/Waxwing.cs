@@ -38,6 +38,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 CharacterID = IDName,
                 NameKey = IDName + "_Name",
                 SubtypeKeys = new List<string> { "ChronoSubtype_Seer" },
+                PriorityDraw = false,
 
                 Size = 1,
                 Health = 3,
@@ -64,7 +65,7 @@ namespace DiscipleClan.Cards.Pyrepact
             };
             characterDataBuilder.AddStartingStatusEffect("icarian", 1);
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "waxwing");
             return characterDataBuilder.BuildAndRegister();
         }
     }

@@ -64,7 +64,7 @@ namespace DiscipleClan.Cards.Shifter
             };
             characterDataBuilder.AddStartingStatusEffect("icarian", 1);
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "flashfeather");
 
             return characterDataBuilder.BuildAndRegister();
         }
