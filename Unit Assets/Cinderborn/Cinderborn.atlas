@@ -1,0 +1,97 @@
+
+Cinderborn.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Cinderborn/BL_Leg
+  rotate: false
+  xy: 103, 219
+  size: 58, 95
+  orig: 58, 95
+  offset: 0, 0
+  index: -1
+Cinderborn/FL_Leg
+  rotate: false
+  xy: 64, 118
+  size: 56, 99
+  orig: 56, 99
+  offset: 0, 0
+  index: -1
+Cinderborn/Floaty_Rock_B
+  rotate: false
+  xy: 194, 147
+  size: 19, 29
+  orig: 19, 29
+  offset: 0, 0
+  index: -1
+Cinderborn/BottomBody_0
+  rotate: false
+  xy: 1, 1
+  size: 152, 115
+  orig: 152, 115
+  offset: 0, 0
+  index: -1
+Cinderborn/BottomBody
+  rotate: false
+  xy: 1, 256
+  size: 100, 59
+  orig: 100, 59
+  offset: 0, 0
+  index: -1
+Cinderborn/BR_Leg
+  rotate: false
+  xy: 155, 1
+  size: 92, 144
+  orig: 92, 144
+  offset: 0, 0
+  index: -1
+Cinderborn/FR_Leg
+  rotate: false
+  xy: 1, 118
+  size: 61, 136
+  orig: 61, 136
+  offset: 0, 0
+  index: -1
+Cinderborn/Floaty_Rock_C
+  rotate: false
+  xy: 122, 118
+  size: 16, 21
+  orig: 16, 21
+  offset: 0, 0
+  index: -1
+Cinderborn/Floaty_Rock_
+  rotate: false
+  xy: 64, 219
+  size: 21, 28
+  orig: 21, 28
+  offset: 0, 0
+  index: -1
+Cinderborn/Shard
+  rotate: false
+  xy: 229, 147
+  size: 15, 53
+  orig: 15, 53
+  offset: 0, 0
+  index: -1
+Cinderborn/LArm
+  rotate: false
+  xy: 163, 217
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+Cinderborn/Cute_Head
+  rotate: false
+  xy: 122, 147
+  size: 70, 68
+  orig: 70, 68
+  offset: 0, 0
+  index: -1
+Cinderborn/R_Arm
+  rotate: false
+  xy: 194, 291
+  size: 52, 86
+  orig: 52, 86
+  offset: 0, 0
+  index: -1
