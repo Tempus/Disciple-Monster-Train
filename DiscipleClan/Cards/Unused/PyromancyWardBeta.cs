@@ -4,7 +4,7 @@ using MonsterTrainModdingAPI.Managers;
 using System.Collections.Generic;
 using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
 
-namespace DiscipleClan.Cards.Pyrepact
+namespace DiscipleClan.Cards.Unused
 {
     class PyromancyWardBeta
     {

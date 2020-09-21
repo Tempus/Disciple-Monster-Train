@@ -38,7 +38,7 @@ namespace DiscipleClan.Cards.Retain
                     ParamInt = 3,
                 });
 
-            Utils.AddImg(r, imgName + ".png");
+            Utils.AddCardPortrait(r, "Newton");
 
             // Do this to complete
             r.BuildAndRegister();

@@ -29,7 +29,7 @@ namespace DiscipleClan.Cards.Pyrepact
             railyard.EffectBuilders[0].AddStatusEffect(Armor, 1);
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "Emberwave.png");
+            Utils.AddCardPortrait(railyard, "Firewall");
 
             // Do this to complete
             railyard.BuildAndRegister();

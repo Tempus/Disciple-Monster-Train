@@ -36,8 +36,6 @@ namespace DiscipleClan.CardEffects
 
 		public override void OnTriggerNow(List<CharacterState> targets)
         {
-			API.Log(BepInEx.Logging.LogLevel.All, "Started a Ward Power thing");
-
 			foreach (var unit in targets)
 			{
 				if (unit.GetTeamType() == Team.Type.Monsters)
@@ -61,7 +59,6 @@ namespace DiscipleClan.CardEffects
 
 		public IEnumerator ShowDelayedNotification(CharacterState unit)
         {
-			API.Log(BepInEx.Logging.LogLevel.All, "Waitiing");
 			yield return new WaitForSeconds(0.3f);
             unit.ShowNotification(CardEffectBuffDamage.GetNotificationText(power), PopupNotificationUI.Source.General);
 

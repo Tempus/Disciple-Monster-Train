@@ -31,7 +31,7 @@ namespace DiscipleClan.Cards.Prophecy
             };
 
             Utils.AddSpell(railyard, IDName);
-            Utils.AddImg(railyard, "Palm-Reading.png");
+            Utils.AddCardPortrait(railyard, "PalmReading");
 
             // Do this to complete
             railyard.BuildAndRegister();

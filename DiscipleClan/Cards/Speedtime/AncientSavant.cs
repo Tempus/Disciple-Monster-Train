@@ -21,7 +21,7 @@ namespace DiscipleClan.Cards.Speedtime
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "Ancient");
 
             // Do this to complete
             railyard.BuildAndRegister();

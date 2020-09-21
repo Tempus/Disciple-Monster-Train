@@ -61,7 +61,7 @@ namespace DiscipleClan.Cards.Units
                 AssetPath = Utils.rootPath + Utils.ucardPath,
             };
 
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "Disciple");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -81,7 +81,7 @@ namespace DiscipleClan.Cards.Units
                 AttackDamage = 5,
             };
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "disciple");
             return characterDataBuilder;
         }
     }

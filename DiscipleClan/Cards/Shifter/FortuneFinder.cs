@@ -20,7 +20,7 @@ namespace DiscipleClan.Cards.Shifter
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "FortuneTeller");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -58,7 +58,7 @@ namespace DiscipleClan.Cards.Shifter
                 }
             };
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "fortuneteller");
             return characterDataBuilder.BuildAndRegister();
         }
     }

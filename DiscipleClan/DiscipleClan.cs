@@ -23,7 +23,7 @@ using UnityEngine;
 namespace DiscipleClan
 {
     // Credit to Rawsome, Stable Infery for the base of this method.
-    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.5")]
+    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.6")]
     [BepInProcess("MonsterTrain.exe")]
     [BepInProcess("MtLinkHandler.exe")]
     [BepInDependency("api.modding.train.monster")]
@@ -33,14 +33,12 @@ namespace DiscipleClan
 
         void Awake()
         {
-            API.Log(BepInEx.Logging.LogLevel.All, "Awake, my minions?");
             var harmony = new Harmony("ca.chronometry.disciple");
             harmony.PatchAll();
         }
 
         public void Initialize()
         {
-            API.Log(BepInEx.Logging.LogLevel.All, "Mod is loading");
             CustomLocalizationManager.ImportCSV("chrono/Disciple.csv", ';');
             clanRef = Clan.Make();
             RegisterSubtypes();

@@ -21,7 +21,7 @@ namespace DiscipleClan.Cards.Pyrepact
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "Pyresnail");
 
             // Do this to complete
             railyard.BuildAndRegister();

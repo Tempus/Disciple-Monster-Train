@@ -152,5 +152,15 @@ namespace DiscipleClan.Cards
                 AssetType = AssetRefBuilder.AssetTypeEnum.Character
             };
         }
+
+        public static void AddCardPortrait(CardDataBuilder r, string imgName)
+        {
+            r.BundleLoadingInfo = new BundleAssetLoadingInfo
+            {
+                FilePath = "chrono/arcadian_units",
+                SpriteName = "assets/cardart/" + imgName.ToLower() + ".png",
+                AssetType = AssetRefBuilder.AssetTypeEnum.CardArt
+            };
+        }
     }
 }

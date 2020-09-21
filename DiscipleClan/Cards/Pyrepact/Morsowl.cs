@@ -22,7 +22,7 @@ namespace DiscipleClan.Cards.Pyrepact
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "Morsowl");
             railyard.CardPoolIDs = new List<string> { "Chrono", MegaPool };
 
             // Do this to complete

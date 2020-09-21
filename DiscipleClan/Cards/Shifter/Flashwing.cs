@@ -20,7 +20,7 @@ namespace DiscipleClan.Cards.Shifter
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "Flashfeather");
             railyard.CardPoolIDs = new List<string> { "Chrono", MegaPool };
 
             // Do this to complete
