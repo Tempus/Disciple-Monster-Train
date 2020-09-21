@@ -21,7 +21,8 @@ namespace DiscipleClan.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Cinderborn.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(JellyScholar.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(JellyScholar.IDName));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(EmberMaker.IDName));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Flashwing.IDName));
             //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Snecko.IDName));

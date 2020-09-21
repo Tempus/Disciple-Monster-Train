@@ -23,7 +23,7 @@ using UnityEngine;
 namespace DiscipleClan
 {
     // Credit to Rawsome, Stable Infery for the base of this method.
-    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.6")]
+    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.6.1")]
     [BepInProcess("MonsterTrain.exe")]
     [BepInProcess("MtLinkHandler.exe")]
     [BepInDependency("api.modding.train.monster")]
