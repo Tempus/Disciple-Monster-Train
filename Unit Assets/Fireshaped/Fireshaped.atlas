@@ -1,0 +1,69 @@
+
+Fireshaped.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+FireshapedVeryNewFlat/Rear_Head_Rocks
+  rotate: false
+  xy: 179, 1
+  size: 56, 42
+  orig: 56, 42
+  offset: 0, 0
+  index: -1
+FireshapedVeryNewFlat/Tail
+  rotate: false
+  xy: 1, 77
+  size: 65, 28
+  orig: 65, 28
+  offset: 0, 0
+  index: -1
+FireshapedVeryNewFlat/Body
+  rotate: false
+  xy: 1, 1
+  size: 93, 74
+  orig: 93, 74
+  offset: 0, 0
+  index: -1
+FireshapedVeryNewFlat/R_Arm
+  rotate: false
+  xy: 196, 79
+  size: 42, 31
+  orig: 42, 31
+  offset: 0, 0
+  index: -1
+FireshapedVeryNewFlat/L_Arm
+  rotate: false
+  xy: 196, 45
+  size: 46, 32
+  orig: 46, 32
+  offset: 0, 0
+  index: -1
+FireshapedVeryNewFlat/Head
+  rotate: false
+  xy: 96, 1
+  size: 81, 64
+  orig: 81, 64
+  offset: 0, 0
+  index: -1
+FireshapedVeryNewFlat/R_Eye
+  rotate: false
+  xy: 1, 107
+  size: 28, 25
+  orig: 28, 25
+  offset: 0, 0
+  index: -1
+FireshapedVeryNewFlat/L_Eye
+  rotate: false
+  xy: 196, 112
+  size: 32, 27
+  orig: 32, 27
+  offset: 0, 0
+  index: -1
+FireshapedVeryNewFlat/Front_Head_Rocks
+  rotate: false
+  xy: 96, 67
+  size: 98, 49
+  orig: 98, 49
+  offset: 0, 0
+  index: -1

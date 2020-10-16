@@ -1,0 +1,153 @@
+
+Disciple.png
+size: 512,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Disciple/Scythe
+  rotate: false
+  xy: 182, 171
+  size: 140, 169
+  orig: 140, 169
+  offset: 0, 0
+  index: -1
+Disciple/Right_'arm'
+  rotate: false
+  xy: 325, 940
+  size: 38, 66
+  orig: 38, 66
+  offset: 0, 0
+  index: -1
+Disciple/Left_'arm'
+  rotate: false
+  xy: 196, 940
+  size: 65, 68
+  orig: 65, 68
+  offset: 0, 0
+  index: -1
+Simple Disciple Newmask/Rear_Back
+  rotate: false
+  xy: 1, 940
+  size: 193, 54
+  orig: 193, 54
+  offset: 0, 0
+  index: -1
+Simple Disciple Newmask/Rear_Forward
+  rotate: false
+  xy: 324, 171
+  size: 89, 152
+  orig: 89, 152
+  offset: 0, 0
+  index: -1
+Simple Disciple Newmask/Foot
+  rotate: false
+  xy: 182, 342
+  size: 164, 113
+  orig: 164, 113
+  offset: 0, 0
+  index: -1
+Simple Disciple Newmask/Front_Rear
+  rotate: false
+  xy: 383, 1
+  size: 102, 86
+  orig: 102, 86
+  offset: 0, 0
+  index: -1
+tentacle_center
+  rotate: false
+  xy: 1, 1
+  size: 179, 766
+  orig: 179, 766
+  offset: 0, 0
+  index: -1
+Simple Disciple Newmask/Front_Central
+  rotate: false
+  xy: 415, 89
+  size: 86, 102
+  orig: 86, 102
+  offset: 0, 0
+  index: -1
+Disciple/Neck
+  rotate: false
+  xy: 415, 193
+  size: 62, 111
+  orig: 62, 111
+  offset: 0, 0
+  index: -1
+Disciple/Body
+  rotate: false
+  xy: 1, 769
+  size: 199, 169
+  orig: 199, 169
+  offset: 0, 0
+  index: -1
+Disciple/Lantern
+  rotate: false
+  xy: 415, 306
+  size: 57, 94
+  orig: 57, 94
+  offset: 0, 0
+  index: -1
+Disciple/Coattail
+  rotate: false
+  xy: 182, 1
+  size: 199, 168
+  orig: 199, 168
+  offset: 0, 0
+  index: -1
+Simple Disciple Newmask/Clock
+  rotate: false
+  xy: 383, 89
+  size: 27, 40
+  orig: 27, 40
+  offset: 0, 0
+  index: -1
+Simple Disciple Newmask/Cleric_Head
+  rotate: false
+  xy: 263, 940
+  size: 60, 50
+  orig: 60, 50
+  offset: 0, 0
+  index: -1
+Simple Disciple Newmask/headpiece
+  rotate: false
+  xy: 365, 940
+  size: 60, 39
+  orig: 60, 39
+  offset: 0, 0
+  index: -1
+Simple Disciple Newmask/earring_left
+  rotate: false
+  xy: 299, 992
+  size: 14, 15
+  orig: 14, 15
+  offset: 0, 0
+  index: -1
+Simple Disciple Newmask/earring_right
+  rotate: false
+  xy: 324, 325
+  size: 56, 12
+  orig: 56, 12
+  offset: 0, 0
+  index: -1
+Disciple/ButterflyA
+  rotate: false
+  xy: 263, 992
+  size: 34, 29
+  orig: 34, 29
+  offset: 0, 0
+  index: -1
+Disciple/ButterflyB
+  rotate: false
+  xy: 383, 131
+  size: 28, 29
+  orig: 28, 29
+  offset: 0, 0
+  index: -1
+Disciple/ButterflyC
+  rotate: false
+  xy: 427, 940
+  size: 35, 55
+  orig: 35, 55
+  offset: 0, 0
+  index: -1

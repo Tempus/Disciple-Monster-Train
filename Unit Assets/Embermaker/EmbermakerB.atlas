@@ -1,0 +1,69 @@
+
+EmbermakerB.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+EmbermakerB/Layer_7
+  rotate: false
+  xy: 195, 179
+  size: 33, 50
+  orig: 33, 50
+  offset: 0, 0
+  index: -1
+EmbermakerB/Layer_5
+  rotate: false
+  xy: 134, 108
+  size: 59, 101
+  orig: 59, 101
+  offset: 0, 0
+  index: -1
+EmbermakerB/Shell_A
+  rotate: false
+  xy: 1, 1
+  size: 131, 127
+  orig: 131, 127
+  offset: 0, 0
+  index: -1
+EmbermakerB/Layer 6_0
+  rotate: false
+  xy: 68, 130
+  size: 46, 87
+  orig: 46, 87
+  offset: 0, 0
+  index: -1
+EmbermakerB/Layer_6
+  rotate: false
+  xy: 116, 211
+  size: 37, 32
+  orig: 37, 32
+  offset: 0, 0
+  index: -1
+EmbermakerB/Layer_4
+  rotate: false
+  xy: 134, 1
+  size: 71, 105
+  orig: 71, 105
+  offset: 0, 0
+  index: -1
+EmbermakerB/L_Arm
+  rotate: false
+  xy: 1, 196
+  size: 42, 54
+  orig: 42, 54
+  offset: 0, 0
+  index: -1
+EmbermakerB/R_Arm
+  rotate: false
+  xy: 195, 108
+  size: 37, 69
+  orig: 37, 69
+  offset: 0, 0
+  index: -1
+EmbermakerB/Cute_Head
+  rotate: false
+  xy: 1, 130
+  size: 65, 64
+  orig: 65, 64
+  offset: 0, 0
+  index: -1
