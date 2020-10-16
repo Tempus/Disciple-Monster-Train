@@ -52,8 +52,8 @@ namespace DiscipleClan
                 API.Log(BepInEx.Logging.LogLevel.All, bundle.Value.GetAllAssetNames().Join());
             }
 
-            Disciple.Make();
             SecondDisciple.Make();
+            Disciple.Make();
             Clan.RegisterBanner();
             MakeArtifacts();
 

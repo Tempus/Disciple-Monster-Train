@@ -48,7 +48,7 @@ namespace DiscipleClan.Cards.Retain
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "Diviner");
 
             // CardTriggerEffectData needs to add a trigger for OnUnplayed here, that activates the cost and stasis effects
 
@@ -68,11 +68,11 @@ namespace DiscipleClan.Cards.Retain
                 SubtypeKeys = new List<string> { "ChronoSubtype_Eternal" },
 
                 Size = 3,
-                Health = 60,
-                AttackDamage = 40
+                Health = 50,
+                AttackDamage = 35
             };
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "diviner");
             return characterDataBuilder.BuildAndRegister();
         }
     }

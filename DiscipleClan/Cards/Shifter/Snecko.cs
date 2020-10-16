@@ -18,7 +18,7 @@ namespace DiscipleClan.Cards.Shifter
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "Galilizard");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -57,7 +57,7 @@ namespace DiscipleClan.Cards.Shifter
             };
             characterDataBuilder.AddStartingStatusEffect("gravity", 12);
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "galilizard");
             return characterDataBuilder.BuildAndRegister();
         }
     }

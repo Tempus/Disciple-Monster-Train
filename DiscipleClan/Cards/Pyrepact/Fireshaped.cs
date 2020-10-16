@@ -21,7 +21,7 @@ namespace DiscipleClan.Cards.Pyrepact
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "Fireshaped");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -62,7 +62,7 @@ namespace DiscipleClan.Cards.Pyrepact
                     },
                 }
             };
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "fireshaped");
             return characterDataBuilder.BuildAndRegister();
         }
     }

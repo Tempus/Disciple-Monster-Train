@@ -20,7 +20,7 @@ namespace DiscipleClan.Cards.Pyrepact
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "Minerva");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -44,7 +44,7 @@ namespace DiscipleClan.Cards.Pyrepact
             characterDataBuilder.AddStartingStatusEffect(Sweep, 1);
             characterDataBuilder.AddStartingStatusEffect("pyreboost", 1);
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "minerva");
             return characterDataBuilder.BuildAndRegister();
         }
     }

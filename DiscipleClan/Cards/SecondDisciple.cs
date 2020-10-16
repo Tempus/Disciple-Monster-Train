@@ -25,7 +25,7 @@ namespace DiscipleClan.Cards.Units
             {
                 Cost = 0,
                 Champion = BuildUnit(),
-                ChampionIconPath = "chrono/Clan Assets/Icon_ClassSelect_Disciple.png",
+                ChampionIconPath = "chrono/Clan Assets/Icon_ClassSelect_Hero2.png",
                 ChampionSelectedCue = "",
                 StarterCardData = CustomCardManager.GetCardDataByID(Analog.IDName),
                 UpgradeTree = new CardUpgradeTreeDataBuilder
@@ -66,7 +66,7 @@ namespace DiscipleClan.Cards.Units
                 AssetPath = Utils.rootPath + Utils.ucardPath,
             };
 
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "Hero2");
 
             // Do this to complete
             railyard.BuildAndRegister(1);
@@ -86,7 +86,7 @@ namespace DiscipleClan.Cards.Units
                 AttackDamage = 5,
             };
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "hero2");
             return characterDataBuilder;
         }
     }

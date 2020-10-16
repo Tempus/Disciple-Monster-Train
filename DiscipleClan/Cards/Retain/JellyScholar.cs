@@ -18,7 +18,7 @@ namespace DiscipleClan.Cards.Retain
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "JellyScholar");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -62,7 +62,7 @@ namespace DiscipleClan.Cards.Retain
                 }
             };
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "jellyscholar");
             return characterDataBuilder.BuildAndRegister();
         }
     }

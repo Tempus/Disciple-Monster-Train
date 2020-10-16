@@ -19,7 +19,7 @@ namespace DiscipleClan.Cards.Pyrepact
             };
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
-            Utils.AddImg(railyard, imgName + ".png");
+            Utils.AddCardPortrait(railyard, "Embermaker");
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -58,7 +58,7 @@ namespace DiscipleClan.Cards.Pyrepact
             // Unit art asset, complex stuff!
             characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect("emberboost", 1);
 
-            Utils.AddUnitImg(characterDataBuilder, imgName + ".png");
+            Utils.AddUnitAnim(characterDataBuilder, "embermaker");
             return characterDataBuilder.BuildAndRegister();
         }
     }
