@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Trainworks.Managers;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace DiscipleClan.CardEffects
 {
@@ -35,10 +37,22 @@ namespace DiscipleClan.CardEffects
           CardEffectState cardEffectState,
           CardEffectParams cardEffectParams)
         {
-            if (cardEffectParams.targetCards.Count > 0)
+            var pileDiscard = cardEffectParams.cardManager.GetDiscardPile();
+            var pileDeck = cardEffectParams.cardManager.GetDrawPile();
+
+            if (pileDeck.Count == 0)
             {
-                yield return (object)this.HandleChooseCard(cardEffectState, cardEffectParams);
+                List<CardState> list = pileDeck;
+                pileDeck = pileDiscard;
+                pileDiscard = list;
+                cardEffectParams.cardManager.ShuffleDeck();
+                ProviderManager.TryGetProvider<SoundManager>(out SoundManager soundManager);
+                soundManager.PlaySfx("UI_PlayCardShuffle");
             }
+            if (pileDeck.Count > 0)
+                yield return (object)this.HandleChooseCard(cardEffectState, cardEffectParams);
+
+            yield break;
         }
 
         private IEnumerator HandleChooseCard(

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using ShinyShoe.Logging;
 using System.Collections;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks.Managers;
 
 namespace DiscipleClan.CardEffects
 {

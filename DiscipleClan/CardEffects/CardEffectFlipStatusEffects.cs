@@ -1,9 +1,9 @@
 ﻿using HarmonyLib;
-using MonsterTrainModdingAPI;
+using Trainworks;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.CardEffects
 {
@@ -48,7 +48,7 @@ namespace DiscipleClan.CardEffects
 							character.RemoveStatusEffect(status.State.GetStatusId(), false, count);
 
 							string debuff = StatusFlips.GetValueSafe(status.State.GetStatusId());
-							API.Log(BepInEx.Logging.LogLevel.All, "Flipping " + status.State.GetStatusId() + " to " + debuff + " - " + count);
+							Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Flipping " + status.State.GetStatusId() + " to " + debuff + " - " + count);
 							character.AddStatusEffect(debuff, count);
 						}
 					}
@@ -60,7 +60,7 @@ namespace DiscipleClan.CardEffects
 							character.RemoveStatusEffect(status.State.GetStatusId(), false, count);
 
 							string buff = StatusFlips.FirstOrDefault(x => x.Value == status.State.GetStatusId()).Key;
-							API.Log(BepInEx.Logging.LogLevel.All, "Flipping " + status.State.GetStatusId() + " to " + buff + " - " + count);
+							Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Flipping " + status.State.GetStatusId() + " to " + buff + " - " + count);
 							character.AddStatusEffect(buff, count);
 						}
 					}

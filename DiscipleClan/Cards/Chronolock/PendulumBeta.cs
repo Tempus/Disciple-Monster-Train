@@ -1,6 +1,6 @@
 using DiscipleClan.CardEffects;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks.Builders;
+using Trainworks.Managers;
 using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Chronolock
@@ -45,6 +45,10 @@ namespace DiscipleClan.Cards.Chronolock
                         ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
                         ParamUseScalingParams = true,
                         ParamInt = 2,
+                    },
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateType = typeof(CardTraitExhaustState)
                     }
                 }
             };

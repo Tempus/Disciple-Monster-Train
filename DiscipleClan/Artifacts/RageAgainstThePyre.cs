@@ -1,10 +1,10 @@
 ﻿using DiscipleClan.Cards;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks.Builders;
+using Trainworks.Managers;
 using System.Collections.Generic;
 using static CharacterState;
-using static MonsterTrainModdingAPI.Constants.VanillaRelicPoolIDs;
+using static Trainworks.Constants.VanillaRelicPoolIDs;
 
 namespace DiscipleClan.Artifacts
 {

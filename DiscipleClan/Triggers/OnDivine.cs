@@ -1,5 +1,5 @@
-using MonsterTrainModdingAPI.Enums.MTTriggers;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks.Enums.MTTriggers;
+using Trainworks.Managers;
 
 namespace DiscipleClan.Triggers
 {

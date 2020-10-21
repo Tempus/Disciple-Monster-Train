@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks;
+using Trainworks.Managers;
 using ShinyShoe;
 using System;
 using System.Collections;
@@ -83,7 +83,7 @@ namespace DiscipleClan.CardEffects
         {
             if (floor != -1)
             {
-                foreach (var ward in wardStates[floor])
+                foreach (var ward in wardStates[floor].ToArray())
                 {
                     if (ID != "")
                     {
@@ -123,7 +123,7 @@ namespace DiscipleClan.CardEffects
             int i = 0;
             foreach (var wardFloor in incomingWards)
             {
-                foreach (var ward in wardFloor)
+                foreach (var ward in wardFloor.ToArray())
                 {
                     AddWard(ward, i);
                 }

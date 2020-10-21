@@ -1,6 +1,6 @@
 ﻿using DiscipleClan.Triggers;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks;
+using Trainworks.Managers;
 
 namespace DiscipleClan.CardEffects
 {
@@ -26,7 +26,7 @@ namespace DiscipleClan.CardEffects
                 return;
 
             roomManager.GetPyreRoom().GetPyreHeart().BuffDamage(addAmount * buffAmount);
-            CustomCardManager.SaveManager.pyreAttackChangedSignal.Dispatch(CustomCardManager.SaveManager.GetDisplayedPyreAttack(), CustomCardManager.SaveManager.GetDisplayedPyreNumAttacks());
+            ProviderManager.SaveManager.pyreAttackChangedSignal.Dispatch(ProviderManager.SaveManager.GetDisplayedPyreAttack(), ProviderManager.SaveManager.GetDisplayedPyreNumAttacks());
             NotifyRelicTriggered(relicManager, roomManager.GetPyreRoom().GetPyreHeart());
         }
     }

@@ -1,5 +1,6 @@
-﻿using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
+﻿using Trainworks;
+using Trainworks.Builders;
+using Trainworks.Managers;
 using UnityEngine;
 
 namespace DiscipleClan.StatusEffects
@@ -9,6 +10,7 @@ namespace DiscipleClan.StatusEffects
         public const string statusId = "pyreboost";
         public int lastBuff = 0;
         public SaveManager saveManager;
+        public bool previewOnce = false;
 
         public void OnPyreAttackChange(int PyreAttack, int PyreNumAttacks)
         {
@@ -21,42 +23,49 @@ namespace DiscipleClan.StatusEffects
                 character.DebuffDamage(lastBuff, null, fromStatusEffect: true);
 
                 var multiplier = character.GetStatusEffectStacks(this.GetStatusId());
-
+                
                 character.BuffDamage(multiplier * PyreAttack * PyreNumAttacks, null, fromStatusEffect: true);
                 lastBuff = multiplier * PyreAttack * PyreNumAttacks;
             }
-            catch (System.Exception) {}
+            catch (System.Exception) {
+            }
+        }
+
+        public override bool TestTrigger(InputTriggerParams inputTriggerParams, OutputTriggerParams outputTriggerParams)
+        {
+            OnPyreAttackChange(saveManager.GetDisplayedPyreAttack(), saveManager.GetDisplayedPyreNumAttacks());
+            return true;
+        }
+
+        public override void ModifyVisualDamage(ref int visualDamage, int damageApplied, int unmodifiedDamage, int damageSustained, int damageBlocked, CharacterState attacker, CharacterState target)
+        {
+            OnPyreAttackChange(saveManager.GetDisplayedPyreAttack(), saveManager.GetDisplayedPyreNumAttacks());
         }
 
         public override void OnStacksAdded(CharacterState character, int numStacksAdded)
         {
+            if (ProviderManager.SaveManager.PreviewMode && previewOnce) { return; }
             if (character != null && numStacksAdded > 0)
             {
                 saveManager = character.GetCombatManager().GetSaveManager();
                 saveManager.pyreAttackChangedSignal.AddListener(OnPyreAttackChange);
                 OnPyreAttackChange(saveManager.GetDisplayedPyreAttack(), saveManager.GetDisplayedPyreNumAttacks());
             }
+            previewOnce = false;
+            if (ProviderManager.SaveManager.PreviewMode) { previewOnce = true; }
         }
 
         public override void OnStacksRemoved(CharacterState character, int numStacksRemoved)
         {
             if (character != null && numStacksRemoved > 0)
             {
-                OnPyreAttackChange(0, 1);
-
-                if (character.GetStatusEffectStacks(GetStatusId()) <= 0)
-                    character.DebuffDamage(lastBuff, null, fromStatusEffect: true);
+                OnPyreAttackChange(ProviderManager.SaveManager.GetDisplayedPyreAttack(), ProviderManager.SaveManager.GetDisplayedPyreNumAttacks());
             }
-        }
-
-        private int DamageValue(int stacks)
-        {
-            return GetMagnitudePerStack() * stacks;
         }
 
         public override int GetEffectMagnitude(int stacks = 1)
         {
-            return DamageValue(stacks);
+            return GetMagnitudePerStack() * stacks;
         }
 
         public override int GetMagnitudePerStack()
@@ -69,9 +78,9 @@ namespace DiscipleClan.StatusEffects
             new StatusEffectDataBuilder
             {
                 StatusEffectStateName = typeof(StatusEffectPyreboost).AssemblyQualifiedName,
-                StatusId = "pyreboost",
+                StatusId = statusId,
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
-                TriggerStage = StatusEffectData.TriggerStage.OnDeath,
+                TriggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
                 IconPath = "chrono/Status/burning-embers.png",
             }.Build();
         }

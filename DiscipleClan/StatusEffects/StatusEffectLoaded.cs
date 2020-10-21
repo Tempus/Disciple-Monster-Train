@@ -1,6 +1,6 @@
-﻿using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
+﻿using Trainworks;
+using Trainworks.Builders;
+using Trainworks.Managers;
 using System.Collections;
 
 namespace DiscipleClan.StatusEffects
@@ -48,7 +48,7 @@ namespace DiscipleClan.StatusEffects
             {
                 StatusEffectStateName = typeof(StatusEffectLoaded).AssemblyQualifiedName,
                 StatusId = "loaded",
-                DisplayCategory = StatusEffectData.DisplayCategory.Positive,
+                DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
                 TriggerStage = StatusEffectData.TriggerStage.OnPostAttacking,
                 IsStackable = true,
                 RemoveStackAtEndOfTurn = true,

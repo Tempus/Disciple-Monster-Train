@@ -1,11 +1,11 @@
-﻿using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Managers;
+﻿using Trainworks;
+using Trainworks.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using static MonsterTrainModdingAPI.Constants.VanillaClanIDs;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using static Trainworks.Constants.VanillaClanIDs;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.CardEffects
 {
@@ -14,6 +14,7 @@ namespace DiscipleClan.CardEffects
 		public static StatusEffectStackData GetStatusEffectStack(CardEffectState cardEffectState)
 		{
 			ClassData otherClass;
+			bool exiled = false;
             StatusEffectStackData statusEffectStackData;
 
             var mainClass = ProviderManager.SaveManager.GetMainClass();
@@ -22,32 +23,49 @@ namespace DiscipleClan.CardEffects
 			if (mainClass == DiscipleClan.clanRef)
             {
 				otherClass = subClass;
-            }
+				exiled = ProviderManager.SaveManager.GetMainChampionIndex() != 0;
+			}
 			else
             {
 				otherClass = mainClass;
-            }
+				exiled = ProviderManager.SaveManager.GetMainChampionIndex() != 0;
+			}
 
-            int Param = cardEffectState.GetParamInt();
+			int Param = cardEffectState.GetParamInt();
 
 			if (otherClass == null) { return null; }
             switch (otherClass.GetID())
             {
                 case Hellhorned:
-                    statusEffectStackData = new StatusEffectStackData { statusId = Rage, count = Param };
-                    break;
+					if (exiled)
+	                    statusEffectStackData = new StatusEffectStackData { statusId = Rage, count = Param };
+					else
+						statusEffectStackData = new StatusEffectStackData { statusId = Armor, count = Param * 2 };
+					break;
                 case Awoken:
-                    statusEffectStackData = new StatusEffectStackData { statusId = Regen, count = Param };
-                    break;
+					if (exiled)
+						statusEffectStackData = new StatusEffectStackData { statusId = Spikes, count = Param };
+					else
+						statusEffectStackData = new StatusEffectStackData { statusId = Regen, count = Param };
+					break;
                 case Stygian:
-                    statusEffectStackData = new StatusEffectStackData { statusId = SpellWeakness, count = Param / 2 };
-                    break;
+					if (exiled)
+						statusEffectStackData = new StatusEffectStackData { statusId = SpellWeakness, count = Param / 2 };
+					else
+						statusEffectStackData = new StatusEffectStackData { statusId = Sap, count = Param / 2 };
+					break;
                 case Umbra:
-                    statusEffectStackData = new StatusEffectStackData { statusId = DamageShield, count = Param / 2 };
-                    break;
+					if (exiled)
+						statusEffectStackData = new StatusEffectStackData { statusId = DamageShield, count = Param / 2 };
+					else
+						statusEffectStackData = new StatusEffectStackData { statusId = Lifesteal, count = Param / 2 };
+					break;
                 case MeltingRemnant:
-                    statusEffectStackData = new StatusEffectStackData { statusId = Burnout, count = Param + 1 };
-                    break;
+					if (exiled)
+						statusEffectStackData = new StatusEffectStackData { statusId = Burnout, count = Param + 1 };
+					else
+						statusEffectStackData = new StatusEffectStackData { statusId = Stealth, count = Param / 2 };
+					break;
                 default:
                     statusEffectStackData = new StatusEffectStackData { statusId = "gravity", count = Param / 2 };
                     break;

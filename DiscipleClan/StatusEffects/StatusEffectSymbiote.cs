@@ -1,5 +1,5 @@
-﻿using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
+﻿using Trainworks.Builders;
+using Trainworks.Managers;
 using System.Collections;
 
 namespace DiscipleClan.StatusEffects

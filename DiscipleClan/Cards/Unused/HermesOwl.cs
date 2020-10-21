@@ -1,5 +1,5 @@
-using MonsterTrainModdingAPI.Builders;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using Trainworks.Builders;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Unused
 {

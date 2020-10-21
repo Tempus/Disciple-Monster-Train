@@ -1,4 +1,4 @@
-﻿using MonsterTrainModdingAPI.Builders;
+﻿using Trainworks.Builders;
 using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Shifter
@@ -22,6 +22,7 @@ namespace DiscipleClan.Cards.Shifter
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                         TargetIgnoreBosses = true,
+                        ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=3, statusId="gravity" } },
                     },
                 },
                 TraitBuilders = new List<CardTraitDataBuilder>
@@ -29,8 +30,6 @@ namespace DiscipleClan.Cards.Shifter
                     new CardTraitDataBuilder { TraitStateType = typeof(CardTraitExhaustState) }
                 }
             };
-
-            railyard.EffectBuilders[0].AddStatusEffect("gravity", 3);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Apple-Elixir.png");

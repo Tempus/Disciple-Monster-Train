@@ -1,4 +1,4 @@
-using MonsterTrainModdingAPI.Builders;
+using Trainworks.Builders;
 using System.Collections.Generic;
 
 
@@ -39,6 +39,8 @@ namespace DiscipleClan.Cards.Pyrepact
                 Health = 20,
                 AttackDamage = 2,
 
+                StartingStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count = 1, statusId = "emberboost" } },
+
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder
@@ -56,7 +58,6 @@ namespace DiscipleClan.Cards.Pyrepact
                 }
             };
             // Unit art asset, complex stuff!
-            characterDataBuilder.TriggerBuilders[0].EffectBuilders[0].AddStatusEffect("emberboost", 1);
 
             Utils.AddUnitAnim(characterDataBuilder, "embermaker");
             return characterDataBuilder.BuildAndRegister();

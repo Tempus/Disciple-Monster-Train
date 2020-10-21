@@ -1,7 +1,7 @@
-using MonsterTrainModdingAPI.Builders;
+using Trainworks.Builders;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
-using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
+using static Trainworks.Constants.VanillaCardPoolIDs;
 
 namespace DiscipleClan.Cards.Shifter
 {

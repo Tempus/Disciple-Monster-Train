@@ -1,7 +1,8 @@
-﻿using DiscipleClan.Triggers;
+﻿using DiscipleClan.Cards.Prophecy;
+using DiscipleClan.Triggers;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks.Builders;
+using Trainworks.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace DiscipleClan.CardEffects
     {
         public CardEffectData.CardSelectionMode cardSelectionMode;
         public int cardsToScry = 0;
+
+        public virtual string DescriptionKey { get { return "ScryInstructions"; } }
 
         public override bool CanPlayAfterBossDead
         {
@@ -69,7 +72,7 @@ namespace DiscipleClan.CardEffects
                     CustomTriggerManager.FireCardTriggers(OnDivine.OnDivineCardTrigger, card, -1, true, null, 1, null);
                 }
 
-                foreach (var relic in CustomCardManager.SaveManager.GetCollectedRelics())
+                foreach (var relic in ProviderManager.SaveManager.GetCollectedRelics())
                 {
                     foreach (var effect in relic.GetEffectsOfType<RelicEffectEmberOnDivine>())
                     {
@@ -113,6 +116,9 @@ namespace DiscipleClan.CardEffects
             if (priorityUnitDraw != null)
                 scryedCards.Add(priorityUnitDraw);
 
+            // Draw Piles are dumb?
+            drawPile.Reverse();
+
             // Draw normally
             int drawSize = scryedCards.Count;
             for (int i = 0; i < Math.Min(cardsToScry - drawSize, drawPile.Count); i++)
@@ -120,6 +126,9 @@ namespace DiscipleClan.CardEffects
                 if (drawPile[i] != priorityUnitDraw)
                     scryedCards.Add(drawPile[i]);
             }
+
+            // Draw Piles are dumb? Yep
+            drawPile.Reverse();
 
             // Hardcoded Divine interaction to always divine a card with ID "ChosenOne"
             foreach (var card in drawPile)
@@ -148,8 +157,9 @@ namespace DiscipleClan.CardEffects
                     showCancel = true,
                     targetMode = TargetMode.Deck,
                     titleKey = cardEffectState.GetParentCardState().GetTitleKey(),
-                    instructionsKey = GetTooltipBaseKey(),
+                    instructionsKey = DescriptionKey,
                     numCardsSelectable = cardEffectState.GetAdditionalParamInt(),
+                     
                 });
 
                 // Reset the card List to the scryed cards

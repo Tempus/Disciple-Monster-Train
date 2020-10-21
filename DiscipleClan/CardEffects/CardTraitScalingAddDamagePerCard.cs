@@ -1,5 +1,5 @@
-﻿using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Managers;
+﻿using Trainworks;
+using Trainworks.Managers;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,19 +29,22 @@ namespace DiscipleClan.CardEffects
 
 		private int GetBaseDamage(CardState thisCard)
 		{
-			int paramInt = GetParamInt();
+			int paramInt = GetCardTraitData().GetParamInt();
 
 			CardManager cardManager;
 			ProviderManager.TryGetProvider<CardManager>(out cardManager);
 
 			if (cardManager == null) { return paramInt; }
+			Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Damage: " + paramInt + " - CardID: " + GetCardTraitData().GetParamStr());
 
 			int statValue = 0;
 			foreach (var card in cardManager.GetAllCards())
             {
-				if (card.GetCardDataID() == GetCardTraitData().GetParamStr())
+				Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Count of Cards: " + statValue);
+				if (card.GetID() == GetCard().GetID())
 					statValue++;
             }
+			Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Count of Cards: " + statValue);
 
 			return paramInt * statValue;
 		}

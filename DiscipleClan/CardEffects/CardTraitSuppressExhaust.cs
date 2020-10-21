@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks;
+using Trainworks.Managers;
 using System.Collections;
 
 namespace DiscipleClan.CardEffects

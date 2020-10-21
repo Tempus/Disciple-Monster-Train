@@ -1,5 +1,5 @@
 using DiscipleClan.CardEffects;
-using MonsterTrainModdingAPI.Builders;
+using Trainworks.Builders;
 using System.Collections.Generic;
 
 // TODO - look into CardTraitRetain and CardTraitFreeze, no builder for CardTriggerEffectData

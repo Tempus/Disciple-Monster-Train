@@ -11,9 +11,9 @@ using DiscipleClan.Cards.Units;
 using DiscipleClan.Enhancers;
 using DiscipleClan.StatusEffects;
 using HarmonyLib;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Interfaces;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks;
+using Trainworks.Interfaces;
+using Trainworks.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,10 +23,10 @@ using UnityEngine;
 namespace DiscipleClan
 {
     // Credit to Rawsome, Stable Infery for the base of this method.
-    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.6.1")]
+    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.6.3")]
     [BepInProcess("MonsterTrain.exe")]
     [BepInProcess("MtLinkHandler.exe")]
-    [BepInDependency("api.modding.train.monster")]
+    [BepInDependency("tools.modding.trainworks")]
     public class DiscipleClan : BaseUnityPlugin, IInitializable
     {
         public static ClassData clanRef;
@@ -49,7 +49,7 @@ namespace DiscipleClan
 
             foreach (var bundle in BundleManager.LoadedAssetBundles)
             {
-                API.Log(BepInEx.Logging.LogLevel.All, bundle.Value.GetAllAssetNames().Join());
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, bundle.Value.GetAllAssetNames().Join());
             }
 
             SecondDisciple.Make();
@@ -60,7 +60,7 @@ namespace DiscipleClan
             //PrintCardStats();
             //foreach (SubtypeData s in SubtypeManager.AllData)
             //{
-            //    API.Log(BepInEx.Logging.LogLevel.All, "Subtype: " + s.LocalizedName + " - Key: " + s.Key);
+            //    Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Subtype: " + s.LocalizedName + " - Key: " + s.Key);
             //}
         }
 
@@ -70,7 +70,7 @@ namespace DiscipleClan
             //var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.StatusEffects"));
             //foreach (var status in types) {
             //    if (status.Name.StartsWith("StatusEffect") ){
-            //        API.Log(BepInEx.Logging.LogLevel.All, "Artifact Name: " + status.Name);
+            //        Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Artifact Name: " + status.Name);
             //        Make(status); } }
 
             // Dunno why the above doesn't work, it works for cards
@@ -103,7 +103,9 @@ namespace DiscipleClan
             AddToSpellPowerEnhancers(typeof(CardEffectEmberwave).AssemblyQualifiedName);
             AddToSpellPowerEnhancers(typeof(CardEffectEmberwaveFibonacci).AssemblyQualifiedName);
             AddToSpellPowerEnhancers(typeof(CardEffectEmberwaveEmberDmg).AssemblyQualifiedName);
-            //AddToDoublestackEnhancers(typeof(CardEffectAddClassStatus).AssemblyQualifiedName);
+            AddToDoublestackEnhancers(typeof(CardEffectAddClassStatus).AssemblyQualifiedName);
+            AddToDoublestackEnhancers(typeof(CardEffectAddPyreStatus).AssemblyQualifiedName);
+            AddToDoublestackEnhancers(typeof(CardEffectAddPyreStatusEmpowered).AssemblyQualifiedName);
         }
 
         public static void AddToSpellPowerEnhancers(string CardEffectID)
@@ -116,14 +118,14 @@ namespace DiscipleClan
         public static void AddToDoublestackEnhancers(string CardEffectID)
         {
             var allGameData = ProviderManager.SaveManager.GetAllGameData();
-            Traverse.Create(allGameData.FindEnhancerDataByName("UpgradeTraitAddJuice").GetEffects()[0].GetParamCardUpgradeData().GetFilters()[0]).Field("requiredCardEffects").GetValue<List<string>>().Add(CardEffectID);
+            Traverse.Create(allGameData.FindEnhancerDataByName("SpellUpgradeTraitAddJuice").GetEffects()[0].GetParamCardUpgradeData().GetFilters()[0]).Field("requiredCardEffects").GetValue<List<string>>().Add(CardEffectID);
         }
 
         static void MakeArtifacts()
         {
             //var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Artifacts") && !t.Name.Contains("<>"));
 
-            //foreach (var relic in types) { API.Log(BepInEx.Logging.LogLevel.All, "Artifact Name: " + relic.Name);  Make(relic); }
+            //foreach (var relic in types) { Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Artifact Name: " + relic.Name);  Make(relic); }
 
             BullshitThing.Make();
             // EmberOnDivine.Make();
@@ -142,38 +144,38 @@ namespace DiscipleClan
         {
             // Prophecy
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Prophecy") && !t.Name.Contains("<>"));
-            API.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Prophecy Cards");
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Prophecy Cards");
             foreach (var card in types) { Make(card); }
 
             // Pyrepact
             types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Pyrepact") && !t.Name.Contains("<>"));
-            API.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Pyrepact Cards");
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Pyrepact Cards");
             foreach (var card in types) { Make(card); }
 
             // Retain
             types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Retain") && !t.Name.Contains("<>"));
-            API.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Retain Cards");
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Retain Cards");
             foreach (var card in types) { Make(card); }
 
             // Shifter
             types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Shifter") && !t.Name.Contains("<>"));
-            API.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Shifter Cards");
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Shifter Cards");
             foreach (var card in types) { Make(card); }
 
             // Speedtime
             types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Speedtime") && !t.Name.Contains("<>"));
-            API.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Speedtime Cards");
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Speedtime Cards");
             foreach (var card in types) { Make(card); }
 
             // Chronolock
             types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Cards.Chronolock") && !t.Name.Contains("<>"));
-            API.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Chronolock Cards");
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Chronolock Cards");
             foreach (var card in types) { Make(card); }
         }
 
         public static void Make(Type cardType)
         {
-            API.Log(BepInEx.Logging.LogLevel.All, "Making... " + cardType.Name);
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Making... " + cardType.Name);
             MethodInfo make = cardType.GetMethod("Make");
             make.Invoke(null, null);
         }
@@ -212,12 +214,12 @@ namespace DiscipleClan
                     units++;
             }
 
-            API.Log(BepInEx.Logging.LogLevel.All, "Total Cards: " + totalCards);
-            API.Log(BepInEx.Logging.LogLevel.All, "Common Cards: " + commons);
-            API.Log(BepInEx.Logging.LogLevel.All, "Uncommon Cards: " + uncommons);
-            API.Log(BepInEx.Logging.LogLevel.All, "Rare Cards: " + rares);
-            API.Log(BepInEx.Logging.LogLevel.All, "Units + Wards: " + units);
-            API.Log(BepInEx.Logging.LogLevel.All, "Spell Cards: " + spells);
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Total Cards: " + totalCards);
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Common Cards: " + commons);
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Uncommon Cards: " + uncommons);
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Rare Cards: " + rares);
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Units + Wards: " + units);
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Spell Cards: " + spells);
         }
     }
 }

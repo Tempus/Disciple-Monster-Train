@@ -30,8 +30,8 @@
 		<HintPath>..\..\..\..\workshop\content\1102190\2187468759\BepInEx\core\BepInEx.Harmony.dll</HintPath>
 		<Private>False</Private>
     </Reference>
-    <Reference Include="MonsterTrainModdingAPI">
-      <HintPath>..\..\..\..\workshop\content\1102190\MonsterTrainModdingAPI\plugins\MonsterTrainModdingAPI.dll</HintPath>
+    <Reference Include="Trainworks">
+      <HintPath>..\..\..\..\workshop\content\1102190\TrainworksModdingTools\plugins\TrainworksModdingTools.dll</HintPath>
 	  <Private>False</Private>
 	</Reference>
     <Reference Include="Unity.Addressables">

@@ -3,12 +3,12 @@ using DiscipleClan.Cards.Chronolock;
 using DiscipleClan.Cards.Pyrepact;
 using DiscipleClan.Cards.Shifter;
 using DiscipleClan.Upgrades;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks;
+using Trainworks.Builders;
+using Trainworks.Managers;
 using System;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
+using static Trainworks.Constants.VanillaCardPoolIDs;
 
 namespace DiscipleClan.Cards.Units
 {

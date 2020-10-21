@@ -1,8 +1,8 @@
 ﻿using DiscipleClan.CardEffects;
 using DiscipleClan.Triggers;
-using MonsterTrainModdingAPI.Builders;
+using Trainworks.Builders;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Upgrades
 {

@@ -1,8 +1,8 @@
 ﻿using DiscipleClan.Artifacts;
 using HarmonyLib;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks;
+using Trainworks.Builders;
+using Trainworks.Managers;
 
 namespace DiscipleClan.CardEffects
 {

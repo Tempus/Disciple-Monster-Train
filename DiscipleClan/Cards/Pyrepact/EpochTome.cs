@@ -1,7 +1,7 @@
 using DiscipleClan.CardEffects;
-using MonsterTrainModdingAPI.Builders;
+using Trainworks.Builders;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Pyrepact
 {
@@ -24,6 +24,7 @@ namespace DiscipleClan.Cards.Pyrepact
                         EffectStateName = "CardEffectAddStatusEffect",
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                        ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=0, statusId=Sweep } },
                     },
                     new CardEffectDataBuilder
                     {
@@ -41,8 +42,6 @@ namespace DiscipleClan.Cards.Pyrepact
                     }
                 }
             };
-
-            railyard.EffectBuilders[0].AddStatusEffect(Sweep, 1);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Epoch-Tome.png");

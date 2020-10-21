@@ -1,8 +1,8 @@
 using DiscipleClan.Triggers;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Utilities;
+using Trainworks.Builders;
+using Trainworks.Utilities;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Pyrepact
 {
@@ -38,7 +38,7 @@ namespace DiscipleClan.Cards.Pyrepact
                 SubtypeKeys = new List<string> { "ChronoSubtype_Eternal" },
 
                 Size = 5,
-                Health = 33,
+                Health = 50,
                 AttackDamage = 0,
 
                 BundleLoadingInfo = new BundleAssetLoadingInfo

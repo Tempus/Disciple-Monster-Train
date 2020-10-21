@@ -1,7 +1,7 @@
 using DiscipleClan.CardEffects;
-using MonsterTrainModdingAPI.Builders;
+using Trainworks.Builders;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Pyrepact
 {
@@ -23,6 +23,7 @@ namespace DiscipleClan.Cards.Pyrepact
                     new CardEffectDataBuilder
                     {
                         EffectStateType = typeof(CardEffectAddPyreStatus),
+                        ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=0, statusId=Quick } },
                     },
                 },
 
@@ -34,9 +35,6 @@ namespace DiscipleClan.Cards.Pyrepact
                     },
                 }
             };
-
-            railyard.EffectBuilders[0].AddStatusEffect(Quick, 1);
-
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Rocket-Speed.png");

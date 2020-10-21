@@ -1,4 +1,4 @@
-﻿using MonsterTrainModdingAPI.Managers;
+﻿using Trainworks.Managers;
 using System.Collections;
 
 namespace DiscipleClan.CardEffects

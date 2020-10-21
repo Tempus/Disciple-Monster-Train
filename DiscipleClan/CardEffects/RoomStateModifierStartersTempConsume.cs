@@ -1,6 +1,6 @@
-﻿using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
+﻿using Trainworks;
+using Trainworks.Builders;
+using Trainworks.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -41,12 +41,19 @@ namespace DiscipleClan.CardEffects
         {
             yield return new WaitForSeconds(0.01f);
 
-            if ((card.GetRarityType() == CollectableRarity.Starter || card.GetDebugName().Contains("Starter")) && card.GetCardType() == CardType.Spell && !card.HasTrait(typeof(CardTraitExhaustState)))
+            // Check and see if we're a starter card
+            foreach (var clan in ProviderManager.SaveManager.GetAllGameData().GetAllClassDatas())
             {
-                cardManager.AddTemporaryTraitToCard(card, new CardTraitData { traitStateName = "CardTraitExhaustState" });
-                cardManager.RefreshCardInHand(card);
-                card.RefreshCardBodyTextLocalization();
-                cardsWeHaveModified.Add(card);
+                for (int i = 0; i < 2; i++)
+                {
+                    if (card.GetCardDataID() == clan.GetChampionData(i).starterCardData.GetID() && card.GetCardType() == CardType.Spell)
+                    {
+                        cardManager.AddTemporaryTraitToCard(card, new CardTraitData { traitStateName = "CardTraitExhaustState" });
+                        cardManager.RefreshCardInHand(card);
+                        card.RefreshCardBodyTextLocalization();
+                        cardsWeHaveModified.Add(card);
+                    }
+                }
             }
 
             yield break;

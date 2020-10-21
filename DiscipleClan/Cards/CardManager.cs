@@ -8,8 +8,8 @@ using DiscipleClan.Cards.Speedtime;
 using DiscipleClan.Cards.Unused;
 using HarmonyLib;
 using I2.Loc;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks;
+using Trainworks.Managers;
 using System.Net.Sockets;
 using UnityEngine;
 
@@ -21,14 +21,8 @@ namespace DiscipleClan.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(JellyScholar.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(EmberMaker.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Cinderborn.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Snecko.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(MinervaOwl.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(DivineroftheInfinite.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(WaxPinion.IDName));
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Fireshaped.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AncientPyresnail.IDName));
+            __instance.AddCardToDeck(CustomCardManager.GetCardDataByID(AncientPyresnail.IDName));
 
             //__instance.AddRelic(__instance.GetAllGameData().FindCollectableRelicData(FirstBuffExtraStack.ID));
         }
@@ -50,7 +44,7 @@ namespace DiscipleClan.Cards
     //    // Creates and registers card data for each card class
     //    static void Prefix(CardState __instance, CardData setCardData)
     //    {
-    //        API.Log(BepInEx.Logging.LogLevel.All, "Processing Card: " + setCardData.GetID() + " - " + setCardData.GetNameKey());
+    //        Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Processing Card: " + setCardData.GetID() + " - " + setCardData.GetNameKey());
     //    }
     //}
 
@@ -60,7 +54,7 @@ namespace DiscipleClan.Cards
     //    // Creates and registers card data for each card class
     //    static void Prefix(CardState __instance)
     //    {
-    //        API.Log(BepInEx.Logging.LogLevel.All, "Processing Card Status from: " + __instance.GetID() + " - " + __instance.GetAssetName());
+    //        Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Processing Card Status from: " + __instance.GetID() + " - " + __instance.GetAssetName());
     //    }
     //}
 }

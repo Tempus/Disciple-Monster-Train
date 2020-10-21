@@ -1,9 +1,9 @@
 ﻿using DiscipleClan.CardEffects;
 using DiscipleClan.Cards;
 using DiscipleClan.Triggers;
-using MonsterTrainModdingAPI.Builders;
+using Trainworks.Builders;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaRelicPoolIDs;
+using static Trainworks.Constants.VanillaRelicPoolIDs;
 
 namespace DiscipleClan.Artifacts
 {

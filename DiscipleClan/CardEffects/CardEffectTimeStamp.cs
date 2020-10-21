@@ -1,5 +1,5 @@
-﻿using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Builders;
+﻿using Trainworks;
+using Trainworks.Builders;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -94,7 +94,7 @@ namespace DiscipleClan.CardEffects
                             BonusSize = sizeBuff,
                             StatusEffectUpgrades = statusList,
                         }.Build(),
-                        TargetMode = TargetMode.Self,
+                        TargetMode = TargetMode.DropTargetCharacter,
                     }
                 },
                 TraitBuilders = new List<CardTraitDataBuilder>

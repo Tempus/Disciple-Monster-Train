@@ -1,6 +1,6 @@
 using HarmonyLib;
-using MonsterTrainModdingAPI.Enums.MTTriggers;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks.Enums.MTTriggers;
+using Trainworks.Managers;
 using System.Collections.Generic;
 
 namespace DiscipleClan.Triggers

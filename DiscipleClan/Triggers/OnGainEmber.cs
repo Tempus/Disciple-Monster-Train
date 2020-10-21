@@ -1,8 +1,8 @@
 using DiscipleClan.CardEffects;
 using HarmonyLib;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Enums.MTTriggers;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks;
+using Trainworks.Enums.MTTriggers;
+using Trainworks.Managers;
 using System.Collections.Generic;
 
 namespace DiscipleClan.Triggers
@@ -41,7 +41,7 @@ namespace DiscipleClan.Triggers
                 CustomTriggerManager.FireCardTriggers(OnGainEmber.OnGainEmberCardTrigger, card, -1, true, null, addEnergy, null);
             }
 
-            foreach (var relic in CustomCardManager.SaveManager.GetCollectedRelics())
+            foreach (var relic in ProviderManager.SaveManager.GetCollectedRelics())
             {
                 foreach (var effect in relic.GetEffectsOfType<RelicEffectPyreDamageOnEmber>())
                 {

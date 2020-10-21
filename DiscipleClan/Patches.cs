@@ -1,8 +1,8 @@
 ﻿using DiscipleClan.CardEffects;
 using HarmonyLib;
 using I2.Loc;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Managers;
+using Trainworks;
+using Trainworks.Managers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -187,18 +187,18 @@ namespace DiscipleClan
         }
     }
 
-    //[HarmonyPatch(typeof(CardState), "IsSpawnerCard")]
-    //class WardsAreSpawnersToo
-    //{
-    //    static void Postfix(ref bool __result, CardState __instance)
-    //    {
-    //        foreach (CardEffectState effectState in __instance.GetEffectStates())
-    //        {
-    //            if (effectState.GetCardEffect() is CardEffectSpawnMonster)
-    //            {
-    //                __result = true;
-    //            }
-    //        }
-    //    }
-    //}
+    [HarmonyPatch(typeof(CardTraitScalingReturnConsumedCards), "GetCurrentEffectText")]
+    class RewindDisplaysTheCorrectNumber
+    {
+        static void Postfix(ref string __result, CardTraitScalingReturnConsumedCards __instance, CardStatistics cardStatistics)
+        {
+            if (cardStatistics != null)
+            {
+                ProviderManager.TryGetProvider<CardManager>(out CardManager cardManager);
+                ProviderManager.TryGetProvider<PlayerManager>(out PlayerManager playerManager);
+
+                __result = "CardTraitScalingReturnConsumedCards_CurrentScaling_CardText".Localize(new LocalizedIntegers(UnityEngine.Mathf.Min(playerManager.GetEnergy(), cardManager.GetExhaustedPile().Count)));
+            }
+        }
+    }
 }

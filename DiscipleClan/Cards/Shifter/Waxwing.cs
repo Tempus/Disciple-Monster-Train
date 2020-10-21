@@ -1,7 +1,7 @@
 using DiscipleClan.Triggers;
-using MonsterTrainModdingAPI.Builders;
+using Trainworks.Builders;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
+using static Trainworks.Constants.VanillaCardPoolIDs;
 
 // TODO - Icarian, Pyre attacks whole tower (we can fake it though)
 

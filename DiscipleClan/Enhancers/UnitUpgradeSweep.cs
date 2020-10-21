@@ -1,10 +1,10 @@
-﻿using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Managers;
+﻿using Trainworks.Builders;
+using Trainworks.Managers;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using static MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using static Trainworks.Constants.VanillaEnhancerPoolIDs;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Enhancers
 {

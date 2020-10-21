@@ -1,7 +1,7 @@
 using DiscipleClan.CardEffects;
-using MonsterTrainModdingAPI.Builders;
+using Trainworks.Builders;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Pyrepact
 {
@@ -24,6 +24,7 @@ namespace DiscipleClan.Cards.Pyrepact
                     new CardEffectDataBuilder
                     {
                         EffectStateType = typeof(CardEffectAddPyreStatus),
+                        ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId="armor" } },
                     },
                     new CardEffectDataBuilder
                     {
@@ -58,8 +59,6 @@ namespace DiscipleClan.Cards.Pyrepact
                     },
                 }
             };
-
-            railyard.EffectBuilders[0].AddStatusEffect(Armor, 0);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Pyrespike.png");

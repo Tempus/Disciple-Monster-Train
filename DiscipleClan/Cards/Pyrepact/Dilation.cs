@@ -1,7 +1,7 @@
 using DiscipleClan.CardEffects;
-using MonsterTrainModdingAPI.Builders;
+using Trainworks.Builders;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Pyrepact
 {
@@ -31,6 +31,7 @@ namespace DiscipleClan.Cards.Pyrepact
                             BonusSize = 1,
                             HideUpgradeIconOnCard = true,
                         }.Build(),
+                        ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=0, statusId="armor" } },
                     },
                 },
 
@@ -50,8 +51,6 @@ namespace DiscipleClan.Cards.Pyrepact
                     },
                 }
             };
-
-            railyard.EffectBuilders[0].AddStatusEffect(Armor, 0);
 
             Utils.AddSpell(railyard, IDName);
             Utils.AddImg(railyard, "Dilation.png");

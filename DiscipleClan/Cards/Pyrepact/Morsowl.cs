@@ -1,7 +1,7 @@
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Utilities;
+using Trainworks.Builders;
+using Trainworks.Utilities;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
+using static Trainworks.Constants.VanillaCardPoolIDs;
 
 // TODO - Icarian, Pyre attacks whole tower (we can fake it though)
 

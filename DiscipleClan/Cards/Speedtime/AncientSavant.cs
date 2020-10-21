@@ -1,8 +1,8 @@
 using DiscipleClan.Triggers;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Utilities;
+using Trainworks.Builders;
+using Trainworks.Utilities;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.Cards.Speedtime
 {
@@ -38,7 +38,7 @@ namespace DiscipleClan.Cards.Speedtime
                 SubtypeKeys = new List<string> { "ChronoSubtype_Eternal" },
 
                 Size = 3,
-                Health = 50,
+                Health = 40,
                 AttackDamage = 0,
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder> {

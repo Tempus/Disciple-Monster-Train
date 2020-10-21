@@ -1,5 +1,5 @@
 using DiscipleClan.CardEffects;
-using MonsterTrainModdingAPI.Builders;
+using Trainworks.Builders;
 using System.Collections.Generic;
 
 namespace DiscipleClan.Cards.Chronolock
@@ -22,14 +22,14 @@ namespace DiscipleClan.Cards.Chronolock
                     {
                         EffectStateName = typeof(CardEffectTimeStamp).AssemblyQualifiedName,
                         TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                        TargetTeamType = Team.Type.Monsters,
                         TargetIgnoreBosses = true,
                     },
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectSacrifice",
                         TargetMode = TargetMode.DropTargetCharacter,
-                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                        TargetTeamType = Team.Type.Monsters,
                         ParamSubtype = "SubtypesData_None",
                         TargetIgnoreBosses = true,
                     },

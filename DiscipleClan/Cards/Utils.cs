@@ -1,9 +1,9 @@
 ﻿using DiscipleClan.Triggers;
-using MonsterTrainModdingAPI;
-using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Utilities;
+using Trainworks;
+using Trainworks.Builders;
+using Trainworks.Utilities;
 using System.Collections.Generic;
-using static MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs;
+using static Trainworks.Constants.VanillaCardPoolIDs;
 
 namespace DiscipleClan.Cards
 {
@@ -28,11 +28,11 @@ namespace DiscipleClan.Cards
             r.AssetPath = rootPath + scardPath;
 
             if (!r.NameKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, r.NameKey + ",Text,,,,," + r.CardID + ",,,,,");
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, r.NameKey + ",Text,,,,," + r.CardID + ",,,,,");
             if (!r.OverrideDescriptionKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
 
-            //API.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Spell", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), r.OverrideDescriptionKey.Localize() }));
+            //Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Spell", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), r.OverrideDescriptionKey.Localize() }));
         }
 
         public static void AddRelic(CollectableRelicDataBuilder r, string ID)
@@ -47,13 +47,13 @@ namespace DiscipleClan.Cards
             r.IsBossGivenRelic = false;
 
             if (!r.NameKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, r.NameKey + ",Text,,,,," + ID + ",,,,,");
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, r.NameKey + ",Text,,,,," + ID + ",,,,,");
             if (!r.DescriptionKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, r.DescriptionKey + ",Text,,,,,<desc>,,,,,");
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, r.DescriptionKey + ",Text,,,,,<desc>,,,,,");
             if (!r.RelicActivatedKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, r.RelicActivatedKey + ",Text,,,,,<desc>,,,,,");
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, r.RelicActivatedKey + ",Text,,,,,<desc>,,,,,");
             if (!r.RelicLoreTooltipKeys[0].HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, r.RelicLoreTooltipKeys[0] + ",Text,,,,,<desc>,,,,,");
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, r.RelicLoreTooltipKeys[0] + ",Text,,,,,<desc>,,,,,");
         }
 
         public static void AddUnit(CardDataBuilder r, string IDName, CharacterData character)
@@ -78,11 +78,11 @@ namespace DiscipleClan.Cards
                 });
 
             if (!r.NameKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, r.NameKey + ",Text,,,,," + r.CardID + ",,,,,");
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, r.NameKey + ",Text,,,,," + r.CardID + ",,,,,");
             if (!r.OverrideDescriptionKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
 
-            //API.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Unit", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), character.GetSize().ToString(), character.GetHealth().ToString(), character.GetAttackDamage().ToString(), character.GetLocalizedSubtype(), r.OverrideDescriptionKey.Localize() }));
+            //Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Unit", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), character.GetSize().ToString(), character.GetHealth().ToString(), character.GetAttackDamage().ToString(), character.GetLocalizedSubtype(), r.OverrideDescriptionKey.Localize() }));
         }
 
         public static void AddWard(CardDataBuilder r, string IDName, CharacterDataBuilder character)
@@ -125,11 +125,11 @@ namespace DiscipleClan.Cards
             });
 
             if (!r.NameKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, r.NameKey + ",Text,,,,," + r.CardID + ",,,,,");
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, r.NameKey + ",Text,,,,," + r.CardID + ",,,,,");
             if (!r.OverrideDescriptionKey.HasTranslation())
-                API.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, r.OverrideDescriptionKey + ",Text,,,,,<desc>,,,,,");
 
-            //API.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Spell", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), r.OverrideDescriptionKey.Localize() }));
+            //Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, string.Join("\t", new string[] { "Spell", r.NameKey.Localize(), r.Rarity.ToString(), r.Cost.ToString(), r.OverrideDescriptionKey.Localize() }));
         }
 
         public static void AddImg(CardDataBuilder r, string imgName)
