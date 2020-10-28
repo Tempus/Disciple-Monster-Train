@@ -27,7 +27,7 @@ namespace DiscipleClan.Cards.Shifter
                 },
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
-                    new CardTraitDataBuilder { TraitStateType = typeof(CardTraitExhaustState) }
+                    new CardTraitDataBuilder { TraitStateName = "CardTraitExhaustState" }
                 }
             };
 

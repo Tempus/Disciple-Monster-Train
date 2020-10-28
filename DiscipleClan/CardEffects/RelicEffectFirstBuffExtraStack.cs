@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan.CardEffects
 {
@@ -56,9 +57,22 @@ namespace DiscipleClan.CardEffects
 
 		public int GetStatusEffectStacksToAdd(StatusEffectStackData statusEffectStackData, CharacterState onCharacter)
 		{
-			if (!canApply || !statusIds.Contains(statusEffectStackData.statusId) || (onCharacter != null && onCharacter.GetTeamType() != Team.Type.Monsters)) { return 0; }
+			if (!canApply || (onCharacter = null) || statusEffectStackData == null) { return 0; }
+
+			ProviderManager.TryGetProvider<StatusEffectManager>(out StatusEffectManager statusManager);
+			var status = statusManager.GetStatusEffectDataById(statusEffectStackData.statusId);
+
+			if (status == null) { return 0; }
+
+			bool validBuff = status.GetDisplayCategory() == StatusEffectData.DisplayCategory.Positive || statusEffectStackData.statusId == Armor || statusEffectStackData.statusId == Burnout;
+			bool validDebuff = status.GetDisplayCategory() == StatusEffectData.DisplayCategory.Negative;
+
+
+			if (validBuff   && onCharacter.GetTeamType() != Team.Type.Monsters) { return 0; }
+			if (validDebuff && onCharacter.GetTeamType() == Team.Type.Monsters) { return 0; }
+
 			lastStatus = statusEffectStackData.statusId;
-			return additionalStacks[statusIds.IndexOf(statusEffectStackData.statusId)];
+			return 1;
 		}
 
 		public override string GetActivatedDescription()

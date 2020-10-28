@@ -7,7 +7,7 @@ namespace DiscipleClan.Upgrades
     class DiscipleShifterPro
     {
         public static string IDName = "ShifterUpgradePro";
-        public static int buffAmount = 10;
+        public static int buffAmount = 6;
 
         public static CardUpgradeDataBuilder Builder()
         {
@@ -19,8 +19,8 @@ namespace DiscipleClan.Upgrades
                 //upgradeIcon = CustomAssetManager.LoadSpriteFromPath("chrono/Clan Assets/clan_32.png"),
                 //HideUpgradeIconOnCard = false,
                 UseUpgradeHighlightTextTags = true,
-                BonusDamage = 25,
-                BonusHP = 20,
+                BonusDamage = 40,
+                BonusHP = 35,
                 //costReduction = 0,
                 //xCostReduction = 0,
                 //bonusHeal = 0,
@@ -56,11 +56,19 @@ namespace DiscipleClan.Upgrades
                                 EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder {
                                      BonusDamage = buffAmount,
+                                }.Build(),
+                                TargetMode = TargetMode.BackInRoom,
+                                TargetTeamType = Team.Type.Monsters,
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
+                                ParamCardUpgradeData = new CardUpgradeDataBuilder {
                                      BonusHP = buffAmount
                                 }.Build(),
-                                TargetMode = TargetMode.Room,
+                                TargetMode = TargetMode.FrontInRoom,
                                 TargetTeamType = Team.Type.Monsters,
-                            }
+                            },
                         }
                     },
                 },

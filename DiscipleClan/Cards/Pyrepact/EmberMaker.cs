@@ -39,8 +39,6 @@ namespace DiscipleClan.Cards.Pyrepact
                 Health = 20,
                 AttackDamage = 2,
 
-                StartingStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count = 1, statusId = "emberboost" } },
-
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder
@@ -52,6 +50,7 @@ namespace DiscipleClan.Cards.Pyrepact
                             {
                                 EffectStateName = "CardEffectAddStatusEffect",
                                 TargetMode = TargetMode.LastAttackedCharacter,
+                                ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count = 1, statusId = "emberboost" } }
                             }
                         }
                     }

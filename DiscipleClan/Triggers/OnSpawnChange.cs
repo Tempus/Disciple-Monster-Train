@@ -19,16 +19,23 @@ namespace DiscipleClan.Triggers
     // Gotta patch in places to call this trigger from... gonna be OnSpawnPointChange
 
     [HarmonyPatch(typeof(RoomManager), "OnSpawnPointChanged")]
-    class QueueOnEnchantUpdate
+    class OnSpawnChangeTriggerPatch
     {
         static void Postfix(RoomManager __instance, CharacterState characterState, SpawnPoint prevPoint, SpawnPoint newPoint)
         {
-
             List<CharacterState> chars = new List<CharacterState>();
-            characterState.GetCharacterManager().AddCharactersInRoomToList(chars, characterState.GetCurrentRoomIndex());
-            foreach (var unit in chars)
+            try
             {
-                CustomTriggerManager.QueueTrigger(OnSpawnChange.OnSpawnChangeCharTrigger, unit);
+                characterState.GetCharacterManager().AddCharactersInTowerToList(chars);
+                foreach (var unit in chars)
+                {
+                    CustomTriggerManager.QueueTrigger(OnSpawnChange.OnSpawnChangeCharTrigger, unit);
+                }
+
+            }
+            catch (System.Exception)
+            {
+                Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "OnSpawnPointChange Preview has crashed, bypassing.");
             }
         }
     }

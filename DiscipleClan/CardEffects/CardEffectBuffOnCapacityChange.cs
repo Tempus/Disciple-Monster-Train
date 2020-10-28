@@ -47,11 +47,23 @@ namespace DiscipleClan.CardEffects
     }
 
     [HarmonyPatch(typeof(RoomCapacityUI), "GetAndCompareCapacityInfo")]
-    class CapacityChangeTrigger
+    class CapacityChangeTriggerOnUIUpdate
     {
         static void Postfix(bool __result, RoomCapacityUI __instance, RoomState room)
         {
             CardEffectBuffOnCapacityChange.ChangeBuffs(room);
+        }
+    }
+
+    [HarmonyPatch(typeof(RoomManager), "OnSpawnPointChanged")]
+    class CapacityChangeTriggerOnSpawnUpdate
+    {
+        static void Postfix(RoomManager __instance, CharacterState characterState, SpawnPoint prevPoint, SpawnPoint newPoint)
+        {
+            if (prevPoint != null) 
+                CardEffectBuffOnCapacityChange.ChangeBuffs(prevPoint.GetRoomOwner());
+            if (newPoint != null)
+                CardEffectBuffOnCapacityChange.ChangeBuffs(newPoint.GetRoomOwner());
         }
     }
 

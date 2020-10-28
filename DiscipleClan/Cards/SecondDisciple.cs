@@ -55,7 +55,7 @@ namespace DiscipleClan.Cards.Units
 
                 CardID = IDName,
                 NameKey = IDName + "_Name",
-                OverrideDescriptionKey = IDName + "_Desc",
+                //OverrideDescriptionKey = IDName + "_Desc",
                 LinkedClass = DiscipleClan.getClan(),
                 ClanID = Clan.IDName,
 

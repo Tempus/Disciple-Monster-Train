@@ -9,34 +9,11 @@ using System.Text;
 using Tayx.Graphy.Utils.NumString;
 using static CharacterState;
 using static TargetHelper;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
+using System.Collections;
 
 namespace DiscipleClan
 {
-    // This patch is used to import localization data when it gets the localization sources
-    //[HarmonyPatch(typeof(LocalizationManager), "UpdateSources")]
-    //class LocalizationInjection
-    //{
-    //    static void Postfix()
-    //    {
-    //        CustomLocalizationManager.ImportCSV("chrono/Disciple.csv", ';');
-    //    }
-    //}
-
-    // This attempted to make Wards into spells, but failed.
-    //[HarmonyPatch(typeof(CardState), "IsSpawnerCard")]
-    //class WardShouldBeSpell
-    //{
-    //    static bool Postfix(bool isMon, CardState __instance)
-    //    {
-    //        SubtypeData wardSub;
-    //        CustomCharacterManager.CustomSubtypeData.TryGetValue("ChronoSubtype_Ward", out wardSub);
-    //        if (__instance.GetSpawnCharacterData() != null)
-    //            if (__instance.GetSpawnCharacterData().GetSubtypes()[0].Equals(wardSub))
-    //                return true;
-    //        return isMon;
-    //    }
-    //}
-
     // This is workaround for Pyre immunity
     [HarmonyPatch(typeof(CharacterState), "IsImmune")]
     class PyreNotImmuneA
@@ -44,7 +21,7 @@ namespace DiscipleClan
         // Pyre is no longer immune to gaining statuses like Ambush and Armor
         static bool Prefix(CharacterState __instance, ref bool __result, string statusEffectId)
         {
-            if (__instance.IsPyreHeart() && !__instance.PreviewMode)
+            if (__instance.IsPyreHeart() && !__instance.PreviewMode && (statusEffectId == Quick || statusEffectId == Armor))
             {
                 __result = false;
                 return false;
@@ -60,7 +37,7 @@ namespace DiscipleClan
         // Pyre is no longer immune to gaining statuses like Ambush and Armor
         static void Prefix(CharacterState __instance, string statusId, int numStacks, ref AddStatusEffectParams addStatusEffectParams)
         {
-            if (__instance.IsPyreHeart() && !__instance.PreviewMode)
+            if (__instance.IsPyreHeart() && !__instance.PreviewMode && (statusId == Quick || statusId == Armor))
             {
                 addStatusEffectParams.overrideImmunity = true;
             }
@@ -71,30 +48,20 @@ namespace DiscipleClan
     [HarmonyPatch(typeof(CharacterState), "ApplyCardUpgrade")]
     class SizeUpgradePatch
     {
-        static void Prefix(CharacterState __instance, CardUpgradeState cardUpgradeState, RoomManager ___roomManager)
+        static IEnumerator Postfix(IEnumerator __result, CharacterState __instance, CardUpgradeState cardUpgradeState)
         {
             Traverse.Create(__instance).Property("PrimaryStateInformation").Property("Size").SetValue(__instance.GetSize() + cardUpgradeState.GetAdditionalSize());
+            ProviderManager.TryGetProvider<RoomManager>(out RoomManager roomManager);
+
+            if (ProviderManager.CombatManager.IsPlayerActionPhase())
+            {
+                var room = roomManager.GetRoom(__instance.GetCurrentRoomIndex());
+                Traverse.Create(room).Field("roomUI").Field<RoomCapacityUI>("roomCapacityUI").Value.Show((room), false);
+            }
+            //yield return roomManager.GetRoom(__instance.GetCurrentRoomIndex()).AdjustCapacity(Team.Type.Monsters, 0, false);
+            yield return __result;
         }
     }
-
-    // This fixes Enchantments for players, which are hardcoded to only check heroes
-    //[HarmonyPatch(typeof(RoomManager), "UpdateEnchantments")]
-    //class EnchantUpdateFix
-    //{
-    //    static void Prefix(RoomManager __instance)
-    //    {
-    //        if (!__instance.AllowEnchantmentUpdates)
-    //        {
-    //            return;
-    //        }
-    //        var toProcessCharacters = new List<CharacterState>();
-    //        ProviderManager.CombatManager.GetMonsterManager().AddCharactersInTowerToList(toProcessCharacters);
-    //        foreach (CharacterState toProcessCharacter in toProcessCharacters)
-    //        {
-    //            toProcessCharacter.TryTriggerEnchantment();
-    //        }
-    //    }
-    //}
 
     // This Makes the squoosher look cute
     [HarmonyPatch(typeof(CharacterUI), "UpdateCharacterSize")]
@@ -194,11 +161,35 @@ namespace DiscipleClan
         {
             if (cardStatistics != null)
             {
-                ProviderManager.TryGetProvider<CardManager>(out CardManager cardManager);
-                ProviderManager.TryGetProvider<PlayerManager>(out PlayerManager playerManager);
+                if (!ProviderManager.TryGetProvider<CardManager>(out CardManager cardManager)) { return; }
+                if (!ProviderManager.TryGetProvider<PlayerManager>(out PlayerManager playerManager)) { return; };
 
-                __result = "CardTraitScalingReturnConsumedCards_CurrentScaling_CardText".Localize(new LocalizedIntegers(UnityEngine.Mathf.Min(playerManager.GetEnergy(), cardManager.GetExhaustedPile().Count)));
+                if (cardManager.GetExhaustedPile() == null) { return; }
+
+                __result = "CardTraitScalingReturnConsumedCards_CurrentScaling_CardText".Localize(new LocalizedIntegers(UnityEngine.Mathf.Min(playerManager.GetEnergy(), cardManager.GetExhaustedPile().FindAll(x => !x.GetDebugName().Contains("Rewind")).Count)));
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(CardManager), "RestoreNextExhaustedCard")]
+    class RewindCantRewindItself
+    {
+        static bool Prefix(ref bool __result, CardManager __instance)
+        {
+
+            __instance.GetExhaustedPile().Shuffle(RngId.CardDraw);
+            var card = __instance.GetExhaustedPile().Find(x => !x.GetDebugName().Contains("Rewind"));
+
+            // Nothing to restore if the deck only has Rewinds
+            if (card == null)
+            {
+                __result = false;
+                return false;
+            }
+            __result = __instance.RestoreExhaustedOrEatenCard(card);
+
+            __instance.ShuffleDeck(false);
+            return false;
         }
     }
 }

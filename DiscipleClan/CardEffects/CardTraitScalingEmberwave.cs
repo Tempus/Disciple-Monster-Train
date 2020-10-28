@@ -34,6 +34,11 @@ namespace DiscipleClan.CardEffects
 			ProviderManager.TryGetProvider<PlayerManager>(out playerManager);
 			int statValue = playerManager.GetEnergy();
 
+			if (!ProviderManager.SaveManager.IsInBattle())
+            {
+				statValue = 0;
+            }
+
 			return paramInt * statValue;
 		}
 

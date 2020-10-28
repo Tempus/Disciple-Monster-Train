@@ -35,7 +35,7 @@ namespace DiscipleClan.Cards.Retain
                 SubtypeKeys = new List<string> { "ChronoSubtype_Eternal" },
 
                 Size = 1,
-                Health = 5,
+                Health = 4,
                 AttackDamage = 10,
 
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
@@ -52,7 +52,7 @@ namespace DiscipleClan.Cards.Retain
                                 TargetMode = TargetMode.Self,
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder
                                 {
-                                    BonusHP = 15,
+                                    BonusHP = 12,
                                     BonusSize = 1,
                                     HideUpgradeIconOnCard = true,
                                 }.Build(),

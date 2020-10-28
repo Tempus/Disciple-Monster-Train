@@ -7,7 +7,7 @@ namespace DiscipleClan.Upgrades
     class DiscipleShifterBasic
     {
         public static string IDName = "ShifterUpgradeBasic";
-        public static int buffAmount = 3;
+        public static int buffAmount = 2;
 
         public static CardUpgradeDataBuilder Builder()
         {
@@ -53,11 +53,19 @@ namespace DiscipleClan.Upgrades
                                 EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder {
                                      BonusDamage = buffAmount,
+                                }.Build(),
+                                TargetMode = TargetMode.BackInRoom,
+                                TargetTeamType = Team.Type.Monsters,
+                            },
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
+                                ParamCardUpgradeData = new CardUpgradeDataBuilder {
                                      BonusHP = buffAmount
                                 }.Build(),
-                                TargetMode = TargetMode.Room,
+                                TargetMode = TargetMode.FrontInRoom,
                                 TargetTeamType = Team.Type.Monsters,
-                            }
+                            },
                         }
                     },
                 },

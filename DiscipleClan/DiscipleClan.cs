@@ -19,11 +19,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using static Trainworks.Constants.VanillaStatusEffectIDs;
 
 namespace DiscipleClan
 {
     // Credit to Rawsome, Stable Infery for the base of this method.
-    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.6.3")]
+    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.7.0")]
     [BepInProcess("MonsterTrain.exe")]
     [BepInProcess("MtLinkHandler.exe")]
     [BepInDependency("tools.modding.trainworks")]
@@ -57,11 +58,15 @@ namespace DiscipleClan
             Clan.RegisterBanner();
             MakeArtifacts();
 
+            ProviderManager.SaveManager.GetMetagameSave().SetLevelAndXP(clanRef.GetID(), 10, 99999);
+
             //PrintCardStats();
             //foreach (SubtypeData s in SubtypeManager.AllData)
             //{
             //    Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Subtype: " + s.LocalizedName + " - Key: " + s.Key);
             //}
+
+            //ProviderManager.SaveManager.EnableTestScenario(ProviderManager.SaveManager.GetAllGameData().FindScenarioDataByName("Level4BattleJunk"), true);
         }
 
         static void MakeStatuses()
@@ -106,6 +111,10 @@ namespace DiscipleClan
             AddToDoublestackEnhancers(typeof(CardEffectAddClassStatus).AssemblyQualifiedName);
             AddToDoublestackEnhancers(typeof(CardEffectAddPyreStatus).AssemblyQualifiedName);
             AddToDoublestackEnhancers(typeof(CardEffectAddPyreStatusEmpowered).AssemblyQualifiedName);
+
+            // Exclude Sweep from Doublestack
+            var allGameData = ProviderManager.SaveManager.GetAllGameData();
+            Traverse.Create(allGameData.FindEnhancerDataByName("SpellUpgradeTraitAddJuice").GetEffects()[0].GetParamCardUpgradeData().GetFilters()[3]).Field("excludedStatusEffects").GetValue<List<StatusEffectStackData>>().Add(new StatusEffectStackData { count=1, statusId=Sweep });
         }
 
         public static void AddToSpellPowerEnhancers(string CardEffectID)
@@ -127,7 +136,7 @@ namespace DiscipleClan
 
             //foreach (var relic in types) { Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Artifact Name: " + relic.Name);  Make(relic); }
 
-            BullshitThing.Make();
+            FreeTime.Make();
             // EmberOnDivine.Make();
             GoldOverTime.Make();
             GravityOnAscend.Make();

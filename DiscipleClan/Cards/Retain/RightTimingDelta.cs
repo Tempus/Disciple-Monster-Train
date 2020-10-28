@@ -17,7 +17,7 @@ namespace DiscipleClan.Cards.Retain
             CardDataBuilder railyard = new CardDataBuilder
             {
                 Cost = 2,
-                Rarity = CollectableRarity.Common,
+                Rarity = CollectableRarity.Rare,
                 TargetsRoom = true,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
@@ -35,15 +35,16 @@ namespace DiscipleClan.Cards.Retain
                 {
                     new CardTriggerEffectDataBuilder
                     {
-                        trigger = CardTriggerType.OnUnplayed,
+                        trigger = CardTriggerType.OnKill,
                         CardEffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
                                 EffectStateType = typeof(CardEffectAddBattleCard),
-                                AdditionalParamInt = 1,
+                                AdditionalParamInt = 2,
                                 ParamInt = 1,
-                                ParamCardPool = cardPool
+                                ParamCardPool = cardPool,
+                                CopyModifiersFromSource = true,
                             }
                         }
                     }
@@ -60,6 +61,10 @@ namespace DiscipleClan.Cards.Retain
                         ParamStr = IDName,
                         ParamUseScalingParams = true,
                         ParamInt = 15,
+                    },
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateType = typeof(CardTraitStrongerMagicPower)
                     }
                 }
             };

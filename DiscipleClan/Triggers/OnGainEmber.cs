@@ -26,6 +26,8 @@ namespace DiscipleClan.Triggers
             if (addEnergy == 0)
                 return;
 
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Energy boost: " + addEnergy);
+
             MonsterManager monsterManager;
             ProviderManager.TryGetProvider<MonsterManager>(out monsterManager);
 

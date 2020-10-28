@@ -53,9 +53,17 @@ namespace DiscipleClan.Cards.Shifter
                             new CardEffectDataBuilder
                             {
                                 EffectStateName = "CardEffectAddStatusEffect",
-                                TargetMode = TargetMode.FrontInRoom,
+                                TargetMode = TargetMode.LastAttackerCharacter,
                                 TargetTeamType = Team.Type.Heroes,
                                 ParamStatusEffects = new StatusEffectStackData[] {new StatusEffectStackData { count=2, statusId=Dazed } }
+                            },
+                             new CardEffectDataBuilder
+                            {
+                                EffectStateName = "CardEffectBump",
+                                ParamInt = 4,
+                                TargetMode = TargetMode.LastAttackerCharacter,
+                                TargetTeamType = Team.Type.Heroes,
+                                TargetIgnoreBosses = true,
                             }
                         }
                     }

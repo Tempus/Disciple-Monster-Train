@@ -35,10 +35,10 @@ namespace DiscipleClan.StatusEffects
 
             if (characterState != null)
             {
-                characterState.ShowNotification("HudNotification_TreasureHeroTriggered".Localize(new LocalizedInteger(deathParams.saveManager.GetAdjustedGoldAmount(GoldStacks, isReward: true))), PopupNotificationUI.Source.General);
+                characterState.ShowNotification("HudNotification_TreasureHeroTriggered".Localize(new LocalizedInteger(GoldStacks)), PopupNotificationUI.Source.General);
                 //characterState.GetCharacterUI().ShowEffectVFX(characterState, cardEffectState.GetAppliedVFX());
             }
-            playerManager.AdjustGold(GoldStacks, isReward: true); 
+            playerManager.AdjustGold(GoldStacks, isReward: false); 
             yield break;
         }
 

@@ -38,6 +38,8 @@ namespace DiscipleClan.Upgrades
                                 TargetTeamType = Team.Type.Monsters,
                                 ParamBool = true,
                                 ParamInt = 2,
+                                AdditionalParamInt = 1,
+                                ParamMultiplier = 0.5f,
                             }
                         }
                     }

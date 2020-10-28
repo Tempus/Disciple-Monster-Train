@@ -15,7 +15,7 @@ namespace DiscipleClan.Cards.Pyrepact
             CardDataBuilder railyard = new CardDataBuilder
             {
                 CostType = CardData.CostType.ConsumeRemainingEnergy,
-                Rarity = CollectableRarity.Rare,
+                Rarity = CollectableRarity.Uncommon,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -26,12 +26,10 @@ namespace DiscipleClan.Cards.Pyrepact
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                         ParamCardUpgradeData = new CardUpgradeDataBuilder
                         {
-                            BonusDamage = 8,
-                            BonusHP = 3,
+                            BonusHP = 8,
                             BonusSize = 1,
                             HideUpgradeIconOnCard = true,
                         }.Build(),
-                        ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=0, statusId="armor" } },
                     },
                 },
 

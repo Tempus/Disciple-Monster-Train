@@ -23,7 +23,7 @@ namespace DiscipleClan.Cards.Pyrepact
                     new CardEffectDataBuilder
                     {
                         EffectStateType = typeof(CardEffectAddPyreStatus),
-                        ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=0, statusId=Quick } },
+                        ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId=Quick } },
                     },
                 },
 

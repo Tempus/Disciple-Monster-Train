@@ -23,7 +23,7 @@ namespace DiscipleClan.Upgrades
                 //xCostReduction = 0,
                 //bonusHeal = 0,
                 //BonusSize = 0,
-
+                 
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
                 TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> {
                     new CharacterTriggerDataBuilder {
@@ -38,6 +38,8 @@ namespace DiscipleClan.Upgrades
                                 TargetTeamType = Team.Type.Monsters,
                                 ParamBool = true,
                                 ParamInt = 3,
+                                AdditionalParamInt = 2,
+                                ParamMultiplier = 0.5f,
                             }
                         }
                     }

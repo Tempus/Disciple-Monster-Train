@@ -42,36 +42,43 @@ namespace DiscipleClan
             var cardDataList = (Malee.ReorderableArray<CardData>)AccessTools.Field(typeof(CardPool), "cardDataList").GetValue(cardPool);
 
             SubtypeData wardSub;
-            CustomCharacterManager.CustomSubtypeData.TryGetValue("ChronoSubtype_Ward", out wardSub);
+            CustomCharacterManager.CustomSubtypeData.TryGetValue("SubtypesData_Chosen", out wardSub);
 
             // This shit needs to be automated in a loop
             foreach (var card in CustomCardManager.CustomCardData)
             {
                 if (card.Value.GetLinkedClassID() == DiscipleClan.getClan().GetID() && card.Value.GetSpawnCharacterData() != null && !card.Value.GetSpawnCharacterData().IsChampion())
                 {
-                    if (!card.Value.GetSpawnCharacterData().GetSubtypes()[0].Equals(wardSub))
-                        cardDataList.Add(card.Value);
+                    foreach (var subtype in card.Value.GetSpawnCharacterData().GetSubtypes())
+                    {
+                        if (subtype.Key == "SubtypesData_Chosen")
+                        {
+                            cardDataList.Add(card.Value);
+                            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Unit added to Banner: " + card.Value.GetName());
+                        }
+                    }
                 }
+            }
 
-                new RewardNodeDataBuilder()
-                {
-                    RewardNodeID = "Disciple_UnitBanner",
-                    MapNodePoolIDs = new List<string> { "RandomChosenMainClassUnit", "RandomChosenSubClassUnit" },
-                    Name = "RewardNodeData_Disciple_UnitBanner_TooltipBodyKey",
-                    Description = "RewardNodeData_Disciple_UnitBanner_TooltipTitleKey",
-                    RequiredClass = DiscipleClan.getClan(),
-                    FrozenSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Frozen.png",
-                    EnabledSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
-                    EnabledVisitedSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
-                    DisabledSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Disabled.png",
-                    DisabledVisitedSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_VisitedDisabled.png",
-                    GlowSpritePath = "chrono/Clan Assets/MSK_Map_Clan_CDisciple_01.png",
-                    MapIconPath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
-                    MinimapIconPath = "chrono/Clan Assets/Icon_MiniMap_ClanBanner.png",
-                    SkipCheckInBattleMode = true,
-                    OverrideTooltipTitleBody = false,
-                    NodeSelectedSfxCue = "Node_Banner",
-                    RewardBuilders = new List<IRewardDataBuilder>
+            new RewardNodeDataBuilder()
+            {
+                RewardNodeID = "Disciple_UnitBanner",
+                MapNodePoolIDs = new List<string> { "RandomChosenMainClassUnit", "RandomChosenSubClassUnit" },
+                Name = "RewardNodeData_Disciple_UnitBanner_TooltipBodyKey",
+                Description = "RewardNodeData_Disciple_UnitBanner_TooltipTitleKey",
+                RequiredClass = DiscipleClan.getClan(),
+                FrozenSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Frozen.png",
+                EnabledSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
+                EnabledVisitedSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
+                DisabledSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Disabled.png",
+                DisabledVisitedSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_VisitedDisabled.png",
+                GlowSpritePath = "chrono/Clan Assets/MSK_Map_Clan_CDisciple_01.png",
+                MapIconPath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
+                MinimapIconPath = "chrono/Clan Assets/Icon_MiniMap_ClanBanner.png",
+                SkipCheckInBattleMode = true,
+                OverrideTooltipTitleBody = false,
+                NodeSelectedSfxCue = "Node_Banner",
+                RewardBuilders = new List<IRewardDataBuilder>
                     {
                         new DraftRewardDataBuilder()
                         {
@@ -87,8 +94,7 @@ namespace DiscipleClan
                             RarityFloorOverride = CollectableRarity.Uncommon
                         }
                     }
-                }.BuildAndRegister();
-            }
+            }.BuildAndRegister();
         }
     }
 }

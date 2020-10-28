@@ -16,7 +16,7 @@ namespace DiscipleClan.Cards.Pyrepact
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 1,
+                Cost = 0,
                 Rarity = CollectableRarity.Uncommon,
             };
 

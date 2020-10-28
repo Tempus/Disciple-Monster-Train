@@ -22,7 +22,7 @@ namespace DiscipleClan.Cards.Retain
                     new CardEffectDataBuilder
                     {
                         EffectStateName = "CardEffectDamage",
-                        ParamInt = 10,
+                        ParamInt = 5,
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     }
@@ -39,7 +39,7 @@ namespace DiscipleClan.Cards.Retain
                             {
                                  persistenceMode = PersistenceMode.SingleBattle,
                                  cardTriggerEffect = typeof(CardTriggerEffectBuffSpellDamageForEveryCardOfType).AssemblyQualifiedName,
-                                 paramInt = 15,
+                                 paramInt = 10,
                                  buffEffectType = "CardEffectBuffDamage",
                             }
                         }

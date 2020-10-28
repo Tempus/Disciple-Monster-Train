@@ -14,8 +14,8 @@ namespace DiscipleClan.Cards.Shifter
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 1,
-                Rarity = CollectableRarity.Common,
+                Cost = 2,
+                Rarity = CollectableRarity.Uncommon,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
                 {
@@ -26,7 +26,18 @@ namespace DiscipleClan.Cards.Shifter
                         TargetMode = TargetMode.Room,
                         TargetTeamType = Team.Type.Monsters,
                         ParamInt = 5,
+                    },
+                    new CardEffectDataBuilder
+                    {
+                        EffectStateType = typeof(CardEffectAddTempCardUpgradeToUnits),
+                        TargetMode = TargetMode.Room,
+                        TargetTeamType = Team.Type.Monsters,
+                        ParamCardUpgradeData = new CardUpgradeDataBuilder
+                        {
+                            BonusDamage = 5,
+                        }.Build()
                     }
+
                 },
                 
                 TraitBuilders = new List<CardTraitDataBuilder>

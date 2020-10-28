@@ -44,20 +44,17 @@ namespace DiscipleClan.Cards.Pyrepact
                 Health = 1,
                 AttackDamage = 3,
 
+                RoomModifierBuilders = new List<RoomModifierDataBuilder>
+                {
+                    new RoomModifierDataBuilder
+                    {
+                        RoomStateModifierClassType = typeof(RoomStateEnergyModifier),
+                        ParamInt = 1,
+                    }
+                },
+
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
                 {
-                    new CharacterTriggerDataBuilder
-                    {
-                        Trigger = CharacterTriggerData.Trigger.OnTurnBegin,
-                        EffectBuilders = new List<CardEffectDataBuilder>
-                        {
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateName = "CardEffectGainEnergy",
-                                ParamInt = 1,
-                            },
-                        }
-                    },
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = CharacterTriggerData.Trigger.OnDeath,

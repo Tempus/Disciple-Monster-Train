@@ -36,9 +36,11 @@ namespace DiscipleClan.Cards.Shifter
                 NameKey = IDName + "_Name",
                 SubtypeKeys = new List<string> { "ChronoSubtype_Pythian" },
 
-                Size = 2,
+                Size = 1,
                 Health = 10,
                 AttackDamage = 2,
+
+                StartingStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId="gravity" } },
 
                 // Relocate
                 TriggerBuilders = new List<CharacterTriggerDataBuilder>
@@ -53,7 +55,8 @@ namespace DiscipleClan.Cards.Shifter
                                 ParamInt = 20,
                                 TargetMode = TargetMode.Self
                             }
-                        }
+                        },
+
                     },
                 }
             };

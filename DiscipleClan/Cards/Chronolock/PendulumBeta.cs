@@ -44,11 +44,11 @@ namespace DiscipleClan.Cards.Chronolock
                         ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
                         ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
                         ParamUseScalingParams = true,
-                        ParamInt = 2,
+                        ParamInt = 1,
                     },
                     new CardTraitDataBuilder
                     {
-                        TraitStateType = typeof(CardTraitExhaustState)
+                        TraitStateName = "CardTraitExhaustState"
                     }
                 }
             };

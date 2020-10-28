@@ -38,22 +38,23 @@ namespace DiscipleClan.Cards.Shifter
                 Health = 30,
                 AttackDamage = 15,
 
-                //TriggerBuilders = new List<CharacterTriggerDataBuilder>
-                //{
-                //    new CharacterTriggerDataBuilder
-                //    {
-                //        Trigger = CharacterTriggerData.Trigger.PostCombat,
-                //        EffectBuilders = new List<CardEffectDataBuilder>
-                //        {
-                //            new CardEffectDataBuilder
-                //            {
-                //                EffectStateName = typeof(ShinyShoe.CardEffectTeleport).AssemblyQualifiedName,
-                //                TargetMode = TargetMode.Self,
-                //                TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
-                //            }
-                //        }
-                //    },
-                //}
+                TriggerBuilders = new List<CharacterTriggerDataBuilder>
+                {
+                    new CharacterTriggerDataBuilder
+                    {
+                        Trigger = CharacterTriggerData.Trigger.EndTurnPreHandDiscard,
+                        EffectBuilders = new List<CardEffectDataBuilder>
+                        {
+                            new CardEffectDataBuilder
+                            {
+                                EffectStateType = typeof(CardEffectBump),
+                                TargetMode = TargetMode.Self,
+                                TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                                ParamInt = 2,
+                            }
+                        }
+                    },
+                }
             };
             characterDataBuilder.AddStartingStatusEffect("gravity", 12);
 

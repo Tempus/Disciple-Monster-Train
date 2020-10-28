@@ -13,7 +13,7 @@ namespace DiscipleClan.Cards.Chronolock
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 2,
+                Cost = 3,
                 Rarity = CollectableRarity.Rare,
 
                 EffectBuilders = new List<CardEffectDataBuilder>

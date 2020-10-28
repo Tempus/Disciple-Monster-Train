@@ -14,7 +14,7 @@ namespace DiscipleClan.Cards.Pyrepact
             // Basic Card Stats 
             CardDataBuilder railyard = new CardDataBuilder
             {
-                Cost = 3,
+                Cost = 2,
                 Rarity = CollectableRarity.Rare,
 
                 EffectBuilders = new List<CardEffectDataBuilder>
@@ -24,7 +24,7 @@ namespace DiscipleClan.Cards.Pyrepact
                         EffectStateName = "CardEffectAddStatusEffect",
                         TargetMode = TargetMode.DropTargetCharacter,
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
-                        ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=0, statusId=Sweep } },
+                        ParamStatusEffects = new StatusEffectStackData[] { new StatusEffectStackData { count=1, statusId=Sweep } },
                     },
                     new CardEffectDataBuilder
                     {

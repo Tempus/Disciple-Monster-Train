@@ -3,6 +3,7 @@ using Trainworks.Builders;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Trainworks.Managers;
 
 namespace DiscipleClan.CardEffects
 {
@@ -33,6 +34,9 @@ namespace DiscipleClan.CardEffects
             {
                 statusList.Add(new StatusEffectStackData { statusId=status.State.GetStatusId(), count=status.Count });
             }
+
+            //unit.GetSpawnerCard().ResetTemporaryCardModifiers(ProviderManager.SaveManager);
+            //unit.GetSpawnerCard().
 
             // Description builder
             string desc = "";
@@ -95,19 +99,21 @@ namespace DiscipleClan.CardEffects
                             StatusEffectUpgrades = statusList,
                         }.Build(),
                         TargetMode = TargetMode.DropTargetCharacter,
+                        TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
+                        TargetIgnoreBosses = true,
                     }
                 },
                 TraitBuilders = new List<CardTraitDataBuilder>
                 {
                     new CardTraitDataBuilder
                     {
-                        TraitStateType = typeof(CardTraitExhaustState),
+                        TraitStateType = typeof(CardTraitSelfPurge),
                     }
                 }
             };
 
             IDOffset++;
-            cardEffectParams.cardManager.AddCard(cardDataBuilder.Build(), CardPile.HandPile, 1, 1, false, false, null);
+            cardEffectParams.cardManager.AddCard(cardDataBuilder.Build(), CardPile.DeckPileRandom, 1, 1, false, false, null);
 
             yield break;
         }

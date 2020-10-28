@@ -25,6 +25,13 @@ namespace DiscipleClan.Cards.Shifter
                         TargetTeamType = Team.Type.Heroes | Team.Type.Monsters,
                     }
                 },
+                TraitBuilders = new List<CardTraitDataBuilder>
+                {
+                    new CardTraitDataBuilder
+                    {
+                        TraitStateName = "CardTraitExhaustState",
+                    }
+                }
             };
 
             Utils.AddSpell(railyard, IDName);

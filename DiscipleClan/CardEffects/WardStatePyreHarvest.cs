@@ -40,7 +40,7 @@ namespace DiscipleClan.CardEffects
     {
         static IEnumerator Postfix(IEnumerator __result, CharacterState __instance, CardState damageSourceCard, CharacterState attacker)
         {
-            if (!__instance.IsDead)
+            if (!__instance.IsDead || ProviderManager.SaveManager.PreviewMode)
             {
                 yield break;
             }

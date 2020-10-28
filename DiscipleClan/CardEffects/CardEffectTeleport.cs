@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CardEffectBump;
+using Trainworks.Managers;
 
 namespace ShinyShoe
 {
@@ -26,7 +27,8 @@ namespace ShinyShoe
             int chosenFloor = 0;
             if (availableFloors.Count > 0)
             {
-                chosenFloor = availableFloors[RandomManager.Range(0, availableFloors.Count, RngId.Battle)];
+                RngId rngId = cardEffectParams.saveManager.PreviewMode ? RngId.BattleTest : RngId.Battle;
+                chosenFloor = availableFloors[RandomManager.Range(0, availableFloors.Count, rngId)];                
             }
 
             yield return bumper.Bump(cardEffectParams, chosenFloor - cardEffectParams.targets[0].GetCurrentRoomIndex());
@@ -60,14 +62,18 @@ namespace ShinyShoe
                     continue;
 
                 // Room is full
-                if (target.GetTeamType() == Team.Type.Heroes && room.GetFirstEmptyHeroPoint() == null)
+                if (target.GetTeamType() == Team.Type.Heroes && room.GetRemainingSpawnPointCount(Team.Type.Heroes) == 0)
                     continue;
 
-                if (target.GetTeamType() == Team.Type.Monsters && room.GetFirstEmptyMonsterPoint() == null)
+                if (target.GetTeamType() == Team.Type.Monsters && room.GetRemainingSpawnPointCount(Team.Type.Monsters) == 0)
                     continue;
 
                 // It's a monster, and this is the Pyre room where we can't go.
                 if (target.GetTeamType() == Team.Type.Monsters && room.GetIsPyreRoom())
+                    continue;
+
+                // It's the outer boss, and we're not in relentless yet, and this is the Pyre room where we can't go.
+                if (target.IsOuterTrainBoss() && room.GetIsPyreRoom() && target.GetBossState().GetCurrentAttackPhase() == BossState.AttackPhase.Relentless)
                     continue;
 
                 // Looks like this is a valid room!
@@ -79,7 +85,7 @@ namespace ShinyShoe
 
         public string GetTooltipBaseKey(CardEffectState cardEffectState)
         {
-            return "CardEffectTeleport_TooltipTitle";
+            return "CardEffectTeleport";
         }
     }
 }

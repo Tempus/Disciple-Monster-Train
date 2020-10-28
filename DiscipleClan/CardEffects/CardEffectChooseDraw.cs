@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using HarmonyLib;
 
 namespace DiscipleClan.CardEffects
 {
@@ -37,19 +38,19 @@ namespace DiscipleClan.CardEffects
           CardEffectState cardEffectState,
           CardEffectParams cardEffectParams)
         {
-            var pileDiscard = cardEffectParams.cardManager.GetDiscardPile();
-            var pileDeck = cardEffectParams.cardManager.GetDrawPile();
+            var pileDiscard = Traverse.Create(cardEffectParams.cardManager).Field<List<CardState>>("pileDiscard");
+            var pileDeck = Traverse.Create(cardEffectParams.cardManager).Field<List<CardState>>("pileDeck");
 
-            if (pileDeck.Count == 0)
+            if (pileDeck.Value.Count == 0)
             {
-                List<CardState> list = pileDeck;
-                pileDeck = pileDiscard;
-                pileDiscard = list;
+                List<CardState> list = pileDeck.Value;
+                pileDeck.Value = pileDiscard.Value;
+                pileDiscard.Value = list;
                 cardEffectParams.cardManager.ShuffleDeck();
                 ProviderManager.TryGetProvider<SoundManager>(out SoundManager soundManager);
                 soundManager.PlaySfx("UI_PlayCardShuffle");
             }
-            if (pileDeck.Count > 0)
+            if (pileDeck.Value.Count > 0)
                 yield return (object)this.HandleChooseCard(cardEffectState, cardEffectParams);
 
             yield break;

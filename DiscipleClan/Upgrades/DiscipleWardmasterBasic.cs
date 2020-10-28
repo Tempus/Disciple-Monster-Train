@@ -25,7 +25,7 @@ namespace DiscipleClan.Upgrades
                 {
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = OnRelocate.OnRelocateCharTrigger.GetEnum(),
+                        Trigger = CharacterTriggerData.Trigger.PostCombat,
                         DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {

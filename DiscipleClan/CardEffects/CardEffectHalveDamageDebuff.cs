@@ -24,7 +24,7 @@ namespace DiscipleClan.CardEffects
 				{
 					continue;
 				}
-				buffAmount = -(target.GetAttackDamageWithoutStatusEffectBuffs() / 2);
+				buffAmount = (target.GetAttackDamageWithoutStatusEffectBuffs() / 2);
 				if (cardEffectState.GetParentCardState() != null)
 				{
 					CardTraitState.ApplyingDamageParameters applyingDamageParameters = default(CardTraitState.ApplyingDamageParameters);
@@ -39,21 +39,19 @@ namespace DiscipleClan.CardEffects
 					}
 				}
 
-				CardUpgradeData upgrade = new CardUpgradeDataBuilder
-				{
-					BonusDamage = -buffAmount
-				}.Build();
+				target.DebuffDamage(buffAmount);
 
-				var upgradeState = new CardUpgradeState();
-				upgradeState.Setup(upgrade);
+				//CardUpgradeData upgrade = new CardUpgradeDataBuilder
+				//{
+				//	BonusDamage = -buffAmount
+				//}.Build();
 
-				target.ApplyCardUpgrade(upgradeState);
+				//var upgradeState = new CardUpgradeState();
+				//upgradeState.Setup(upgrade);
+
+				//target.ApplyCardUpgrade(upgradeState);
 				
 				NotifyHealthEffectTriggered(cardEffectParams.saveManager, cardEffectParams.popupNotificationManager, GetActivatedDescription(cardEffectState), target.GetCharacterUI());
-				if (!cardEffectParams.saveManager.PreviewMode && target.IsPyreHeart() && cardEffectState.GetTargetMode() == TargetMode.Pyre)
-				{
-					cardEffectParams.saveManager.pyreAttackChangedSignal.Dispatch(cardEffectParams.saveManager.GetDisplayedPyreAttack(), cardEffectParams.saveManager.GetDisplayedPyreNumAttacks());
-				}
 			}
 			yield break;
 		}
@@ -77,10 +75,7 @@ namespace DiscipleClan.CardEffects
 		{
 			foreach (CharacterState target in cardEffectParams.targets)
 			{
-				if (TestEffectOnTarget(cardEffectState, cardEffectParams, target))
-				{
-					return true;
-				}
+				return TestEffectOnTarget(cardEffectState, cardEffectParams, target);
 			}
 			return false;
 		}

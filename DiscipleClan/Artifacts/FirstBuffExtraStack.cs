@@ -30,17 +30,17 @@ namespace DiscipleClan.Artifacts
                 
             };
 
-            ProviderManager.TryGetProvider<StatusEffectManager>(out StatusEffectManager statMan);
-            List<StatusEffectStackData> statuses = new List<StatusEffectStackData>();
-            foreach (var status in statMan.GetAllStatusEffectsData().GetStatusEffectData())
-            {
-                if (status.GetDisplayCategory() != StatusEffectData.DisplayCategory.Persistent)
-                {
-                    var stack = new StatusEffectStackData { statusId = status.GetStatusId(), count = 1 };
-                    statuses.Add(stack);
-                }
-            }
-            relic.EffectBuilders[0].ParamStatusEffects = statuses.ToArray();
+            //ProviderManager.TryGetProvider<StatusEffectManager>(out StatusEffectManager statMan);
+            //List<StatusEffectStackData> statuses = new List<StatusEffectStackData>();
+            //foreach (var status in statMan.GetAllStatusEffectsData().GetStatusEffectData())
+            //{
+            //    if (status.GetDisplayCategory() != StatusEffectData.DisplayCategory.Persistent)
+            //    {
+            //        var stack = new StatusEffectStackData { statusId = status.GetStatusId(), count = 1 };
+            //        statuses.Add(stack);
+            //    }
+            //}
+            //relic.EffectBuilders[0].ParamStatusEffects = statuses.ToArray();
             Utils.AddRelic(relic, ID);
 
             relic.BuildAndRegister();

@@ -23,7 +23,7 @@ namespace DiscipleClan.CardEffects
 			if (mainClass == DiscipleClan.clanRef)
             {
 				otherClass = subClass;
-				exiled = ProviderManager.SaveManager.GetMainChampionIndex() != 0;
+				exiled = ProviderManager.SaveManager.GetSubChampionIndex() != 0;
 			}
 			else
             {
@@ -37,31 +37,31 @@ namespace DiscipleClan.CardEffects
             switch (otherClass.GetID())
             {
                 case Hellhorned:
-					if (exiled)
+					if (!exiled)
 	                    statusEffectStackData = new StatusEffectStackData { statusId = Rage, count = Param };
 					else
 						statusEffectStackData = new StatusEffectStackData { statusId = Armor, count = Param * 2 };
 					break;
                 case Awoken:
-					if (exiled)
+					if (!exiled)
 						statusEffectStackData = new StatusEffectStackData { statusId = Spikes, count = Param };
 					else
 						statusEffectStackData = new StatusEffectStackData { statusId = Regen, count = Param };
 					break;
                 case Stygian:
-					if (exiled)
+					if (!exiled)
 						statusEffectStackData = new StatusEffectStackData { statusId = SpellWeakness, count = Param / 2 };
 					else
-						statusEffectStackData = new StatusEffectStackData { statusId = Sap, count = Param / 2 };
+						statusEffectStackData = new StatusEffectStackData { statusId = Frostbite, count = Param };
 					break;
                 case Umbra:
-					if (exiled)
+					if (!exiled)
 						statusEffectStackData = new StatusEffectStackData { statusId = DamageShield, count = Param / 2 };
 					else
 						statusEffectStackData = new StatusEffectStackData { statusId = Lifesteal, count = Param / 2 };
 					break;
                 case MeltingRemnant:
-					if (exiled)
+					if (!exiled)
 						statusEffectStackData = new StatusEffectStackData { statusId = Burnout, count = Param + 1 };
 					else
 						statusEffectStackData = new StatusEffectStackData { statusId = Stealth, count = Param / 2 };
@@ -79,7 +79,7 @@ namespace DiscipleClan.CardEffects
             LocalizationUtil.GeneratedTextDisplay = LocalizationUtil.GeneratedTextDisplayType.Show;
             var status = GetStatusEffectStack(cardEffectState);
 			if (status == null)
-				return "Apply a status dependent on your allied clan.<br><i>(See tooltips)</i>";
+				return "Apply a status dependent on your paired clan.<br><i>(See tooltips)</i>";
 			return "Apply " + StatusEffectManager.GetLocalizedName(status.statusId, status.count, true);
         }
 
@@ -143,21 +143,26 @@ namespace DiscipleClan.CardEffects
 			}
 		}
 
-		public override void GetTooltipsStatusList(CardEffectState cardEffectState, ref List<string> outStatusIdList)
+		//public override void GetTooltipsStatusList(CardEffectState cardEffectState, ref List<string> outStatusIdList)
+		//{
+		//	StatusEffectStackData statusEffectStack = GetStatusEffectStack(cardEffectState);
+		//	if (statusEffectStack != null)
+		//	{
+		//		outStatusIdList.Add(statusEffectStack.statusId);
+		//	} else
+  //          {
+		//		outStatusIdList.Add(Rage);
+		//		outStatusIdList.Add(Regen);
+		//		outStatusIdList.Add(SpellWeakness);
+		//		outStatusIdList.Add(DamageShield);
+		//		outStatusIdList.Add(Burnout);
+		//		outStatusIdList.Add("gravity");
+		//	}
+		//}
+		public string GetTooltipBaseKey(CardEffectState cardEffectState)
 		{
-			StatusEffectStackData statusEffectStack = GetStatusEffectStack(cardEffectState);
-			if (statusEffectStack != null)
-			{
-				outStatusIdList.Add(statusEffectStack.statusId);
-			} else
-            {
-				outStatusIdList.Add(Rage);
-				outStatusIdList.Add(Regen);
-				outStatusIdList.Add(SpellWeakness);
-				outStatusIdList.Add(DamageShield);
-				outStatusIdList.Add(Burnout);
-				outStatusIdList.Add("gravity");
-			}
+			return "CardEffectAddClassStatus";
 		}
+
 	}
 }

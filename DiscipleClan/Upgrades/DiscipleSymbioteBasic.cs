@@ -22,13 +22,15 @@ namespace DiscipleClan.Upgrades
                 //costReduction = 0,
                 //xCostReduction = 0,
                 //bonusHeal = 0,
-                BonusSize = -1,
+                BonusSize = 0,
 
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
                 TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> {
                     new CharacterTriggerDataBuilder {
                         Trigger = CharacterTriggerData.Trigger.OnUnscaledSpawn,
                         DescriptionKey = IDName + "_Desc",
+                        HideTriggerTooltip = true,
+                        DisplayEffectHintText = false,
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

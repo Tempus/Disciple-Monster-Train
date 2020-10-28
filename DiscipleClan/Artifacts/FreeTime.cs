@@ -2,10 +2,11 @@
 using Trainworks.Builders;
 using System.Collections.Generic;
 using static Trainworks.Constants.VanillaRelicPoolIDs;
+using HarmonyLib;
 
 namespace DiscipleClan.Artifacts
 {
-    class BullshitThing
+    class FreeTime
     {
         public static string ID = "BullshitThing";
 
@@ -21,7 +22,7 @@ namespace DiscipleClan.Artifacts
                     {
                          RelicEffectClassName = "RelicEffectModifyCardTypeCost",
                          ParamCardType = CardType.Spell,
-                         ParamInt = -99,
+                         ParamInt = -1,
                     },
                     new RelicEffectDataBuilder
                     {
@@ -36,6 +37,17 @@ namespace DiscipleClan.Artifacts
 
             var r = relic.BuildAndRegister();
             r.GetNameEnglish();
+        }
+    }
+
+    [HarmonyPatch(typeof(RelicEffectAddTrait), "ApplyCardStateModifiers")]
+    class FreeTimeLoadingPatch
+    {
+        static bool Prefix(RelicEffectAddTrait __instance, CardState cardState, SaveManager saveManager, CardManager cardManager, RelicManager relicManager)
+        {
+            if (cardManager == null)
+                return false;
+            return true;
         }
     }
 }

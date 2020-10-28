@@ -29,6 +29,8 @@ namespace DiscipleClan.Upgrades
                     new CharacterTriggerDataBuilder {
                         Trigger = CharacterTriggerData.Trigger.OnUnscaledSpawn,
                         DescriptionKey = IDName + "_Desc",
+                        HideTriggerTooltip = true,
+                        DisplayEffectHintText = false,
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder

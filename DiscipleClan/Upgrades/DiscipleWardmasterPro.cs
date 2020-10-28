@@ -18,14 +18,14 @@ namespace DiscipleClan.Upgrades
                 UpgradeDescriptionKey = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
                 BonusDamage = -5,
-                BonusHP = 50,
+                BonusHP = 60,
 
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
                 TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>
                 {
                     new CharacterTriggerDataBuilder
                     {
-                        Trigger = OnRelocate.OnRelocateCharTrigger.GetEnum(),
+                        Trigger = CharacterTriggerData.Trigger.PostCombat,
                         DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
