@@ -30,6 +30,7 @@ namespace DiscipleClan.CardEffects
             flatIncrease = cardEffectState.GetParamInt();
             multiplyIncrease = cardEffectState.GetParamMultiplier();
             targeting = cardEffectState.GetAdditionalParamInt();
+            cardEffectState.SetShouldOverrideTriggerUI(true);
 
             instance = this;
 
@@ -62,6 +63,7 @@ namespace DiscipleClan.CardEffects
                 combatManager = ProviderManager.CombatManager,
                 roomManager = roomManager,
                 skipCharacters = new List<CharacterState> { owner },
+                targetModeStatusEffectsFilter = new List<string>(),
             };
 
             int statCount = (int)Math.Ceiling(count * multiplyIncrease);

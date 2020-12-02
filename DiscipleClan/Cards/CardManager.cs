@@ -51,7 +51,7 @@ namespace DiscipleClan.Cards
     [HarmonyPatch(typeof(UpgradeTreeUI), "RefreshDiscovered")]
     class RevealAllChamps
     {
-        // Creates and registers card data for each card class
+        // Sets all upgrades for champs to revealed in the log
         static void Prefix(UpgradeTreeUI __instance, MetagameSaveData metagameSave)
         {
             foreach (ClassData classData in ProviderManager.SaveManager.GetBalanceData().GetClassDatas())

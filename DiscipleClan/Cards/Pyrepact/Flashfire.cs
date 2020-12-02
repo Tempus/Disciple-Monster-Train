@@ -24,6 +24,13 @@ namespace DiscipleClan.Cards.Pyrepact
                         EffectStateName = "CardEffectDamage",
                         TargetMode = TargetMode.Room,
                         TargetTeamType = Team.Type.Heroes,
+                        AdditionalTooltips = new AdditionalTooltipData[] {
+                                    new AdditionalTooltipData {
+                                        isTriggerTooltip = true,
+                                        titleKey = "Pyreboost_TooltipTitle",
+                                        descriptionKey = "Pyreboost_TooltipText",
+                                    },
+                                },
                     }
                 },
                 TraitBuilders = new List<CardTraitDataBuilder>

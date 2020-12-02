@@ -147,6 +147,8 @@ namespace DiscipleClan
             RefundXCosts.Make();
             // SeersBoostDivine.Make();
             FirstBuffExtraStack.Make();
+            GoldOnPyreKill.Make();
+            HighestHPToFront.Make();
         }
 
         static void MakeCards()

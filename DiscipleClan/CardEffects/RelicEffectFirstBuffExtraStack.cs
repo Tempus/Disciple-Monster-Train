@@ -57,7 +57,7 @@ namespace DiscipleClan.CardEffects
 
 		public int GetStatusEffectStacksToAdd(StatusEffectStackData statusEffectStackData, CharacterState onCharacter)
 		{
-			if (!canApply || (onCharacter = null) || statusEffectStackData == null) { return 0; }
+			if (!canApply || (onCharacter == null) || statusEffectStackData == null || statusEffectStackData.statusId == null) { return 0; }
 
 			ProviderManager.TryGetProvider<StatusEffectManager>(out StatusEffectManager statusManager);
 			var status = statusManager.GetStatusEffectDataById(statusEffectStackData.statusId);
@@ -67,9 +67,9 @@ namespace DiscipleClan.CardEffects
 			bool validBuff = status.GetDisplayCategory() == StatusEffectData.DisplayCategory.Positive || statusEffectStackData.statusId == Armor || statusEffectStackData.statusId == Burnout;
 			bool validDebuff = status.GetDisplayCategory() == StatusEffectData.DisplayCategory.Negative;
 
-
 			if (validBuff   && onCharacter.GetTeamType() != Team.Type.Monsters) { return 0; }
 			if (validDebuff && onCharacter.GetTeamType() == Team.Type.Monsters) { return 0; }
+			if (!validBuff && !validDebuff) { return 0; }
 
 			lastStatus = statusEffectStackData.statusId;
 			return 1;

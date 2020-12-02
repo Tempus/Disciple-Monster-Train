@@ -29,6 +29,7 @@ namespace DiscipleClan.Upgrades
                     new CharacterTriggerDataBuilder {
                         Trigger = CharacterTriggerData.Trigger.OnUnscaledSpawn,
                         DescriptionKey = IDName + "_Desc",
+                        HideTriggerTooltip = true,
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
@@ -40,6 +41,19 @@ namespace DiscipleClan.Upgrades
                                 ParamInt = 1,
                                 AdditionalParamInt = 0,
                                 ParamMultiplier = 0.5f,
+                                AdditionalTooltips = new AdditionalTooltipData[] {
+                                    new AdditionalTooltipData {
+                                        isTriggerTooltip = true,
+                                        titleKey = "Echo_TooltipTitle",
+                                        descriptionKey = "Echo_TooltipText",
+                                    },
+                                    new AdditionalTooltipData {
+                                        isTriggerTooltip = true,
+                                        titleKey = "Reflect_TooltipTitle",
+                                        descriptionKey = "Reflect_TooltipText",
+                                    },
+                                },
+                                HideTooltip = true,
                             }
                         }
                     }

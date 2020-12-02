@@ -57,7 +57,7 @@ namespace DiscipleClan.Upgrades
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder {
                                      BonusDamage = buffAmount,
                                 }.Build(),
-                                TargetMode = TargetMode.BackInRoom,
+                                TargetMode = TargetMode.Room,
                                 TargetTeamType = Team.Type.Monsters,
                             },
                             new CardEffectDataBuilder
@@ -66,7 +66,7 @@ namespace DiscipleClan.Upgrades
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder {
                                      BonusHP = buffAmount
                                 }.Build(),
-                                TargetMode = TargetMode.FrontInRoom,
+                                TargetMode = TargetMode.Room,
                                 TargetTeamType = Team.Type.Monsters,
                             },
                         }

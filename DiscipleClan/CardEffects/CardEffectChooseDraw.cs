@@ -69,7 +69,7 @@ namespace DiscipleClan.CardEffects
                     targetMode = cardEffectState.GetTargetMode(),
                     showCancel = false,
                     titleKey = cardEffectState.GetParentCardState().GetTitleKey(),
-                    instructionsKey = "ScreenDeck_Select_CardEffectRecursion",
+                    instructionsKey = "SeekCopyInstructions",
                     numCardsSelectable = cardEffectState.GetParamInt(),
                 });
                 deckScreen.AddDeckScreenCardStateChosenDelegate((DeckScreen.CardStateChosenDelegate)(chosenCardState =>
