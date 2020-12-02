@@ -85,7 +85,7 @@ namespace DiscipleClan.CardEffects
                 Description = desc,
                 OverrideDescriptionKey = "TimeStampInked" + IDOffset + "_CardText",
                 Cost = 0,
-                AssetPath = "chrono/Card Assets/15924082478465092503139501393540.jpg",
+                AssetPath = "Card Assets/15924082478465092503139501393540.jpg",
                 EffectBuilders = new List<CardEffectDataBuilder> 
                 {
                     new CardEffectDataBuilder

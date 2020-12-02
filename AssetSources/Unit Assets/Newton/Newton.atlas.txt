@@ -1,0 +1,62 @@
+
+Newton.png
+size: 128,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Newton/Tail
+  rotate: false
+  xy: 1, 94
+  size: 99, 26
+  orig: 99, 26
+  offset: 0, 0
+  index: -1
+Newton/RearLeftLeg
+  rotate: false
+  xy: 66, 122
+  size: 26, 32
+  orig: 26, 32
+  offset: 0, 0
+  index: -1
+Newton/FrontLeftLeg
+  rotate: false
+  xy: 1, 122
+  size: 35, 34
+  orig: 35, 34
+  offset: 0, 0
+  index: -1
+Newton/Body
+  rotate: false
+  xy: 1, 1
+  size: 99, 43
+  orig: 99, 43
+  offset: 0, 0
+  index: -1
+Newton/RearRightLeg
+  rotate: false
+  xy: 38, 122
+  size: 26, 32
+  orig: 26, 32
+  offset: 0, 0
+  index: -1
+Newton/Head
+  rotate: false
+  xy: 1, 46
+  size: 66, 46
+  orig: 66, 46
+  offset: 0, 0
+  index: -1
+Newton/Eye
+  rotate: false
+  xy: 102, 1
+  size: 21, 23
+  orig: 21, 23
+  offset: 0, 0
+  index: -1
+Newton/FrontRightLeg
+  rotate: false
+  xy: 69, 46
+  size: 35, 35
+  orig: 35, 35
+  offset: 0, 0
+  index: -1

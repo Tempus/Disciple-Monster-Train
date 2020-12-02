@@ -38,7 +38,7 @@ namespace DiscipleClan.StatusEffects
                 TriggerStage = StatusEffectData.TriggerStage.OnPreMovement,
                 IsStackable = true,
                 RemoveStackAtEndOfTurn = true,
-                IconPath = "chrono/Clan Assets/clan_32.png",
+                IconPath = "Clan Assets/clan_32.png",
             }.Build();
         }
     }

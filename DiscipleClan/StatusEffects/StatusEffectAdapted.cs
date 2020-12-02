@@ -52,7 +52,7 @@ namespace DiscipleClan.StatusEffects
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
                 TriggerStage = StatusEffectData.TriggerStage.OnPreAttacked,
                 IsStackable = false,
-                IconPath = "chrono/Status/life-in-the-balance.png",
+                IconPath = "Status/life-in-the-balance.png",
             }.Build();
         }
     }

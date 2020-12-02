@@ -59,7 +59,7 @@ namespace DiscipleClan.StatusEffects
                 StatusId = "pyrelink",
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
                 TriggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
-                IconPath = "chrono/Status/fire-dash.png",
+                IconPath = "Status/fire-dash.png",
                 IsStackable = true,
             }.Build();
         }

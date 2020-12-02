@@ -1,0 +1,104 @@
+
+Pyresnail.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+PyresnailFlattened/RearShell
+  rotate: false
+  xy: 493, 518
+  size: 488, 430
+  orig: 488, 430
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/PyreGlow
+  rotate: false
+  xy: 1, 1
+  size: 515, 515
+  orig: 515, 515
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/L_Stalk
+  rotate: false
+  xy: 1749, 504
+  size: 55, 94
+  orig: 55, 94
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/L_Eye
+  rotate: false
+  xy: 1806, 504
+  size: 67, 68
+  orig: 67, 68
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/L_Shimmer
+  rotate: false
+  xy: 1749, 626
+  size: 23, 19
+  orig: 23, 19
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/Legs
+  rotate: false
+  xy: 1431, 657
+  size: 431, 197
+  orig: 431, 197
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/Shell_Shadow
+  rotate: false
+  xy: 983, 518
+  size: 446, 430
+  orig: 446, 430
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/Glowing_PyreShard
+  rotate: false
+  xy: 1431, 1
+  size: 322, 349
+  orig: 322, 349
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/Shell_Holder
+  rotate: false
+  xy: 1, 518
+  size: 490, 433
+  orig: 490, 433
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/Torso
+  rotate: false
+  xy: 1431, 352
+  size: 316, 303
+  orig: 316, 303
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/Nose
+  rotate: false
+  xy: 1749, 352
+  size: 112, 150
+  orig: 112, 150
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/R_Stalk
+  rotate: false
+  xy: 1864, 641
+  size: 35, 103
+  orig: 35, 103
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/R_Eye
+  rotate: false
+  xy: 1806, 574
+  size: 66, 65
+  orig: 66, 65
+  offset: 0, 0
+  index: -1
+PyresnailFlattened/R_Shimmer
+  rotate: false
+  xy: 1749, 600
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: -1

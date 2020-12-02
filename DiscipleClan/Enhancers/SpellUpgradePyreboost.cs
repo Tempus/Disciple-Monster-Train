@@ -21,7 +21,7 @@ namespace DiscipleClan.Enhancers
                 //ClanID = DiscipleClan.clanRef.GetID(),
                 NameKey = ID + "_Name",
                 DescriptionKey = ID + "_Desc",
-                AssetPath = "chrono/Enhancer/" + ID + ".png",
+                AssetPath = "Enhancer/" + ID + ".png",
                 Rarity = CollectableRarity.Uncommon,
                 CardType = CardType.Spell,
                 EnhancerPoolIDs = new List<string> { SpellUpgradePool },
@@ -30,7 +30,7 @@ namespace DiscipleClan.Enhancers
                     UpgradeTitleKey = ID + "_Name",
                     UpgradeDescriptionKey = ID + "_CardDesc",
                     HideUpgradeIconOnCard = false,
-                    UpgradeIconPath = ("chrono/Enhancer/" + ID + ".png"),
+                    UpgradeIconPath = ("Enhancer/" + ID + ".png"),
                     TraitDataUpgradeBuilders = new List<CardTraitDataBuilder>
                     {
                         new CardTraitDataBuilder

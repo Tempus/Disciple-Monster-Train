@@ -14,7 +14,7 @@ namespace DiscipleClan.Artifacts
         {
             var relic = new CollectableRelicDataBuilder
             {
-                IconPath = "chrono/Relic/ErrantPinwheel.png",
+                IconPath = "Relic/ErrantPinwheel.png",
                 RelicPoolIDs = new List<string> { MegaRelicPool },
                 EffectBuilders = new List<RelicEffectDataBuilder>
                 {

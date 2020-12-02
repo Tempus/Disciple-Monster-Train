@@ -1,0 +1,97 @@
+
+CinderbornB.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+CinderbornB/BLLeg
+  rotate: false
+  xy: 276, 204
+  size: 33, 50
+  orig: 33, 50
+  offset: 0, 0
+  index: -1
+CinderbornB/FLLeg
+  rotate: false
+  xy: 215, 138
+  size: 59, 101
+  orig: 59, 101
+  offset: 0, 0
+  index: -1
+CinderbornB/Smokestack
+  rotate: false
+  xy: 119, 1
+  size: 50, 135
+  orig: 50, 135
+  offset: 0, 0
+  index: -1
+CinderbornB/Furnace
+  rotate: false
+  xy: 1, 1
+  size: 116, 145
+  orig: 116, 145
+  offset: 0, 0
+  index: -1
+CinderbornB/Furnace_Windows
+  rotate: false
+  xy: 311, 227
+  size: 53, 25
+  orig: 53, 25
+  offset: 0, 0
+  index: -1
+CinderbornB/Furnace_Holes
+  rotate: false
+  xy: 119, 138
+  size: 94, 66
+  orig: 94, 66
+  offset: 0, 0
+  index: -1
+CinderbornB/FurnaceBase
+  rotate: false
+  xy: 74, 206
+  size: 113, 29
+  orig: 113, 29
+  offset: 0, 0
+  index: -1
+CinderbornB/BRLeg
+  rotate: false
+  xy: 343, 138
+  size: 46, 87
+  orig: 46, 87
+  offset: 0, 0
+  index: -1
+CinderbornB/BRThigh
+  rotate: false
+  xy: 430, 1
+  size: 37, 32
+  orig: 37, 32
+  offset: 0, 0
+  index: -1
+CinderbornB/FRLeg
+  rotate: false
+  xy: 1, 148
+  size: 71, 105
+  orig: 71, 105
+  offset: 0, 0
+  index: -1
+CinderbornB/L_Arm
+  rotate: false
+  xy: 74, 148
+  size: 42, 54
+  orig: 42, 54
+  offset: 0, 0
+  index: -1
+CinderbornB/R_Arm
+  rotate: false
+  xy: 391, 1
+  size: 37, 69
+  orig: 37, 69
+  offset: 0, 0
+  index: -1
+CinderbornB/Cute_Head
+  rotate: false
+  xy: 276, 138
+  size: 65, 64
+  orig: 65, 64
+  offset: 0, 0
+  index: -1

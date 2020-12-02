@@ -39,7 +39,7 @@ namespace DiscipleClan.StatusEffects
                 TriggerStage = StatusEffectData.TriggerStage.OnPreAttacking,
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
                 RemoveStackAtEndOfTurn = false,
-                IconPath = "chrono/Clan Assets/clan_32.png",
+                IconPath = "Clan Assets/clan_32.png",
             }.Build();
         }
     }

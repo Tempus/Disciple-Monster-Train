@@ -1,0 +1,48 @@
+
+Galilizard.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Galilizard/Left_Foreleg
+  rotate: false
+  xy: 217, 402
+  size: 52, 70
+  orig: 52, 70
+  offset: 0, 0
+  index: -1
+Galilizard/Body_Speckles
+  rotate: false
+  xy: 1, 1
+  size: 374, 313
+  orig: 374, 313
+  offset: 0, 0
+  index: -1
+Galilizard/Right_Foreleg
+  rotate: false
+  xy: 187, 316
+  size: 61, 84
+  orig: 61, 84
+  offset: 0, 0
+  index: -1
+Galilizard/Right_Hindeg
+  rotate: false
+  xy: 146, 432
+  size: 69, 64
+  orig: 69, 64
+  offset: 0, 0
+  index: -1
+Galilizard/Head
+  rotate: false
+  xy: 1, 316
+  size: 184, 114
+  orig: 184, 114
+  offset: 0, 0
+  index: -1
+Galilizard/Eyes
+  rotate: false
+  xy: 1, 432
+  size: 143, 73
+  orig: 143, 73
+  offset: 0, 0
+  index: -1

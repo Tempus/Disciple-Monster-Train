@@ -1,0 +1,18 @@
+Arcadian Clan, a full additional faction by Chronometrics. Features:
+
+- A full new fully playable clan faction, the Arcadians
+- 40 new cards and 11 new artifacts
+- Fully animated custom unit art
+- Ascending and Descending mechanics, Pyre theming and use, and a new floor-centric mechanic called Wards
+
+
+We are currently in version 0.6.1. Upcoming milestones to reach 1.0:
+
+Bug-free - Report bugs here: https://github.com/Tempus/Disciple-Monster-Train/issues
+Card Art - 21/40 cards completed, no card animations
+Artifacts - 9/11 Artifacts completed
+Balance Pass - 2/5 passes (1 heuristic and 2 metrics-based passes upcoming)
+Tooltips & Descriptions - Incomplete
+Lore - 0/53 Lore tooltips added
+
+Appreciate everyone's bug reports! Feel free to contact me on Discord: https://discord.gg/DMTbntH

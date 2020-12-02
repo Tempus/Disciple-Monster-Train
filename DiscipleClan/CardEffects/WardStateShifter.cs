@@ -19,7 +19,7 @@ namespace DiscipleClan.CardEffects
             tooltipBodyKey = "ShifterWardBeta_Desc";
 
             var localPath = Path.GetDirectoryName(new Uri(Assembly.GetCallingAssembly().CodeBase).LocalPath);
-            wardIcon = CustomAssetManager.LoadSpriteFromPath(Path.Combine(localPath, "chrono/Unit Assets/ShifterWard.png"));
+            wardIcon = CustomAssetManager.LoadSpriteFromPath(Path.Combine(localPath, "Unit Assets/ShifterWard.png"));
         }
 
         public override IEnumerator OnTrigger(List<CharacterState> targets)

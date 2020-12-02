@@ -43,7 +43,7 @@ namespace DiscipleClan.Cards.Pyrepact
 
                 BundleLoadingInfo = new BundleAssetLoadingInfo
                 {
-                    FilePath = "chrono/arcadian_units",
+                    FilePath = "arcadian_units",
                     SpriteName = "assets/plr_ancient.png",
                     ObjectName = "assets/plr_ancient.prefab",
                     AssetType = AssetRefBuilder.AssetTypeEnum.Character

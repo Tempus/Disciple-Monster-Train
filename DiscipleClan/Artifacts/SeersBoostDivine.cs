@@ -13,7 +13,7 @@ namespace DiscipleClan.Artifacts
         {
             var relic = new CollectableRelicDataBuilder
             {
-                IconPath = "chrono/Relic/Sample.png",
+                IconPath = "Relic/Sample.png",
                 RelicPoolIDs = new List<string> { MegaRelicPool },
             };
             Utils.AddRelic(relic, ID);

@@ -16,18 +16,18 @@ namespace DiscipleClan
             ClassDataBuilder clan = new ClassDataBuilder
              {
                 ClassID = IDName,
-                DraftIconPath = "chrono/Clan Assets/Icon_CardBack_Disciple.png",
+                DraftIconPath = "Clan Assets/Icon_CardBack_Disciple.png",
 
                 IconAssetPaths = new List<string>
                 {
-                    "chrono/Clan Assets/ClanLogo_92_stroke1.png", // Clan Choice Icon
-                    "chrono/Clan Assets/ClanLogo_92_stroke2.png", // Also compendium...? 56x56
-                    "chrono/Clan Assets/ClanLogo_92_stroke1.png", // Large Coloured Icon
-                    "chrono/Clan Assets/ClanLogo_silhouette.png", // Compendium Silhouette 56x56
+                    "Clan Assets/ClanLogo_92_stroke1.png", // Clan Choice Icon
+                    "Clan Assets/ClanLogo_92_stroke2.png", // Also compendium...? 56x56
+                    "Clan Assets/ClanLogo_92_stroke1.png", // Large Coloured Icon
+                    "Clan Assets/ClanLogo_silhouette.png", // Compendium Silhouette 56x56
                 },
 
-                CardFrameUnitPath =  "chrono/Clan Assets/unit-cardframe-arcadian.png",
-                CardFrameSpellPath = "chrono/Clan Assets/spell-cardframe-arcadian.png",
+                CardFrameUnitPath =  "Clan Assets/unit-cardframe-arcadian.png",
+                CardFrameSpellPath = "Clan Assets/spell-cardframe-arcadian.png",
 
                 UiColor = new Color(0.964f, 0.729f, 0.015f, 1f),
                 UiColorDark = new Color(0.12f, 0.375f, 0.5f, 1f),
@@ -67,14 +67,14 @@ namespace DiscipleClan
                 Name = "RewardNodeData_Disciple_UnitBanner_TooltipBodyKey",
                 Description = "RewardNodeData_Disciple_UnitBanner_TooltipTitleKey",
                 RequiredClass = DiscipleClan.getClan(),
-                FrozenSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Frozen.png",
-                EnabledSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
-                EnabledVisitedSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
-                DisabledSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Disabled.png",
-                DisabledVisitedSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_VisitedDisabled.png",
-                GlowSpritePath = "chrono/Clan Assets/MSK_Map_Clan_CDisciple_01.png",
-                MapIconPath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
-                MinimapIconPath = "chrono/Clan Assets/Icon_MiniMap_ClanBanner.png",
+                FrozenSpritePath = "Clan Assets/POI_Map_Clan_CDisciple_Frozen.png",
+                EnabledSpritePath = "Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
+                EnabledVisitedSpritePath = "Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
+                DisabledSpritePath = "Clan Assets/POI_Map_Clan_CDisciple_Disabled.png",
+                DisabledVisitedSpritePath = "Clan Assets/POI_Map_Clan_CDisciple_VisitedDisabled.png",
+                GlowSpritePath = "Clan Assets/MSK_Map_Clan_CDisciple_01.png",
+                MapIconPath = "Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
+                MinimapIconPath = "Clan Assets/Icon_MiniMap_ClanBanner.png",
                 SkipCheckInBattleMode = true,
                 OverrideTooltipTitleBody = false,
                 NodeSelectedSfxCue = "Node_Banner",
@@ -83,7 +83,7 @@ namespace DiscipleClan
                         new DraftRewardDataBuilder()
                         {
                             DraftRewardID = "Disciple_UnitsDraft",
-                            _RewardSpritePath = "chrono/Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
+                            _RewardSpritePath = "Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
                             _RewardTitleKey = "ArcadianReward_Title",
                             _RewardDescriptionKey = "ArcadianReward_Desc",
                             Costs = new int[] { 100 },

@@ -28,7 +28,7 @@ namespace DiscipleClan.StatusEffects
                 DisplayCategory = StatusEffectData.DisplayCategory.Negative,
                 TriggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
                 IsStackable = true,
-                IconPath = "chrono/Status/fire-silhouette.png",
+                IconPath = "Status/fire-silhouette.png",
             }.Build();
         }
     }

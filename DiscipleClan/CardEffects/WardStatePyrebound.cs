@@ -19,7 +19,7 @@ namespace DiscipleClan.CardEffects
             tooltipBodyKey = "PyromancyWardBeta_Desc";
 
             var localPath = Path.GetDirectoryName(new Uri(Assembly.GetCallingAssembly().CodeBase).LocalPath);
-            wardIcon = CustomAssetManager.LoadSpriteFromPath(Path.Combine(localPath, "chrono/Unit Assets/SwordWard.png"));
+            wardIcon = CustomAssetManager.LoadSpriteFromPath(Path.Combine(localPath, "Unit Assets/SwordWard.png"));
 			saveManager = ProviderManager.SaveManager;
 			Setup();
 		}

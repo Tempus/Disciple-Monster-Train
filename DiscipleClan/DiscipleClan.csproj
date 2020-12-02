@@ -60,4 +60,8 @@
 	</Reference>
   </ItemGroup>
 
+    <ItemGroup>
+		<None Include="$(SolutionDir)PublishAssets\**" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+	
 </Project>

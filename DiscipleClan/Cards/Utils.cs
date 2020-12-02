@@ -9,7 +9,7 @@ namespace DiscipleClan.Cards
 {
     class Utils
     {
-        public static string rootPath = "chrono/";
+        public static string rootPath = "";
         public static string ucardPath = "Card Assets/ProtoUnitCardArt/";
         public static string scardPath = "Card Assets/DiscipleMTBetaArt/";
         public static string unitPath = "Unit Assets/";
@@ -146,7 +146,7 @@ namespace DiscipleClan.Cards
         {
             r.BundleLoadingInfo = new BundleAssetLoadingInfo
             {
-                FilePath = "chrono/arcadian_units",
+                FilePath = "arcadian_units",
                 SpriteName = "assets/" + imgName + ".png",
                 ObjectName = "assets/" + imgName + ".prefab",
                 AssetType = AssetRefBuilder.AssetTypeEnum.Character
@@ -157,7 +157,7 @@ namespace DiscipleClan.Cards
         {
             r.BundleLoadingInfo = new BundleAssetLoadingInfo
             {
-                FilePath = "chrono/arcadian_units",
+                FilePath = "arcadian_units",
                 SpriteName = "assets/cardart/" + imgName.ToLower() + ".png",
                 AssetType = AssetRefBuilder.AssetTypeEnum.CardArt
             };

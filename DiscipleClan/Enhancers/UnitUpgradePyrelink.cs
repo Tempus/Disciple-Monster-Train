@@ -19,7 +19,7 @@ namespace DiscipleClan.Enhancers
                 ClanID = DiscipleClan.clanRef.GetID(),
                 NameKey = ID + "_Name",
                 DescriptionKey = ID + "_Desc",
-                AssetPath = "chrono/Enhancer/" + ID + ".png",
+                AssetPath = "Enhancer/" + ID + ".png",
                 Rarity = CollectableRarity.Common,
                 CardType = CardType.Monster,
                 EnhancerPoolIDs = new List<string> { UnitUpgradePoolCommon },
@@ -28,7 +28,7 @@ namespace DiscipleClan.Enhancers
                     UpgradeTitleKey = ID + "_Name",
                     UpgradeDescriptionKey = ID + "_CardDesc",
                     HideUpgradeIconOnCard = false,
-                    UpgradeIconPath = ("chrono/Enhancer/" + ID + ".png"),
+                    UpgradeIconPath = ("Enhancer/" + ID + ".png"),
                     StatusEffectUpgrades = new List<StatusEffectStackData>
                     {
                         new StatusEffectStackData

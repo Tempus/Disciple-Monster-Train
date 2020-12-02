@@ -23,7 +23,7 @@ namespace DiscipleClan.CardEffects
             tooltipBodyKey = "PowerWardBeta_Desc";
 
             var localPath = Path.GetDirectoryName(new Uri(Assembly.GetCallingAssembly().CodeBase).LocalPath);
-            wardIcon = CustomAssetManager.LoadSpriteFromPath(Path.Combine(localPath, "chrono/Unit Assets/PowerWard.png"));
+            wardIcon = CustomAssetManager.LoadSpriteFromPath(Path.Combine(localPath, "Unit Assets/PowerWard.png"));
 
 			CardUpgradeData upgrade = new CardUpgradeDataBuilder
 			{

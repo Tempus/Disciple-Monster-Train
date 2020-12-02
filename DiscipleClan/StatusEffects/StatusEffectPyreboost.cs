@@ -81,7 +81,7 @@ namespace DiscipleClan.StatusEffects
                 StatusId = statusId,
                 DisplayCategory = StatusEffectData.DisplayCategory.Persistent,
                 TriggerStage = StatusEffectData.TriggerStage.OnMonsterTeamTurnBegin,
-                IconPath = "chrono/Status/burning-embers.png",
+                IconPath = "Status/burning-embers.png",
             }.Build();
         }
 

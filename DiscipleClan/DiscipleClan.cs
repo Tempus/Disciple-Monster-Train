@@ -40,7 +40,7 @@ namespace DiscipleClan
 
         public void Initialize()
         {
-            CustomLocalizationManager.ImportCSV("chrono/Disciple.csv", ';');
+            CustomLocalizationManager.ImportCSV("Disciple.csv", ';');
             clanRef = Clan.Make();
             RegisterSubtypes();
             MakeStatuses();

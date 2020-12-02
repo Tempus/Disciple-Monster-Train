@@ -1,0 +1,74 @@
+Changelog 0.7.0
+
+Balance Pass 3/5:
+
+- Wardmaster's trigger is now Resolve instead of Relocate
+- Wardmaster III health changed from 60 -> 70
+- Symbiote is now always size 2 instead of 1/2/3
+- Shifter I's bonus changed from 3 -> 2
+- Shifter II's bonus changed from 6 -> 4
+- Shifter III's bonus changed from 10 -> 6
+- Shifter III's Attack and HP changed from 30 -> 45
+
+* Ephemeral II changed to Gain 1 ember on consume
+* Ephemeral III changed to Gain 1 ember on consume, draw 1?
+- Echo effects are summarized
+- Echo now reads "Copy half your buffs to a random friendly unit. Reflect half your debuffs to a random enemy unit."
+- Echo II now has "Copy half your buffs to the front unit. Reflect half your debuffs to the front enemy unit."
+- Echo III now has "Copy half your buffs to all friendly units. Reflect half your debuffs to all enemy units."
+- Echo now shares Armor and Burnout.
+
+- Free Time now makes spells cost 1 less instead of 0
+- New artifact, Fool's Crown (old Fool's Crown renamed). +5 gold on Pyre kill.
+- New artifact, Unnamed Artifact. Moves the highest HP friendly unit on each floor to the front at end of turn.
+
+- Pattern Shift now Consumes
+- Pattern Shift now has a (useless) tooltip
+- Analog Sap 1 changed to Frostbite 2
+- Analog now has a clear tooltip
+
+- Flashfeather now affects the attacking unit
+- Flashfeather now sends the attacking unit to Pyre as well
+- Flashfeather now does not send bosses to the Pyre (no tooltip available)
+- Power Ward now gives +5 attack to friendly units on the floor when played as well
+- Power Ward cost increased from 1 -> 2
+- Power Ward rarity changed from Common -> Uncommon
+- Synchronocity damage changed from 20 -> 5
+
+- Pyromancy rarity changed from Uncommon -> Common
+- Pendulum effect decreased from 2X -> X
+- Dilation no longer gives increased attack
+- Dilaiton health gain increased from 3 -> 8
+- Rewind no longer restores itself
+- Fireshaped cost reduced from 1 -> 0
+- Fortune Teller starts with Gravity 1
+- Fortune Teller capacity decreased from 2 -> 1
+- Jelly Scholar health gain decreased from 15 -> 12
+- Jelly Scholar health decreased from 5 -> 4
+- Pyrespike X multiplier decreased from 3 -> 2
+- Right Timing effect changed from Reserve to Slay
+- Time Stamp now adds the Stamp to your deck or maybe discard
+- Epoch Tome cost reduced from 3 -> 2
+
+- Shifter Ward renamed to Overward
+- Power Ward renamed to Vigor Ward
+- Spike Ward renamed to Cross Ward
+- Epoch Tome renamed to Horizon Tome
+- Ancient Pyresnail renamed to Fulgursnail
+- Ancient Savant renamed to Shimmersnail
+- Cinderborn renamed to Cindershell
+- Crystal Diviner renamed to Fate Behemoth
+- Fourtune Teller renamed to Salt Cellar
+- Fool's Crown renamed to Fortune Cookie, new image
+
+Bug Fixes:
+
+- Galilizard now correctly ascends twice instead of three times
+- Fixed a potential softlock with OnSpawnPointChange interactions in preview mode
+- Flashfire now correctly targets a room
+- Fixed a visual bug with Cinderborn
+- The logbook now reveals all Champion Paths and Artifacts in addition to cards
+- Status Update crash bug fixed
+- Rewind now shuffle the cards into your deck instead of placing them on top
+- Echo Glaukopis now has tooltips
+- Flashfire now has a tooltip for Pyreboost

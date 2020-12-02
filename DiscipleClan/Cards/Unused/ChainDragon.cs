@@ -17,7 +17,7 @@ namespace DiscipleClan.Cards.Unused
                 UpgradeTitle = "Unusable",
                 UpgradeDescription = "This slot is unavailable.",
                 HideUpgradeIconOnCard = false,
-                UpgradeIconPath = ("chrono/Enhancer/UnitUpgradePyrelink.png"),
+                UpgradeIconPath = ("Enhancer/UnitUpgradePyrelink.png"),
             }.Build();
 
             // Basic Card Stats 
