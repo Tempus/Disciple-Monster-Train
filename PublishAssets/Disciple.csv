@@ -145,7 +145,7 @@ Erosion_Desc;Text;;;;;Deal [effect0.power] damage to 3 random enemies.<br><b>Res
 Feedback_Name;Text;;;;;Feedback;;;;;
 Feedback_Desc;Text;;;;;Give 3X[ember].<br>Lose 2X[pyrehealth].;;;;;
 Flashfire_Name;Text;;;;;Flashfire;;;;;
-Flashfire_Desc;Text;;;;;Deal [effect0.power] damage to enemy units.;;;;;
+Flashfire_Desc;Text;;;;;Deal damage to enemy units.;;;;;
 Fortunetelling_Name;Text;;;;;Fortunetelling;;;;;
 Fortunetelling_Desc;Text;;;;;<b>Divine</b> 3 and <b>Consume</b> up to 3. Gain [coin] based on the rarity.;;;;;
 GoldenRobe_Name;Text;;;;;GoldenRobe;;;;;
@@ -309,7 +309,10 @@ StatusEffect_pyreboost_CardTooltipText;Text;;;;;Connects this unit or card with 
 StatusEffect_pyreboost_NotificationText;Text;;;;;You Got Boost Power;;;;;
 StatusEffect_pyreboost_Stack_CardText;Text;;;;;<b>Pyreboost {0}</b>;;;;;
 Pyreboost_TooltipTitle;Text;;;;;Pyreboost;;;;;
-Pyreboost_TooltipText;Text;;;;;Connects this unit or card with the Pyre, adding the Pyre attack to their damage.;;;;;
+Pyreboost_TooltipText;Text;;;;;Connects this card with the Pyre, adding the Pyre's [attack] to its [attack] if it's a unit or to it's damage if it's a spell.;;;;;
+Pyreboost_CardText_OutsideCombat;Text;;;;;<nobr><i>(<{1}>*+{0}*</{1}> damage)</i></nobr>;;;;;
+Pyreboost_CardText_InsideCombat_NoUpgrades;Text;;;;;<nobr><i>({0} damage)</i></nobr>;;;;;
+Pyreboost_CardText_InsideCombat_WithUpgrades;Text;;;;;<nobr><i>({2} + <{1}>*{0}*</{1}> damage)</i></nobr>;;;;;
 StatusEffect_slow_CardText;Text;;;;;<b>Slow (TODO)</b>;;;;;
 StatusEffect_slow_Stack_CardText;Text;;;;;<b>Slow (TODO)</b>;;;;;
 StatusEffect_slow_CharacterTooltipText;Text;;;;;Slowed units attack after all other units have attacked.;;;;;

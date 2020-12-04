@@ -8,54 +8,6 @@ namespace DiscipleClan.CardEffects
 {
     public class CardTraitPyreboost : CardTraitState
     {
-        public CardUpgradeState cardUpgradeState;
-
-        public void OnPyreAttackChange(int PyreAttack, int PyreNumAttacks)
-        {
-            if (PyreAttack == 0) { return; }
-            if (!GetCard().GetTemporaryCardStateModifiers().HasUpgrade(cardUpgradeState))
-                GetCard().GetTemporaryCardStateModifiers().AddUpgrade(cardUpgradeState);
-
-            int PyreboostMultiplier = GetPyreboostCount();
-
-            cardUpgradeState.SetAttackDamage(PyreAttack * PyreNumAttacks * PyreboostMultiplier);
-            cardUpgradeState.SetAdditionalHeal(PyreAttack * PyreNumAttacks * PyreboostMultiplier);
-
-            GetCard().UpdateDamageText(null);
-        }
-
-        [HarmonyPatch(typeof(CardTraitState), "Setup")]
-        class InitForCardTrait
-        {
-            static void Postfix(CardTraitState __instance)
-            {
-                CardTraitPyreboost trait;
-                if ((trait = (__instance as CardTraitPyreboost)) != null)
-                {
-                    if (trait.cardUpgradeState == null)
-                    {
-                        trait.cardUpgradeState = new CardUpgradeState();
-                        trait.cardUpgradeState.Setup(new CardUpgradeDataBuilder
-                        {
-                            UpgradeTitleKey = "StatusEffect_pyreboost_CardText",
-                            UpgradeDescriptionKey = "StatusEffect_pyreboost_CardTooltipText"
-                        }.Build());
-
-                        trait.GetCard().GetTemporaryCardStateModifiers().AddUpgrade(trait.cardUpgradeState);
-
-                        ProviderManager.SaveManager.pyreAttackChangedSignal.AddListener(trait.OnPyreAttackChange);
-                        trait.OnPyreAttackChange(ProviderManager.SaveManager.GetDisplayedPyreAttack(), ProviderManager.SaveManager.GetDisplayedPyreNumAttacks());
-                    }
-                }
-            }
-        }
-
-        public override int GetModifiedCost(int cost, CardState thisCard, CardStatistics cardStats, MonsterManager monsterManager)
-        {
-            OnPyreAttackChange(ProviderManager.SaveManager.GetDisplayedPyreAttack(), ProviderManager.SaveManager.GetDisplayedPyreNumAttacks());
-            return cost;
-        }
-
         public int GetPyreboostCount()
         {
             int count = 0;
@@ -98,20 +50,57 @@ namespace DiscipleClan.CardEffects
             return count;
         }
 
-        //public override void CreateAdditionalTooltips(TooltipContainer tooltipContainer)
-        //{
-        //    TooltipUI tooltipUI = tooltipContainer.InstantiateTooltip("PyreboostForCards", TooltipDesigner.TooltipDesignType.Keyword);
-        //    string title = LocalizeTraitKey("StatusEffect_pyreboost_CardText");
-        //    string body = "StatusEffect_pyreboost_CardTooltipText".Localize();
-        //    tooltipUI?.Set(title, body);
-        //}
+        public int GetTotalPyreDamage()
+        {
+            int PyreAttack          = ProviderManager.SaveManager.GetDisplayedPyreAttack();
+            int PyreNumAttacks      = ProviderManager.SaveManager.GetDisplayedPyreNumAttacks();
+            int PyreboostMultiplier = GetPyreboostCount();
+            return PyreAttack * PyreNumAttacks * PyreboostMultiplier;
+        }
+
+        public override int OnApplyingDamage(ApplyingDamageParameters damageParams)
+        {
+            int pyreDamage = GetTotalPyreDamage();
+            if (pyreDamage == 0)
+                return damageParams.damage;
+
+            int extraDamage = GetExtraDamage(damageParams.damageSourceCard);
+
+            return pyreDamage + extraDamage;
+        }
+
+        private int GetExtraDamage(CardState thisCard)
+        {
+            CardStateModifiers cardStateModifiers = thisCard.GetCardStateModifiers();
+            CardStateModifiers temporaryCardStateModifiers = thisCard.GetTemporaryCardStateModifiers();
+            return CardStateModifiers.GetUpgradedStatValue(CardStateModifiers.GetUpgradedStatValue(0, CardStateModifiers.StatType.Damage, cardStateModifiers), CardStateModifiers.StatType.Damage, temporaryCardStateModifiers);
+        }
+
         public override string GetCardText()
         {
-            //var basetext = LocalizeTraitKey("StatusEffect_pyreboost_Stack_CardText");
-            //if (GetPyreboostCount() > 1)
-            //    return string.Format(basetext, GetPyreboostCount());
-            
             return LocalizeTraitKey("StatusEffect_pyreboost_CardText");
+        }
+
+        public override string GetCurrentEffectText(CardStatistics cardStatistics, SaveManager saveManager, RelicManager relicManager)
+        {
+            int baseDamage = GetTotalPyreDamage();
+            int extraDamage = GetExtraDamage(GetCard());
+
+            // The card text must be different if we're in combat or out of it
+            if (cardStatistics != null && cardStatistics.GetIsInActiveBattle())
+            {
+                // In combat
+                if (extraDamage > 0)
+                    return string.Format("Pyreboost_CardText_InsideCombat_WithUpgrades".Localize(), extraDamage, "tempUpgradeHighlight", baseDamage);
+                else
+                    return string.Format("Pyreboost_CardText_InsideCombat_NoUpgrades".Localize(), baseDamage);
+            }
+            
+            // Out of combat
+            if (extraDamage > 0)
+                return string.Format(("Pyreboost_CardText_OutsideCombat").Localize(), extraDamage, "tempUpgradeHighlight");
+            
+            return string.Empty;
         }
     }
 }
