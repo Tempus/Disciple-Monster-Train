@@ -12,7 +12,7 @@ namespace DiscipleClan.Upgrades
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
             {
                 UpgradeTitleKey = IDName + "_Name",
-                UpgradeDescriptionKey = IDName + "_Desc",
+                //UpgradeDescriptionKey = IDName + "_Desc",
                 //upgradeNotificationKey = IDName + "_Notice",
                 //upgradeIcon = CustomAssetManager.LoadSpriteFromPath("Clan Assets/clan_32.png"),
                 //HideUpgradeIconOnCard = false,
@@ -25,29 +25,18 @@ namespace DiscipleClan.Upgrades
                 //BonusSize = 0,
 
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
-                TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> {
-                    new CharacterTriggerDataBuilder {
-                        Trigger = CharacterTriggerData.Trigger.OnUnscaledSpawn,
+                //TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder> { },
+                //cardTriggerUpgradeBuilders = new List<CardTriggerEffectDataBuilder> { },
+                RoomModifierUpgradeBuilders = new List<RoomModifierDataBuilder> {
+                    new RoomModifierDataBuilder
+                    {
+                        RoomStateModifierClassName = typeof(RoomStateModifierTempUpgradePerSpaceUsed).AssemblyQualifiedName,
                         DescriptionKey = IDName + "_Desc",
-                        HideTriggerTooltip = true,
-                        DisplayEffectHintText = false,
-                        EffectBuilders = new List<CardEffectDataBuilder>
-                        {
-                            new CardEffectDataBuilder
-                            {
-                                EffectStateType = typeof(CardEffectBuffOnCapacityChange),
-                                TargetMode = TargetMode.Self,
-                                TargetTeamType = Team.Type.Monsters,
-                                ParamInt = 8,
-                            }
-                        }
+                        ParamInt = 8
                     }
                 },
-                //cardTriggerUpgradeBuilders = new List<CardTriggerEffectDataBuilder> { },
-                //RoomModifierUpgradeBuilders = new List<RoomModifierDataBuilder> { },
                 //filtersBuilders = new List<CardUpgradeMaskDataBuilder> { },
                 //upgradesToRemoveBuilders = new List<CardUpgradeDataBuilder> { },
-
             };
 
             return railtie;
