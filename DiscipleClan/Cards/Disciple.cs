@@ -78,7 +78,7 @@ namespace DiscipleClan.Cards.Units
 
                 Size = 2,
                 Health = 10,
-                AttackDamage = 5,
+                AttackDamage = 0,
             };
 
             Utils.AddUnitAnim(characterDataBuilder, "disciple");

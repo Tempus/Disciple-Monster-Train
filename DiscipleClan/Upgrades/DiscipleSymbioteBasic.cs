@@ -17,7 +17,7 @@ namespace DiscipleClan.Upgrades
                 //upgradeIcon = CustomAssetManager.LoadSpriteFromPath("Clan Assets/clan_32.png"),
                 //HideUpgradeIconOnCard = false,
                 UseUpgradeHighlightTextTags = true,
-                BonusDamage = -5,
+                BonusDamage = 0,
                 BonusHP = 10,
                 //costReduction = 0,
                 //xCostReduction = 0,

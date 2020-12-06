@@ -17,7 +17,7 @@ namespace DiscipleClan.Upgrades
                 UpgradeTitleKey = IDName + "_Name",
                 UpgradeDescriptionKey = IDName + "_Desc",
                 UseUpgradeHighlightTextTags = true,
-                BonusDamage = -5,
+                BonusDamage = 0,
                 BonusHP = 60,
 
                 //traitDataUpgradeBuilders = new List<CardTraitDataBuilder> { },
