@@ -452,7 +452,7 @@ Newtons_Desc;Text;;;;;When played, Summon 2 copies.;;;;;
 TimeStamp_Name;Text;;;;;Time Stamp;;;;;
 TimeStamp_Desc;Text;;;;;Copy all upgrades, stat changes, and statuses of the sacrifice into a new 0 cost card in your draw pile.;;;;;
 RewindFirstSpell_Name;Text;;;;;Second Hand;;;;;
-RewindFirstSpell_Desc;Text;;;;;The first spell cast each turn returns to your hand.;;;;;
+RewindFirstSpell_Desc;Text;;;;;The first spell cast each turn without <b>Consume</b> returns to your hand.;;;;;
 RewindFirstSpell_Active;Text;;;;;<desc>;;;;;
 RewindFirstSpell_Lore;Text;;;;;<desc>;;;;;
 RoomStateModifierRefund;Text;;;;;<b>Rebate</b>;;;;;

@@ -21,6 +21,16 @@ namespace DiscipleClan.Artifacts
                     new RelicEffectDataBuilder
                     {
                          RelicEffectClassName = typeof(RelicEffectRewind).AssemblyQualifiedName,
+                         EffectConditionBuilders = new List<RelicEffectConditionBuilder>
+                         {
+                             new RelicEffectConditionBuilder
+                             {
+                                 paramTrackTriggerCount = true,
+                                 paramComparator = (RelicEffectCondition.Comparator.Equal | RelicEffectCondition.Comparator.GreaterThan),
+                                 allowMultipleTriggersPerDuration = false,
+                                 paramInt = 1
+                             }
+                         }
                     }
                 }
             };
