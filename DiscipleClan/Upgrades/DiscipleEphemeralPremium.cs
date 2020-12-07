@@ -8,7 +8,7 @@ namespace DiscipleClan.Upgrades
     class DiscipleEphemeralPremium
     {
         public static string IDName = "EphemeralUpgradePremium";
-        public static int buffAmount = 2;
+
         public static CardUpgradeDataBuilder Builder()
         {
             CardUpgradeDataBuilder railtie = new CardUpgradeDataBuilder
@@ -32,17 +32,9 @@ namespace DiscipleClan.Upgrades
                 {
                     new RoomModifierDataBuilder
                     {
-                         roomStateModifierClassName = typeof(RoomStateModifierRefund).AssemblyQualifiedName,
-                         ParamInt = buffAmount,
-                         DescriptionKey = "RoomModifierRefund_Desc" + buffAmount,
-                         ExtraTooltipTitleKey = "RoomModifierRefund_TooltipTitle",
-                         ExtraTooltipBodyKey = "RoomModifierRefund_TooltipBody",
-                    },
-                    new RoomModifierDataBuilder
-                    {
-                         roomStateModifierClassName = typeof(RoomStateModifierStartersTempConsume).AssemblyQualifiedName,
-                         ParamInt = buffAmount,
-                         DescriptionKey = "RoomStateModifierStartersTempConsume_Desc",
+                         roomStateModifierClassName = typeof(RoomStateModifierStartersConsumeRebate).AssemblyQualifiedName,
+                         DescriptionKey = "RoomStateModifierStartersConsumeRebate_Desc2",
+                         ParamInt = 2,
                     },
                 },
                 //filtersBuilders = new List<CardUpgradeMaskDataBuilder> { },

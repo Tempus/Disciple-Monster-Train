@@ -8,7 +8,6 @@ namespace DiscipleClan.Upgrades
     class DiscipleEphemeralPro
     {
         public static string IDName = "EphemeralUpgradePro";
-        public static int buffAmount = 3;
 
         public static CardUpgradeDataBuilder Builder()
         {
@@ -33,17 +32,9 @@ namespace DiscipleClan.Upgrades
                 {
                     new RoomModifierDataBuilder
                     {
-                         roomStateModifierClassName = typeof(RoomStateModifierRefund).AssemblyQualifiedName,
-                         ParamInt = buffAmount,
-                         DescriptionKey = "RoomModifierRefund_Desc" + buffAmount,
-                         ExtraTooltipTitleKey = "RoomModifierRefund_TooltipTitle",
-                         ExtraTooltipBodyKey = "RoomModifierRefund_TooltipBody",
-                    },
-                    new RoomModifierDataBuilder
-                    {
-                         roomStateModifierClassName = typeof(RoomStateModifierStartersTempConsume).AssemblyQualifiedName,
-                         ParamInt = buffAmount,
-                         DescriptionKey = "RoomStateModifierStartersTempConsume_Desc",
+                         roomStateModifierClassName = typeof(RoomStateModifierStartersConsumeRebate).AssemblyQualifiedName,
+                         DescriptionKey = "RoomStateModifierStartersConsumeRebate_Desc3",
+                         ParamInt = 3,
                     },
                 },
                 //filtersBuilders = new List<CardUpgradeMaskDataBuilder> { },
