@@ -31,9 +31,25 @@ namespace DiscipleClan.CardEffects
 
             targets.Clear();
             room.AddCharactersToList(targets, Team.Type.Heroes);
+
             
             if (targets.Count > 0)
-                yield return ProviderManager.CombatManager.ApplyDamageToTarget(power, targets[RandomManager.Range(0, targets.Count, RngId.Battle)], new CombatManager.ApplyDamageToTargetParameters());
+            {
+                CharacterState randomizedTarget = targets[RandomManager.Range(0, targets.Count - 1, RngId.Battle)];
+
+                // Don't target units with Phased
+                while (randomizedTarget.HasStatusEffect("untouchable"))
+                {
+                    targets.Remove(randomizedTarget);
+                    if (targets.Count > 0)
+                        randomizedTarget = targets[RandomManager.Range(0, targets.Count - 1, RngId.Battle)];
+                    else
+                        break;
+                }
+                // Double check that we haven't emptied the targets list due to phased checks
+                if (targets.Count > 0)
+                    yield return ProviderManager.CombatManager.ApplyDamageToTarget(power, randomizedTarget, new CombatManager.ApplyDamageToTargetParameters());
+            }
             yield return new WaitForSeconds(0.3f);
         }
     }
