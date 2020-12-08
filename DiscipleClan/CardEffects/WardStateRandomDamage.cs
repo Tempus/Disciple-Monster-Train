@@ -35,14 +35,14 @@ namespace DiscipleClan.CardEffects
             
             if (targets.Count > 0)
             {
-                CharacterState randomizedTarget = targets[RandomManager.Range(0, targets.Count - 1, RngId.Battle)];
+                CharacterState randomizedTarget = targets[RandomManager.Range(0, targets.Count , RngId.Battle)];
 
                 // Don't target units with Phased
                 while (randomizedTarget.HasStatusEffect("untouchable"))
                 {
                     targets.Remove(randomizedTarget);
                     if (targets.Count > 0)
-                        randomizedTarget = targets[RandomManager.Range(0, targets.Count - 1, RngId.Battle)];
+                        randomizedTarget = targets[RandomManager.Range(0, targets.Count, RngId.Battle)];
                     else
                         break;
                 }
