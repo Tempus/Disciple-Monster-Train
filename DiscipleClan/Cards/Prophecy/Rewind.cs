@@ -1,5 +1,6 @@
 using Trainworks.Builders;
 using System.Collections.Generic;
+using DiscipleClan.CardEffects;
 
 namespace DiscipleClan.Cards.Retain
 {
@@ -20,7 +21,7 @@ namespace DiscipleClan.Cards.Retain
                 {
                     new CardTraitDataBuilder
                     {
-                         TraitStateName = "CardTraitScalingReturnConsumedCards",
+                         TraitStateName = typeof(CardTraitScalingReturnConsumedCardsFixed).AssemblyQualifiedName,
                          ParamTrackedValue = CardStatistics.TrackedValueType.PlayedCost,
                          ParamEntryDuration = CardStatistics.EntryDuration.ThisBattle,
                          ParamUseScalingParams = true,
