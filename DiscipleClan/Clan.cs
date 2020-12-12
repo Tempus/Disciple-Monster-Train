@@ -67,6 +67,7 @@ namespace DiscipleClan
                 Name = "RewardNodeData_Disciple_UnitBanner_TooltipBodyKey",
                 Description = "RewardNodeData_Disciple_UnitBanner_TooltipTitleKey",
                 RequiredClass = DiscipleClan.getClan(),
+                ControllerSelectedOutline = "Clan Assets/selection_outlines.png",
                 FrozenSpritePath = "Clan Assets/POI_Map_Clan_CDisciple_Frozen.png",
                 EnabledSpritePath = "Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",
                 EnabledVisitedSpritePath = "Clan Assets/POI_Map_Clan_CDisciple_Enabled.png",

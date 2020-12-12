@@ -24,7 +24,7 @@ using static Trainworks.Constants.VanillaStatusEffectIDs;
 namespace DiscipleClan
 {
     // Credit to Rawsome, Stable Infery for the base of this method.
-    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.7.0")]
+    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.7.2")]
     [BepInProcess("MonsterTrain.exe")]
     [BepInProcess("MtLinkHandler.exe")]
     [BepInDependency("tools.modding.trainworks")]
