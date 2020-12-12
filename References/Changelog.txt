@@ -1,4 +1,4 @@
-Changelog 0.7.0
+Changelog 0.7.2
 
 Balance Pass 3/5:
 
@@ -10,8 +10,6 @@ Balance Pass 3/5:
 - Shifter III's bonus changed from 10 -> 6
 - Shifter III's Attack and HP changed from 30 -> 45
 
-* Ephemeral II changed to Gain 1 ember on consume
-* Ephemeral III changed to Gain 1 ember on consume, draw 1?
 - Echo effects are summarized
 - Echo now reads "Copy half your buffs to a random friendly unit. Reflect half your debuffs to a random enemy unit."
 - Echo II now has "Copy half your buffs to the front unit. Reflect half your debuffs to the front enemy unit."
