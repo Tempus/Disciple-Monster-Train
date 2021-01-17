@@ -57,7 +57,7 @@ Snecko_Desc;Text;;;;;<b>End of Turn</b>: <b>Ascend</b> twice.;;;;;
 Time Eater_Name;Text;;;;;Time Eater;;;;;
 Time Eater_Desc;Text;;;;;(TODO)Slow. Multistrike (TODO)Empowered.;;;;;
 Cinderborn_Name;Text;;;;;Cindershell;;;;;
-Cinderborn_Desc;Text;;;;;<b>Ember Gain:</b> Apply +2[attack].;;;;;
+Cinderborn_Desc;Text;;;;;+2[attack];;;;;
 Waxwing_Name;Text;;;;;Waxwing;;;;;
 Waxwing_Desc;Text;;;;;<b>Relocate</b>: Apply +5[attack].;;;;;
 Yoremaster_Name;Text;;;;;Yoremaster;;;;;

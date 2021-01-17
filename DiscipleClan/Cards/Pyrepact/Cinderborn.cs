@@ -1,7 +1,7 @@
 using DiscipleClan.Triggers;
+using DiscipleClan.CardEffects;
 using Trainworks.Builders;
 using System.Collections.Generic;
-
 
 namespace DiscipleClan.Cards.Pyrepact
 {
@@ -20,6 +20,7 @@ namespace DiscipleClan.Cards.Pyrepact
 
             Utils.AddUnit(railyard, IDName, BuildUnit());
             Utils.AddCardPortrait(railyard, "Cinderborn");
+            railyard.OverrideDescriptionKey = string.Empty; // We have to do this to get the Trigger tooltips to display correctly
 
             // Do this to complete
             railyard.BuildAndRegister();
@@ -44,11 +45,12 @@ namespace DiscipleClan.Cards.Pyrepact
                     new CharacterTriggerDataBuilder
                     {
                         Trigger = OnGainEmber.OnGainEmberCharTrigger.GetEnum(),
+                        DescriptionKey = IDName + "_Desc",
                         EffectBuilders = new List<CardEffectDataBuilder>
                         {
                             new CardEffectDataBuilder
                             {
-                                EffectStateName = "CardEffectAddTempCardUpgradeToUnits",
+                                EffectStateName = typeof(CardEffectScalingUpgrade).AssemblyQualifiedName,
                                 ParamCardUpgradeData = new CardUpgradeDataBuilder {
                                      BonusDamage = 2,
                                 }.Build(),
