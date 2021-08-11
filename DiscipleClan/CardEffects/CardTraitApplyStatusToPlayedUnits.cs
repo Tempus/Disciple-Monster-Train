@@ -29,7 +29,7 @@ namespace DiscipleClan.CardEffects
                     item.GetTemporaryCardStateModifiers().AddUpgrade(upgrade);
         }
 
-        public override IEnumerator OnCardDiscarded(CardManager.DiscardCardParams discardCardParams, CardManager cardManager, RelicManager relicManager, CombatManager combatManager)
+        public override IEnumerator OnCardDiscarded(CardManager.DiscardCardParams discardCardParams, CardManager cardManager, RelicManager relicManager, CombatManager combatManager, RoomManager roomManager, SaveManager saveManager)
         {
             foreach (CardState item in cardManager.GetAllCards())
                 if (item.GetTemporaryCardStateModifiers().HasUpgrade(upgrade))

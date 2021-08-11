@@ -22,7 +22,7 @@ namespace DiscipleClan.Cards
         // Adds cards to the starting deck
         static void Postfix(ref SaveManager __instance)
         {
-            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(Rewind.IDName));
+            //__instance.AddCardToDeck(CustomCardManager.GetCardDataByID(JellyScholar.IDName));
 
             //__instance.AddRelic(__instance.GetAllGameData().FindCollectableRelicData(FirstBuffExtraStack.ID));
         }

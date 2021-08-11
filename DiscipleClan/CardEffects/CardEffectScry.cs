@@ -153,9 +153,9 @@ namespace DiscipleClan.CardEffects
                 DeckScreen deckScreen = screen as DeckScreen;
                 deckScreen.Setup(new DeckScreen.Params()
                 {
-                    mode = DeckScreen.Mode.CardSelection,
+                    mode = DeckScreen.Mode.CardEffectSelection,
                     showCancel = true,
-                    targetMode = TargetMode.Deck,
+                    targetMode = TargetMode.DrawPile,
                     titleKey = cardEffectState.GetParentCardState().GetTitleKey(),
                     instructionsKey = DescriptionKey,
                     numCardsSelectable = cardEffectState.GetAdditionalParamInt(),
@@ -218,7 +218,7 @@ namespace DiscipleClan.CardEffects
                     return HandUI.DrawSource.Discard;
                 case TargetMode.Exhaust:
                     return HandUI.DrawSource.Consume;
-                case TargetMode.Deck:
+                case TargetMode.DrawPile:
                     return HandUI.DrawSource.Deck;
                 default:
                     return HandUI.DrawSource.Deck;

@@ -20,6 +20,7 @@ namespace DiscipleClan.CardEffects
               CardState cardState,
               int roomIndex,
               SpawnPoint dropLocation,
+              bool fromPlayedCard,
               CombatManager.ApplyPreEffectsVfxAction onPreEffectsFiredVfx,
               CombatManager.ApplyEffectsAction onEffectsFired)
         {

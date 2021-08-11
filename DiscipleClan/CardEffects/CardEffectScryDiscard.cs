@@ -22,7 +22,7 @@ namespace DiscipleClan.CardEffects
                 IEnumerable<CardTraitState> traitStates = chosenCardState.GetTraitStates();
                 foreach (CardTraitState item in traitStates)
                 {
-                    item.OnCardDiscarded(new DiscardCardParams { discardCard = chosenCardState }, cardEffectParams.cardManager, cardEffectParams.relicManager, cardEffectParams.combatManager);
+                    item.OnCardDiscarded(new DiscardCardParams { discardCard = chosenCardState }, cardEffectParams.cardManager, cardEffectParams.relicManager, cardEffectParams.combatManager, cardEffectParams.roomManager, cardEffectParams.saveManager);
                 }
                 cardEffectParams.roomManager.GetRoom(cardEffectParams.roomManager.GetSelectedRoom()).UpdateCardManagerRoomStateModifiers(chosenCardState, drawn: false);
                 chosenCardState.OnCardDiscarded();

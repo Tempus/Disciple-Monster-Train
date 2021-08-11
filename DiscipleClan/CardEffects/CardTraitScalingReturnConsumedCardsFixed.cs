@@ -7,7 +7,7 @@ namespace DiscipleClan.CardEffects
     class CardTraitScalingReturnConsumedCardsFixed : CardTraitState
     {
 		// This exists because the base form implemented in the game (but unused) is broken and causes problems with CardStatistics counting
-		public override IEnumerator OnCardDiscarded(CardManager.DiscardCardParams discardCardParams, CardManager cardManager, RelicManager relicManager, CombatManager combatManager)
+		public override IEnumerator OnCardDiscarded(CardManager.DiscardCardParams discardCardParams, CardManager cardManager, RelicManager relicManager, CombatManager combatManager, RoomManager roomManager, SaveManager saveManager)
 		{
 			if (discardCardParams.wasPlayed)
 			{

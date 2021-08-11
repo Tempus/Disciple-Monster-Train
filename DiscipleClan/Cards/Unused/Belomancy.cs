@@ -24,7 +24,7 @@ namespace DiscipleClan.Cards.Unused
                         EffectStateName = typeof(CardEffectScryConsumePyrehit).AssemblyQualifiedName,
                         ParamInt = 3,
                         AdditionalParamInt = 1,
-                        TargetMode = TargetMode.Deck,
+                        TargetMode = TargetMode.DrawPile,
                     }
                 },
 

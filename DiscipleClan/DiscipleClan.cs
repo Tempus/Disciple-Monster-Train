@@ -24,7 +24,7 @@ using static Trainworks.Constants.VanillaStatusEffectIDs;
 namespace DiscipleClan
 {
     // Credit to Rawsome, Stable Infery for the base of this method.
-    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.7.2")]
+    [BepInPlugin("ca.chronometry.disciple", "Disciple Clan", "0.8.0")]
     [BepInProcess("MonsterTrain.exe")]
     [BepInProcess("MtLinkHandler.exe")]
     [BepInDependency("tools.modding.trainworks")]
@@ -47,6 +47,8 @@ namespace DiscipleClan
             MakeEnhancers();
 
             MakeCards();
+            MakeEssences();
+            Trainworks.Patches.AccessUnitSynthesisMapping.FindUnitSynthesisMappingInstanceToStub();
 
             foreach (var bundle in BundleManager.LoadedAssetBundles)
             {
@@ -184,11 +186,19 @@ namespace DiscipleClan
             foreach (var card in types) { Make(card); }
         }
 
-        public static void Make(Type cardType)
+
+            public static void Make(Type cardType)
         {
             Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Making... " + cardType.Name);
             MethodInfo make = cardType.GetMethod("Make");
             make.Invoke(null, null);
+        }
+
+        static void MakeEssences()
+        {
+            var types = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace.StartsWith("DiscipleClan.Essences") && !t.Name.Contains("<>"));
+            Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel.All, "Making " + types.ToList().Count + " Essences");
+            foreach (var card in types) { Make(card); }
         }
 
         public static ClassData getClan() { return clanRef; }

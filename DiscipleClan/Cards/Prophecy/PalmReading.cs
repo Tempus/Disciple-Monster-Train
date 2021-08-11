@@ -25,7 +25,7 @@ namespace DiscipleClan.Cards.Prophecy
                         ParamBool = true,
                         ParamInt = 2,
                         AdditionalParamInt = 99,
-                        TargetMode = TargetMode.Deck,
+                        TargetMode = TargetMode.DrawPile,
                     }
                 },
             };

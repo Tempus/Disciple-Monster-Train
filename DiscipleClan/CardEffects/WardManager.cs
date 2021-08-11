@@ -21,18 +21,13 @@ namespace DiscipleClan.CardEffects
 
         public static void SetupUI()
         {
-            // Store prefab
-            var thing = GameObject.FindObjectOfType<RoomCapacityIndicator>();
-            prefab = Traverse.Create(thing).Field<RoomCapacityObject>("roomCapacityObjectPrefab").Value;
-
             // Extremely janky construction
-            GameObject wardUI = GameObject.Instantiate(prefab).gameObject;
-            wardUI.transform.parent = GameObject.FindObjectOfType<RoomCapacityUI>().transform.parent;
+            GameObject wardUI = new GameObject("Ward Container");
+            ProviderManager.TryGetProvider<RoomManager>(out RoomManager roomManager);
+            wardUI.transform.SetParent(roomManager.GetRoomUI().GetRoomCapacityUI().transform.parent);
             wardUI.transform.SetScale(1, 1, 1);
             wardUI.transform.SetLocalPosition(-700, 175, 0);
 
-            GameObject.Destroy(wardUI.GetComponent<RoomCapacityObject>());
-            GameObject.Destroy(wardUI.GetComponent<Image>());
             ui = wardUI.AddComponent<WardUI>();
         }
 
@@ -207,15 +202,18 @@ namespace DiscipleClan.CardEffects
             foreach (WardState ward in WardManager.GetWards(floor))
             {
                 // Create a new GameObject
-                GameObject icon = UnityEngine.Object.Instantiate(WardManager.prefab, Vector3.zero, Quaternion.identity, base.transform).gameObject;
+                /*GameObject icon = UnityEngine.Object.Instantiate(WardManager.prefab, Vector3.zero, Quaternion.identity, base.transform).gameObject;
                 GameObject.Destroy(icon.GetComponent<RoomCapacityObject>());
                 foreach (Transform child in icon.transform)
                 {
                     Destroy(child.gameObject);
-                }
+                }*/
+                GameObject icon = new GameObject("Ward Icon");
+                icon.transform.SetParent(base.transform);
+                Image iconImage = icon.AddComponent<Image>();
 
                 // Set the image
-                Image iconImage = icon.GetComponent<Image>();
+                // Image iconImage = icon.GetComponent<Image>();
                 iconImage.sprite = ward.wardIcon;
 
                 // Set the Image Offset 
@@ -225,7 +223,7 @@ namespace DiscipleClan.CardEffects
                 Vector2 offsetMax = component.offsetMax;
                 offsetMax.x = GetContainerWidth(i);
                 component.offsetMax = offsetMax;
-                component.sizeDelta = new Vector2 { x = 48, y = 82 };
+                component.sizeDelta = new Vector2 { x = 0.48f, y = 0.82f };
                 i++;
 
                 // Add the tooltip
@@ -280,7 +278,10 @@ namespace DiscipleClan.CardEffects
     {
         static void Postfix(RoomUIDisplayBase __instance)
         {
-            WardManager.ui.gameObject.SetActive(false);
+            if (WardManager.ui != null)
+            {
+                WardManager.ui.gameObject.SetActive(false);
+            }
         }
     }
 }

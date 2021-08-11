@@ -24,7 +24,7 @@ namespace DiscipleClan.Cards.Unused
                         EffectStateName = typeof(CardEffectScryApplyPyreboost).AssemblyQualifiedName,
                         ParamInt = 4,
                         AdditionalParamInt = 1,
-                        TargetMode = TargetMode.Deck,
+                        TargetMode = TargetMode.DrawPile,
                         ParamCardUpgradeData = new CardUpgradeDataBuilder
                         {
                             HideUpgradeIconOnCard = true,
